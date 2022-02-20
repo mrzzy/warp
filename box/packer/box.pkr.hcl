@@ -12,7 +12,12 @@ packer {
       source  = "github.com/hashicorp/vagrant"
     }
   }
-
+  required_plugins {
+    ansible = {
+      version = ">=1.0.1, <1.1"
+      source  = "github.com/hashicorp/ansible"
+    }
+  }
 }
 
 # vagrant source will auto package a new vagrant box after build.
