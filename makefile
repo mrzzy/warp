@@ -35,6 +35,7 @@ clean: clean-box
 box: box/build/package.box
 	
 box/build/package.box: $(PACKER_DIR)
+	$(PACKER) init $<
 	$(PACKER) build --force $<
 
 clean-box: 
