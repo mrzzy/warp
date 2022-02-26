@@ -28,6 +28,9 @@ source "vagrant" "ubuntu-focal" {
   # source box
   source_path  = "ubuntu/focal64"
   box_version = "v20220215.1.0"
+
+  # output box
+  skip_package = true
 }
 
 build {
