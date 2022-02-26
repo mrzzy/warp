@@ -30,7 +30,6 @@ source "vagrant" "ubuntu-focal" {
   box_version = "v20220215.1.0"
 
   # output box
-  skip_package = true
   box_name     = "mrzzy/warp-box"
 }
 
