@@ -32,6 +32,8 @@ build {
     "source.vagrant.ubuntu-focal"
   ]
 
-  provisioner = "ansible/playbook.yaml"
+  provisioner "ansible" {
+    playbook_file = "ansible/playbook.yaml"
+  }
 }
 
