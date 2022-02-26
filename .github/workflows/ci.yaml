@@ -1,0 +1,26 @@
+#
+# WARP
+# CI Pipeline
+# 
+
+name: CI Pipeline
+on: push
+jobs:
+  build-box:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Packer
+      uses: hashicorp-contrib/setup-packer@v1
+      with:
+        packer-version: 1.7.10
+
+    - name: Install Vagrant with Virtualbox
+      run: |
+        set -ex -o pipefail
+        curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+        sudo apt-add-repository -y "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+        sudo apt-get update
+        sudo apt-get install -y virtualbox vagrant
