@@ -22,6 +22,7 @@ ANSIBLE_DIR=$(BOX_DIR)/ansible
 all: box
 
 lint:
+	$(PACKER) fmt -check $(PACKER_DIR)
 	$(PACKER) validate $(PACKER_DIR)
 	$(ANSIBLE_LINT) $(ANSIBLE_DIR)
 	$(CODESPELL) .
