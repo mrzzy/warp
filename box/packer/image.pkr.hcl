@@ -26,11 +26,12 @@ source "vagrant" "ubuntu-focal" {
   provider     = "virtualbox"
 
   # source box
-  source_path  = "ubuntu/focal64"
+  source_path = "ubuntu/focal64"
   box_version = "v20220215.1.0"
 
   # output box
   skip_package = true
+  box_name     = "mrzzy/warp-box"
 }
 
 build {
