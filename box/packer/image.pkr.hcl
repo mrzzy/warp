@@ -23,6 +23,7 @@ packer {
 # vagrant source will auto package a new vagrant box after build.
 source "vagrant" "ubuntu-focal" {
   communicator = "ssh"
+  ssh_timeout  = "5m"
   provider     = "virtualbox"
 
   # source box
