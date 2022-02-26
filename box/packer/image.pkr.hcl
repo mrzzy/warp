@@ -30,7 +30,8 @@ source "vagrant" "ubuntu-focal" {
   box_version = "v20220215.1.0"
 
   # output box
-  box_name     = "mrzzy/warp-box"
+  box_name   = "mrzzy/warp-box"
+  output_dir = "build"
 }
 
 build {
@@ -39,7 +40,7 @@ build {
   ]
 
   provisioner "ansible" {
-    playbook_file = "ansible/playbook.yaml"
+    playbook_file = "box/ansible/playbook.yaml"
   }
 }
 
