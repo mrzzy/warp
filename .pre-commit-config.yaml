@@ -1,0 +1,33 @@
+#
+# WARP
+# Pre Commit hooks
+#
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.1.0
+  hooks:
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: mixed-line-ending
+    args: ["---fix=", "lf"]
+
+# lint ansible playbooks
+- repo: https://github.com/ansible-community/ansible-lint.git
+  rev: v5.4.0
+  hooks:
+    - id: ansible-lint
+codespell==2.1.0
+
+# check for commited secrets
+- repo: https://github.com/zricethezav/gitleaks
+  rev: v8.2.0
+  hooks:
+  - id: gitleaks
+  
+# check for spelling mistakes
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.1.0
+  hooks:
+  - id: codespell
