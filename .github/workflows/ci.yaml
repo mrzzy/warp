@@ -16,7 +16,7 @@ jobs:
       uses: actions/checkout@v2
   
     - name: Install Python Tooling
-      runs: pip3 install --user -r requirements.txt
+      run: pip3 install --user -r requirements.txt
 
     - name: Install Packer
       uses: hashicorp-contrib/setup-packer@v1
