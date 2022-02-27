@@ -7,8 +7,9 @@ name: CI Pipeline
 on: push
 jobs:
   build-box-vagrant:
-    # only macos runner supports nested virtualization, with vagrant & virtualbox preinstalled
-    # needed by virtualbox vm to run within github actions runner
+    # macos runner is used as it supportes nested virtualization, 
+    # needed by virtualbox vm to run within github actions runner.
+    # it also comes with vagrant & virtualbox preinstalled
     # https://github.com/jonashackt/vagrant-github-actions
     runs-on: macos-10.15
     steps:
@@ -23,5 +24,25 @@ jobs:
       with:
         packer-version: 1.7.10
 
+    - name: Install Python Tooling
+      runs: pip3 install --user -r requirements.txt
+
     - name: Build Dev Box using Packer + Vagrant
       run: make box
+  
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install Packer
+      uses: hashicorp-contrib/setup-packer@v1
+      with:
+        packer-version: 1.7.10
+
+    - name: Install Python Tooling
+      run: pip3 install --user -r requirements.txt
+    
+    - name: Lint code
+      run: make lint
