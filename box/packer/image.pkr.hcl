@@ -43,4 +43,3 @@ build {
     playbook_file = "box/ansible/playbook.yaml"
   }
 }
-
