@@ -21,6 +21,7 @@ ANSIBLE_DIR=$(BOX_DIR)/ansible
 all: box
 
 lint:
+	$(PACKER) init $(PACKER_DIR)
 	$(PACKER) fmt -check $(PACKER_DIR)
 	$(PACKER) validate $(PACKER_DIR)
 	$(PRE_CMT) run
