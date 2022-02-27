@@ -6,8 +6,7 @@
 # program vars
 VAGRANT:=vagrant
 PACKER:=packer
-ANSIBLE_LINT:=ansible-lint
-CODESPELL:=codespell
+PRE_CMT:=pre-commit
 RM:=rm -rf
 
 # paths
@@ -24,8 +23,7 @@ all: box
 lint:
 	$(PACKER) fmt -check $(PACKER_DIR)
 	$(PACKER) validate $(PACKER_DIR)
-	$(ANSIBLE_LINT) $(ANSIBLE_DIR)
-	$(CODESPELL) .
+	$(PRE_CMT) run
 
 fmt:
 	$(PACKER) fmt $(PACKER_DIR)

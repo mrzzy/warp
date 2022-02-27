@@ -39,7 +39,10 @@ jobs:
         packer-version: 1.7.10
 
     - name: Install Python Tooling
-      run: sudo pip3 install -r requirements.txt
+      run: |
+        set -ex -o pipefail
+        sudo pip3 install -r requirements.txt
+        pre-commit install-hooks
     
     - name: Lint code
       run: make lint
