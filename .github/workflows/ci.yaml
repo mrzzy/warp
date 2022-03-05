@@ -24,7 +24,7 @@ jobs:
     - name: Install Packer
       uses: hashicorp-contrib/setup-packer@v1
       with:
-        packer-version: ${PACKER_VERSION}
+        packer-version: ${{ env.PACKER_VERSION }}
 
     - name: Build Dev Box using Packer + Vagrant
       run: make box
@@ -40,7 +40,7 @@ jobs:
     - name: Install Packer
       uses: hashicorp-contrib/setup-packer@v1
       with:
-        packer-version: ${PACKER_VERSION}
+        packer-version: ${{ env.PACKER_VERSION }}
 
     - name: Install Python Tooling
       run: |
