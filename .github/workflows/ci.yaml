@@ -5,6 +5,8 @@
 
 name: CI Pipeline
 on: push
+env:
+  PACKER_VERSION: 1.8.0
 jobs:
   build-box-vagrant:
     # macos runner is used as it supports nested virtualization,
@@ -22,7 +24,7 @@ jobs:
     - name: Install Packer
       uses: hashicorp-contrib/setup-packer@v1
       with:
-        packer-version: 1.8.0
+        packer-version: ${PACKER_VERSION}
 
     - name: Build Dev Box using Packer + Vagrant
       run: make box
@@ -38,7 +40,9 @@ jobs:
     - name: Install Packer
       uses: hashicorp-contrib/setup-packer@v1
       with:
-        packer-version: 1.7.10
+        packer-version: ${PACKER_VERSION}
+
+    # TODO(mrzzy): remove if no longer reuqired
     - name: Install Go
       uses: actions/setup-go@v2
       with:
