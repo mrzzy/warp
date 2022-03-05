@@ -4,7 +4,7 @@
 #
 
 packer {
-  required_version = ">=1.7.10, <1.8"
+  required_version = ">=1.8, <1.9"
 
   required_plugins {
     vagrant = {
