@@ -42,12 +42,6 @@ jobs:
       with:
         packer-version: ${PACKER_VERSION}
 
-    # TODO(mrzzy): remove if no longer reuqired
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: "1.17"
-
     - name: Install Python Tooling
       run: |
         set -ex -o pipefail
