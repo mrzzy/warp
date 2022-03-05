@@ -1,0 +1,10 @@
+#
+# WARP
+# Box Ansible Playbook
+#
+
+- name: Provision the WARP development Box
+  hosts: localhost
+  tasks:
+    - name: Check connectivity to Box
+      ping: {}
