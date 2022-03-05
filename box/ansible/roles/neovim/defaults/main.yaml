@@ -1,0 +1,6 @@
+#
+# WARP
+# Neovim Ansible Role default vars
+#
+
+neovim_version: 0.4.3-3

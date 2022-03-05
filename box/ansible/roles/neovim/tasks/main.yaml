@@ -1,0 +1,9 @@
+#
+# WARP
+# Neovim Ansible Role Tasks
+#
+
+- name: Install Neovim
+  apt:
+    name: neovim={{ version }}
+    state: present
