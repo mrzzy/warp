@@ -13,7 +13,7 @@ WARP is WIP unified development environment for writing code anywhere:
 #### Tooling
 Install WARP:Box development tooling:
 1. Install [Packer](https://www.packer.io/downloads) & [Vagrant](https://www.vagrantup.com/downloads)
-2. Install Ansible & Code Linters in a Python virtual env:
+2. Install Ansible & Code Linters in a Python virtualenv:
 
 ```sh
 python3 -m venv venv

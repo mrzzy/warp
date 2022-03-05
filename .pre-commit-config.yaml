@@ -25,8 +25,10 @@ repos:
   hooks:
   - id: ansible-lint
     args: [
+      "--project-dir", "box/ansible/",
       "--exclude", ".github/",
-      "--exclude", ".pre-commit-config.yaml"
+      "--exclude", ".pre-commit-config.yaml",
+      "--exclude", "venv/"
     ]
 
 # lint github actions workflows

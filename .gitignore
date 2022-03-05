@@ -1,2 +1,4 @@
 # build dir
 build/
+# virtualenv dir
+venv/
