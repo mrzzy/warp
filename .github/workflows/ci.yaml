@@ -32,6 +32,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: "0"
 
     - name: Install Packer
       uses: hashicorp-contrib/setup-packer@v1
@@ -47,6 +49,9 @@ jobs:
         set -ex -o pipefail
         sudo pip3 install -r requirements.txt
         pre-commit install-hooks
+
+    - name: Flag Secrets
+      uses: zricethezav/gitleaks-action@v1.6.0
 
     - name: Lint code
       run: make lint
