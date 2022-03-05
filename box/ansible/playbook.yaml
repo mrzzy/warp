@@ -4,7 +4,7 @@
 #
 
 - name: Provision the WARP development Box
-  hosts: localhost
+  hosts: all
   pre_tasks:
     - name: Check connectivity to Box
       ping: {}

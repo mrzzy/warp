@@ -41,5 +41,8 @@ build {
 
   provisioner "ansible" {
     playbook_file = "box/ansible/playbook.yaml"
+    # by default runs as user running packer,
+    # change it to the vagrant user which has passwordless root permissions.
+    user = "vagrant"
   }
 }
