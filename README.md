@@ -20,3 +20,12 @@ python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 ```
+
+3. Install pre-commit hooks:
+
+```sh
+pre-commit install-hooks
+pre-commit install
+```
+
+:tada: Happy Hacking
