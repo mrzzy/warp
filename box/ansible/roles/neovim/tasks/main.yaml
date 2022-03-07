@@ -3,6 +3,7 @@
 # Neovim Ansible Role Tasks
 #
 
+# Setup neovim
 - name: Install Neovim
   become: true
   apt:
@@ -22,7 +23,20 @@
     url: https://raw.githubusercontent.com/mrzzy/dotfiles/main/.config/nvim/init.vim
     dest: ~/.config/nvim/init.vim
 
-- name: Install vim-plugin plugin manager
+# Editor Tooling
+- name: Install universal-ctags
+  become: true
+  snap:
+    name: universal-ctags
+
+- name: Install fzf
+  become: true
+  apt:
+    name: fzf={{ fzf_version }}
+    state: present
+
+# Plugins
+- name: Install vim-plug plugin manager
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ nvim_vim_plug_version }}/plug.vim
     dest: ~/.local/share/nvim/site/autoload/plug.vim
