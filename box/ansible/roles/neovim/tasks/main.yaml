@@ -7,7 +7,7 @@
 - name: Install Neovim
   become: true
   apt:
-    name: neovim={{ nvim_version }}
+    name: neovim={{ nvim.version }}
     state: present
 
 - name: Create Neovim directories
@@ -24,19 +24,26 @@
     dest: ~/.config/nvim/init.vim
 
 # Editor Tooling
-- name: Install universal-ctags
+- name: Install Snap Editor Tooling
   become: true
   snap:
     name: universal-ctags
+  loop: "{{ nvim.tooling.snap | dict2items }}"
 
-- name: Install fzf
+- name: Install Apt Editor Tooling
   become: true
   apt:
-    name: fzf={{ fzf_version }}
+    name: "{{ item.key }}={{ item.value }}"
     state: present
+  loop: "{{ nvim.tooling.apt | dict2items }}"
 
 # Plugins
 - name: Install vim-plug plugin manager
   get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ nvim_vim_plug_version }}/plug.vim
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ nvim.vim_plug_version }}/plug.vim
     dest: ~/.local/share/nvim/site/autoload/plug.vim
+
+- name: Install Neovim Plugins
+  command: nvim +PlugInstall +qall
+  args:
+    creates: ~/.local/share/nvim/plugged

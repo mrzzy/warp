@@ -3,6 +3,11 @@
 # Neovim Ansible Role default vars
 #
 
-nvim_version: 0.4.3-3
-nvim_vim_plug_version: 0.11.0
-fzf_version: 0.20.0-1
+nvim:
+  version: 0.4.3-3
+  vim_plug_version: 0.11.0
+  tooling:
+    snap:
+      universal-ctags: latest/stable
+    apt:
+      fzf: 0.20.0-1
