@@ -5,7 +5,9 @@
 
 nvim:
   version: 0.4.3-3
-  vim_plug_version: 0.11.0
+  plugins:
+    vim_plug: 0.11.0
+    nodejs:
   tooling:
     snap:
       universal-ctags: latest/stable

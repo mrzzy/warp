@@ -24,6 +24,9 @@
     dest: ~/.config/nvim/init.vim
 
 # Editor Tooling
+- name: Install NodeJS
+  import_tasks: install_nodejs.yaml
+
 - name: Install Snap Editor Tooling
   become: true
   snap:

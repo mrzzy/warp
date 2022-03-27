@@ -1,0 +1,19 @@
+#
+# WARP
+# Neovim Ansible Role
+# Install NodeJS
+#
+
+- name: Download NodeJS 16.x Install Script
+  get_url:
+    url: https://deb.nodesource.com/setup_16.x
+    dest: /tmp/install_nodejs.sh
+
+- name: Setup NodeJS Package Repository
+  script: /tmp/install_nodejs.sh
+
+- name: Install Node.cli
+  apt:
+    # TODO(mrzzy): figure out a way to peg the node js version
+    name: nodejs
+    state: present
