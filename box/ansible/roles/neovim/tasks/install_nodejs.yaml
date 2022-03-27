@@ -5,15 +5,21 @@
 #
 
 - name: Download NodeJS 16.x Install Script
+  become: true
   get_url:
     url: https://deb.nodesource.com/setup_16.x
-    dest: /tmp/install_nodejs.sh
+    dest: /tmp/register_nodejs_repo.sh
+    mode: 744
 
-- name: Setup NodeJS Package Repository
-  script: /tmp/install_nodejs.sh
+- name: Register NodeJS Package Repository
+  become: true
+  command: /tmp/register_nodejs_repo.sh
+  register: register_nodejs
+  changed_when: '"Run `sudo apt-get install -y nodejs`" in register_nodejs'
 
-- name: Install Node.cli
+- name: Install NodeJS
+  become: true
   apt:
     # TODO(mrzzy): figure out a way to peg the node js version
-    name: nodejs
+    name: "nodejs={{ nodejs_version }}"
     state: present
