@@ -1,7 +1,7 @@
 #
 # WARP
 # Neovim Ansible Role
-# Install NodeJS
+# Register NodeJS Repo
 #
 
 - name: Download NodeJS 16.x Install Script
@@ -14,12 +14,5 @@
 - name: Register NodeJS Package Repository
   become: true
   command: /tmp/register_nodejs_repo.sh
-  register: register_nodejs
-  changed_when: '"Run `sudo apt-get install -y nodejs`" in register_nodejs'
-
-- name: Install NodeJS
-  become: true
-  apt:
-    # TODO(mrzzy): figure out a way to peg the node js version
-    name: "nodejs={{ nodejs_version }}"
-    state: present
+  args:
+    creates: /etc/apt/sources.list.d/nodesource.list

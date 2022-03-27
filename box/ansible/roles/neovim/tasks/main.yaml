@@ -14,7 +14,7 @@
   file:
     path: "{{ item }}"
     state: directory
-    mode: 0664
+    mode: 0774
   loop:
     - ~/.config/nvim/
     - ~/.local/share/nvim/site/autoload/
@@ -25,10 +25,8 @@
     dest: ~/.config/nvim/init.vim
 
 # Editor Tooling
-- name: Install NodeJS
-  include_tasks: install_nodejs.yaml
-  vars:
-    nodejs_version: "{{nvim.plugins.nodejs}}"
+- name: Register NodeJS Repo
+  include_tasks: register_nodejs.yaml
 
 - name: Install Snap Editor Tooling
   become: true
@@ -43,6 +41,11 @@
     state: present
   loop: "{{ nvim.tooling.apt | dict2items }}"
 
+- name: Install FZF
+  include_tasks: install_fzf.yaml
+  vars:
+    fzf_version: "{{ nvim.plugins.fzf }}"
+
 # Plugins
 - name: Install vim-plug plugin manager
   get_url:
@@ -50,6 +53,6 @@
     dest: ~/.local/share/nvim/site/autoload/plug.vim
 
 - name: Install Neovim Plugins
-  command: nvim +PlugInstall +qall
-  args:
+  command:
+    cmd: nvim +PlugInstall +qall
     creates: ~/.local/share/nvim/plugged

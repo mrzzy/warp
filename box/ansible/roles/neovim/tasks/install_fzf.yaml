@@ -1,0 +1,21 @@
+#
+# WARP
+# Neovim Ansible Role Tasks
+# Install FZF
+#
+
+- name: Download FZF install script
+  get_url:
+    url: "https://raw.githubusercontent.com/junegunn/fzf/{{ fzf_version }}/install"
+    dest: /tmp/install_fzf.sh
+    mode: 0774
+
+- name: Download FZF using install script
+  command:
+    cmd: bash /tmp/install_fzf.sh
+    creates: /tmp/bin/fzf
+
+- name: Copy FZF Executable into Bin
+  copy:
+    src: /tmp/bin/fzf
+    dest: /usr/local/bin/fzf

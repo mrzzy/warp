@@ -56,5 +56,5 @@ uninstall-box:
 # the name of the machine is 'output', set by the Vagrantfile
 run-box: install-box
 	$(CD) $(BUILD_DIR) && $(VAGRANT) up
-	$(CD) $(BUILD_DIR) && $(VAGRANT) ssh output
+	-$(CD) $(BUILD_DIR) && $(VAGRANT) ssh output
 	$(CD) $(BUILD_DIR) && $(VAGRANT) destroy
