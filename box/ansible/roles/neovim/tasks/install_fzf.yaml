@@ -12,7 +12,7 @@
 
 - name: Download FZF using install script
   command:
-    cmd: bash /tmp/install_fzf.sh
+    cmd: bash /tmp/install_fzf.sh --bin --xdg
     creates: /tmp/bin/fzf
 
 - name: Copy FZF Executable into Bin
