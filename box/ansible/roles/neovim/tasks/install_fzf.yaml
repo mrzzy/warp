@@ -16,6 +16,8 @@
     creates: /tmp/bin/fzf
 
 - name: Copy FZF Executable into Bin
+  become: true
   copy:
     src: /tmp/bin/fzf
+    remote_src: true
     dest: /usr/local/bin/fzf
