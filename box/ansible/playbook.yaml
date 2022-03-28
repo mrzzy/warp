@@ -4,7 +4,13 @@
 #
 
 - name: Provision the WARP development Box
-  hosts: localhost
-  tasks:
+  hosts: all
+  pre_tasks:
     - name: Check connectivity to Box
       ping: {}
+    - name: Update APT Cache
+      become: true
+      apt:
+        update-cache: true
+  roles:
+    - neovim

@@ -2,3 +2,5 @@
 build/
 # virtualenv dir
 venv/
+# vagrant
+.vagrant/
