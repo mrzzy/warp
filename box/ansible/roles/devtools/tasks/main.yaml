@@ -1,0 +1,37 @@
+#
+# WARP
+# Devtools Ansible Role Tasks
+#
+
+- name: Install Devtools with APT
+  become: true
+  loop: "{{ devtools.apt | dict2items }}"
+  apt:
+    name: "{{ item.key }}={{ item.value }}"
+    state: present
+
+- name: "Download HashiCorp's package signing key"
+  get_url:
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /tmp/hashicorp_key
+
+- name: "Register HashiCorp's package signing key"
+  become: true
+  command: cat /tmp/hashicorp_key | apt-key add -
+  register: hashicorp_key
+  changed_when: "hashicorp_key.rc == 0"
+
+
+- name: "Add HashiCorp's APT package repository"
+  become: true
+  command: >-
+    apt-add-repository --update
+    "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+  register: hashicorp_repo
+  changed_when: "hashicorp_repo.rc == 0"
+
+- name: Install Devtools from HashiCorp's package repository"
+  loop: "{{ devtools.hashicorp | dict2items }}"
+  apt:
+    name: "{{ item.key }}={{ item.value }}"
+    state: present

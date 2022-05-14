@@ -13,4 +13,5 @@
       apt:
         update-cache: true
   roles:
+    - devtools
     - neovim

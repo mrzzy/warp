@@ -20,4 +20,5 @@
   copy:
     src: /tmp/bin/fzf
     remote_src: true
+    mode: 0755
     dest: /usr/local/bin/fzf
