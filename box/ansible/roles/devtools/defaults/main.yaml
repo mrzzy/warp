@@ -1,0 +1,13 @@
+#
+# WARP
+# Devtools Ansible Role default Vars
+#
+
+devtools:
+  apt:
+    entr: 4.4-1
+    ripgrep: 11.0.2-1build1
+    docker.io: 20.10.7-0ubuntu5~20.04.2
+  hashicorp:
+    terraform: 0.15.5
+    packer: 1.8.0
