@@ -37,7 +37,7 @@
 - name: Install Apt Editor Tooling
   become: true
   apt:
-    name: "{{ item.key }}={{ item.value }}"
+    name: '{{ item.key }}{{ "={}".format(item.value) if item.value else "" }}'
     state: present
   loop: "{{ nvim.tooling.apt | dict2items }}"
 

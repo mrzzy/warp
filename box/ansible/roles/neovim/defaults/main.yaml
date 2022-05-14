@@ -12,5 +12,4 @@ nvim:
     snap:
       universal-ctags: latest/stable
     apt:
-      nodejs: 16.14.2-deb-1nodesource1
       ripgrep: 11.0.2-1build1
