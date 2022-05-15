@@ -7,6 +7,8 @@ name: CI Pipeline
 on: push
 env:
   PACKER_VERSION: 1.8.0
+  # make ansible output human readable logs
+  ANSIBLE_STDOUT_CALLBACK: debug
 jobs:
   build-box-vagrant:
     # macos runner is used as it supports nested virtualization,
