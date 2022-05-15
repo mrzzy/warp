@@ -11,3 +11,4 @@ devtools:
   hashicorp:
     terraform: 0.15.5
     packer: 1.8.0
+  fzf: 0.29.0
