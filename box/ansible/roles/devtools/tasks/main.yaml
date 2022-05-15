@@ -10,6 +10,11 @@
     name: "{{ item.key }}={{ item.value }}"
     state: present
 
+- name: Install FZF
+  import_tasks: install_fzf.yaml
+  vars:
+    fzf_version: "{{ devtools.fzf }}"
+
 - name: "Download HashiCorp's package signing key"
   get_url:
     url: https://apt.releases.hashicorp.com/gpg

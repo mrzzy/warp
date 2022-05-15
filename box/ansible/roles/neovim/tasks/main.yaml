@@ -41,11 +41,6 @@
     state: present
   loop: "{{ nvim.tooling.apt | dict2items }}"
 
-- name: Install FZF
-  include_tasks: install_fzf.yaml
-  vars:
-    fzf_version: "{{ nvim.plugins.fzf }}"
-
 # Plugins
 - name: Install vim-plug plugin manager
   get_url:
