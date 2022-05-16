@@ -6,7 +6,7 @@
 devtools_entr_version: 4.4-1
 devtools_ripgrep_version: 11.0.2-1build1
 devtools_docker_version: 20.10.7-0ubuntu5~20.04.2
-
+devtools_ranger_version: 1.9.3-1build1
 
 devtools_hashicorp_terraform_version: 0.15.5
 devtools_hashicorp_packer_version: 1.8.0
