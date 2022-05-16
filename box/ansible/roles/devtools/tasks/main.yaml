@@ -5,15 +5,18 @@
 
 - name: Install Devtools with APT
   become: true
-  loop: "{{ devtools.apt | dict2items }}"
   apt:
-    name: "{{ item.key }}={{ item.value }}"
+    name: "{{ item }}"
     state: present
+  loop:
+    - "entr={{ devtools_entr_version }}"
+    - "ripgrep={{ devtools_ripgrep_version }}"
+    - "docker.io={{ devtools_docker_version }}"
 
 - name: Install FZF
   import_tasks: install_fzf.yaml
   vars:
-    fzf_version: "{{ devtools.fzf }}"
+    fzf_version: "{{ devtools_fzf_version }}"
 
 - name: "Download HashiCorp's package signing key"
   get_url:
@@ -35,9 +38,11 @@
   register: hashicorp_repo
   changed_when: "hashicorp_repo.rc == 0"
 
-- name: Install Devtools from HashiCorp's package repository"
+- name: Install Devtools from HashiCorp's Repository with APT"
   become: true
-  loop: "{{ devtools.hashicorp | dict2items }}"
   apt:
-    name: "{{ item.key }}={{ item.value }}"
+    name: "{{ item }}"
     state: present
+  loop:
+    - "terraform={{ devtools_hashicorp_terraform_version }}"
+    - "packer={{ devtools_hashicorp_packer_version }}"

@@ -3,12 +3,12 @@
 # Devtools Ansible Role default Vars
 #
 
-devtools:
-  apt:
-    entr: 4.4-1
-    ripgrep: 11.0.2-1build1
-    docker.io: 20.10.7-0ubuntu5~20.04.2
-  hashicorp:
-    terraform: 0.15.5
-    packer: 1.8.0
-  fzf: 0.29.0
+devtools_entr_version: 4.4-1
+devtools_ripgrep_version: 11.0.2-1build1
+devtools_docker_version: 20.10.7-0ubuntu5~20.04.2
+
+
+devtools_hashicorp_terraform_version: 0.15.5
+devtools_hashicorp_packer_version: 1.8.0
+
+devtools_fzf_version: 0.29.0

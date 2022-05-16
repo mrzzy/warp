@@ -4,6 +4,7 @@
 # Register NodeJS Repo
 #
 
+# scripts pegs nodejs installed to 16.x
 - name: Download NodeJS 16.x Install Script
   become: true
   get_url:
