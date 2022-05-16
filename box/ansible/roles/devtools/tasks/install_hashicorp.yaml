@@ -1,0 +1,31 @@
+#
+# WARP
+# Devtools Ansible Role Tasks
+# Register HashiCorp's APT PPA
+#
+
+- name: "Download HashiCorp's package signing key"
+  get_url:
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /tmp/hashicorp_key
+
+- name: "Register HashiCorp's package signing key"
+  become: true
+  command: apt-key add /tmp/hashicorp_key
+  register: hashicorp_key
+  changed_when: "hashicorp_key.rc == 0"
+
+- name: "Add HashiCorp's APT package repository"
+  become: true
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    state: present
+
+- name: Install Devtools from HashiCorp's Repository with APT"
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "terraform={{ terraform_version }}"
+    - "packer={{ packer_version }}"

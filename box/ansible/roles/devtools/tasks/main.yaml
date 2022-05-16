@@ -1,0 +1,34 @@
+#
+# WARP
+# Devtools Ansible Role Tasks
+#
+
+- name: Register Ansible APT PPA
+  become: true
+  apt_repository:
+    repo: "ppa:ansible/ansible"
+    state: present
+
+- name: Install Devtools with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "entr={{ devtools_entr_version }}"
+    - "ripgrep={{ devtools_ripgrep_version }}"
+    - "docker.io={{ devtools_docker_version }}"
+    - "docker-compose={{ devtools_docker_compose_version }}"
+    - "ranger={{ devtools_ranger_version }}"
+    - "ansible={{ devtools_ansible_version }}"
+
+- name: Install FZF
+  import_tasks: install_fzf.yaml
+  vars:
+    fzf_version: "{{ devtools_fzf_version }}"
+
+- name: Install Devtools from HashiCorp's Repository with APT"
+  import_tasks: install_hashicorp.yaml
+  vars:
+    terraform_version: "{{ devtools_hashicorp_terraform_version }}"
+    packer_version: "{{ devtools_hashicorp_packer_version }}"

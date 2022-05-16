@@ -7,7 +7,7 @@
 - name: Install Neovim
   become: true
   apt:
-    name: neovim={{ nvim.version }}
+    name: neovim={{ nvim_version }}
     state: present
 
 - name: Create Neovim directories
@@ -28,28 +28,21 @@
 - name: Register NodeJS Repo
   include_tasks: register_nodejs.yaml
 
+- name: Install NodeJS
+  become: true
+  apt:
+    name: nodejs
+    state: present
+
 - name: Install Snap Editor Tooling
   become: true
   snap:
     name: universal-ctags
-  loop: "{{ nvim.tooling.snap | dict2items }}"
-
-- name: Install Apt Editor Tooling
-  become: true
-  apt:
-    name: '{{ item.key }}{{ "={}".format(item.value) if item.value else "" }}'
-    state: present
-  loop: "{{ nvim.tooling.apt | dict2items }}"
-
-- name: Install FZF
-  include_tasks: install_fzf.yaml
-  vars:
-    fzf_version: "{{ nvim.plugins.fzf }}"
 
 # Plugins
 - name: Install vim-plug plugin manager
   get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ nvim.plugins.vim_plug }}/plug.vim
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ nvim_vim_plug_version }}/plug.vim
     dest: ~/.local/share/nvim/site/autoload/plug.vim
 
 - name: Install Neovim Plugins

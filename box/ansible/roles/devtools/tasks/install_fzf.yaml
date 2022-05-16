@@ -1,6 +1,6 @@
 #
 # WARP
-# Neovim Ansible Role Tasks
+# Devtools Ansible Role Tasks
 # Install FZF
 #
 
@@ -20,4 +20,5 @@
   copy:
     src: /tmp/bin/fzf
     remote_src: true
+    mode: 0755
     dest: /usr/local/bin/fzf
