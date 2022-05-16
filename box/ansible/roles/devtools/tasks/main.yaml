@@ -12,6 +12,7 @@
     - "entr={{ devtools_entr_version }}"
     - "ripgrep={{ devtools_ripgrep_version }}"
     - "docker.io={{ devtools_docker_version }}"
+    - "docker-compose={{ devtools_docker_compose_version }}"
     - "ranger={{ devtools_ranger_version }}"
 
 - name: Install FZF
