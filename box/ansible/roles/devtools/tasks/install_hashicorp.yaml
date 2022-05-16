@@ -17,12 +17,9 @@
 
 - name: "Add HashiCorp's APT package repository"
   become: true
-  command: >-
-    apt-add-repository
-    --update
-    "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
-  register: hashicorp_repo
-  changed_when: "hashicorp_repo.rc == 0"
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    state: present
 
 - name: Install Devtools from HashiCorp's Repository with APT"
   become: true
