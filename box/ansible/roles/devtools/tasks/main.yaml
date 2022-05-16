@@ -3,6 +3,12 @@
 # Devtools Ansible Role Tasks
 #
 
+- name: Register Ansible APT PPA
+  become: true
+  apt_repository:
+    repo: "ppa:ansible/ansible"
+    state: present
+
 - name: Install Devtools with APT
   become: true
   apt:
@@ -14,6 +20,7 @@
     - "docker.io={{ devtools_docker_version }}"
     - "docker-compose={{ devtools_docker_compose_version }}"
     - "ranger={{ devtools_ranger_version }}"
+    - "ansible={{ devtools_ansible_version }}"
 
 - name: Install FZF
   import_tasks: install_fzf.yaml
