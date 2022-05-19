@@ -9,6 +9,7 @@ VAGRANT:=vagrant
 PACKER:=packer
 PRE_CMT:=pre-commit
 RM:=rm -rf
+PLAYBOOK:=ansible-playbook
 
 # paths
 BOX_DIR:=box
@@ -20,7 +21,7 @@ ANSIBLE_DIR=$(BOX_DIR)/ansible
 BOX_NAME:=mrzzy/warp-box
 
 # phony build rules
-.PHONY: all box box-gcp clean fmt lint packer-init
+.PHONY: all box box-gcp clean fmt lint apply packer-init
 .DEFAULT: all
 
 all: box
@@ -35,6 +36,14 @@ fmt:
 	$(PACKER) fmt $(PACKER_DIR)
 
 clean: clean-box
+
+# apply the ansible devbox playbook to the local machine
+apply: $(ANSIBLE_DIR)
+	$(PLAYBOOK) \
+		--inventory 127.0.0.1, \
+		--connection local \
+		--ask-become-pass \
+		$(ANSIBLE_DIR)/playbook.yaml
 
 # build rules: WARP dev box VM
 box: build/package.box
