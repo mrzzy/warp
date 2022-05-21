@@ -13,7 +13,7 @@ source "vagrant" "ubuntu" {
   box_version = "v20220215.1.0"
 
   # output box
-  box_name   = "mrzzy/warp-box"
+  box_name   = "mrzzy/warp-box${var.image_suffix}"
   output_dir = "build"
 }
 
@@ -31,5 +31,5 @@ source "googlecompute" "ubuntu" {
   source_image        = "ubuntu-minimal-2004-focal-v20220419a"
 
   # TODO(mrzzy): suffix with development (built from laptop), production (built from CI).
-  image_name = "warp-box"
+  image_name = "warp-box${var.image_suffix}"
 }
