@@ -59,7 +59,7 @@ jobs:
       run: |
         # decode base64 & write key to disk
         echo "$KEY_BASE64" | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
-        make box-gpc
+        make box-gcp
 
   lint:
     runs-on: ubuntu-20.04
