@@ -30,6 +30,6 @@ source "googlecompute" "ubuntu" {
   source_image_family = "ubuntu-minimal-2004-lts"
   source_image        = "ubuntu-minimal-2004-focal-v20220419a"
 
-  # TODO(mrzzy): suffix with development (built from laptop), production (built from CI).
+  # vm image name
   image_name = "warp-box${var.image_suffix}"
 }
