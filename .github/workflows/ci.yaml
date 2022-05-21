@@ -54,7 +54,7 @@ jobs:
 
     - name: Build WARP Box with Packer on GCP
       env:
-        GOOGLE_APPLICATION_CREDENTIALS: "${{ env.GITHUB_WORKSPACE }}/credentials.json"
+        GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcp_packer_key.json"
         KEY_BASE64: ${{ secrets.gcp_packer_key_base64 }}
       run: |
         # decode base64 & write key to disk
