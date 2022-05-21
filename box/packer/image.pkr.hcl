@@ -72,5 +72,10 @@ build {
     # by default runs as user running packer,
     # change it to the vagrant user which has passwordless root permissions.
     user = "vagrant"
+
+    # config ansible to output human readable logs
+    ansible_env_vars = [
+      "ANSIBLE_LOAD_CALLBACK_PLUGINS=debug"
+    ]
   }
 }
