@@ -58,7 +58,7 @@ jobs:
         KEY_BASE64: ${{ secrets.gcp_packer_key_base64 }}
       run: |
         # decode base64 & write key to disk
-        echo $KEY_BASE64 | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
+        echo "$KEY_BASE64" | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
         make box-gpc
 
   lint:
