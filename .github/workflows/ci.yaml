@@ -49,7 +49,7 @@ jobs:
         packer-version: ${{ env.PACKER_VERSION }}
 
     - name: Mark image name as Development build
-      if: ${{ github.ref != "refs/heads/main" }}
+      if: ${{ github.ref != 'refs/heads/main' }}
       run: echo "PKR_VAR_image_suffix=-dev" >> $GITHUB_ENV
 
     - name: Build WARP Box with Packer on GCP
