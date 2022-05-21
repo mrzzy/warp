@@ -1,4 +1,4 @@
-#
+
 # WARP
 # CI Pipeline
 #
@@ -27,11 +27,39 @@ jobs:
       uses: hashicorp-contrib/setup-packer@v1
       with:
         packer-version: ${{ env.PACKER_VERSION }}
-
-    - name: Build Dev Box using Packer + Vagrant
+    - name: Build WARP Box with Packer + Vagrant
       env:
         PACKER_GITHUB_API_TOKEN: ${{ github.token }}
       run: make box
+
+  build-box-gcp:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: "0"
+
+    - name: Install Python Tooling
+      run: sudo pip3 install -r requirements.txt
+
+    - name: Install Packer
+      uses: hashicorp-contrib/setup-packer@v1
+      with:
+        packer-version: ${{ env.PACKER_VERSION }}
+
+    - name: Mark image name as Development build
+      if: ${{ github.ref != 'refs/heads/main' }}
+      run: echo "PKR_VAR_image_suffix=-dev" >> $GITHUB_ENV
+
+    - name: Build WARP Box with Packer on GCP
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcp_packer_key.json"
+        KEY_BASE64: ${{ secrets.gcp_packer_key_base64 }}
+      run: |
+        # decode base64 & write key to disk
+        echo "$KEY_BASE64" | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
+        make box-gcp
 
   lint:
     runs-on: ubuntu-20.04

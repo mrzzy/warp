@@ -6,6 +6,7 @@
 packer {
   required_version = ">=1.8, <1.9"
 
+  # development tools
   required_plugins {
     vagrant = {
       version = ">=1.0.1, <1.1"
@@ -18,25 +19,20 @@ packer {
       source  = "github.com/hashicorp/ansible"
     }
   }
-}
 
-# vagrant source will auto package a new vagrant box after build.
-source "vagrant" "ubuntu-focal" {
-  communicator = "ssh"
-  provider     = "virtualbox"
-
-  # source box
-  source_path = "ubuntu/focal64"
-  box_version = "v20220215.1.0"
-
-  # output box
-  box_name   = "mrzzy/warp-box"
-  output_dir = "build"
+  # cloud providers
+  required_plugins {
+    googlecompute = {
+      version = ">=1.0.12, <1.1"
+      source  = "github.com/hashicorp/googlecompute"
+    }
+  }
 }
 
 build {
   sources = [
-    "source.vagrant.ubuntu-focal"
+    "source.vagrant.ubuntu",
+    "source.googlecompute.ubuntu"
   ]
 
   provisioner "ansible" {
@@ -45,5 +41,10 @@ build {
     # by default runs as user running packer,
     # change it to the vagrant user which has passwordless root permissions.
     user = "vagrant"
+
+    # config ansible to output human readable logs
+    ansible_env_vars = [
+      "ANSIBLE_LOAD_CALLBACK_PLUGINS=debug"
+    ]
   }
 }

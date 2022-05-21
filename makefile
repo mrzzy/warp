@@ -20,7 +20,7 @@ ANSIBLE_DIR=$(BOX_DIR)/ansible
 BOX_NAME:=mrzzy/warp-box
 
 # phony build rules
-.PHONY: all box clean fmt lint
+.PHONY: all box box-gcp clean fmt lint packer-init
 .DEFAULT: all
 
 all: box
@@ -39,9 +39,15 @@ clean: clean-box
 # build rules: WARP dev box VM
 box: build/package.box
 
-build/package.box: $(PACKER_DIR)
+# development build: build box on virtualbox only.
+build/package.box: $(PACKER_DIR) packer-init
+	$(PACKER) build --only="vagrant.ubuntu" --force $<
+
+box-gcp: $(PACKER_DIR) packer-init
+	$(PACKER) build --only="googlecompute.ubuntu" --force $<
+
+packer-init: $(PACKER_DIR)
 	$(PACKER) init $<
-	$(PACKER) build --force $<
 
 clean-box:
 	$(RM) $(BUILD_DIR)
