@@ -24,13 +24,13 @@ packer {
   required_plugins {
     googlecompute = {
       version = ">=1.0.12, <1.1"
-      source = "github.com/hashicorp/googlecompute"
+      source  = "github.com/hashicorp/googlecompute"
     }
   }
 }
 
 # vagrant source will auto package a new vagrant box after build.
-source "vagrant" "ubuntu-focal" {
+source "vagrant" "ubuntu" {
   communicator = "ssh"
   provider     = "virtualbox"
 
@@ -43,9 +43,27 @@ source "vagrant" "ubuntu-focal" {
   output_dir = "build"
 }
 
+source "googlecompute" "ubuntu" {
+  communicator = "ssh"
+  ssh_username = "packer"
+
+  # google project / zone
+  project_id  = "mrzzy-sandbox"
+  zone        = "asia-southeast1-c"
+  preemptible = true
+
+  # compute engine image as build base
+  source_image_family = "ubuntu-minimal-2004-lts"
+  source_image        = "ubuntu-minimal-2004-v20220419a"
+
+  # TODO(mrzzy): suffix with development (built from laptop), production (built from CI).
+  image_name = "warp-box"
+}
+
 build {
   sources = [
-    "source.vagrant.ubuntu-focal"
+    "source.vagrant.ubuntu",
+    "source.googlecompute.ubuntu"
   ]
 
   provisioner "ansible" {
