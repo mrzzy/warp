@@ -53,7 +53,13 @@ jobs:
       run: echo "PKR_VAR_image_suffix=-dev" >> $GITHUB_ENV
 
     - name: Build WARP Box with Packer on GCP
-      run: make box-gpc
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: "${{ env.GITHUB_WORKSPACE }}/credentials.json"
+        KEY_BASE64: ${{ secrets.gcp_packer_key_base64 }}
+      run: |
+        # decode base64 & write key to disk
+        echo $KEY_BASE64 | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
+        make box-gpc
 
   lint:
     runs-on: ubuntu-20.04
