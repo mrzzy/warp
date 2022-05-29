@@ -21,7 +21,6 @@
     user:
       name: mrzzy
       comment: "Zhu Zhanyan"
-      uid: 1000
       groups:
         # sudo group for passwordless sudo
         - sudo
