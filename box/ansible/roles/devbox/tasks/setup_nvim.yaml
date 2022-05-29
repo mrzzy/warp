@@ -1,0 +1,31 @@
+#
+# WARP
+# Devbox Ansible Role Tasks
+# Setup Neovim Editor
+#
+
+# Setup Editor
+- name: Create Neovim directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0774
+  loop:
+    - ~/.config/nvim/
+    - ~/.local/share/nvim/site/autoload/
+
+- name: Pull Neovim config from github.com/mrzzy/dotfiles
+  get_url:
+    url: https://raw.githubusercontent.com/mrzzy/dotfiles/main/.config/nvim/init.vim
+    dest: ~/.config/nvim/init.vim
+
+# Configure Plugins
+- name: Install vim-plug plugin manager
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ devbox_nvim_vim_plug_version }}/plug.vim
+    dest: ~/.local/share/nvim/site/autoload/plug.vim
+
+- name: Install Neovim Plugins
+  command:
+    cmd: nvim +PlugInstall +qall
+    creates: ~/.local/share/nvim/plugged

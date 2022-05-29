@@ -8,10 +8,4 @@
   pre_tasks:
     - name: Check connectivity to Box
       ping: {}
-    - name: Update APT Cache
-      become: true
-      apt:
-        update-cache: true
-  roles:
-    - devbox
-    - neovim
+  roles: [devbox]
