@@ -36,4 +36,5 @@
 
 # setup development tooling
 - name: Setup Neovim
+  become_user: mrzzy
   import_tasks: setup_nvim.yaml
