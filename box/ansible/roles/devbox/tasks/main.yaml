@@ -21,6 +21,7 @@
     user:
       name: mrzzy
       comment: "Zhu Zhanyan"
+      home: "{{ devbox_user_home }}"
       groups:
         # sudo group for passwordless sudo
         - sudo
