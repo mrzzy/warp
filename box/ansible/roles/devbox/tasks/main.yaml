@@ -3,6 +3,7 @@
 # Devbox Ansible Role Tasks
 #
 
+# install development tooling
 - name: Register Ansible APT PPA
   become: true
   apt_repository:
@@ -50,5 +51,28 @@
     terraform_version: "{{ devbox_hashicorp_terraform_version }}"
     packer_version: "{{ devbox_hashicorp_packer_version }}"
 
+# setup accounts & permissions
+- name: Create groups
+  become: true
+  group:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - sudo
+    - docker
+
+- name: Create mrzzy User
+  become: true
+  user:
+    name: mrzzy
+    comment: "Zhu Zhanyan"
+    uid: 1000
+    groups:
+      # sudo group for passwordless sudo
+      - sudo
+      # docker group for sudo-free access to the docker CLI
+      - docker
+
+# setup development tooling
 - name: Setup Neovim
   import_tasks: setup_nvim.yaml
