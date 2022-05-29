@@ -1,6 +1,6 @@
 #
 # WARP
-# Devtools Ansible Role Tasks
+# Devbox Ansible Role Tasks
 # Register HashiCorp's APT PPA
 #
 
@@ -21,7 +21,7 @@
     repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     state: present
 
-- name: Install Devtools from HashiCorp's Repository with APT"
+- name: Install Devbox from HashiCorp's Repository with APT"
   become: true
   apt:
     name: "{{ item }}"

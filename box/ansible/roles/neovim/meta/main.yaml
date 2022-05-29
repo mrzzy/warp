@@ -4,4 +4,4 @@
 #
 
 dependencies:
-  - role: devtools
+  - role: devbox

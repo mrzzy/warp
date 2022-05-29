@@ -1,0 +1,34 @@
+#
+# WARP
+# Devbox Ansible Role Tasks
+#
+
+- name: Register Ansible APT PPA
+  become: true
+  apt_repository:
+    repo: "ppa:ansible/ansible"
+    state: present
+
+- name: Install Devbox with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "entr={{ devbox_entr_version }}"
+    - "ripgrep={{ devbox_ripgrep_version }}"
+    - "docker.io={{ devbox_docker_version }}"
+    - "docker-compose={{ devbox_docker_compose_version }}"
+    - "ranger={{ devbox_ranger_version }}"
+    - "ansible={{ devbox_ansible_version }}"
+
+- name: Install FZF
+  import_tasks: install_fzf.yaml
+  vars:
+    fzf_version: "{{ devbox_fzf_version }}"
+
+- name: Install Devbox from HashiCorp's Repository with APT"
+  import_tasks: install_hashicorp.yaml
+  vars:
+    terraform_version: "{{ devbox_hashicorp_terraform_version }}"
+    packer_version: "{{ devbox_hashicorp_packer_version }}"
