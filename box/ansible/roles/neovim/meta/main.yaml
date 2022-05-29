@@ -1,7 +1,0 @@
-#
-# WARP
-# Neovim Ansible Role metadata
-#
-
-dependencies:
-  - role: devtools
