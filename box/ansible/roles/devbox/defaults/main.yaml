@@ -11,7 +11,7 @@ devbox_ripgrep_version: 11.0.2-1build1
 devbox_docker_version: 20.10.7-0ubuntu5~20.04.2
 devbox_docker_compose_version: 1.25.0-1
 devbox_ranger_version: 1.9.3-1build1
-devbox_ansible_version: 5.7.1-1ppa~focal
+devbox_ansible_version: 5.8.0-1ppa~focal
 
 devbox_hashicorp_terraform_version: 0.15.5
 devbox_hashicorp_packer_version: 1.8.0
