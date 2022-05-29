@@ -4,7 +4,7 @@
 #
 
 - name: Install Development Tooling
-  import_tasks: tooling/main.yaml
+  import_tasks: tooling/install.yaml
 
 # setup accounts & permissions
 - name: Create groups
