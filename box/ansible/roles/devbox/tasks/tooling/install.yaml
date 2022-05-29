@@ -1,0 +1,52 @@
+#
+# WARP
+# Devbox Ansible Role Tasks
+# Install development tooling
+#
+
+- name: Register Ansible APT PPA
+  become: true
+  apt_repository:
+    repo: "ppa:ansible/ansible"
+    state: present
+
+- name: Register NodeJS Repo
+  include_tasks: register_nodejs.yaml
+
+- name: Update APT Cache
+  become: true
+  apt:
+    update-cache: true
+
+- name: Install development tools with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "entr={{ devbox_entr_version }}"
+    - "ripgrep={{ devbox_ripgrep_version }}"
+    - "docker.io={{ devbox_docker_version }}"
+    - "docker-compose={{ devbox_docker_compose_version }}"
+    - "ranger={{ devbox_ranger_version }}"
+    - "ansible={{ devbox_ansible_version }}"
+    - "neovim={{ devbox_nvim_version }}"
+    # since the version of nodejs offered by registered repo is already pegged
+    # there is no need to peg the version of nodejs installed here.
+    - "nodejs"
+
+- name: Install Universal ctags with Snap
+  become: true
+  snap:
+    name: universal-ctags
+
+- name: Install FZF
+  import_tasks: install_fzf.yaml
+  vars:
+    fzf_version: "{{ devbox_fzf_version }}"
+
+- name: Install tools from HashiCorp's Repository with APT"
+  import_tasks: install_hashicorp.yaml
+  vars:
+    terraform_version: "{{ devbox_hashicorp_terraform_version }}"
+    packer_version: "{{ devbox_hashicorp_packer_version }}"

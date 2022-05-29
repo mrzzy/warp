@@ -38,9 +38,6 @@ build {
   provisioner "ansible" {
     extra_arguments = ["-vv"]
     playbook_file   = "box/ansible/playbook.yaml"
-    # by default runs as user running packer,
-    # change it to the vagrant user which has passwordless root permissions.
-    user = "vagrant"
 
     # config ansible to output human readable logs
     ansible_env_vars = [
