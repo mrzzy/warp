@@ -13,6 +13,12 @@ repos:
   - id: mixed-line-ending
     args: ["-f", "lf"]
 
+# check for secrets
+- repo: https://github.com/zricethezav/gitleaks
+  rev: v8.8.6
+  hooks:
+    - id: gitleaks-docker
+
 # check for spelling mistakes
 - repo: https://github.com/codespell-project/codespell
   rev: v2.1.0
