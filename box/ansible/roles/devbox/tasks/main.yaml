@@ -3,8 +3,13 @@
 # Devbox Ansible Role Tasks
 #
 
+# setup development tooling
 - name: Install Development Tooling
   import_tasks: tooling/install.yaml
+
+- name: Setup Neovim
+  become: true
+  import_tasks: setup_nvim.yaml
 
 - name: Setup User Accounts & Permissions
   become: true
@@ -34,7 +39,11 @@
       dest: /etc/sudoers.d/sudo_nopasswd
       mode: 0440
 
-# setup development tooling
-- name: Setup Neovim
-  become_user: mrzzy
-  import_tasks: setup_nvim.yaml
+  - name: Fix owner of devbox home directory
+    become: true
+    file:
+      path: "{{ devbox_user_home }}"
+      owner: mrzzy
+      group: mrzzy
+      state: directory
+      recurse: true
