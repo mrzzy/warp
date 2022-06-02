@@ -8,6 +8,8 @@
   import_tasks: tooling/install.yaml
 
 - name: Pull dotfiles repository
+  # root required to create repo under /home
+  become: true
   git:
     repo: https://github.com/mrzzy/dotfiles
     version: main
@@ -48,7 +50,6 @@
         mode: 0440
 
     - name: Fix owner of devbox home directory
-      become: true
       file:
         path: "{{ devbox_user_home }}"
         owner: mrzzy
