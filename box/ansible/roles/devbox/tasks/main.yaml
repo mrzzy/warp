@@ -7,6 +7,14 @@
 - name: Install Development Tooling
   import_tasks: tooling/install.yaml
 
+- name: Pull dotfiles repository
+  git:
+    repo: https://github.com/mrzzy/dotfiles
+    version: main
+    single_branch: true
+    dest: "{{ devbox_user_home }}/.git"
+    bare: true
+
 - name: Setup Neovim
   become: true
   import_tasks: setup_nvim.yaml
@@ -14,36 +22,36 @@
 - name: Setup User Accounts & Permissions
   become: true
   block:
-  - name: Create groups
-    group:
-      name: "{{ item }}"
-      state: present
-    loop:
-      - sudo
-      - docker
-
-  - name: Create mrzzy user
-    user:
-      name: mrzzy
-      comment: "Zhu Zhanyan"
-      home: "{{ devbox_user_home }}"
-      groups:
-        # sudo group for passwordless sudo
+    - name: Create groups
+      group:
+        name: "{{ item }}"
+        state: present
+      loop:
         - sudo
-        # docker group for sudo-free access to the docker CLI
         - docker
 
-  - name: Allow password-less sudo to users in sudo group
-    copy:
-      content: "%sudo ALL=(ALL:ALL) NOPASSWD:ALL"
-      dest: /etc/sudoers.d/sudo_nopasswd
-      mode: 0440
+    - name: Create mrzzy user
+      user:
+        name: mrzzy
+        comment: "Zhu Zhanyan"
+        home: "{{ devbox_user_home }}"
+        groups:
+          # sudo group for passwordless sudo
+          - sudo
+          # docker group for sudo-free access to the docker CLI
+          - docker
 
-  - name: Fix owner of devbox home directory
-    become: true
-    file:
-      path: "{{ devbox_user_home }}"
-      owner: mrzzy
-      group: mrzzy
-      state: directory
-      recurse: true
+    - name: Allow password-less sudo to users in sudo group
+      copy:
+        content: "%sudo ALL=(ALL:ALL) NOPASSWD:ALL"
+        dest: /etc/sudoers.d/sudo_nopasswd
+        mode: 0440
+
+    - name: Fix owner of devbox home directory
+      become: true
+      file:
+        path: "{{ devbox_user_home }}"
+        owner: mrzzy
+        group: mrzzy
+        state: directory
+        recurse: true
