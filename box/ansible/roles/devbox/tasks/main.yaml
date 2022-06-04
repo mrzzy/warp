@@ -3,6 +3,15 @@
 # Devbox Ansible Role Tasks
 #
 
+# setup development tooling
+- name: Install Development Tooling
+  import_tasks: tooling/install.yaml
+
+- name: Setup Neovim
+  become: true
+  import_tasks: setup_nvim.yaml
+
+
 # add customized dotfiles
 - name: Install dotfiles
   become: true
@@ -28,14 +37,6 @@
         chdir: "{{ devbox_user_home }}"
       register: checkout
       changed_when: "{{ checkout.rc == 0 }}"
-
-# setup development tooling
-- name: Install Development Tooling
-  import_tasks: tooling/install.yaml
-
-- name: Setup Neovim
-  become: true
-  import_tasks: setup_nvim.yaml
 
 # create user & permissions
 - name: Setup User Accounts & Permissions
