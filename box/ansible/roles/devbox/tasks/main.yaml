@@ -3,24 +3,41 @@
 # Devbox Ansible Role Tasks
 #
 
+# add customized dotfiles
+- name: Install dotfiles
+  become: true
+  block:
+    - name: Pull bare dotfiles repository
+      git:
+        repo: https://github.com/mrzzy/dotfiles
+        version: main
+        single_branch: true
+        dest: "{{ devbox_user_home }}/.git"
+        bare: true
+
+    - name: Unmark repo as bare to allow checkouts
+      community.general.git_config:
+        name: core.bare
+        scope: local
+        repo: "{{ devbox_user_home }}"
+        state: absent
+
+    - name: Checkout dotfiles
+      command: # noqa command-instead-of-module
+        cmd: "git checkout"
+        chdir: "{{ devbox_user_home }}"
+      register: checkout
+      changed_when: "{{ checkout.rc == 0 }}"
+
 # setup development tooling
 - name: Install Development Tooling
   import_tasks: tooling/install.yaml
-
-- name: Pull dotfiles repository
-  # root required to create repo under /home
-  become: true
-  git:
-    repo: https://github.com/mrzzy/dotfiles
-    version: main
-    single_branch: true
-    dest: "{{ devbox_user_home }}/.git"
-    bare: true
 
 - name: Setup Neovim
   become: true
   import_tasks: setup_nvim.yaml
 
+# create user & permissions
 - name: Setup User Accounts & Permissions
   become: true
   block:

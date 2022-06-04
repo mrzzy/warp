@@ -11,17 +11,7 @@
     state: directory
     mode: 0774
   loop:
-    - "{{ devbox_user_home }}/.config/nvim/"
     - "{{ devbox_user_home }}/.local/share/nvim/site/autoload/"
-
-- name: Checkout Neovim dotfiles
-  # use command instead of git mod as the latter does not support checking out specific paths.
-  command:
-    chdir: "{{ devbox_user_home }}"
-    cmd: git checkout .config/nvim
-    creates: "{{ devbox_user_home }}/.config/nvim"
-  tags:
-    - skip_ansible_lint
 
 # Configure Plugins
 - name: Install vim-plug plugin manager
