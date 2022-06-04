@@ -62,6 +62,7 @@
         name: mrzzy
         comment: "Zhu Zhanyan"
         home: "{{ devbox_user_home }}"
+        shell: /bin/zsh
         groups:
           # sudo group for passwordless sudo
           - sudo
