@@ -22,8 +22,8 @@
     - name: Unmark repo as bare to allow checkouts
       community.general.git_config:
         name: core.bare
-        scope: local
-        repo: "{{ devbox_user_home }}"
+        scope: file
+        file: "{{ devbox_user_home }}/.git/config"
         state: absent
 
     - name: Checkout dotfiles
