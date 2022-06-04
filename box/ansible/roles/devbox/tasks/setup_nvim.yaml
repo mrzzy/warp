@@ -21,5 +21,5 @@
 
 - name: Install Neovim Plugins
   command:
-    cmd: nvim +PlugInstall +qall
+    cmd: "nvim -u {{ devbox_user_home }}/.config/nvim/init.vim +PlugInstall +qall"
     creates: "{{ devbox_user_home }}/.local/share/nvim/plugged"
