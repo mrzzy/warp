@@ -15,6 +15,10 @@ devbox_docker_compose_version: 1.25.0-1
 devbox_ranger_version: 1.9.3-1build1
 devbox_ansible_version: 5.8.0-1ppa~focal
 
+devbox_zsh_version: 5.8-3ubuntu1.1
+devbox_zsh_autosuggest_version: 0.6.4-1
+devbox_zsh_syntax_version: 0.6.0-3
+
 devbox_hashicorp_terraform_version: 0.15.5
 devbox_hashicorp_packer_version: 1.8.0
 

@@ -31,6 +31,10 @@
     - "ranger={{ devbox_ranger_version }}"
     - "ansible={{ devbox_ansible_version }}"
     - "neovim={{ devbox_nvim_version }}"
+    - "zsh={{ devbox_zsh_version }}"
+    - "zsh-autosuggestions={{ devbox_zsh_autosuggest_version }} "
+    - "zsh-syntax-highlighting={{ devbox_zsh_syntax_version }}"
+
     # since the version of nodejs offered by registered repo is already pegged
     # there is no need to peg the version of nodejs installed here.
     - "nodejs"
@@ -41,9 +45,15 @@
     name: universal-ctags
 
 - name: Install FZF
-  import_tasks: install_fzf.yaml
   vars:
     fzf_version: "{{ devbox_fzf_version }}"
+  import_tasks: install_fzf.yaml
+
+- name: Install Z Jump Tool
+  become: true
+  vars:
+    zsh_scripts_dir: "{{ devbox_user_home }}/.local/share/zsh"
+  import_tasks: install_z_jump.yaml
 
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
