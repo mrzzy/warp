@@ -1,0 +1,23 @@
+#
+# WARP
+# Devbox Ansible Role Tasks
+# Setup Tmux
+#
+
+- name: Install Tmux Plugins
+  vars:
+    tpm_path: "{{ devbox_user_home }}/.local/share/tmux/tpm"
+  block:
+    - name: Install Tmux Plugin Manager (TPM)
+      git:
+        repo: https://github.com/tmux-plugins/tpm
+        path: "{{ tpm_path }}"
+        version: main
+        single_branch: true
+
+    - name: Run TPM install_plugins
+      environment:
+        TMUX_PLUGIN_MANAGER_PATH: "{{ tpm_path }}"
+      command:
+        cmd: "{{ tpm_path }}/bin/install_plugins"
+        creates: "{{ tpm_path }}/plugins"
