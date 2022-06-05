@@ -45,6 +45,10 @@
   become: true
   import_tasks: setup_nvim.yaml
 
+- name: Setup Tmux
+  become: true
+  import_tasks: setup_tmux.yaml
+
 # create user & permissions
 - name: Setup User Accounts & Permissions
   become: true
