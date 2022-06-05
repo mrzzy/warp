@@ -50,6 +50,7 @@
   import_tasks: install_fzf.yaml
 
 - name: Install Z Jump Tool
+  become: true
   vars:
     zsh_scripts_dir: "{{ devbox_user_home }}/.local/share/zsh"
   import_tasks: install_z_jump.yaml
