@@ -11,13 +11,13 @@
     - name: Install Tmux Plugin Manager (TPM)
       git:
         repo: https://github.com/tmux-plugins/tpm
-        path: "{{ tpm_path }}"
-        version: main
+        dest: "{{ tpm_path }}"
+        version: master
         single_branch: true
 
     - name: Run TPM install_plugins
       environment:
-        TMUX_PLUGIN_MANAGER_PATH: "{{ tpm_path }}"
+        TMUX_PLUGIN_MANAGER_PATH: "{{ tpm_path }}/plugins"
       command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"
