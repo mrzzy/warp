@@ -19,6 +19,8 @@ devbox_zsh_version: 5.8-3ubuntu1.1
 devbox_zsh_autosuggest_version: 0.6.4-1
 devbox_zsh_syntax_version: 0.6.0-3
 
+devbox_tmux_version: 3.0a-2ubuntu0.3
+
 devbox_hashicorp_terraform_version: 0.15.5
 devbox_hashicorp_packer_version: 1.8.0
 
