@@ -35,6 +35,7 @@
     - "zsh-autosuggestions={{ devbox_zsh_autosuggest_version }} "
     - "zsh-syntax-highlighting={{ devbox_zsh_syntax_version }}"
     - "tmux={{ devbox_tmux_version }}"
+    - "gawk={{ devbox_gawk_version }}"
     # since the version of nodejs offered by registered repo is already pegged
     # there is no need to peg the version of nodejs installed here.
     - "nodejs"
