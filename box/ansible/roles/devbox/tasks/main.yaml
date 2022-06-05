@@ -3,37 +3,81 @@
 # Devbox Ansible Role Tasks
 #
 
+# install development tooling
 - name: Install Development Tooling
   import_tasks: tooling/install.yaml
 
-- name: Setup User Accounts & Permissions
+# add customized dotfiles
+- name: Install dotfiles
   become: true
   block:
-  - name: Create groups
-    group:
-      name: "{{ item }}"
-      state: present
-    loop:
-      - sudo
-      - docker
+    - name: Pull bare dotfiles repository
+      git:
+        repo: https://github.com/mrzzy/dotfiles
+        version: main
+        single_branch: true
+        dest: "{{ devbox_user_home }}/.git"
+        bare: true
 
-  - name: Create mrzzy user
-    user:
-      name: mrzzy
-      comment: "Zhu Zhanyan"
-      groups:
-        # sudo group for passwordless sudo
-        - sudo
-        # docker group for sudo-free access to the docker CLI
-        - docker
+    - name: Unmark repo as bare to allow checkouts
+      community.general.git_config:
+        name: core.bare
+        scope: file
+        file: "{{ devbox_user_home }}/.git/config"
+        state: absent
 
-  - name: Allow password-less sudo to users in sudo group
-    copy:
-      content: "%sudo ALL=(ALL:ALL) NOPASSWD:ALL"
-      dest: /etc/sudoers.d/sudo_nopasswd
-      mode: 0440
+    # workaround git security patch for CVE-2022-24765
+    # https://github.blog/2022-04-12-git-security-vulnerability-announced/
+    - name: Trust non-owned repository
+      community.general.git_config:
+        name: safe.directory
+        value: "{{ devbox_user_home }}"
+
+    - name: Checkout dotfiles
+      command: # noqa command-instead-of-module
+        cmd: git checkout
+        chdir: "{{ devbox_user_home }}"
+      register: checkout
+      changed_when: checkout.rc == 0
 
 # setup development tooling
 - name: Setup Neovim
-  become_user: mrzzy
+  become: true
   import_tasks: setup_nvim.yaml
+
+# create user & permissions
+- name: Setup User Accounts & Permissions
+  become: true
+  block:
+    - name: Create groups
+      group:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - sudo
+        - docker
+
+    - name: Create mrzzy user
+      user:
+        name: mrzzy
+        comment: "Zhu Zhanyan"
+        home: "{{ devbox_user_home }}"
+        groups:
+          # sudo group for passwordless sudo
+          - sudo
+          # docker group for sudo-free access to the docker CLI
+          - docker
+
+    - name: Allow password-less sudo to users in sudo group
+      copy:
+        content: "%sudo ALL=(ALL:ALL) NOPASSWD:ALL"
+        dest: /etc/sudoers.d/sudo_nopasswd
+        mode: 0440
+
+    - name: Fix owner of devbox home directory
+      file:
+        path: "{{ devbox_user_home }}"
+        owner: mrzzy
+        group: mrzzy
+        state: directory
+        recurse: true

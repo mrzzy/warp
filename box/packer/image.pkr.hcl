@@ -39,9 +39,12 @@ build {
     extra_arguments = ["-vv"]
     playbook_file   = "box/ansible/playbook.yaml"
 
-    # config ansible to output human readable logs
     ansible_env_vars = [
-      "ANSIBLE_LOAD_CALLBACK_PLUGINS=debug"
+      # config ansible to output human readable logs
+      "ANSIBLE_LOAD_CALLBACK_PLUGINS=debug",
+      # put ansible tmpdir in tmpfs when provisioning on remote machine
+      # to avoid permission issues.
+      "ANSIBLE_REMOTE_TMP=/tmp/ansible"
     ]
   }
 }
