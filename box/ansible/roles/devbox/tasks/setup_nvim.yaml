@@ -20,6 +20,11 @@
     dest: "{{ devbox_user_home }}/.local/share/nvim/site/autoload/plug.vim"
 
 - name: Install Neovim Plugins
+  # direct plugins to be installed in mrzzy's home dir
+  environment:
+    XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
+    XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
+    XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
   command:
-    cmd: "nvim -u {{ devbox_user_home }}/.config/nvim/init.vim +PlugInstall +qall"
+    cmd: nvim --headless +PlugInstall +qall
     creates: "{{ devbox_user_home }}/.local/share/nvim/plugged"
