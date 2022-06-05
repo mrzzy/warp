@@ -45,9 +45,14 @@
     name: universal-ctags
 
 - name: Install FZF
-  import_tasks: install_fzf.yaml
   vars:
     fzf_version: "{{ devbox_fzf_version }}"
+  import_tasks: install_fzf.yaml
+
+- name: Install Z Jump Tool
+  vars:
+    zsh_scripts_dir: "{{ devbox_user_home }}/.local/share/zsh"
+  import_tasks: install_z_jump.yaml
 
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml

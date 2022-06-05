@@ -1,0 +1,18 @@
+#
+# WARP
+# Devbox Ansible Role Tasks
+# Install Z Jump tool
+#
+
+- name: Install ZSH Jump tool
+  block:
+  - name: Create ZSH scripts directory
+    file:
+      path: "{{ zsh_scripts_dir }}"
+      state: directory
+      mode: 0774
+
+  - name: Download Z Jump tool ZSH script
+    get_url:
+      url: https://raw.githubusercontent.com/agkozak/zsh-z/master/zsh-z.plugin.zsh
+      dest: "{{ zsh_scripts_dir }}"
