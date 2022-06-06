@@ -22,6 +22,7 @@
 - name: Install Neovim Plugins
   # direct plugins to be installed in mrzzy's home dir
   environment:
+    HOME: "{{ devbox_user_home }}"
     XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
     XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
     XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
