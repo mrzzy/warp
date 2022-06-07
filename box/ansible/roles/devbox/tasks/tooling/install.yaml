@@ -41,8 +41,12 @@
     # there is no need to peg the version of nodejs installed here.
     - "nodejs"
 
+    # python & tools
     - "python3={{ devbox_python_version }}"
     - "python3-pip={{ devbox_python_pip_version }}"
+
+    # postgresql tools
+    - "pgcli={{ devbox_pgcli_version }}"
 
 - name: Install Universal ctags with Snap
   become: true
