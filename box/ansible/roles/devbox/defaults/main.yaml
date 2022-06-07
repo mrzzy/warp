@@ -5,6 +5,7 @@
 
 devbox_user_home: /home/mrzzy
 
+# language-agnostic tools
 devbox_nvim_version: 0.4.3-3
 devbox_nvim_vim_plug_version: 0.11.0
 
@@ -26,3 +27,7 @@ devbox_hashicorp_terraform_version: 1.2.2
 devbox_hashicorp_packer_version: 1.8.0
 
 devbox_fzf_version: 0.29.0
+
+# python & tools
+devbox_python_version: 3.8.2-0ubuntu2
+devbox_python_pip_version: 20.0.2-5ubuntu1.6
