@@ -14,6 +14,10 @@
     - "{{ devbox_user_home }}/.local/share/nvim/site/autoload/"
 
 # Configure Plugins
+- name: Install Python client for plugins
+  pip:
+    name: "pynvim=={{ devbox_nvim_pynvim_version }}"
+
 - name: Install vim-plug plugin manager
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ devbox_nvim_vim_plug_version }}/plug.vim

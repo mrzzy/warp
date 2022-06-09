@@ -8,6 +8,7 @@ devbox_user_home: /home/mrzzy
 # language-agnostic tools
 devbox_nvim_version: 0.4.3-3
 devbox_nvim_vim_plug_version: 0.11.0
+devbox_nvim_pynvim_version: 0.4.3
 
 devbox_entr_version: 4.4-1
 devbox_ripgrep_version: 11.0.2-1build1
