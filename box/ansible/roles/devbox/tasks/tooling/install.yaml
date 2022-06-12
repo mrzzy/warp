@@ -67,6 +67,8 @@
 
 - name: Install TTYD Web Terminal
   become: true
+  vars:
+    ttyd_path: /usr/local/bin/ttyd
   import_tasks: install_ttyd.yaml
 
 - name: Install tools from HashiCorp's Repository with APT"
