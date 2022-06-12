@@ -65,6 +65,12 @@
     zsh_scripts_dir: "{{ devbox_user_home }}/.local/share/zsh"
   import_tasks: install_z_jump.yaml
 
+- name: Install TTYD Web Terminal
+  become: true
+  vars:
+    ttyd_path: /usr/local/bin/ttyd
+  import_tasks: install_ttyd.yaml
+
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
   vars:

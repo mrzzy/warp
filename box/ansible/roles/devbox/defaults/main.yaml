@@ -29,6 +29,8 @@ devbox_hashicorp_packer_version: 1.8.0
 
 devbox_fzf_version: 0.29.0
 
+devbox_ttyd_version: 1.6.3
+
 # python & tools
 devbox_python_version: 3.8.2-0ubuntu2
 devbox_python_pip_version: 20.0.2-5ubuntu1.6
