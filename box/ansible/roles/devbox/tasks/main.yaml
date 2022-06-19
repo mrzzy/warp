@@ -51,7 +51,7 @@
 - name: Setup TTYD Web Terminal
   include_tasks: setup_ttyd.yaml
   # disable ttyd if password is unset to avoid exposing an unauthenticated web shell
-  when: devbox_ttyd_password == ""
+  when: devbox_ttyd_password != ""
   tags:
     - test
 
