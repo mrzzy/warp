@@ -3,6 +3,7 @@
 # Devbox Ansible Role default Vars
 #
 
+devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
 # language-agnostic tools

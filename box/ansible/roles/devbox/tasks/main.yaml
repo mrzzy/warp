@@ -73,10 +73,9 @@
         - sudo
         - docker
 
-    - name: Create mrzzy user
+    - name: Create devbox user
       user:
-        name: mrzzy
-        comment: "Zhu Zhanyan"
+        name: "{{ devbox_user }}"
         home: "{{ devbox_user_home }}"
         shell: /bin/zsh
         groups:
@@ -94,7 +93,7 @@
     - name: Fix owner of devbox home directory
       file:
         path: "{{ devbox_user_home }}"
-        owner: mrzzy
-        group: mrzzy
+        owner: "{{ devbox_user }}"
+        group: "{{ devbox_user }}"
         state: directory
         recurse: true
