@@ -44,16 +44,22 @@
 
           [Service]
           Type=simple
+          User={{ devbox_user }}
+          Group={{ devbox_user }}
+          WorkingDirectory={{ devbox_user_home }}
+          # start ttyd on a unprivilleged port as unprivilleged devbox user &
+          # use iptables to redirect HTTPs traffic to the web terminal
           ExecStart={{ devbox_ttyd_path }} \
             --port 7681 \
-            --ssl \
+            --credentials "{{ devbox_user }}:{{ devbox_ttyd_password }}" \
             # use the TLS certificates provisioned by certbot
+            --ssl \
             --ssl-cert /etc/letsencrypt/live/vm.warp.mrzzy.co/fullchain.pem \
             --ssl-key /etc/letsencrypt/live/vm.warp.mrzzy.co/privkey.pem \
             /usr/bin/zsh
-          User=mrzzy
-          Group=mrzzy
-          WorkingDirectory={{ devbox_user_home }}
+          ExecStartPost=iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 7681
+          ExecStopPost=iptables -D PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 7681
+
         dest: /etc/systemd/system/ttyd.service
         mode: 0644
 
