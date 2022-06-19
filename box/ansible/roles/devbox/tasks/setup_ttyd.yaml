@@ -23,6 +23,10 @@
             --domains {{ devbox_tls_domain }} \
             --email {{ devbox_tls_letsencrypt_email }} \
             {% if devbox_tls_letsencrypt_staging %}--test-cert{% endif %}
+          # since ttyd will run as the devbox user, admend permissions to ensure
+          # certificate & private key are accessible.
+          # -L needed as certificate as symlinked into the directory
+          ExecStartPost=/usr/bin/chgrp -L {{ devbox_user }} /etc/
 
         dest: /etc/systemd/system/certbot.service
         mode: 0644
@@ -49,7 +53,7 @@
             /usr/bin/zsh
           User=mrzzy
           Group=mrzzy
-          WorkingDirectory=/home/mrzzy
+          WorkingDirectory={{ devbox_user_home }}
         dest: /etc/systemd/system/ttyd.service
         mode: 0644
 
