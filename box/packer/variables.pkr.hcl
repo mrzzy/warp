@@ -13,4 +13,5 @@ variable "web_term_password" {
   description = "Password to set for accessing WARP VM's web terminal"
   type        = string
   sensitive   = true
+  default     = ""
 }

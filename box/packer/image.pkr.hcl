@@ -36,10 +36,11 @@ build {
   ]
 
   provisioner "ansible" {
-    extra_arguments = [
-      "-vv",
-      "--extra-vars", "devbox_ttyd_password=${var.web_term_password}"
-    ]
+    extra_arguments = concat(
+      ["-vv"],
+      length(var.web_term_password) > 0 ?
+      ["--extra-vars", "devbox_ttyd_password=${var.web_term_password}"] : []
+    )
     playbook_file = "box/ansible/playbook.yaml"
 
     ansible_env_vars = [
