@@ -4,27 +4,56 @@
 # Setup ttyd Web Terminal & Certbot for TLS
 #
 
-- name: Activate systemd service to start TTYD on boot
+
+- name: Setup systemd services to run Certbot & TTYD on boot
   block:
-    - name: Write systemd service
+    - name: Write Certbot systemd service
+      copy:
+        content: |
+          [Unit]
+          Description=Certbot procures a trusted TLS certificate from Lets Encrypt
+
+          [Service]
+          Type=oneshot
+          ExecStart=/snap/bin/certbot certonly \
+            --standalone \
+            --key-type ecdsa \
+            --agree-tos \
+            --preferred-challenges http \
+            --domains {{ devbox_tls_domain }} \
+            --email {{ devbox_tls_letsencrypt_email }} \
+            {% if devbox_tls_letsencrypt_staging %}--test-cert{% endif %}
+
+        dest: /etc/systemd/system/certbot.service
+        mode: 0644
+
+    - name: Write TTYD systemd service
       copy:
         content: |
           [Unit]
           Description=TTYD enables shell access a web terminal
+          Wants=certbot
+          After=certbot
 
           [Install]
           WantedBy=multi-user.target
 
           [Service]
           Type=simple
-          ExecStart={{ devbox_ttyd_path }} --port 7681 /usr/bin/zsh
+          ExecStart={{ devbox_ttyd_path }} \
+            --port 7681 \
+            --ssl \
+            # use the TLS certificates provisioned by certbot
+            --ssl-cert /etc/letsencrypt/live/vm.warp.mrzzy.co/fullchain.pem \
+            --ssl-key /etc/letsencrypt/live/vm.warp.mrzzy.co/privkey.pem \
+            /usr/bin/zsh
           User=mrzzy
           Group=mrzzy
           WorkingDirectory=/home/mrzzy
         dest: /etc/systemd/system/ttyd.service
         mode: 0644
 
-    - name: Activate systemd service
+    - name: Activate systemd services
       systemd:
         name: ttyd
         state: started

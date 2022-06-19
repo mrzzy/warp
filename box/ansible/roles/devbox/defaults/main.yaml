@@ -40,3 +40,12 @@ devbox_python_venv_version: 3.8.2-0ubuntu2
 
 # postgresql tools
 devbox_pgcli_version: 2.2.0-4
+
+# dns domain to obtain a TLS cert for via certbot
+devbox_tls_domain: vm.warp.mrzzy.c
+# whether to obtain a untrusted cert from lets encrypt's staging server to test cert issue
+# default to staging cert as requesting production let encrypt certs may cause
+# to hit its rate limit unintentionally.
+devbox_tls_letsencrypt_staging: true
+# lets encrypt account to use specified by email
+devbox_tls_letsencrypt_email: program.nom@gmail.com
