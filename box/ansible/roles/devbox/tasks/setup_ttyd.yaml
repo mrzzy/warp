@@ -66,5 +66,4 @@
     - name: Activate TTYD systemd service
       systemd:
         name: ttyd
-        state: started
         enabled: true
