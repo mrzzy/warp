@@ -3,14 +3,17 @@
 # Devbox Ansible Role Tasks
 #
 
+# Install
 # install ttyd web terminal
 - name: Install TTYD Web Terminal
   become: true
-  vars:
-    ttyd_path: /usr/local/bin/ttyd
   import_tasks: install_ttyd.yaml
 
-# add customized dotfiles
+# install development tooling
+- name: Install Development Tooling
+  import_tasks: tooling/install.yaml
+
+# install customized dotfiles
 - name: Install dotfiles
   become: true
   block:
@@ -43,15 +46,21 @@
       register: checkout
       changed_when: checkout.rc == 0
 
+# Setup
+# setup ttyd web terminal
+- name: Install TTYD Web Terminal
+  become: true
+  import_tasks: setup_ttyd.yaml
 # setup development tooling
 - name: Setup Neovim
   become: true
   import_tasks: setup_nvim.yaml
-
 - name: Setup Tmux
   become: true
   import_tasks: setup_tmux.yaml
 
+
+# User Accounts
 # create user & permissions
 - name: Setup User Accounts & Permissions
   become: true

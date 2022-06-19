@@ -1,14 +1,8 @@
 #
 # WARP
 # Devbox Ansible Role Tasks
-# Install ttyd Web Terminal & Certbot for TLS
+# Setup ttyd Web Terminal & Certbot for TLS
 #
-
-- name: Download pre-built TTYD Binary
-  get_url:
-    url: "https://github.com/tsl0922/ttyd/releases/download/{{ devbox_ttyd_version }}/ttyd.x86_64"
-    dest: "{{ ttyd_path }}"
-    mode: 0755
 
 - name: Activate systemd service to start TTYD on boot
   block:
@@ -16,14 +10,14 @@
       copy:
         content: |
           [Unit]
-          Description=TTYD enables shell access a web termina
+          Description=TTYD enables shell access a web terminal
 
           [Install]
           WantedBy=multi-user.target
 
           [Service]
           Type=simple
-          ExecStart={{ ttyd_path }} --port 7681 /usr/bin/zsh
+          ExecStart={{ devbox_ttyd_path }} --port 7681 /usr/bin/zsh
           User=mrzzy
           Group=mrzzy
           WorkingDirectory=/home/mrzzy
