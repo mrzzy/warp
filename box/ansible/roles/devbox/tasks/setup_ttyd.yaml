@@ -32,8 +32,8 @@
         content: |
           [Unit]
           Description=TTYD enables shell access a web terminal
-          Wants=certbot
-          After=certbot
+          Wants=certbot.service
+          After=certbot.service
 
           [Install]
           WantedBy=multi-user.target
