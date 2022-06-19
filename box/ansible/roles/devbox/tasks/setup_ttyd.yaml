@@ -15,7 +15,7 @@
 
           [Service]
           Type=oneshot
-          ExecStart=/snap/bin/certbot certonly \
+          ExecStart=/snap/bin/certbot certonly -n \
             --standalone \
             --key-type ecdsa \
             --agree-tos \
