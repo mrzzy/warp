@@ -4,8 +4,8 @@
 # Setup ttyd Web Terminal & Certbot for TLS
 #
 
-
 - name: Setup systemd services to run Certbot & TTYD on boot
+  become: true
   block:
     - name: Write Certbot systemd service
       copy:
@@ -63,7 +63,7 @@
         dest: /etc/systemd/system/ttyd.service
         mode: 0644
 
-    - name: Activate systemd services
+    - name: Activate TTYD systemd service
       systemd:
         name: ttyd
         state: started

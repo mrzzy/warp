@@ -48,9 +48,13 @@
 
 # Setup
 # setup ttyd web terminal
-- name: Install TTYD Web Terminal
-  become: true
-  import_tasks: setup_ttyd.yaml
+- name: Setup TTYD Web Terminal
+  include_tasks: setup_ttyd.yaml
+  # disable ttyd if password is unset to avoid exposing an unauthenticated web shell
+  when: devbox_ttyd_password == ""
+  tags:
+    - test
+
 # setup development tooling
 - name: Setup Neovim
   become: true

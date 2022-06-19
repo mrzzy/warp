@@ -34,7 +34,7 @@ devbox_fzf_version: 0.29.0
 devbox_ttyd_version: 1.6.3
 devbox_ttyd_path: /usr/local/bin/ttyd
 # password for the ttyd web terminal
-devbox_ttyd_password: "{{ undef(hint='Specify a password for the TTYD Web Terminal') }}"
+devbox_ttyd_password: ""
 
 # python & tools
 devbox_python_version: 3.8.2-0ubuntu2
