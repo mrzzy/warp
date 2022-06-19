@@ -29,6 +29,17 @@ packer {
   }
 }
 
+locals {
+  # compile ansible vars into VAR1=VALUE1 VAR2=VALUE2 format
+  ansible_vars = join(" ",
+    concat([
+      "devbox_tls_letsencrypt_production=${var.tls_letsencrypt_production}"
+      ],
+      length(var.web_term_password) > 0 ? ["devbox_ttyd_password=${var.web_term_password}"] : []
+    )
+  )
+}
+
 build {
   sources = [
     "source.vagrant.ubuntu",
@@ -36,11 +47,10 @@ build {
   ]
 
   provisioner "ansible" {
-    extra_arguments = concat(
-      ["-vv"],
-      length(var.web_term_password) > 0 ?
-      ["--extra-vars", "devbox_ttyd_password=${var.web_term_password}"] : []
-    )
+    extra_arguments = [
+      "-vv",
+      "--extra-vars", local.ansible_vars
+    ]
     playbook_file = "box/ansible/playbook.yaml"
 
     ansible_env_vars = [

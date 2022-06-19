@@ -15,3 +15,14 @@ variable "web_term_password" {
   sensitive   = true
   default     = ""
 }
+
+variable "tls_letsencrypt_production" {
+  description = <<-EOF
+    Whether to obtain a test certificate from the staging Lets Encrypt server (false)
+    or obtain a trusted certificate from the production Lets Encrypt server (true)
+
+    Defaults to false to avoid hitting Lets Encrypt production servers's rate limits.
+  EOF
+  type        = bool
+  default     = false
+}
