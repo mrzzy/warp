@@ -1,7 +1,7 @@
 #
 # WARP
 # Devbox Ansible Role Tasks
-# Install ttyd Web Terminal & Certbot for TLS
+# Install ttyd Web Terminal
 #
 
 - name: Download pre-built TTYD Binary

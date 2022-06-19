@@ -3,9 +3,12 @@
 # Devbox Ansible Role Tasks
 #
 
-# install development tooling
-- name: Install Development Tooling
-  import_tasks: tooling/install.yaml
+# install ttyd web terminal
+- name: Install TTYD Web Terminal
+  become: true
+  vars:
+    ttyd_path: /usr/local/bin/ttyd
+  import_tasks: install_ttyd.yaml
 
 # add customized dotfiles
 - name: Install dotfiles
