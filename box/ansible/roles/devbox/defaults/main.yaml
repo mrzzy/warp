@@ -36,8 +36,7 @@ devbox_ttyd_path: /usr/local/bin/tty
 # ttyd expects tls certificate & private key at paths
 devbox_ttyd_tls_cert: /etc/ssl/certs/ttyd.pem
 devbox_ttyd_tls_private_key: /etc/ssl/private/ttyd.key
-
-# password for the ttyd web terminal
+# password for the ttyd web terminal. If unset disables TTYD web terminal.
 devbox_ttyd_password: ""
 
 # python & tools
