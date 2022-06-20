@@ -53,7 +53,7 @@
           ExecStart=sudo --user {{ devbox_user }} --group {{ devbox_user }} --login -n \
             {{ devbox_ttyd_path }} \
               --port 7681 \
-              --credentials "{{ devbox_user }}:{{ devbox_ttyd_password }}" \
+              --credential "{{ devbox_user }}:{{ devbox_ttyd_password }}" \
               --ssl \
               --ssl-cert /etc/letsencrypt/live/vm.warp.mrzzy.co/fullchain.pem \
               --ssl-key /etc/letsencrypt/live/vm.warp.mrzzy.co/privkey.pem \
