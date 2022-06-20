@@ -23,8 +23,9 @@
             --agree-tos \
             --preferred-challenges http \
             --domains {{ devbox_tls_domain }} \
-            --email {{ devbox_tls_letsencrypt_email }} \
-            {% if not devbox_tls_letsencrypt_production %}--test-cert{% endif %}
+            --email {{ devbox_tls_letsencrypt_email }} {% if not devbox_tls_letsencrypt_production %}\
+            --test-cert{% endif %}
+
           # since ttyd will run as the devbox user, admend permissions to ensure
           # certificate & private key are accessible.
           # -L needed as certificate as symlinked into the directory
