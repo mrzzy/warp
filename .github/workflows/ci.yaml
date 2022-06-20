@@ -61,7 +61,6 @@ jobs:
         GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcp_packer_key.json"
         KEY_BASE64: ${{ secrets.gcp_packer_key_base64 }}
         PKR_VAR_web_term_password: ${{ secrets.BOX_WEB_TERM_PASSWORD }}
-        PKR_VAR_is_tls_production: true
       run: |
         # decode base64 & write key to disk
         echo "$KEY_BASE64" | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
