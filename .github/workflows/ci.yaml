@@ -1,4 +1,4 @@
-
+#
 # WARP
 # CI Pipeline
 #
@@ -51,10 +51,6 @@ jobs:
     - name: Configure image as Development build
       if: ${{ github.ref != 'refs/heads/main' }}
       run: echo "PKR_VAR_image_suffix=-dev" >> $GITHUB_ENV
-
-    - name: Configure image as Production build
-      if: ${{ github.ref == 'refs/heads/main' }}
-      run: echo "PKR_VAR_is_tls_production=true" >> $GITHUB_ENV
 
     - name: Build WARP Box with Packer on GCP
       env:
