@@ -4,3 +4,7 @@ build/
 venv/
 # vagrant
 .vagrant/
+
+# tag files
+/tags
+/tags.*
