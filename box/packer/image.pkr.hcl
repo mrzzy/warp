@@ -32,9 +32,7 @@ packer {
 locals {
   # compile ansible vars into VAR1=VALUE1 VAR2=VALUE2 format
   ansible_vars = join(" ",
-    concat([
-      "devbox_tls_letsencrypt_production=${var.is_tls_production}"
-      ],
+    concat([],
       length(var.web_term_password) > 0 ? ["devbox_ttyd_password=${var.web_term_password}"] : []
     )
   )

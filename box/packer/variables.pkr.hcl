@@ -15,15 +15,3 @@ variable "web_term_password" {
   sensitive   = true
   default     = ""
 }
-
-variable "is_tls_production" {
-  description = <<-EOF
-    Whether to obtain a test certificate from the staging Lets Encrypt server (false)
-    or obtain a trusted certificate from the production Lets Encrypt server (true)
-    for WARP VM's web terminal.
-
-    Defaults to false to avoid hitting Lets Encrypt production servers's rate limits.
-  EOF
-  type        = bool
-  default     = false
-}
