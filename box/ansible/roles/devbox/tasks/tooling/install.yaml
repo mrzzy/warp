@@ -36,6 +36,7 @@
     - "zsh-syntax-highlighting={{ devbox_zsh_syntax_version }}"
     - "tmux={{ devbox_tmux_version }}"
     - "gawk={{ devbox_gawk_version }}"
+    - "universal-ctags={{ devbox_universal_ctags_version }}"
 
     # since the version of nodejs offered by registered repo is already pegged
     # there is no need to peg the version of nodejs installed here.
@@ -48,11 +49,6 @@
 
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"
-
-- name: Install Universal ctags with Snap
-  become: true
-  snap:
-    name: universal-ctags
 
 - name: Install FZF
   vars:
