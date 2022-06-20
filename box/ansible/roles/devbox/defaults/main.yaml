@@ -46,7 +46,7 @@ devbox_pgcli_version: 2.2.0-4
 
 # dns domain to obtain a TLS cert for via certbot
 devbox_tls_domain: vm.warp.mrzzy.co
-# whether to obtain a untrusted cert from lets encrypt's staging server to test cert issue
+# whether to obtain a trusted cert from lets encrypt's production server
 # default to staging cert as requesting production let encrypt certs may cause
 # to hit its rate limit unintentionally.
 devbox_tls_letsencrypt_production: false
