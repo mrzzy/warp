@@ -47,19 +47,19 @@
 
           [Service]
           Type=simple
-          User={{ devbox_user }}
-          Group={{ devbox_user }}
           WorkingDirectory={{ devbox_user_home }}
-          # start ttyd on a unprivilleged port as unprivilleged devbox user &
+          # start ttyd on a unprivilleged port as the unprivilleged devbox user
+          # use the TLS certificates provisioned by certbot
+          ExecStart=sudo --user {{ devbox_user }} --group {{ devbox_user }} --login -n \
+            {{ devbox_ttyd_path }} \
+              --port 7681 \
+              --credentials "{{ devbox_user }}:{{ devbox_ttyd_password }}" \
+              --ssl \
+              --ssl-cert /etc/letsencrypt/live/vm.warp.mrzzy.co/fullchain.pem \
+              --ssl-key /etc/letsencrypt/live/vm.warp.mrzzy.co/privkey.pem \
+              /usr/bin/zsh
+
           # use iptables to redirect HTTPs traffic to the web terminal
-          ExecStart={{ devbox_ttyd_path }} \
-            --port 7681 \
-            --credentials "{{ devbox_user }}:{{ devbox_ttyd_password }}" \
-            # use the TLS certificates provisioned by certbot
-            --ssl \
-            --ssl-cert /etc/letsencrypt/live/vm.warp.mrzzy.co/fullchain.pem \
-            --ssl-key /etc/letsencrypt/live/vm.warp.mrzzy.co/privkey.pem \
-            /usr/bin/zsh
           ExecStartPost=iptables -A PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 7681
           ExecStopPost=iptables -D PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 7681
 
