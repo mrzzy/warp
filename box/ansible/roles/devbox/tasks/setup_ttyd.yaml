@@ -12,6 +12,8 @@
         content: |
           [Unit]
           Description=TTYD enables shell access a web terminal
+          ConditionPathExists={{ devbox_ttyd_tls_cert }}
+          ConditionPathExists={{ devbox_ttyd_tls_private_key }}
 
           [Install]
           WantedBy=multi-user.target
@@ -25,8 +27,8 @@
               --port 7681 \
               --credential "{{ devbox_user }}:{{ devbox_ttyd_password }}" \
               --ssl \
-              --ssl-cert /etc/letsencrypt/live/vm.warp.mrzzy.co/fullchain.pem \
-              --ssl-key /etc/letsencrypt/live/vm.warp.mrzzy.co/privkey.pem \
+              --ssl-cert {{ devbox_ttyd_tls_cert }} \
+              --ssl-key {{ devbox_ttyd_tls_private_key }} \
               /usr/bin/zsh
 
           # use iptables to redirect HTTPs traffic to the web terminal

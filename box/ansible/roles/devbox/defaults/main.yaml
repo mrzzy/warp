@@ -32,7 +32,11 @@ devbox_hashicorp_packer_version: 1.8.0
 devbox_fzf_version: 0.29.0
 
 devbox_ttyd_version: 1.6.3
-devbox_ttyd_path: /usr/local/bin/ttyd
+devbox_ttyd_path: /usr/local/bin/tty
+# ttyd expects tls certificate & private key at paths
+devbox_ttyd_tls_cert: /etc/ssl/certs/ttyd.pem
+devbox_ttyd_tls_private_key: /etc/ssl/private/ttyd.key
+
 # password for the ttyd web terminal
 devbox_ttyd_password: ""
 
