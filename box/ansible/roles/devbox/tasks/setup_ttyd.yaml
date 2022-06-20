@@ -12,8 +12,6 @@
         content: |
           [Unit]
           Description=Certbot procures a trusted TLS certificate from Lets Encrypt
-          # when running in a cloud vm, run after cloud-init.
-          After = cloud-final.service
 
           [Service]
           Type=oneshot
