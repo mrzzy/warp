@@ -1,44 +1,17 @@
 #
 # WARP
 # Devbox Ansible Role Tasks
-# Setup ttyd Web Terminal & Certbot for TLS
+# Setup ttyd Web Terminal
 #
 
-- name: Setup systemd services to run Certbot & TTYD on boot
+- name: Setup systemd services to run TTYD on boot
   become: true
   block:
-    - name: Write Certbot systemd service
-      copy:
-        content: |
-          [Unit]
-          Description=Certbot procures a trusted TLS certificate from Lets Encrypt
-
-          [Service]
-          Type=oneshot
-          ExecStart=/snap/bin/certbot certonly -n \
-            --standalone \
-            --key-type ecdsa \
-            --agree-tos \
-            --preferred-challenges http \
-            --domains {{ devbox_tls_domain }} \
-            --email {{ devbox_tls_letsencrypt_email }} {% if not devbox_tls_letsencrypt_production %}\
-            --test-cert{% endif %}
-
-          # since ttyd will run as the devbox user, admend permissions to ensure
-          # certificate & private key are accessible.
-          # -L needed as certificate as symlinked into the directory
-          ExecStartPost=/usr/bin/chgrp -L {{ devbox_user }} /etc/
-
-        dest: /etc/systemd/system/certbot.service
-        mode: 0644
-
     - name: Write TTYD systemd service
       copy:
         content: |
           [Unit]
           Description=TTYD enables shell access a web terminal
-          Wants=certbot.service
-          After=certbot.service
 
           [Install]
           WantedBy=multi-user.target
@@ -47,7 +20,6 @@
           Type=simple
           WorkingDirectory={{ devbox_user_home }}
           # start ttyd on a unprivilleged port as the unprivilleged devbox user
-          # use the TLS certificates provisioned by certbot
           ExecStart=sudo --user {{ devbox_user }} --group {{ devbox_user }} --login -n \
             {{ devbox_ttyd_path }} \
               --port 7681 \

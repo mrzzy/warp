@@ -4,11 +4,6 @@
 # Install ttyd Web Terminal
 #
 
-- name: Install Certbot to provsion TLS certificates for TTYD
-  snap:
-    name: certbot
-    classic: true
-
 - name: Download pre-built TTYD Binary
   get_url:
     url: "https://github.com/tsl0922/ttyd/releases/download/{{ devbox_ttyd_version }}/ttyd.x86_64"
