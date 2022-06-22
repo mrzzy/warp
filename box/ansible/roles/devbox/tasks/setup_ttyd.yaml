@@ -4,7 +4,7 @@
 # Setup ttyd Web Terminal
 #
 
-- name: Setup systemd services to run TTYD on boot
+- name: Setup systemd service to run TTYD on boot
   become: true
   block:
     - name: Write TTYD systemd service
