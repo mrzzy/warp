@@ -76,6 +76,7 @@
       loop:
         - sudo
         - docker
+        - ssl-cert
 
     - name: Create devbox user
       user:
@@ -87,6 +88,8 @@
           - sudo
           # docker group for sudo-free access to the docker CLI
           - docker
+          # ttyd web terminal requires access to its TLS private key
+          - ssl-cert
 
     - name: Allow password-less sudo to users in sudo group
       copy:
@@ -101,3 +104,9 @@
         group: "{{ devbox_user }}"
         state: directory
         recurse: true
+
+    - name: Allow ssl-cert group members to access TLS private keys
+      file:
+        path: /etc/ssl/private/
+        group: ssl-cert
+        mode: 0710
