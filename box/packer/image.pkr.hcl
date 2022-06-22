@@ -29,6 +29,13 @@ packer {
   }
 }
 
+locals {
+  # compile ansible vars into VAR1=VALUE1 VAR2=VALUE2 format
+  ansible_vars = join(" ",
+    length(var.web_term_password) > 0 ? ["devbox_ttyd_password=${var.web_term_password}"] : []
+  )
+}
+
 build {
   sources = [
     "source.vagrant.ubuntu",
@@ -36,8 +43,11 @@ build {
   ]
 
   provisioner "ansible" {
-    extra_arguments = ["-vv"]
-    playbook_file   = "box/ansible/playbook.yaml"
+    extra_arguments = [
+      "-vv",
+      "--extra-vars", local.ansible_vars
+    ]
+    playbook_file = "box/ansible/playbook.yaml"
 
     ansible_env_vars = [
       # config ansible to output human readable logs

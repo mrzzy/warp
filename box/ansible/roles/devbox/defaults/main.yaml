@@ -3,6 +3,7 @@
 # Devbox Ansible Role default Vars
 #
 
+devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
 # language-agnostic tools
@@ -31,6 +32,12 @@ devbox_hashicorp_packer_version: 1.8.0
 devbox_fzf_version: 0.29.0
 
 devbox_ttyd_version: 1.6.3
+devbox_ttyd_path: /usr/local/bin/ttyd
+# ttyd expects tls certificate & private key at paths
+devbox_ttyd_tls_cert: /etc/ssl/certs/ttyd.pem
+devbox_ttyd_tls_private_key: /etc/ssl/private/ttyd.key
+# password for the ttyd web terminal. If unset disables TTYD web terminal.
+devbox_ttyd_password: ""
 
 # python & tools
 devbox_python_version: 3.8.2-0ubuntu2

@@ -24,7 +24,7 @@
     dest: "{{ devbox_user_home }}/.local/share/nvim/site/autoload/plug.vim"
 
 - name: Install Neovim Plugins
-  # direct plugins to be installed in mrzzy's home dir
+  # direct plugins to be installed in devbox users's home dir
   environment:
     HOME: "{{ devbox_user_home }}"
     XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
