@@ -10,7 +10,10 @@ variable "image_suffix" {
 }
 
 variable "web_term_password" {
-  description = "Login password for WARP VM's web terminal."
+  description = <<-EOF
+    Login password for WARP VM's web terminal. If let unspecified, WARP VM's
+    web terminal will be disabled for security.
+  EOF
   type        = string
   sensitive   = true
   default     = ""
