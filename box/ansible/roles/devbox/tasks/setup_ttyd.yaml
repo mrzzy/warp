@@ -38,7 +38,35 @@
         dest: /etc/systemd/system/ttyd-https.service
         mode: 0644
 
+    - name: Write TTYD over HTTP systemd service
+      copy:
+        content: |
+          [Unit]
+          Description=TTYD enables shell access a web terminal over HTTP
+
+          [Install]
+          WantedBy=multi-user.target
+
+          [Service]
+          Type=simple
+          WorkingDirectory={{ devbox_user_home }}
+          # start ttyd on a unprivilleged port as the unprivilleged devbox user
+          ExecStart=sudo --user {{ devbox_user }} --group {{ devbox_user }} --login -n \
+            {{ devbox_ttyd_path }} \
+              --port 7682 \
+              /usr/bin/zsh
+
+          # use iptables to redirect HTTP traffic to the web terminal
+          ExecStartPost=iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 7682
+          ExecStopPost=iptables -D PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 7682
+
+        dest: /etc/systemd/system/ttyd-http.service
+        mode: 0644
+
     - name: Activate TTYD systemd service
       systemd:
-        name: ttyd-https
+        name: "{{ item }}"
         enabled: true
+      loop:
+        - ttyd-https
+        - ttyd-http
