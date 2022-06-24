@@ -63,7 +63,7 @@
         dest: /etc/systemd/system/ttyd-http.service
         mode: 0644
 
-    - name: Activate TTYD systemd service
+    - name: Activate TTYD systemd services
       systemd:
         name: "{{ item }}"
         enabled: true
