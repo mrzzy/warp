@@ -19,11 +19,16 @@
     update-cache: true
 
 - name: Install development tools with APT
+  tags: [test]
   become: true
   apt:
     name: "{{ item }}"
     state: present
   loop:
+    # system tools
+    - "software-properties-common={{ devbox_software_properties_version }}"
+
+    # language-agnostic tools
     - "entr={{ devbox_entr_version }}"
     - "ripgrep={{ devbox_ripgrep_version }}"
     - "docker.io={{ devbox_docker_version }}"

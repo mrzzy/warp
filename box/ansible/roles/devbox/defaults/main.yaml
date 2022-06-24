@@ -6,6 +6,10 @@
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
+# system tools
+# needed for add-apt-repository
+devbox_software_properties_version: 0.99.9.8
+
 # language-agnostic tools
 devbox_nvim_version: 0.4.3-3
 devbox_nvim_vim_plug_version: 0.11.0
