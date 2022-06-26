@@ -6,6 +6,9 @@
 
 - name: Setup systemd services to run TTYD on boot
   become: true
+  vars:
+    # forward incoming traffic via the default ipv4 interface to TTYD
+    interface: "{{ ansible_default_ipv4.interface }}"
   block:
     - name: Write TTYD over HTTPS systemd service
       copy:
@@ -32,8 +35,8 @@
               /usr/bin/zsh
 
           # use iptables to redirect HTTPs traffic to the web terminal
-          ExecStartPost=iptables -A PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 7681
-          ExecStopPost=iptables -D PREROUTING -t nat -p tcp --dport 443 -j REDIRECT --to-port 7681
+          ExecStartPost=iptables -A PREROUTING -t nat -p tcp -i {{ interface }} --dport 443 -j REDIRECT --to-port 7681
+          ExecStopPost=iptables -D PREROUTING -t nat -p tcp -i {{ interface }} --dport 443 -j REDIRECT --to-port 7681
 
         dest: /etc/systemd/system/ttyd-https.service
         mode: 0644
@@ -58,8 +61,8 @@
               /usr/bin/zsh
 
           # use iptables to redirect HTTP traffic to the web terminal
-          ExecStartPost=iptables -A PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 7682
-          ExecStopPost=iptables -D PREROUTING -t nat -p tcp --dport 80 -j REDIRECT --to-port 7682
+          ExecStartPost=iptables -A PREROUTING -t nat -p tcp -i {{ interface }} --dport 80 -j REDIRECT --to-port 7682
+          ExecStopPost=iptables -D PREROUTING -t nat -p tcp -i {{ interface }} --dport 80 -j REDIRECT --to-port 7682
 
         dest: /etc/systemd/system/ttyd-http.service
         mode: 0644
