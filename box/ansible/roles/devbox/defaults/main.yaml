@@ -44,6 +44,10 @@ devbox_ttyd_tls_cert: /etc/ssl/certs/ttyd.pem
 devbox_ttyd_tls_private_key: /etc/ssl/private/ttyd.key
 # password for the ttyd web terminal. If unset disables TTYD web terminal.
 devbox_ttyd_password: ""
+# ports to instruct ttyd listen for connections
+devbox_ttyd_http_port: 7682
+devbox_ttyd_https_port: 7681
+
 
 # python & tools
 devbox_python_version: 3.8.2-0ubuntu2
