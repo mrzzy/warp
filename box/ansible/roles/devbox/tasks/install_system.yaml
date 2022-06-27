@@ -1,7 +1,7 @@
 #
 # WARP
 # Devbox Ansible Role Tasks
-# Install ttyd Web Terminal
+# Install system utilities
 #
 
 - name: Download pre-built TTYD Binary
@@ -9,3 +9,10 @@
     url: "https://github.com/tsl0922/ttyd/releases/download/{{ devbox_ttyd_version }}/ttyd.x86_64"
     dest: "{{ devbox_ttyd_path }}"
     mode: 0755
+
+- name: Install system utilities with TTYD
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "software-properties-common={{ devbox_software_properties_version }}"

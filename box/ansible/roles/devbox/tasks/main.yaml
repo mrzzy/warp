@@ -4,10 +4,10 @@
 #
 
 # Install
-# install ttyd web terminal
-- name: Install TTYD Web Terminal
+# install system utilities
+- name: Install System Utilities
   become: true
-  import_tasks: install_ttyd.yaml
+  import_tasks: install_system.yaml
 
 # install development tooling
 - name: Install Development Tooling
