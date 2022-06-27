@@ -13,11 +13,6 @@
 - name: Register NodeJS Repo
   include_tasks: register_nodejs.yaml
 
-- name: Update APT Cache
-  become: true
-  apt:
-    update-cache: true
-
 - name: Install development tools with APT
   become: true
   apt:

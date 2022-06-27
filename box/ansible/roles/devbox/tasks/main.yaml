@@ -3,6 +3,12 @@
 # Devbox Ansible Role Tasks
 #
 
+# update apt lists for installing packages
+- name: Update APT Cache
+  become: true
+  apt:
+    update-cache: true
+
 # Install
 # install system utilities
 - name: Install System Utilities
