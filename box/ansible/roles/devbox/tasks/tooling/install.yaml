@@ -13,21 +13,12 @@
 - name: Register NodeJS Repo
   include_tasks: register_nodejs.yaml
 
-- name: Update APT Cache
-  become: true
-  apt:
-    update-cache: true
-
 - name: Install development tools with APT
-  tags: [test]
   become: true
   apt:
     name: "{{ item }}"
     state: present
   loop:
-    # system tools
-    - "software-properties-common={{ devbox_software_properties_version }}"
-
     # language-agnostic tools
     - "entr={{ devbox_entr_version }}"
     - "ripgrep={{ devbox_ripgrep_version }}"

@@ -3,11 +3,16 @@
 # Devbox Ansible Role Tasks
 #
 
-# Install
-# install ttyd web terminal
-- name: Install TTYD Web Terminal
+# update apt lists for installing packages
+- name: Update APT Cache
   become: true
-  import_tasks: install_ttyd.yaml
+  apt:
+    update-cache: true
+
+# Install
+# install system utilities
+- name: Install System Utilities
+  import_tasks: install_system.yaml
 
 # install development tooling
 - name: Install Development Tooling
@@ -54,6 +59,9 @@
   when: devbox_ttyd_password != ""
   tags:
     - test
+# write iptables rules
+- name: Write iptables rules
+  import_tasks: write_iptables.yaml
 
 # setup development tooling
 - name: Setup Neovim

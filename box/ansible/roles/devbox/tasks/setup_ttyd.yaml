@@ -6,9 +6,6 @@
 
 - name: Setup systemd services to run TTYD on boot
   become: true
-  vars:
-    # forward incoming traffic via the default ipv4 interface to TTYD
-    interface: "{{ ansible_default_ipv4.interface }}"
   block:
     - name: Write TTYD over HTTPS systemd service
       copy:
@@ -27,17 +24,12 @@
           # start ttyd on a unprivilleged port as the unprivilleged devbox user
           ExecStart=sudo --user {{ devbox_user }} --group {{ devbox_user }} --login -n \
             {{ devbox_ttyd_path }} \
-              --port 7681 \
+              --port {{ devbox_ttyd_https_port }} \
               --credential "{{ devbox_user }}:{{ devbox_ttyd_password }}" \
               --ssl \
               --ssl-cert {{ devbox_ttyd_tls_cert }} \
               --ssl-key {{ devbox_ttyd_tls_private_key }} \
               /usr/bin/zsh
-
-          # use iptables to redirect HTTPs traffic to the web terminal
-          ExecStartPost=iptables -A PREROUTING -t nat -p tcp -i {{ interface }} --dport 443 -j REDIRECT --to-port 7681
-          ExecStopPost=iptables -D PREROUTING -t nat -p tcp -i {{ interface }} --dport 443 -j REDIRECT --to-port 7681
-
         dest: /etc/systemd/system/ttyd-https.service
         mode: 0644
 
@@ -57,13 +49,8 @@
           # start ttyd on a unprivilleged port as the unprivilleged devbox user
           ExecStart=sudo --user {{ devbox_user }} --group {{ devbox_user }} --login -n \
             {{ devbox_ttyd_path }} \
-              --port 7682 \
+              --port {{ devbox_ttyd_http_port }} \
               /usr/bin/zsh
-
-          # use iptables to redirect HTTP traffic to the web terminal
-          ExecStartPost=iptables -A PREROUTING -t nat -p tcp -i {{ interface }} --dport 80 -j REDIRECT --to-port 7682
-          ExecStopPost=iptables -D PREROUTING -t nat -p tcp -i {{ interface }} --dport 80 -j REDIRECT --to-port 7682
-
         dest: /etc/systemd/system/ttyd-http.service
         mode: 0644
 
