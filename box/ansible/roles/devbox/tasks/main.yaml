@@ -59,6 +59,9 @@
   when: devbox_ttyd_password != ""
   tags:
     - test
+# write iptables rules
+- name: Write iptables rules
+  import_tasks: write_iptables.yaml
 
 # setup development tooling
 - name: Setup Neovim

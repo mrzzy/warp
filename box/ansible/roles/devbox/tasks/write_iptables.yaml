@@ -5,6 +5,7 @@
 #
 
 - name: Write IPV4 iptables rules to be loaded on boot
+  become: true
   vars:
     interface: "{{ ansible_default_ipv4.interface }}"
   copy:
