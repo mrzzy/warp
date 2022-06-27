@@ -47,6 +47,7 @@ devbox_ttyd_password: ""
 devbox_python_version: 3.8.2-0ubuntu2
 devbox_python_pip_version: 20.0.2-5ubuntu1.6
 devbox_python_venv_version: 3.8.2-0ubuntu2
+devbox_python_wheel_version: 0.34.2-1
 
 # postgresql tools
 devbox_pgcli_version: 2.2.0-4
