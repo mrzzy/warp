@@ -16,8 +16,6 @@
         single_branch: true
 
     - name: Run TPM install_plugins
-      environment:
-        TMUX_PLUGIN_MANAGER_PATH: "{{ tpm_path }}/plugins"
       command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"
