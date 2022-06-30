@@ -47,6 +47,10 @@
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"
 
+- name: Install Python client for plugins
+  pip:
+    name: "pynvim=={{ devbox_nvim_pynvim_version }}"
+
 - name: Install FZF
   vars:
     fzf_version: "{{ devbox_fzf_version }}"
