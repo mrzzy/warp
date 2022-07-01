@@ -17,6 +17,7 @@
 
     - name: Run TPM install_plugins
       environment:
+        # needed to point TPM to install plugins in the devbox users home dir not root
         HOME: "{{ devbox_user_home }}"
       command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
