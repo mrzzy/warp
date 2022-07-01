@@ -60,6 +60,3 @@
 
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
-  vars:
-    terraform_version: "{{ devbox_hashicorp_terraform_version }}"
-    packer_version: "{{ devbox_hashicorp_packer_version }}"
