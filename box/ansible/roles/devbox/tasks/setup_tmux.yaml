@@ -16,6 +16,8 @@
         single_branch: true
 
     - name: Run TPM install_plugins
+      environment:
+        HOME: "{{ devbox_user_home }}"
       command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"
