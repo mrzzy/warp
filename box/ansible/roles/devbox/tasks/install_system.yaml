@@ -19,3 +19,4 @@
   loop:
     - "software-properties-common={{ devbox_software_properties_version }}"
     - "iptables-persistent={{ devbox_iptables_persistent_version }}"
+    - "acl={{ devbox_acl_version }}"

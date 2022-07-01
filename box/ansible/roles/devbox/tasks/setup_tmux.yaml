@@ -17,7 +17,8 @@
 
     - name: Run TPM install_plugins
       environment:
-        TMUX_PLUGIN_MANAGER_PATH: "{{ tpm_path }}/plugins"
+        # needed to point TPM to install plugins in the devbox users home dir not root
+        HOME: "{{ devbox_user_home }}"
       command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"

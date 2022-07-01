@@ -29,7 +29,6 @@
         single_branch: true
         dest: "{{ devbox_user_home }}/.git"
         bare: true
-
     - name: Unmark repo as bare to allow checkouts
       community.general.git_config:
         name: core.bare
@@ -57,8 +56,7 @@
   include_tasks: setup_ttyd.yaml
   # disable ttyd if password is unset to avoid exposing an unauthenticated web shell
   when: devbox_ttyd_password != ""
-  tags:
-    - test
+
 # write iptables rules
 - name: Write iptables rules
   import_tasks: write_iptables.yaml

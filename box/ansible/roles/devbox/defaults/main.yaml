@@ -11,6 +11,8 @@ devbox_user_home: /home/mrzzy
 devbox_software_properties_version: 0.99.9.8
 # load iptables rules on boot
 devbox_iptables_persistent_version: 1.0.14ubuntu1
+# needed for ansible to become a unprivilleged user
+devbox_acl_version: 2.2.53-6
 
 # language-agnostic tools
 devbox_nvim_version: 0.4.3-3
