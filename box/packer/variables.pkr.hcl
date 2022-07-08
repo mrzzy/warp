@@ -23,4 +23,5 @@ variable "linode_token" {
   description = "Access token used to authenticate with Linode Cloud."
   type        = string
   sensitive   = true
+  default     = ""
 }
