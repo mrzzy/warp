@@ -27,6 +27,13 @@ packer {
       source  = "github.com/hashicorp/googlecompute"
     }
   }
+
+  required_plugins {
+    linode = {
+      version = ">= 1.0.1, <1.1"
+      source  = "github.com/hashicorp/linode"
+    }
+  }
 }
 
 locals {
