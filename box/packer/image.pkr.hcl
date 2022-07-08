@@ -44,11 +44,10 @@ locals {
 }
 
 build {
-  sources = [
+  sources = concat([
     "source.vagrant.ubuntu",
-    "source.googlecompute.ubuntu",
-    "source.linode.ubuntu"
-  ]
+    "source.googlecompute.ubuntu"
+  ], length(var.linode_token) > 0 ? ["source.linode.ubuntu"] : [])
 
   provisioner "ansible" {
     extra_arguments = [
