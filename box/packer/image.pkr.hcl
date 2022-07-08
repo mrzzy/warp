@@ -46,7 +46,8 @@ locals {
 build {
   sources = [
     "source.vagrant.ubuntu",
-    "source.googlecompute.ubuntu"
+    "source.googlecompute.ubuntu",
+    "source.linode.ubuntu"
   ]
 
   provisioner "ansible" {
