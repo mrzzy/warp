@@ -65,9 +65,18 @@
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
 
-- name: "Install Kubectl"
+- name: Install Kubectl
   become: true
   get_url:
     url: "https://dl.k8s.io/release/{{ devbox_kubectl_version }}/bin/linux/amd64/kubectl"
     dest: /usr/local/bin/kubectl
+    mode: 0755
+
+- name: Install docker-compose
+  become: true
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/\
+          {{ devbox_docker_compose_version }}/docker-compose-linux-\
+          {{ ansible_userspace_architecture }}"
+    dest: /usr/local/bin/docker-compose
     mode: 0755
