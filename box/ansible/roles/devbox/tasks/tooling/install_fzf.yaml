@@ -8,7 +8,22 @@
   get_url:
     url: "https://raw.githubusercontent.com/junegunn/fzf/{{ fzf_version }}/install"
     dest: /tmp/install_fzf.sh
-    mode: 0774
+    mode: 0755
+
+
+- name: Download FZF completion ZSH script
+  become: true
+  block:
+    - name: Create FZF directory in /usr/local/share
+      file:
+        path: "{{ devbox_fzf_dir }}"
+        state: directory
+
+    - name: Download FZF key-bindings script for ZSH
+      get_url:
+        url: "https://raw.githubusercontent.com/junegunn/fzf/{{ fzf_version }}/shell/key-bindings.zsh"
+        dest: "{{ devbox_fzf_dir }}/key-bindings.zsh"
+        mode: 0755
 
 - name: Download FZF using install script
   command:
