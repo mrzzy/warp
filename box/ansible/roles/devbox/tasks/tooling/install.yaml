@@ -23,7 +23,6 @@
     - "entr={{ devbox_entr_version }}"
     - "ripgrep={{ devbox_ripgrep_version }}"
     - "docker.io={{ devbox_docker_version }}"
-    - "docker-compose={{ devbox_docker_compose_version }}"
     - "ranger={{ devbox_ranger_version }}"
     - "ansible={{ devbox_ansible_version }}"
     - "neovim={{ devbox_nvim_version }}"
