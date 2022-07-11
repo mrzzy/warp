@@ -32,6 +32,7 @@
     - "tmux={{ devbox_tmux_version }}"
     - "gawk={{ devbox_gawk_version }}"
     - "universal-ctags={{ devbox_universal_ctags_version }}"
+    - "jq={{ devbox_jq_version }}"
 
     # since the version of nodejs offered by registered repo is already pegged
     # there is no need to peg the version of nodejs installed here.
