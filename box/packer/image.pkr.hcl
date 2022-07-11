@@ -27,20 +27,30 @@ packer {
       source  = "github.com/hashicorp/googlecompute"
     }
   }
+
+  required_plugins {
+    linode = {
+      version = ">= 1.0.1, <1.1"
+      source  = "github.com/hashicorp/linode"
+    }
+  }
 }
 
 locals {
   # compile ansible vars into VAR1=VALUE1 VAR2=VALUE2 format
   ansible_vars = join(" ",
-    length(var.web_term_password) > 0 ? ["devbox_ttyd_password=${var.web_term_password}"] : []
+    concat(
+      ["devbox_minimize_storage=true"],
+      length(var.web_term_password) > 0 ? ["devbox_ttyd_password=${var.web_term_password}"] : []
+    )
   )
 }
 
 build {
-  sources = [
+  sources = concat([
     "source.vagrant.ubuntu",
     "source.googlecompute.ubuntu"
-  ]
+  ], length(var.linode_token) > 0 ? ["source.linode.ubuntu"] : [])
 
   provisioner "ansible" {
     extra_arguments = [

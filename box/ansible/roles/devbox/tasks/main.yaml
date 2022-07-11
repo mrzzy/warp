@@ -69,50 +69,20 @@
   become: true
   import_tasks: setup_tmux.yaml
 
-
 # User Accounts
 # create user & permissions
 - name: Setup User Accounts & Permissions
   become: true
-  block:
-    - name: Create groups
-      group:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - sudo
-        - docker
-        - ssl-cert
+  import_tasks: setup_users.yaml
 
-    - name: Create devbox user
-      user:
-        name: "{{ devbox_user }}"
-        home: "{{ devbox_user_home }}"
-        shell: /bin/zsh
-        groups:
-          # sudo group for passwordless sudo
-          - sudo
-          # docker group for sudo-free access to the docker CLI
-          - docker
-          # ttyd web terminal requires access to its TLS private key
-          - ssl-cert
-
-    - name: Allow password-less sudo to users in sudo group
-      copy:
-        content: "%sudo ALL=(ALL:ALL) NOPASSWD:ALL"
-        dest: /etc/sudoers.d/sudo_nopasswd
-        mode: 0440
-
-    - name: Fix owner of devbox home directory
-      file:
-        path: "{{ devbox_user_home }}"
-        owner: "{{ devbox_user }}"
-        group: "{{ devbox_user }}"
-        state: directory
-        recurse: true
-
-    - name: Allow ssl-cert group members to access TLS private keys
-      file:
-        path: /etc/ssl/private/
-        group: ssl-cert
-        mode: 0710
+# Minimize Storage Footprint
+- name: Clear APT cache of package files & lists
+  become: true
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_fileglob:
+    - "/var/lib/apt/lists/*"
+    - "/var/cache/apt/archives/*.deb"
+    - "/var/cache/apt/archives/partial/*"
+  when: devbox_minimize_storage
