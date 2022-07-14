@@ -1,7 +1,7 @@
 #
 # WARP
 # Devbox Ansible Role Tasks
-# Register HashiCorp's APT PPA
+# Install APT Packages from HashiCorp's Repo
 #
 
 - name: "Download HashiCorp's package signing key"
@@ -21,7 +21,7 @@
     repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     state: present
 
-- name: Install Devbox from HashiCorp's Repository with APT"
+- name: Install Devbox from HashiCorp's Repository with APT
   become: true
   apt:
     name: "{{ item }}"

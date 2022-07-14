@@ -67,3 +67,4 @@ devbox_pgcli_version: 2.2.0-4
 
 # kubernetes tools
 devbox_kubectl_version: v1.24.0
+devbox_helm_version: 3.9.1-1
