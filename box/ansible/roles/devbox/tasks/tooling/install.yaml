@@ -10,9 +10,6 @@
     repo: "ppa:ansible/ansible"
     state: present
 
-- name: Register NodeJS Repo
-  include_tasks: register_nodejs.yaml
-
 - name: Install development tools with APT
   become: true
   apt:
@@ -33,16 +30,6 @@
     - "gawk={{ devbox_gawk_version }}"
     - "universal-ctags={{ devbox_universal_ctags_version }}"
     - "jq={{ devbox_jq_version }}"
-
-    # since the version of nodejs offered by registered repo is already pegged
-    # there is no need to peg the version of nodejs installed here.
-    - "nodejs"
-
-    # python & tools
-    - "python3={{ devbox_python_version }}"
-    - "python3-pip={{ devbox_python_pip_version }}"
-    - "python3-venv={{ devbox_python_venv_version }}"
-    - "python-wheel-common={{ devbox_python_wheel_version }}"
 
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"
