@@ -4,9 +4,9 @@
 # Install Programming Languages & Supporting Tooling
 #
 
+# NodeJS
 - name: Register NodeJS Repo
   include_tasks: register_nodejs.yaml
-
 - name: Install NodeJS with APT
   become: true
   apt:
@@ -15,6 +15,7 @@
     name: "nodejs"
     state: present
 
+# Python
 - name: Install Python &amp; Tooling with APT
   become: true
   apt:
@@ -26,3 +27,25 @@
     - "python3-pip={{ devbox_python_pip_version }}"
     - "python3-venv={{ devbox_python_venv_version }}"
     - "python-wheel-common={{ devbox_python_wheel_version }}"
+
+# Scala
+- name: Install Coursier - Scala Dependency Manager
+  vars:
+    coursier_archive: "/tmp/coursier.gz"
+  block:
+    - name: Download pre-built Coursier archive
+      get_url:
+        url: "https://github.com/coursier/launchers/raw/{{ devbox_scala_coursier_version }}\
+              /cs-{{ ansible_userspace_architecture }}-pc-{{ ansible_system|lower }}.gz"
+        dest: "{{ coursier_archive }}"
+    - name: Decompress Coursier binary from archive
+      command:
+        cmd: "gzip --decompress {{ coursier_archive }}"
+        creates: /tmp/coursier
+    - name: Install Coursier binary to Local binaries
+      become: true
+      copy:
+        remote_src: true
+        src: /tmp/coursier
+        dest: /usr/local/bin/cs
+        mode: 0755

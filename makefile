@@ -9,6 +9,7 @@ VAGRANT:=vagrant
 PACKER:=packer
 PRE_CMT:=pre-commit
 RM:=rm -rf
+GALAXY:=ansible-galaxy
 PLAYBOOK:=ansible-playbook
 
 # paths
@@ -39,10 +40,12 @@ clean: clean-box
 
 # apply the ansible devbox playbook to the local machine
 apply: $(ANSIBLE_DIR)
+	$(GALAXY) install -r box/ansible/requirements.yaml
 	$(PLAYBOOK) \
 		--inventory 127.0.0.1, \
 		--connection local \
 		--ask-become-pass \
+		-t test \
 		$(ANSIBLE_DIR)/playbook.yaml
 
 # build rules: WARP dev box VM
