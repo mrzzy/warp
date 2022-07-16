@@ -45,7 +45,6 @@ apply: $(ANSIBLE_DIR)
 		--inventory 127.0.0.1, \
 		--connection local \
 		--ask-become-pass \
-		-t test \
 		$(ANSIBLE_DIR)/playbook.yaml
 
 # build rules: WARP dev box VM
