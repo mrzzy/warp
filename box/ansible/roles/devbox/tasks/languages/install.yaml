@@ -40,3 +40,5 @@
         version: "{{ devbox_jvm_java_version }}"
       - candidate: scala
         version: "{{ devbox_jvm_scala_version }}"
+      - candidate: sbt
+        version: "{{ devbox_jvm_sbt_version }}"
