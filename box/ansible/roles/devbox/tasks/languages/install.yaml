@@ -33,7 +33,9 @@
   import_role:
     role: comcast.sdkman
   vars:
-    sdkman_dir: "{{ devbox_user_home }}/.sdkman"
+    sdkman_dir: /usr/local/lib/sdkman
+    sdkman_user: root
+    sdkman_group: root
     sdkman_auto_answer: true
     sdkman_install_packages:
       - candidate: java
