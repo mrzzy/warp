@@ -15,7 +15,6 @@
   become: true
   block:
     - name: Create FZF directory in /usr/local/share
-      tags: [test]
       file:
         path: "{{ devbox_fzf_dir }}"
         state: directory
