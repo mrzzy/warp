@@ -30,6 +30,7 @@
 
 # JVM Languages
 - name: Install JVM Languages & Tooling with SDKMan
+  become: true
   import_role:
     role: comcast.sdkman
   vars:
