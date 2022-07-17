@@ -18,6 +18,7 @@
       file:
         path: "{{ devbox_fzf_dir }}"
         state: directory
+        mode: 0755
 
     - name: Download FZF key-bindings script for ZSH
       get_url:
