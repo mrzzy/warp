@@ -63,34 +63,6 @@ jobs:
         echo "$KEY_BASE64" | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
         make box-gcp
 
-  build-box-linode:
-    runs-on: ubuntu-20.04
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      with:
-        # required to fetch git branch info
-        fetch-depth: "0"
-
-    - name: Install Python Tooling
-      run: sudo pip3 install -r requirements.txt
-
-    - name: Install Packer
-      uses: hashicorp-contrib/setup-packer@v1
-      with:
-        packer-version: ${{ env.PACKER_VERSION }}
-
-    - name: Configure image as Development build
-      if: ${{ github.ref != 'refs/heads/main' }}
-      run: echo "PKR_VAR_image_suffix=-dev" >> $GITHUB_ENV
-
-    - name: Build WARP Box with Packer on Linode
-      env:
-        PKR_VAR_linode_token: ${{ secrets.LINODE_PACKER_TOKEN }}
-        PKR_VAR_web_term_password: ${{ secrets.BOX_WEB_TERM_PASSWORD }}
-      run: |
-        make box-linode
-
   lint:
     runs-on: ubuntu-20.04
     steps:
