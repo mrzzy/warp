@@ -17,11 +17,6 @@ devbox_iptables_persistent_version: 1.0.14ubuntu1
 # needed for ansible to become a unprivilleged user
 devbox_acl_version: 2.2.53-6
 
-# language-agnostic tools
-devbox_nvim_version: 0.4.3-3
-devbox_nvim_vim_plug_version: 0.11.0
-devbox_nvim_pynvim_version: 0.4.3
-
 # TTYD web terminal
 devbox_ttyd_version: 1.6.3
 devbox_ttyd_path: /usr/local/bin/ttyd
@@ -33,7 +28,13 @@ devbox_ttyd_password: ""
 # ports to instruct ttyd listen for connections
 devbox_ttyd_http_port: 7682
 devbox_ttyd_https_port: 7681
+  
+# Neovim text editor
+devbox_nvim_version: 0.4.3-3
+devbox_nvim_vim_plug_version: 0.11.0
+devbox_nvim_pynvim_version: 0.4.3
 
+# Language-agnostic tools
 devbox_entr_version: 4.4-1
 devbox_ripgrep_version: 11.0.2-1build1
 devbox_docker_version: 20.10.12-0ubuntu2~20.04.1
@@ -43,6 +44,7 @@ devbox_ansible_version: 5.10.0-1ppa~focal
 devbox_gawk_version: 1:5.0.1+dfsg-1
 devbox_universal_ctags_version: 0+git20181215-2
 devbox_jq_version: 1.6-1ubuntu0.20.04.1
+devbox_pre_commit_version: 2.20.0
 
 devbox_zsh_version: 5.8-3ubuntu1.1
 devbox_zsh_autosuggest_version: 0.6.4-1

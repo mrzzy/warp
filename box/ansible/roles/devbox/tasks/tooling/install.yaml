@@ -34,9 +34,14 @@
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"
 
-- name: Install Python client for plugins
+- name: Install Development Tools with Pip
   pip:
-    name: "pynvim=={{ devbox_nvim_pynvim_version }}"
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "pre-commit=={{ devbox_pre_commit_version }}"
+    # neovim client for python
+    - "pynvim=={{ devbox_nvim_pynvim_version }}"
 
 - name: Install FZF
   vars:
