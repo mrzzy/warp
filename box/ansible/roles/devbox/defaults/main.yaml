@@ -28,7 +28,7 @@ devbox_ttyd_password: ""
 # ports to instruct ttyd listen for connections
 devbox_ttyd_http_port: 7682
 devbox_ttyd_https_port: 7681
-  
+
 # Neovim text editor
 devbox_nvim_version: 0.4.3-3
 devbox_nvim_vim_plug_version: 0.11.0
