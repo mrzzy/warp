@@ -35,6 +35,7 @@
     - "pgcli={{ devbox_pgcli_version }}"
 
 - name: Install Development Tools with Pip
+  become: true
   pip:
     name: "{{ item }}"
     state: present
