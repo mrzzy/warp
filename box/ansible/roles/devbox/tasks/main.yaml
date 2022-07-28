@@ -29,7 +29,7 @@
     - name: Pull bare dotfiles repository
       git:
         repo: https://github.com/mrzzy/dotfiles
-        version: main
+        version: "{{ devbox_dotfiles_rev }}"
         single_branch: true
         dest: "{{ devbox_user_home }}/.git"
         bare: true
