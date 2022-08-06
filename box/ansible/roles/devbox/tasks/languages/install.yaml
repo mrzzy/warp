@@ -45,3 +45,13 @@
         version: "{{ devbox_jvm_scala_version }}"
       - candidate: sbt
         version: "{{ devbox_jvm_sbt_version }}"
+
+# C/C++
+- name: Install C/C++ Tooling with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "cmake={{ devbox_c_cmake_version }}"
+    - "clang-12={{ devbox_c_clangd_version }}"

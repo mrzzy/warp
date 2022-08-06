@@ -73,6 +73,10 @@ devbox_jvm_java_version: 11.0.15-tem
 devbox_jvm_scala_version: 3.1.3
 devbox_jvm_sbt_version: 1.7.1
 
+# c/c++ tools
+devbox_c_cmake_version: 3.16.3-1ubuntu1
+devbox_c_clangd_version: "1:12.0.0-3ubuntu1~20.04.5"
+
 # postgresql tools
 devbox_pgcli_version: 2.2.0-4
 
