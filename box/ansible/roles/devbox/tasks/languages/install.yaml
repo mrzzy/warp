@@ -54,4 +54,4 @@
     state: present
   loop:
     - "cmake={{ devbox_c_cmake_version }}"
-    - "clang-12={{ devbox_c_clangd_version }}"
+    - "clangd-12={{ devbox_c_clangd_version }}"
