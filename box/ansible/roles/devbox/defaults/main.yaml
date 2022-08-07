@@ -7,7 +7,7 @@ devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
 # git revision of dotfiles to install
-devbox_dotfiles_rev: 8963905b1a87ca6fd93dfa23216556e84d6a7d6d
+devbox_dotfiles_rev: 0267b00b8d31dc936492aeb6cdd70c51a654d921
 
 # whether to optimize deployment for a small storage footprint
 devbox_minimize_storage: false
