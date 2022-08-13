@@ -12,6 +12,7 @@
     mode: 0755
 
 - name: Write TTYD over HTTPS systemd service
+  become: true
   copy:
     content: |
       [Unit]
@@ -38,6 +39,7 @@
     mode: 0644
 
 - name: Write TTYD over HTTP systemd service
+  become: true
   copy:
     content: |
       [Unit]
@@ -59,6 +61,7 @@
     mode: 0644
 
 - name: Enable TTYD
+  become: true
   # disable ttyd if password is unset to avoid exposing an unauthenticated web shell
   when: devbox_ttyd_password != ""
   block:
@@ -71,7 +74,6 @@
         - ttyd-http
 
     - name: Write IPV4 TTYD iptables rules to be loaded by iptables-persistent
-      become: true
       vars:
         interface: "{{ ansible_default_ipv4.interface }}"
       copy:
