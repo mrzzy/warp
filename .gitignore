@@ -8,3 +8,6 @@ venv/
 # tag files
 /tags
 /tags.*
+
+# vim-projectionist
+/.projections.json

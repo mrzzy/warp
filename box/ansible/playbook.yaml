@@ -8,4 +8,6 @@
   pre_tasks:
     - name: Check connectivity to Box
       ping: {}
-  roles: [devbox]
+  roles:
+    - devbox
+    - ttyd
