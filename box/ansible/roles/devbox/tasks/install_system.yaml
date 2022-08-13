@@ -11,7 +11,7 @@
     dest: "{{ devbox_ttyd_path }}"
     mode: 0755
 
-- name: Install system utilities with TTYD
+- name: Install system utilities with APT
   become: true
   apt:
     name: "{{ item }}"
