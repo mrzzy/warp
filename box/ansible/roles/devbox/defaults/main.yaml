@@ -1,6 +1,6 @@
 #
 # WARP
-# Devbox Ansible Role default Vars
+# Devbox Ansible Role default variables
 #
 
 devbox_user: mrzzy
@@ -19,18 +19,6 @@ devbox_software_properties_version: 0.99.9.8
 devbox_iptables_persistent_version: 1.0.14ubuntu1
 # needed for ansible to become a unprivilleged user
 devbox_acl_version: 2.2.53-6
-
-# TTYD web terminal
-devbox_ttyd_version: 1.6.3
-devbox_ttyd_path: /usr/local/bin/ttyd
-# ttyd expects tls certificate & private key at paths
-devbox_ttyd_tls_cert: /etc/ssl/certs/ttyd.pem
-devbox_ttyd_tls_private_key: /etc/ssl/private/ttyd.key
-# password for the ttyd web terminal. If unset disables TTYD web terminal.
-devbox_ttyd_password: ""
-# ports to instruct ttyd listen for connections
-devbox_ttyd_http_port: 7682
-devbox_ttyd_https_port: 7681
 
 # Neovim text editor
 devbox_nvim_version: 0.4.3-3

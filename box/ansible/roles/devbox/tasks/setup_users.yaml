@@ -23,7 +23,7 @@
       - sudo
       # docker group for sudo-free access to the docker CLI
       - docker
-      # ttyd web terminal requires access to its TLS private key
+      # access to TLS certificates
       - ssl-cert
 
 - name: Allow password-less sudo to users in sudo group
