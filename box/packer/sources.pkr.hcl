@@ -33,21 +33,3 @@ source "googlecompute" "ubuntu" {
   # vm image name
   image_name = "warp-box${var.image_suffix}"
 }
-
-source "linode" "ubuntu" {
-  linode_token = var.linode_token
-
-  communicator = "ssh"
-  ssh_username = "root"
-
-  # builder vm
-  region        = "ap-south"       # singapore
-  instance_type = "g6-dedicated-2" # 2 CPU, 4GB ram
-
-  # build base
-  image = "linode/ubuntu20.04"
-
-  # vm image
-  image_label       = "warp-box${var.image_suffix}"
-  image_description = "Image for bootstrapping a WARP development VM."
-}

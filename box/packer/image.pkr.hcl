@@ -27,13 +27,6 @@ packer {
       source  = "github.com/hashicorp/googlecompute"
     }
   }
-
-  required_plugins {
-    linode = {
-      version = ">= 1.0.1, <1.1"
-      source  = "github.com/hashicorp/linode"
-    }
-  }
 }
 
 locals {
@@ -47,10 +40,10 @@ locals {
 }
 
 build {
-  sources = concat([
+  sources = [
     "source.vagrant.ubuntu",
     "source.googlecompute.ubuntu"
-  ], length(var.linode_token) > 0 ? ["source.linode.ubuntu"] : [])
+  ]
 
   provisioner "ansible" {
     extra_arguments = [
