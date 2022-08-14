@@ -30,6 +30,7 @@
     - "gawk={{ devbox_gawk_version }}"
     - "universal-ctags={{ devbox_universal_ctags_version }}"
     - "jq={{ devbox_jq_version }}"
+    - "rclone={{ devbox_rclone_version }}"
 
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"
@@ -44,6 +45,14 @@
     # neovim client for python
     - "pynvim=={{ devbox_nvim_pynvim_version }}"
 
+- name: Install Bitwarden CLI with NPM
+  become: true
+  npm:
+    name: "@bitwarden/cli"
+    global: true
+    version: "{{ devbox_bw_version }} "
+    state: present
+
 - name: Install FZF
   vars:
     fzf_version: "{{ devbox_fzf_version }}"
@@ -57,7 +66,6 @@
 
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
-
 
 - name: Install docker-compose
   become: true
