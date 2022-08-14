@@ -22,9 +22,9 @@ source "googlecompute" "ubuntu" {
   ssh_username = "packer"
 
   # google cloud build environment
-  project_id   = "mrzzy-sandbox"
-  zone         = "asia-southeast1-c" # singapore
-  preemptible  = true
+  project_id  = "mrzzy-sandbox"
+  zone        = "asia-southeast1-c" # singapore
+  preemptible = true
 
   # compute engine image as build base
   source_image_family = "ubuntu-minimal-2004-lts"
