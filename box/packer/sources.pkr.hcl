@@ -21,10 +21,11 @@ source "googlecompute" "ubuntu" {
   communicator = "ssh"
   ssh_username = "packer"
 
-  # google project / zone
+  # google cloud build environment
   project_id  = "mrzzy-sandbox"
   zone        = "asia-southeast1-c" # singapore
   preemptible = true
+  machine_type = "n2d-standard-2" # AMD EPYC, 2vCPU 2GB
 
   # compute engine image as build base
   source_image_family = "ubuntu-minimal-2004-lts"
