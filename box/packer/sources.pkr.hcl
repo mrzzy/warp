@@ -25,7 +25,6 @@ source "googlecompute" "ubuntu" {
   project_id   = "mrzzy-sandbox"
   zone         = "asia-southeast1-c" # singapore
   preemptible  = true
-  machine_type = "n2d-standard-2" # AMD EPYC, 2vCPU 2GB
 
   # compute engine image as build base
   source_image_family = "ubuntu-minimal-2004-lts"
