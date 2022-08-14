@@ -22,9 +22,9 @@ source "googlecompute" "ubuntu" {
   ssh_username = "packer"
 
   # google cloud build environment
-  project_id  = "mrzzy-sandbox"
-  zone        = "asia-southeast1-c" # singapore
-  preemptible = true
+  project_id   = "mrzzy-sandbox"
+  zone         = "asia-southeast1-c" # singapore
+  preemptible  = true
   machine_type = "n2d-standard-2" # AMD EPYC, 2vCPU 2GB
 
   # compute engine image as build base
