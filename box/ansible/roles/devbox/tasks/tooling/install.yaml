@@ -30,7 +30,6 @@
     - "gawk={{ devbox_gawk_version }}"
     - "universal-ctags={{ devbox_universal_ctags_version }}"
     - "jq={{ devbox_jq_version }}"
-    - "rclone={{ devbox_rclone_version }}"
 
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"
