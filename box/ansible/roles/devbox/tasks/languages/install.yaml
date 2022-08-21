@@ -55,3 +55,11 @@
   loop:
     - "cmake={{ devbox_c_cmake_version }}"
     - "clangd-12={{ devbox_c_clangd_version }}"
+
+# YAML
+- name: Install YQ YAML Processor
+  become: true
+  get_url:
+    url: "https://github.com/mikefarah/yq/releases/download/{{ devbox_yq_version }}/yq_linux_amd64"
+    dest: /usr/local/bin/yq
+    mode: 0755
