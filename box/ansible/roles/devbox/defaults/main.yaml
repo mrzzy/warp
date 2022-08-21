@@ -35,6 +35,7 @@ devbox_ansible_version: 5.10.0-1ppa~focal
 devbox_gawk_version: 1:5.0.1+dfsg-1
 devbox_universal_ctags_version: 0+git20181215-2
 devbox_jq_version: 1.6-1ubuntu0.20.04.1
+
 devbox_pre_commit_version: 2.20.0
 devbox_rclone_version: v1.59.1
 devbox_bw_version: 2022.8.0

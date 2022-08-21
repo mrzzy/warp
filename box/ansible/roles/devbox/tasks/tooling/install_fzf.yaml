@@ -10,7 +10,6 @@
     dest: /tmp/install_fzf.sh
     mode: 0755
 
-
 - name: Download FZF completion ZSH script
   become: true
   block:
