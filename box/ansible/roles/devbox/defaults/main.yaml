@@ -14,6 +14,7 @@ devbox_minimize_storage: false
 
 # system tools
 # needed for add-apt-repository
+# renovate: datasource=repology depName=ubuntu_20_04/software-properties
 devbox_software_properties_version: 0.99.9.8
 # load iptables rules on boot
 devbox_iptables_persistent_version: 1.0.14ubuntu1
