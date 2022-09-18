@@ -27,7 +27,7 @@
         state: present
     - name: Install GKE Auth Plugin
       apt:
-        name: "google-cloud-sdk-gke-gcloud-auth-plugin={{ devbox_kubectl_gke_auth_plugin_version }}"
+        name: "google-cloud-sdk-gke-gcloud-auth-plugin"
         state: present
 
 - name: Install Helm
