@@ -27,7 +27,7 @@ devbox_acl_version: 2.2.53-6
 # renovate: datasource=repology depName=ubuntu_20_04/neovim
 devbox_nvim_version: 0.4.3-3
 # renovate: datasource=github-releases depName=junegunn/vim-plug
-eevbox_nvim_vim_plug_version: 0.11.0
+devbox_nvim_vim_plug_version: 0.11.0
 # renovate: datasource=pypi depName=pynvim versioning=python
 devbox_nvim_pynvim_version: 0.4.3
 
