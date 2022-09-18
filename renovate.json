@@ -16,6 +16,14 @@
       "depNameTemplate": "{{{ owner }}}/packer-plugin-{{{ repo }}}",
       "datasourceTemplate": "github-tags",
       "versioningTemplate": "hashicorp"
+    },
+    {
+      "fileMatch": ["roles\\/.*\\/defaults\\/.*\\.yaml$"],
+      "matchStrings": [
+        "renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\s+\\w+_version: *(?<currentValue>\\S+)"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}loose{{/if}}"
     }
+
   ]
 }
