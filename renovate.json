@@ -20,7 +20,7 @@
     {
       "fileMatch": ["roles\\/.*\\/defaults\\/.*\\.yaml$"],
       "matchStrings": [
-        "# renovate:\\s+\\w+_version: *(?<currentValue>.*)\\s"
+        ".*renovate.*\\s+\\w+_version: *(?<currentValue>\\S+)"
       ],
       "depNameTemplate": "tsl0922/ttyd",
       "datasourceTemplate": "github-releases",
