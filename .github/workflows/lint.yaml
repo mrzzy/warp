@@ -1,0 +1,38 @@
+#
+# WARP
+# CI Pipeline
+# Lint
+#
+
+name: CI Pipeline
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: "0"
+
+    - name: Install Packer
+      uses: hashicorp-contrib/setup-packer@v1
+      with:
+        packer-version: ${{ env.PACKER_VERSION }}
+
+    - name: Install Python Tooling
+      run: |
+        set -ex -o pipefail
+        sudo pip3 install -r requirements.txt
+        pre-commit install-hooks
+
+    - name: Install Ansible Roles dependencies from Ansible Galaxy
+      run: ansible-galaxy install -r box/ansible/requirements.yaml
+
+    - name: Flag Secrets
+      uses: zricethezav/gitleaks-action@v1.6.0
+
+    - name: Lint code
+      env:
+        PACKER_GITHUB_API_TOKEN: ${{ github.token }}
+      run: make lint
