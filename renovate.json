@@ -20,11 +20,10 @@
     {
       "fileMatch": ["roles\\/.*\\/defaults\\/.*\\.yaml$"],
       "matchStrings": [
-        ".*"
+        "#.*\\s\\w+_version: *(?<currentValue>.+)\\s"
       ],
-      "datasourceTemplate": "github-releases",
       "depNameTemplate": "tsl0922/ttyd",
-      "currentValueTemplate": "1.6.3",
+      "datasourceTemplate": "github-releases",
       "versioningTemplate": "loose"
     }
   ]
