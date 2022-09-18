@@ -20,11 +20,9 @@
     {
       "fileMatch": ["roles\\/.*\\/defaults\\/.*\\.yaml$"],
       "matchStrings": [
-        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)( versioning=(?<versioning>\\S+))?"
+        "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)"
       ],
       "currentValueTemplate": "1.6.3",
-      "depNameTemplate": "tsl0922/ttyd",
-      "datasourceTemplate": "github-releases",
       "versioningTemplate": "loose"
     }
   ]
