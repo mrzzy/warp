@@ -20,7 +20,7 @@
     {
       "fileMatch": ["roles\\/.*\\/defaults\\/.*\\.yaml$"],
       "matchStrings": [
-        "renovate:.*\\s"
+        ".*"
       ],
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "tsl0922/ttyd",
