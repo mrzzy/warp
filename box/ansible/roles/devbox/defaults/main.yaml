@@ -35,7 +35,7 @@ devbox_nvim_pynvim_version: 0.4.3
 # renovate: datasource=repology depName=ubuntu_20_04/entr
 devbox_entr_version: 4.4-1
 # renovate: datasource=repology depName=ubuntu_20_04/rust-ripgrep
-devbox_ripgrep_version: 11.0.2-1build1
+devbox_ripgrep_version: 11.0.2-1ubuntu0.1
 # renovate: datasource=repology depName=ubuntu_20_04/docker.io
 devbox_docker_version: 20.10.12-0ubuntu2~20.04.1
 # renovate: datasource=github-releases depName=docker/compose
