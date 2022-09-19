@@ -86,7 +86,7 @@ devbox_python_version: 3.8.10-0ubuntu1~20.04.5
 # renovate: datasource=repology depName=ubuntu_20_04/python-pip
 devbox_python_pip_version: 20.0.2-5ubuntu1.6
 # renovate: datasource=repology depName=ubuntu_20_04/python-virtualenv
-devbox_python_venv_version: 3.8.2-0ubuntu2
+devbox_python_venv_version: 20.0.17-1ubuntu0.4
 # renovate: datasource=repology depName=ubuntu_20_04/wheel
 devbox_python_wheel_version: 0.34.2-1
 
