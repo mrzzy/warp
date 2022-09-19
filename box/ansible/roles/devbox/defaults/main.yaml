@@ -18,7 +18,7 @@ devbox_minimize_storage: false
 devbox_software_properties_version: 0.99.9.8
 # load iptables rules on boot
 # renovate: datasource=repology depName=ubuntu_20_04/iptables-persistent
-devbox_iptables_persistent_version: 1.0.14ubuntu1
+devbox_iptables_persistent_version: 1.0.14
 # needed for ansible to become a unprivilleged user
 # renovate: datasource=repology depName=ubuntu_20_04/acl
 devbox_acl_version: 2.2.53-6
