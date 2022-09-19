@@ -54,7 +54,7 @@ devbox_jq_version: 1.6-1ubuntu0.20.04.1
 # renovate: datasource=pypi depName=pre-commit
 devbox_pre_commit_version: 2.20.0
 # renovate: datasource=github-releases depName=rclone/rclone
-devbox_rclone_version: v1.59.1
+devbox_rclone_version: v1.59.2
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
 # TODO(mrzzy): is this useful? maybe remove.
 devbox_bw_version: 2022.8.0
