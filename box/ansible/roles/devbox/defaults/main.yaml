@@ -104,7 +104,7 @@ devbox_c_clangd_version: "1:12.0.0-3ubuntu1~20.04.5"
 
 # yaml tools
 # renovate: datasource=github-releases depName=mikefarah/yq
-devbox_yq_version: v4.27.2
+devbox_yq_version: v4.27.5
 
 # postgresql tools
 # renovate: datasource=repology depName=ubuntu_20_04/pgcli
