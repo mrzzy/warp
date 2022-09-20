@@ -6,6 +6,8 @@
 
 name: CI Pipeline
 on: push
+env:
+  PACKER_VERSION: 1.8.0
 jobs:
   lint:
     runs-on: ubuntu-20.04
@@ -16,7 +18,7 @@ jobs:
         fetch-depth: "0"
 
     - name: Install Packer
-      uses: hashicorp-contrib/setup-packer@v1
+      uses: hashicorp-contrib/setup-packer@v2
       with:
         packer-version: ${{ env.PACKER_VERSION }}
 
