@@ -12,7 +12,8 @@ on:
       - makefile
       - requirements.txt
 env:
-  PACKER_VERSION: 1.8.0
+  # renovate: datasource=github-releases depName=hashicorp/packer versioning=hashicorp stripV
+  PACKER_VERSION: 1.8.3
   # make ansible output human readable logs
   ANSIBLE_STDOUT_CALLBACK: debug
 jobs:
