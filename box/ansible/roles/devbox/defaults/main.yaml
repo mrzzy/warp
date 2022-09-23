@@ -10,7 +10,7 @@ devbox_user_home: /home/mrzzy
 devbox_dotfiles_rev: 79bc162f7778d3c35ccbd55ee7c4babda9c99639
 
 # whether to optimize deployment for a small storage footprint
-devbox_minimize_storage: false
+devbox_minimize_storage: true
 
 # system tools
 # needed for add-apt-repository
