@@ -9,9 +9,6 @@ devbox_user_home: /home/mrzzy
 # git revision of dotfiles to install
 devbox_dotfiles_rev: 79bc162f7778d3c35ccbd55ee7c4babda9c99639
 
-# whether to optimize deployment for a small storage footprint
-devbox_minimize_storage: true
-
 # system tools
 # needed for add-apt-repository
 # renovate: datasource=repology depName=ubuntu_20_04/software-properties
@@ -113,3 +110,9 @@ devbox_pgcli_version: 2.2.0-4
 devbox_kubectl_version: v1.25.1
 # renovate: datasource=github-releases depName=helm/helm stripV
 devbox_helm_version: 3.9.4
+
+# Optimizations
+# whether to optimize deployment for a small storage footprint
+devbox_minimize_storage: true
+# disable auto unattended upgrades
+devbox_uninstall_unattended_upgrades: true
