@@ -69,14 +69,6 @@
   become: true
   import_tasks: setup_users.yaml
 
-# Minimize Storage Footprint
-- name: Clear APT cache of package files & lists
-  become: true
-  file:
-    path: "{{ item }}"
-    state: absent
-  with_fileglob:
-    - "/var/lib/apt/lists/*"
-    - "/var/cache/apt/archives/*.deb"
-    - "/var/cache/apt/archives/partial/*"
-  when: devbox_minimize_storage
+# Optimizations
+- name: Optimize Storage Footprint & Performance
+  import_tasks: optimize.yaml

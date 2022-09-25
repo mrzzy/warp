@@ -1,0 +1,25 @@
+#
+# WARP
+# Devbox Ansible Role
+# Optimizations
+#
+
+# minimize storage footprint
+- name: Clear APT cache of package files & lists
+  become: true
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_fileglob:
+    - "/var/lib/apt/lists/*"
+    - "/var/cache/apt/archives/*.deb"
+    - "/var/cache/apt/archives/partial/*"
+  when: devbox_minimize_storage
+
+# disable auto upgrades: upgrades hog the cpu at runtime
+- name: Disable Auto Upgrades by removing Unattended-upgrades
+  become: true
+  apt:
+    name: unattended-upgrades
+    state: absent
+  when: devbox_uninstall_unattended_upgrades
