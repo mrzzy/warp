@@ -43,6 +43,7 @@
     - "pre-commit=={{ devbox_pre_commit_version }}"
     # neovim client for python
     - "pynvim=={{ devbox_nvim_pynvim_version }}"
+    - "linode-cli=={{ devbox_linode_cli_version }}"
 
 - name: Install Bitwarden CLI with NPM
   become: true
