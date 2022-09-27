@@ -30,6 +30,7 @@
     - "gawk={{ devbox_gawk_version }}"
     - "universal-ctags={{ devbox_universal_ctags_version }}"
     - "jq={{ devbox_jq_version }}"
+    - "bind9-dnsutils={{ devbox_dnsutils_version }}"
 
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"
