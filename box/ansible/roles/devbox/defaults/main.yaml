@@ -47,7 +47,7 @@ devbox_gawk_version: 1:5.0.1+dfsg-1
 devbox_universal_ctags_version: 0+git20181215-2
 # renovate: datasource=repology depName=ubuntu_20_04/jq
 devbox_jq_version: 1.6-1ubuntu0.20.04.1
-# renovate: datasource=repology depName=ubuntu_20_04/bind9-dnsutils
+# renovate: datasource=repology depName=ubuntu_20_04/bind9
 devbox_dnsutils_version: 1:9.16.1-0ubuntu2.11
 
 # renovate: datasource=pypi depName=pre-commit
