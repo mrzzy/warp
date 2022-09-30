@@ -27,8 +27,7 @@ BOX_NAME:=mrzzy/warp-box
 
 all: box
 
-lint:
-	$(PACKER) init $(PACKER_DIR)
+lint: packer-init
 	$(PACKER) fmt -check $(PACKER_DIR)
 	$(PACKER) validate $(PACKER_DIR)
 	$(PRE_CMT) run
