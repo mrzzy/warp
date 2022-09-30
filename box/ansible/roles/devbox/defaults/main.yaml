@@ -101,7 +101,7 @@ devbox_yq_version: v4.27.5
 devbox_pgcli_version: 2.2.0-4
 
 # cloud tools
-# renovate: datasource=github-releases depName=hashicorp/terraform versioning=hashicorp
+# renovate: datasource=github-releases depName=hashicorp/terraform versioning=hashicorp stripV
 devbox_hashicorp_terraform_version: 1.2.2
 # renovate: datasource=github-releases depName=hashicorp/terraform-ls versioning=hashicorp stripV
 devbox_hashicorp_terraform_langserver_version: 0.29.1
