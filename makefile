@@ -22,7 +22,7 @@ ANSIBLE_DIR=$(BOX_DIR)/ansible
 BOX_NAME:=mrzzy/warp-box
 
 # phony build rules
-.PHONY: all box box-gcp box-linode clean fmt lint apply packer-init
+.PHONY: all box box-gcp box-linode clean fmt lint apply packer-init ansible-deps
 .DEFAULT: all
 
 all: box
@@ -39,8 +39,10 @@ fmt:
 clean: clean-box
 
 # apply the ansible devbox playbook to the local machine
-apply: $(ANSIBLE_DIR)
+ansible-deps:
 	$(GALAXY) install -r box/ansible/requirements.yaml
+
+apply: $(ANSIBLE_DIR) ansible-deps
 	$(PLAYBOOK) \
 		--inventory 127.0.0.1, \
 		--connection local \
@@ -51,13 +53,13 @@ apply: $(ANSIBLE_DIR)
 box: build/package.box
 
 # development build: build box on virtualbox only.
-build/package.box: $(PACKER_DIR) packer-init
+build/package.box: $(PACKER_DIR) packer-init ansible-deps
 	$(PACKER) build --only="vagrant.ubuntu" --force $<
 
-box-gcp: $(PACKER_DIR) packer-init
+box-gcp: $(PACKER_DIR) packer-init ansible-deps
 	$(PACKER) build --only="googlecompute.ubuntu" --force $<
 
-box-linode: $(PACKER_DIR) packer-init
+box-linode: $(PACKER_DIR) packer-init ansible-deps
 	$(PACKER) build --only="linode.ubuntu" --force $<
 
 packer-init: $(PACKER_DIR)
