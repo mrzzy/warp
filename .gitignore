@@ -4,10 +4,12 @@ build/
 venv/
 # vagrant
 .vagrant/
-
+# terraform
+.terraform/
 # tag files
 /tags
 /tags.*
 
 # vim-projectionist
 /.projections.json
+
