@@ -22,7 +22,7 @@ ANSIBLE_DIR=$(BOX_DIR)/ansible
 BOX_NAME:=mrzzy/warp-box
 
 # phony build rules
-.PHONY: all box box-gcp box-linode clean fmt lint apply packer-init ansible-deps
+.PHONY: all box box-gcp clean fmt lint apply packer-init ansible-deps
 .DEFAULT: all
 
 all: box
@@ -58,9 +58,6 @@ build/package.box: $(PACKER_DIR) packer-init ansible-deps
 
 box-gcp: $(PACKER_DIR) packer-init ansible-deps
 	$(PACKER) build --only="googlecompute.ubuntu" --force $<
-
-box-linode: $(PACKER_DIR) packer-init ansible-deps
-	$(PACKER) build --only="linode.ubuntu" --force $<
 
 packer-init: $(PACKER_DIR)
 	$(PACKER) init $<
