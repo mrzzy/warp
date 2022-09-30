@@ -50,7 +50,7 @@ repos:
   hooks:
   - id: terraform_fmt
     args:
-      - --args=-recursive -no-color
+      - --args=-chdir=deploy/terraform/gcp_vm -recursive -no-color
   - id: terraform_validate
     args:
-      - --args=-no-color
+      - --args=-chdir=deploy/terraform/gcp_vm -no-color -color
