@@ -45,12 +45,12 @@ repos:
   - id: check-github-workflows
 
 # lint terraform
-- repo: https://github.com/antonbabenko/pre-commit-terraform
+- repo: https://github.com/antonbabenko/pre-commit-terraform.git
   rev: v1.72.1
   hooks:
   - id: terraform_fmt
     args:
-      - --args=-chdir=deploy/terraform/gcp_vm -recursive -no-color
+      - --args=-recursive -no-color
   - id: terraform_validate
     args:
-      - --args=-chdir=deploy/terraform/gcp_vm -no-color -color
+      - --args=-no-color
