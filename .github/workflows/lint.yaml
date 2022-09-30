@@ -6,8 +6,6 @@
 
 name: CI Pipeline
 on: push
-env:
-  PACKER_VERSION: 1.8.0
 jobs:
   lint:
     runs-on: ubuntu-20.04
@@ -20,7 +18,7 @@ jobs:
     - name: Install Packer
       uses: hashicorp-contrib/setup-packer@v2
       with:
-        packer-version: ${{ env.PACKER_VERSION }}
+        packer-version: 1.8.0
 
     - name: Install Python Tooling
       run: |
