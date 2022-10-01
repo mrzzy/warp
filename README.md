@@ -1,31 +1,87 @@
 # WARP
-:construction: write code anywhere in the interwebs
+[![Build Status](https://github.com/mrzzy/warp/actions/workflows/box.yaml/badge.svg)](https://github.com/mrzzy/warp/actions/workflows/box.yaml)
+
+Code anywhere with an internet connection.
 
 ## Introduction
-WARP is WIP unified development environment for writing code anywhere:
-- Cloud Native: Powered by cloud computing.
-- Portable: Work anywhere with a web browser and an internet connection.
-- Transparent: Nested-VMs and Docker should work transparently.
-- Cost Effective: Environment shuts off when you are not using it.
+WARP is portable, console based development environment which grew out the need to have a fully featured development environment ready to go, in the absence of my Physical Laptop.  It is a full recreation of my Linux-based development environment in a Cloud VM, accessible via SSH or a Web Browsers.
 
-## Development
-### WARP:Box
-#### Tooling
-Install WARP:Box development tooling:
-1. Install [Packer](https://www.packer.io/downloads) & [Vagrant](https://www.vagrantup.com/downloads)
-2. Install Ansible & Code Linters in a Python virtualenv:
+> See [design](#Design) for architecture deep dive.
 
+## Features
+- **Portable** WARP is accessible from on any machine with a Web Browser or SSH client over the internet.
+- **Consistency** Each WARP instance has identical OS, packages & development tooling versions, ensuring the reproducibility of software written on it.
+- **Cloud Native** Designed to run in the cloud, WARP attains the ability to vertically scale based on development workload.
+- **Lightweight** Console-based by design, WARP avoids the overhead of a running a full blown Desktop environment.
+
+## Usage
+1. Install the Pypi modules listed in `requirements.txt`
 ```sh
-python3 -m venv venv
-source venv/bin/activate
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
-
-3. Install pre-commit hooks:
-
+2. Install pre-commit hooks:
 ```sh
-pre-commit install-hooks
 pre-commit install
 ```
+### Local
+3. Recreate WARP's development environment locally:
+```
+make apply
+```
 
-:tada: Happy Hacking
+### GCP
+3. Install Packer, Terraform
+4. Edit `project_id` & `zone` in `sources.pkr.hcl`
+```hcl
+  # google cloud build environment
+  project_id  = "<GCP_PROJECT_ID>"
+  zone        = "<ZONE> # singapore
+```
+5. Build WARP Box as a GCE VM image
+```sh
+make box-gcp
+```
+6. Spin up WARP VM can on Google Cloud with included Terraform module:
+```hcl
+module "warp_vm" {
+  source = "github.com/mrzzy/warp//deploy/terraform/gcp_vm"
+  # GCE metadata tags
+  tags = [ <TAGS...> ]
+  # secure web terminal with TLS
+  web_tls_cert   = "<FULL CHAIN TLS CERT>"
+  web_tls_key    = "<TLS PRIVATE KEY>"
+  # ssh key authentication
+  ssh_public_key = "<SSH PUBLIC KEY>"
+}
+```
+
+## Design
+```mermaid
+flowchart TB
+    Packer -.-|triggers| play[[Ansible Playbook]] -->
+|provisions| disk & laptop
+    laptop[Laptop]
+
+    tf[Terraform] -.-|deploys| disk -->|Boot| vm
+    subgraph Cloud Provider
+    direction LR
+        disk[(WARP Box)]
+        vm[VM]
+    end
+
+    term([Web Terminal]) &  ssh[SSH] & laptop -.-|access| user((Developer))
+    subgraph vm [WARP VM]
+        term
+        ssh
+    end
+```
+
+1. Packer is used to trigger a build of the development environment VM image, known as WARP Box, on a Cloud Provider (currently Google Cloud).
+2. Ansible Playbook is used to provision WARP Box, installing packages & setting up tools.
+    - Ansible Playbook's idempotence lends itself well to also provisioning physical hardware (eg. my Laptop).
+    - Being the single source of truth, Ansible ensures a consistent the development environment between WARP VM & physical hardware.
+3. The Terraform modulee spins up WARP VM: a Cloud VM using WARP Box as a boot disk on the Cloud Provider.
+4. The developer is able given ample options to access the development environment: WARP VM's Web Terminal or SSH interfaces, or when available, a physical laptop.
+
+## License
+MIT.
