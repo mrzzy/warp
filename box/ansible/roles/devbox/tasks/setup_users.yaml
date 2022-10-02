@@ -32,14 +32,6 @@
     dest: /etc/sudoers.d/sudo_nopasswd
     mode: 0440
 
-- name: Fix owner of devbox home directory
-  file:
-    path: "{{ devbox_user_home }}"
-    owner: "{{ devbox_user }}"
-    group: "{{ devbox_user }}"
-    state: directory
-    recurse: true
-
 - name: Allow ssl-cert group members to access TLS private keys
   file:
     path: /etc/ssl/private/
