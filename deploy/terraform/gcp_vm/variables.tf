@@ -22,6 +22,12 @@ variable "machine_type" {
   default     = "e2-standard-2"
 }
 
+variable "disk_type" {
+  type        = string
+  description = "GCP Persistent Disk type to use WARP VM's boot disk."
+  default     = "pd-standard"
+}
+
 variable "disk_size_gb" {
   type        = number
   description = "Size of the disk used mounted on the WARP development VM for persistent storage"
