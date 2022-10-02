@@ -118,6 +118,6 @@ devbox_helm_version: 3.9.4
 
 # Optimizations
 # whether to optimize deployment for a small storage footprint
-devbox_minimize_storage: true
+devbox_minimize_storage: false
 # disable auto unattended upgrades
 devbox_uninstall_unattended_upgrades: true
