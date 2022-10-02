@@ -31,6 +31,7 @@
 # Download dotfiles
 - name: Download dotfiles
   become: true
+  become_user: "{{ devbox_user }}"
   block:
     - name: Pull bare dotfiles repository
       git:
@@ -39,6 +40,7 @@
         single_branch: true
         dest: "{{ devbox_user_home }}/.git"
         bare: true
+
     - name: Unmark repo as bare to allow checkouts
       community.general.git_config:
         name: core.bare
@@ -64,10 +66,13 @@
 # setup development tooling
 - name: Setup Neovim
   become: true
+  become_user: "{{ devbox_user }}"
   import_tasks: setup_nvim.yaml
 - name: Setup Tmux
   become: true
+  become_user: "{{ devbox_user }}"
   import_tasks: setup_tmux.yaml
+
 # Optimizations
 - name: Optimize Storage Footprint & Performance
   become: true
