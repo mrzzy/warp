@@ -70,4 +70,5 @@
   import_tasks: setup_tmux.yaml
 # Optimizations
 - name: Optimize Storage Footprint & Performance
+  become: true
   import_tasks: optimize.yaml
