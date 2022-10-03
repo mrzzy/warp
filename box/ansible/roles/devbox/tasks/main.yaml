@@ -48,13 +48,6 @@
         file: "{{ devbox_user_home }}/.git/config"
         state: absent
 
-    # workaround git security patch for CVE-2022-24765
-    # https://github.blog/2022-04-12-git-security-vulnerability-announced/
-    - name: Trust non-owned repository
-      community.general.git_config:
-        name: safe.directory
-        value: "{{ devbox_user_home }}"
-
     - name: Checkout dotfiles
       command: # noqa command-instead-of-module
         cmd: git checkout
