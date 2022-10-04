@@ -56,10 +56,6 @@ build {
     ansible_env_vars = [
       # config ansible to output human readable logs
       "ANSIBLE_LOAD_CALLBACK_PLUGINS=debug",
-      # put ansible tmpdir in tmpfs when provisioning on remote machine
-      # set permissions of tmpfile to world readable to avoid permission issues.
-      "ANSIBLE_REMOTE_TMP=/tmp/ansible",
-      "ANSIBLE_SHELL_ALLOW_WORLD_READABLE_TEMP=True",
     ]
   }
 }
