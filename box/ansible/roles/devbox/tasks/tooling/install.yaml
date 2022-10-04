@@ -61,9 +61,9 @@
 
 - name: Install Z Jump Tool
   become: true
-  vars:
-    zsh_scripts_dir: "{{ devbox_user_home }}/.local/share/zsh"
-  import_tasks: install_z_jump.yaml
+  get_url:
+    url: https://raw.githubusercontent.com/agkozak/zsh-z/master/zsh-z.plugin.zsh
+    dest: "/usr/local/share/zsh/site-functions"
 
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
