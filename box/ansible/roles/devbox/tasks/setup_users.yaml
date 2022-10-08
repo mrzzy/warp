@@ -18,7 +18,6 @@
   become: true
   user:
     name: "{{ devbox_user }}"
-    home: "{{ devbox_user_home }}"
     shell: /bin/zsh
     groups:
       # sudo group for passwordless sudo

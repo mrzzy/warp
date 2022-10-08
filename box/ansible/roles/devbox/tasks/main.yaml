@@ -33,10 +33,12 @@
   become_user: "{{ devbox_user }}"
   block:
     - name: Download dotfiles
-      git:
-        repo: https://github.com/mrzzy/dotfiles
-        dest: "{{ devbox_user_home }}"
-        version: "{{ devbox_dotfiles_rev }}"
+      block:
+        - name: Git clone dotfiles
+          git:
+            repo: https://github.com/mrzzy/dotfiles
+            dest: "{{ devbox_user_home }}"
+            version: "{{ devbox_dotfiles_rev }}"
 
     - name: Setup Neovim
       import_tasks: setup_nvim.yaml
