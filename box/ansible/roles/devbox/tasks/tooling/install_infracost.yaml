@@ -1,0 +1,20 @@
+#
+# WARP
+# Devbox Ansible Role
+# Install Infracost
+#
+
+- name: Download Infracost binary
+  unarchive:
+    remote_src: true
+    src: "https://github.com/infracost/infracost/releases/download/\
+          {{ devbox_infracost_version }}/infracost-linux-amd64.tar.gz"
+    dest: /usr/local/bin
+    creates: "{{ infracost_binary }}"
+    mode: 0755
+
+- name: Strip suffix from Infracost binary
+  command:
+    cmd: "mv {{ infracost_binary }} /usr/local/bin/infracost"
+    removes: "{{ infracost_binary }}"
+    creates: /usr/local/bin/infracost"

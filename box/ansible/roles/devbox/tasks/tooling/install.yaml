@@ -77,6 +77,11 @@
     dest: /usr/local/bin/docker-compose
     mode: 0755
 
-# Kubernetes Tools
 - name: Install Kubernetes Tools
   import_tasks: install_k8s.yaml
+
+- name: Install infracost
+  vars:
+    infracost_binary: /usr/local/bin/infracost-linux-amd64
+  become: true
+  import_tasks: install_infracost.yaml
