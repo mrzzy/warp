@@ -25,48 +25,25 @@
 # User Accounts
 # create user & permissions
 - name: Setup User Accounts & Permissions
-  become: true
   import_tasks: setup_users.yaml
 
-# Download dotfiles
-- name: Download dotfiles
+# Setup User
+- name: Setup Development Tooling for Devbox User
   become: true
   become_user: "{{ devbox_user }}"
   block:
-    - name: Pull bare dotfiles repository
+    - name: Download dotfiles
       git:
         repo: https://github.com/mrzzy/dotfiles
+        dest: "{{ devbox_user_home }}"
         version: "{{ devbox_dotfiles_rev }}"
-        single_branch: true
-        dest: "{{ devbox_user_home }}/.git"
-        bare: true
 
-    - name: Unmark repo as bare to allow checkouts
-      community.general.git_config:
-        name: core.bare
-        scope: file
-        file: "{{ devbox_user_home }}/.git/config"
-        state: absent
+    - name: Setup Neovim
+      import_tasks: setup_nvim.yaml
 
-    - name: Checkout dotfiles
-      command: # noqa command-instead-of-module
-        cmd: git checkout
-        chdir: "{{ devbox_user_home }}"
-      register: checkout
-      changed_when: checkout.rc == 0
-
-# Setup
-# setup development tooling
-- name: Setup Neovim
-  become: true
-  become_user: "{{ devbox_user }}"
-  import_tasks: setup_nvim.yaml
-- name: Setup Tmux
-  become: true
-  become_user: "{{ devbox_user }}"
-  import_tasks: setup_tmux.yaml
+    - name: Setup Tmux
+      import_tasks: setup_tmux.yaml
 
 # Optimizations
 - name: Optimize Storage Footprint & Performance
-  become: true
   import_tasks: optimize.yaml
