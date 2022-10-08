@@ -25,3 +25,7 @@
     repo: "{{ dotfiles_repo }}"
     dest: "{{ devbox_user_home }}"
     version: "{{ devbox_dotfiles_rev }}"
+    # override existing dotfile with ours in case the skeleton user home dir
+    # has a templated an identical dotfile.
+    # WARNING: this overrides any local changes made to dotfiles
+    force: true
