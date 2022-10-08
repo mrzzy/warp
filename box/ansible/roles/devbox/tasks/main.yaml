@@ -28,35 +28,14 @@
   import_tasks: setup_users.yaml
 
 # Setup User
-- name: Setup Development Tooling for Devbox User
+- name: Setup Devbox User
   become: true
   become_user: "{{ devbox_user }}"
   block:
-    - name: Download dotfiles
+    - name: Install dotfiles
       vars:
         dotfiles_repo: https://github.com/mrzzy/dotfiles
-      block:
-        - name: Pull bare dotfiles repository
-          git:
-            repo: "{{ dotfiles_repo }}"
-            single_branch: true
-            version: main
-            dest: "{{ devbox_user_home }}/.git"
-            bare: true
-
-        - name: Unmark repo as bare to allow checkouts
-          community.general.git_config:
-            name: core.bare
-            scope: file
-            file: "{{ devbox_user_home }}/.git/config"
-            state: absent
-
-        - name: Checkout dotfiles at specific revision
-          git:
-            repo: "{{ dotfiles_repo }}"
-            dest: "{{ devbox_user_home }}"
-            version: "{{ devbox_dotfiles_rev }}"
-
+      import_tasks: install_dotfiles.yaml
     - name: Setup Neovim
       import_tasks: setup_nvim.yaml
 
