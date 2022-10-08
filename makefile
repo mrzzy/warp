@@ -27,7 +27,7 @@ BOX_NAME:=mrzzy/warp-box
 
 all: box
 
-lint: packer-init
+lint: packer-init ansible-deps
 	$(PACKER) fmt -check $(PACKER_DIR)
 	$(PACKER) validate $(PACKER_DIR)
 	$(PRE_CMT) run

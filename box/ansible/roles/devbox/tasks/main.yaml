@@ -22,52 +22,25 @@
 - name: Install Development Tooling
   import_tasks: tooling/install.yaml
 
-# install customized dotfiles
-- name: Install dotfiles
-  become: true
-  block:
-    - name: Pull bare dotfiles repository
-      git:
-        repo: https://github.com/mrzzy/dotfiles
-        version: "{{ devbox_dotfiles_rev }}"
-        single_branch: true
-        dest: "{{ devbox_user_home }}/.git"
-        bare: true
-    - name: Unmark repo as bare to allow checkouts
-      community.general.git_config:
-        name: core.bare
-        scope: file
-        file: "{{ devbox_user_home }}/.git/config"
-        state: absent
-
-    # workaround git security patch for CVE-2022-24765
-    # https://github.blog/2022-04-12-git-security-vulnerability-announced/
-    - name: Trust non-owned repository
-      community.general.git_config:
-        name: safe.directory
-        value: "{{ devbox_user_home }}"
-
-    - name: Checkout dotfiles
-      command: # noqa command-instead-of-module
-        cmd: git checkout
-        chdir: "{{ devbox_user_home }}"
-      register: checkout
-      changed_when: checkout.rc == 0
-
-# Setup
-# setup development tooling
-- name: Setup Neovim
-  become: true
-  import_tasks: setup_nvim.yaml
-- name: Setup Tmux
-  become: true
-  import_tasks: setup_tmux.yaml
-
 # User Accounts
 # create user & permissions
 - name: Setup User Accounts & Permissions
-  become: true
   import_tasks: setup_users.yaml
+
+# Setup User
+- name: Setup Devbox User
+  become: true
+  become_user: "{{ devbox_user }}"
+  block:
+    - name: Install dotfiles
+      vars:
+        dotfiles_repo: https://github.com/mrzzy/dotfiles
+      import_tasks: install_dotfiles.yaml
+    - name: Setup Neovim
+      import_tasks: setup_nvim.yaml
+
+    - name: Setup Tmux
+      import_tasks: setup_tmux.yaml
 
 # Optimizations
 - name: Optimize Storage Footprint & Performance
