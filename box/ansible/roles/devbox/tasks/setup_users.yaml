@@ -5,6 +5,7 @@
 #
 
 - name: Create groups
+  become: true
   group:
     name: "{{ item }}"
     state: present
@@ -14,6 +15,7 @@
     - ssl-cert
 
 - name: Create devbox user
+  become: true
   user:
     name: "{{ devbox_user }}"
     home: "{{ devbox_user_home }}"
@@ -27,12 +29,14 @@
       - ssl-cert
 
 - name: Allow password-less sudo to users in sudo group
+  become: true
   copy:
     content: "%sudo ALL=(ALL:ALL) NOPASSWD:ALL"
     dest: /etc/sudoers.d/sudo_nopasswd
     mode: 0440
 
 - name: Allow ssl-cert group members to access TLS private keys
+  become: true
   file:
     path: /etc/ssl/private/
     group: ssl-cert
