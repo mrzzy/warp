@@ -15,3 +15,5 @@ devbox_ttyd_password: ""
 # ports to instruct ttyd listen for connections
 devbox_ttyd_http_port: 7682
 devbox_ttyd_https_port: 7681
+# configure TTYD process priority by setting niceness level
+devbox_ttyd_nice_level: -2

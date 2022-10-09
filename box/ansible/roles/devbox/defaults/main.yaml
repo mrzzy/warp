@@ -126,3 +126,5 @@ devbox_helm_version: 3.9.4
 devbox_minimize_storage: false
 # disable auto unattended upgrades
 devbox_uninstall_unattended_upgrades: true
+# niceness level of high priority processes (ie. ssh)
+devbox_priority_nice_level: -2

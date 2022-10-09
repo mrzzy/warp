@@ -25,6 +25,7 @@
 
       [Service]
       Type=simple
+      Nice={{ devbox_ttyd_nice_level }}
       WorkingDirectory={{ devbox_user_home }}
       # start ttyd on a unprivilleged port as the unprivilleged devbox user
       ExecStart=sudo --user {{ devbox_user }} --group {{ devbox_user }} --login -n \
@@ -45,13 +46,14 @@
     content: |
       [Unit]
       Description=TTYD enables shell access a web terminal over HTTP
+      After=ttyd-https.service
 
       [Install]
       WantedBy=multi-user.target
-      After=ttyd-https.service
 
       [Service]
       Type=simple
+      Nice={{ devbox_ttyd_nice_level }}
       WorkingDirectory={{ devbox_user_home }}
       # start ttyd on a unprivilleged port as the unprivilleged devbox user
       ExecStart=sudo --user {{ devbox_user }} --group {{ devbox_user }} --login -n \
