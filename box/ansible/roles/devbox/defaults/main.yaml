@@ -19,6 +19,9 @@ devbox_iptables_persistent_version: 1.0.14ubuntu1
 # needed for ansible to become a unprivilleged user
 # renovate: datasource=repology depName=ubuntu_20_04/acl
 devbox_acl_version: 2.2.53-6
+# ssh server
+# renovate: datasource=repology depName=ubuntu_20_04/openssh
+devbox_openssh_version: 1:8.2p1-4ubuntu0.5
 
 # Neovim text editor
 # renovate: datasource=repology depName=ubuntu_20_04/neovim

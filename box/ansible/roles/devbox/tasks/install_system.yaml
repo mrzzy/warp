@@ -13,6 +13,7 @@
     - "software-properties-common={{ devbox_software_properties_version }}"
     - "iptables-persistent={{ devbox_iptables_persistent_version }}"
     - "acl={{ devbox_acl_version }}"
+    - "openssh-server={{ devbox_openssh_version }}"
 
 - name: Install rclone via .deb package with APT
   become: true
