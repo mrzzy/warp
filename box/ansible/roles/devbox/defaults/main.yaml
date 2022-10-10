@@ -7,7 +7,7 @@ devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
 # git revision of dotfiles to install
-devbox_dotfiles_rev: 8e4c2ac9ee4f34602837659dde625b817245fa56
+devbox_dotfiles_rev: 68ca35463fbb008dd3a784fd5f56c147c6a1f884
 
 # system tools
 # needed for add-apt-repository
