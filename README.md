@@ -76,11 +76,11 @@ flowchart TB
     end
 ```
 
-1. Packer is used to trigger a build of the development environment VM image, known as WARP Box, on a Cloud Provider (currently Google Cloud).
-2. Ansible Playbook is used to provision WARP Box, installing packages & setting up tools.
-    - Ansible Playbook's idempotence lends itself well to also provisioning physical hardware (eg. my Laptop).
+1. Packer triggers a build of the development environment VM image, known as WARP Box, on a Cloud Provider (currently Google Cloud).
+2. An Ansible Playbook provisions WARP Box, installing packages & setting up tools.
+    - Ansible Playbook's idempotence lends itself well to provisioning physical hardware (eg. my Laptop).
     - Being the single source of truth, Ansible ensures a consistent the development environment between WARP VM & physical hardware.
-3. The Terraform modulee spins up WARP VM: a Cloud VM using WARP Box as a boot disk on the Cloud Provider.
+3. The Terraform module spins up WARP VM: a Cloud VM using WARP Box as a boot disk on the Cloud Provider.
 4. The developer is able given ample options to access the development environment: WARP VM's Web Terminal or SSH interfaces, or when available, a physical laptop.
 
 ## License
