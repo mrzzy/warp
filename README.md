@@ -35,7 +35,7 @@ make apply
 ```hcl
   # google cloud build environment
   project_id  = "<GCP_PROJECT_ID>"
-  zone        = "<ZONE> # singapore
+  zone        = "<ZONE>"
 ```
 5. Build WARP Box as a GCE VM image
 ```sh
