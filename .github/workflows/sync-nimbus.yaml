@@ -1,0 +1,21 @@
+#
+# WARP
+# Sync Terraform Module on Nimbus
+#
+
+name: Sync Revision of WARP Terraform Module on Nimbus
+on:
+  push:
+    #branches: [main]
+    #paths:
+    #- "deploy/terraform/*"
+jobs:
+  create-nimbus-pr:
+    name: Create PR to update WARP Terraform Module on Nimbus
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone Nimbus repository
+        uses: actions/checkout@v3
+        with:
+          repository: mrzzy/nimbus
+  # TODO(mrzzy): prevent duplicates
