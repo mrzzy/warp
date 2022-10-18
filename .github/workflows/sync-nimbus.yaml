@@ -5,10 +5,10 @@
 
 name: Sync Revision of WARP Terraform Module on Nimbus
 on:
-  push: {}
-    #branches: [main]
-    #paths:
-    #- "deploy/terraform/*"
+  push:
+    branches: [main]
+    paths:
+    - "deploy/terraform/*"
 jobs:
   create-nimbus-pr:
     name: Create Pull Request to update WARP Terraform Module on Nimbus
