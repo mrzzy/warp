@@ -40,7 +40,7 @@ repos:
 
 # lint github actions workflows
 - repo: https://github.com/sirosen/check-jsonschema.git
-  rev: 0.13.0
+  rev: 0.18.3
   hooks:
   - id: check-github-workflows
 
