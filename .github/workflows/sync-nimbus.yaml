@@ -28,8 +28,6 @@ jobs:
         with:
           token: "${{ secrets.GH_PUSH_TOKEN }}"
           # Commit
-          committer: github-actions[bot]@users.noreply.github.com
-          author: github-actions[bot]@users.noreply.github.com
           commit-message: "build(terraform): bump revision of warp vm TF module"
           # Pull request
           branch: build/update-warp-tf-module
