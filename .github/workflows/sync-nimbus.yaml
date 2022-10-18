@@ -5,17 +5,35 @@
 
 name: Sync Revision of WARP Terraform Module on Nimbus
 on:
-  push:
+  push: {}
     #branches: [main]
     #paths:
     #- "deploy/terraform/*"
 jobs:
   create-nimbus-pr:
-    name: Create PR to update WARP Terraform Module on Nimbus
+    name: Create Pull Request to update WARP Terraform Module on Nimbus
     runs-on: ubuntu-22.04
     steps:
       - name: Clone Nimbus repository
         uses: actions/checkout@v3
         with:
           repository: mrzzy/nimbus
-  # TODO(mrzzy): prevent duplicates
+      - name: Update revision of WARP Terraform Modules
+        run: |
+          sed -ie \
+            "/source.*=.*github.com\/mrzzy\/warp/s/ref=.*/ref=${{ github.sha }}/" \
+            terraform/gcp.tf
+      - name: Create Pull Request on Nimbus
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: "${{ secrets.GH_PUSH_TOKEN }}"
+          # Commit
+          committer: github-actions[bot]@users.noreply.github.com
+          author: github-actions[bot]@users.noreply.github.com
+          commit-message: "build(terraform): bump revision of warp vm TF module"
+          # Pull request
+          branch: build/update-warp-tf-module
+          title: "build(terraform): Update WARP VM Terraform module."
+          body: "Update revision of WARP VM Terraform module to \
+                 ${{ github.repository}}@${{ github.sha }}"
+          delete-branch: true
