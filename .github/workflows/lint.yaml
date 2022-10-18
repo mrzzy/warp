@@ -4,7 +4,7 @@
 # Lint
 #
 
-name: CI Pipeline
+name: Lint WARP Source Code
 on: push
 jobs:
   lint:
