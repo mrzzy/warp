@@ -39,7 +39,6 @@
     line: 'Nice={{ devbox_priority_nice_level }}'
 
 - name: Register alacritty's terminfo with known Terminal Types
-  tags: [test]
   vars:
     terminfo_path: /tmp/alacritty.info
   block:
