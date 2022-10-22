@@ -8,6 +8,7 @@ name: CI Pipeline
 on:
   push:
     paths:
+      - .github/workflows/box.yaml
       - "box/**"
       - makefile
       - requirements.txt
@@ -56,9 +57,22 @@ jobs:
       with:
         packer-version: ${{ env.PACKER_VERSION }}
 
-    - name: Configure image as Development build
-      if: ${{ github.ref != 'refs/heads/main' }}
-      run: echo "PKR_VAR_image_suffix=-dev" >> $GITHUB_ENV
+    - name: Configure image name based on branch
+      run: |
+        case '${{ github.ref }}' in
+          refs/heads/main)
+            SUFFIX=""
+          ;;
+          refs/heads/release/*)
+            # grep extracts token after '...release/' suffix
+            SUFFIX="-$(printf '${{ github.ref }}' | grep -o '[^/]*$')"
+          ;;
+          *)
+            # assume its a development build
+            SUFFIX="-dev"
+          ;;
+        esac
+        echo "PKR_VAR_image_suffix=${SUFFIX}" >> $GITHUB_ENV
 
     - name: Build WARP Box with Packer on GCP
       env:
