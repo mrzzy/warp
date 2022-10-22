@@ -4,7 +4,7 @@
 #
 
 # TTYD web terminal
-# renovate: datasource=github-releases depName=tsl0922/ttyd
+# renovate: datasource=github-tags depName=tsl0922/ttyd
 devbox_ttyd_version: 1.7.1
 devbox_ttyd_path: /usr/local/bin/ttyd
 # ttyd expects tls certificate & private key at paths
