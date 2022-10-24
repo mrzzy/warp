@@ -4,7 +4,7 @@
 Code anywhere with an internet connection.
 
 ## Introduction
-WARP is portable, console based development environment which grew out the need to have a fully featured development environment ready to go, in the absence of my Physical Laptop.  It is a full recreation of my Linux-based development environment in a Cloud VM, accessible via SSH or a Web Browsers.
+WARP is portable, console based development environment which grew out the need to have a fully featured development environment ready to go, in the absence of my Physical Laptop.  It is a full recreation of my Linux-based development environment in a Cloud VM, accessible via SSH or a Web Browser.
 
 > See [design](#Design) for architecture deep dive.
 
