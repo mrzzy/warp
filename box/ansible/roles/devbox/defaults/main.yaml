@@ -119,7 +119,7 @@ devbox_infracost_version: v0.10.12
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
 devbox_kubectl_version: v1.25.1
 # renovate: datasource=github-releases depName=helm/helm stripV
-devbox_helm_version: 3.9.4
+devbox_helm_version: 3.10.1
 
 # Optimizations
 # whether to optimize deployment for a small storage footprint
