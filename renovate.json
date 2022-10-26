@@ -24,10 +24,10 @@
     {
       "fileMatch": ["roles\\/.*\\/defaults\\/.*\\.yaml$"],
       "matchStrings": [
-        "renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?(?<stripV> stripV)?\\s+\\w+version: *(?<currentValue>\\S+)"
+        "renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( suffix=(?<suffix>.*?))?(?<stripV> stripV)?\\s+\\w+version: *(?<currentValue>\\S+)"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}loose{{/if}}",
-      "extractVersionTemplate": "^{{#if stripV}}[vV](?<version>.*){{else}}.*{{/if}}$"
+      "extractVersionTemplate": "^{{#if stripV}}[vV](?<version>.*){{else}}.*{{/if}}{{#if suffix}}{{{suffix}}}{{else}}{{/if}}$"
     }
   ]
 }
