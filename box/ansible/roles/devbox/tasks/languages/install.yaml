@@ -4,17 +4,6 @@
 # Install Programming Languages & Supporting Tooling
 #
 
-# NodeJS
-- name: Register NodeJS Repo
-  import_tasks: register_nodejs.yaml
-- name: Install NodeJS with APT
-  become: true
-  apt:
-    # since the version of nodejs offered by registered repo is already pegged
-    # there is no need to peg the version of nodejs installed here.
-    name: "nodejs"
-    state: present
-
 # Python
 - name: Install Python & Tooling with APT
   become: true

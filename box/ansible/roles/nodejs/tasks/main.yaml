@@ -1,0 +1,29 @@
+#
+# WARP
+# NodeJS Ansible Role
+# Tasks
+#
+
+- name: Register NodeJS Repo
+  block:
+  # TODO(mrzzy): make node js lts configurable
+  - name: Download NodeJS 16.x Install Script
+    become: true
+    get_url:
+      url: https://deb.nodesource.com/setup_16.x
+      dest: /tmp/register_nodejs_repo.sh
+      mode: 744
+
+  - name: Register NodeJS Package Repository
+    become: true
+    command: /tmp/register_nodejs_repo.sh
+    args:
+      creates: /etc/apt/sources.list.d/nodesource.list
+
+- name: Install NodeJS with APT
+  become: true
+  apt:
+    # since the version of nodejs offered by registered repo is already pegged
+    # there is no need to peg the version of nodejs installed here.
+    name: "nodejs"
+    state: present
