@@ -3,6 +3,7 @@
 # TTYD Ansible Role default variables
 #
 
+
 # TTYD web terminal
 # renovate: datasource=github-tags depName=tsl0922/ttyd
 devbox_ttyd_version: 1.7.1
@@ -17,3 +18,7 @@ devbox_ttyd_http_port: 7682
 devbox_ttyd_https_port: 7681
 # configure TTYD process priority by setting niceness level
 devbox_ttyd_nice_level: -2
+
+# install iptables persistent needed to config iptables rules for TTYD
+# renovate: datasource=repology depName=ubuntu_20_04/iptables-persistent
+devbox_iptables_persistent_version: 1.0.14ubuntu1

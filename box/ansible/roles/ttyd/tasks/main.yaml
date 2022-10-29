@@ -11,6 +11,12 @@
     dest: "{{ devbox_ttyd_path }}"
     mode: 0755
 
+- name: Install iptables-persistent with APT
+  become: true
+  apt:
+    name: "iptables-persistent={{ devbox_iptables_persistent_version }}"
+    state: present
+
 - name: Write TTYD over HTTPS systemd service
   become: true
   copy:
