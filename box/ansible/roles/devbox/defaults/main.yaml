@@ -7,24 +7,11 @@
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
-<<<<<<< HEAD
-# system tools
-# needed for add-apt-repository
-# renovate: datasource=repology depName=ubuntu_20_04/software-properties
-devbox_software_properties_version: 0.99.9.8
-# needed for ansible to become a unprivilleged user
-# renovate: datasource=repology depName=ubuntu_20_04/acl
-devbox_acl_version: 2.2.53-6
-
-=======
->>>>>>> refactor(box): refactor system tools into its own ansible role
 # Neovim text editor
 # renovate: datasource=repology depName=ubuntu_20_04/neovim
 devbox_nvim_version: 0.4.3-3
 # renovate: datasource=github-releases depName=junegunn/vim-plug
 devbox_nvim_vim_plug_version: 0.11.0
-# renovate: datasource=pypi depName=pynvim versioning=python
-devbox_nvim_pynvim_version: 0.4.3
 
 # Language-agnostic tools
 # renovate: datasource=pypi depName=pre-commit
@@ -69,14 +56,6 @@ devbox_gawk_version: 1:5.0.1+dfsg-1
 # renovate: datasource=github-releases depName=junegunn/fzf
 devbox_fzf_version: 0.33.0
 devbox_fzf_dir: /usr/local/share/fzf
-
-# python & tools
-# renovate: datasource=repology depName=ubuntu_20_04/python3.8
-devbox_python_version: 3.8.10-0ubuntu1~20.04.5
-# renovate: datasource=repology depName=ubuntu_20_04/python-pip
-devbox_python_pip_version: 20.0.2-5ubuntu1.6
-# renovate: datasource=repology depName=ubuntu_20_04/python-wheel-common
-devbox_python_wheel_version: 0.34.2-1
 
 # jvm languages & tools
 devbox_jvm_java_version: 11.0.15-tem

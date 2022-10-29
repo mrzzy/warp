@@ -12,6 +12,10 @@
     - system
     - dotfiles
     - openssh
+
+    - python
+    - nodejs
+
     - rclone
     - devbox
     - ttyd
