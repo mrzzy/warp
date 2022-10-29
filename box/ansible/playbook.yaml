@@ -9,5 +9,6 @@
     - name: Check connectivity to Box
       ping: {}
   roles:
+    - dotfiles
     - devbox
     - ttyd

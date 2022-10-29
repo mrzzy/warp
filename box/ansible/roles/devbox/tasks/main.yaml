@@ -32,10 +32,6 @@
   become: true
   become_user: "{{ devbox_user }}"
   block:
-    - name: Install dotfiles
-      vars:
-        dotfiles_repo: https://github.com/mrzzy/dotfiles
-      import_tasks: install_dotfiles.yaml
     - name: Setup Neovim
       import_tasks: setup_nvim.yaml
 
