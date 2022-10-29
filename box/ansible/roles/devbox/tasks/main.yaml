@@ -23,9 +23,6 @@
   become: true
   become_user: "{{ devbox_user }}"
   block:
-    - name: Setup Neovim
-      import_tasks: setup_nvim.yaml
-
     - name: Setup Tmux
       import_tasks: setup_tmux.yaml
 
