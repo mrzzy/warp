@@ -10,5 +10,6 @@
       ping: {}
   roles:
     - dotfiles
+    - openssh
     - devbox
     - ttyd

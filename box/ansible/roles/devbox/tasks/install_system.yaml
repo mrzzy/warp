@@ -4,6 +4,7 @@
 # Install system utilities
 #
 
+
 - name: Install system utilities with APT
   become: true
   apt:
@@ -12,7 +13,6 @@
   loop:
     - "software-properties-common={{ devbox_software_properties_version }}"
     - "acl={{ devbox_acl_version }}"
-    - "openssh-server={{ devbox_openssh_server_version }}"
 
 - name: Install rclone via .deb package with APT
   become: true
@@ -28,14 +28,6 @@
     dest: /sbin/mount.rclone
     state: link
     mode: '0755'
-
-- name: Increase process priority of SSH server
-  become: true
-  lineinfile:
-    path: /etc/systemd/system/sshd.service
-    regex: '^Nice='
-    insertafter: '\[Service\]'
-    line: 'Nice={{ devbox_priority_nice_level }}'
 
 - name: Register alacritty's terminfo with known Terminal Types
   vars:
