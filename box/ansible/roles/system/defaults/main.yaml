@@ -1,0 +1,12 @@
+#
+# WARP
+# System Ansible Role
+# Default Variables
+#
+
+# needed for add-apt-repository
+# renovate: datasource=repology depName=ubuntu_20_04/software-properties
+devbox_software_properties_version: 0.99.9.8
+# needed for ansible to become a unprivilleged user
+# renovate: datasource=repology depName=ubuntu_20_04/acl
+devbox_acl_version: 2.2.53-6

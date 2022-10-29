@@ -10,10 +10,6 @@
     update-cache: true
 
 # Install
-# install system utilities
-- name: Install System Utilities
-  import_tasks: install_system.yaml
-
 # install programming languages
 - name: Install Programming Languages & Tooling
   import_tasks: languages/install.yaml
