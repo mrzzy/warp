@@ -1,0 +1,8 @@
+#
+# WARP
+# User Ansible Role
+# Default Variables
+#
+
+devbox_user: mrzzy
+devbox_user_home: /home/mrzzy

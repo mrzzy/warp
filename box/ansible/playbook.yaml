@@ -10,12 +10,13 @@
       ping: {}
   roles:
     - system
+    - user
     - dotfiles
-    - openssh
 
     - python
     - nodejs
 
+    - openssh
     - rclone
     - devbox
     - ttyd

@@ -18,11 +18,6 @@
 - name: Install Development Tooling
   import_tasks: tooling/install.yaml
 
-# User Accounts
-# create user & permissions
-- name: Setup User Accounts & Permissions
-  import_tasks: setup_users.yaml
-
 # Setup User
 - name: Setup Devbox User
   become: true
