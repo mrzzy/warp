@@ -4,7 +4,6 @@
 # Install system utilities
 #
 
-
 - name: Install system utilities with APT
   become: true
   apt:
@@ -13,21 +12,6 @@
   loop:
     - "software-properties-common={{ devbox_software_properties_version }}"
     - "acl={{ devbox_acl_version }}"
-
-- name: Install rclone via .deb package with APT
-  become: true
-  vars:
-    version: "{{ devbox_rclone_version }}"
-  apt:
-    deb: "https://downloads.rclone.org/{{ version }}/rclone-{{ version }}-linux-amd64.deb"
-
-- name: Install rclone as mount helper (mount -t) for rclone FS type
-  become: true
-  file:
-    src: /usr/bin/rclone
-    dest: /sbin/mount.rclone
-    state: link
-    mode: '0755'
 
 - name: Register alacritty's terminfo with known Terminal Types
   vars:

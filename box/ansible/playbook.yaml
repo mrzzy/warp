@@ -11,5 +11,6 @@
   roles:
     - dotfiles
     - openssh
+    - rclone
     - devbox
     - ttyd
