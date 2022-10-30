@@ -1,0 +1,8 @@
+#
+# WARP
+# Postgres Ansible Role
+# Default Variables
+#
+
+# renovate: datasource=repology depName=ubuntu_20_04/pgcli
+devbox_pgcli_version: 2.2.0-4

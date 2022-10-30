@@ -16,7 +16,6 @@
     - "universal-ctags={{ devbox_universal_ctags_version }}"
     - "jq={{ devbox_jq_version }}"
     - "bind9-dnsutils={{ devbox_dnsutils_version }}"
-    - "pgcli={{ devbox_pgcli_version }}"
 
 - name: Install pre-commit with Pip
   become: true
