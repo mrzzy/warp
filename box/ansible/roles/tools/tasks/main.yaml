@@ -4,19 +4,19 @@
 # Tasks
 #
 
-- name: Install Language-agnostic Development Tools with APT
+- name: Install Development Tools with APT
   become: true
   apt:
     name: "{{ item }}"
     state: present
   loop:
-    # language-agnostic tools
     - "entr={{ devbox_entr_version }}"
     - "ripgrep={{ devbox_ripgrep_version }}"
     - "ranger={{ devbox_ranger_version }}"
     - "universal-ctags={{ devbox_universal_ctags_version }}"
     - "jq={{ devbox_jq_version }}"
     - "bind9-dnsutils={{ devbox_dnsutils_version }}"
+    - "pgcli={{ devbox_pgcli_version }}"
 
 - name: Install pre-commit with Pip
   become: true

@@ -22,3 +22,5 @@ devbox_jq_version: 1.6-1ubuntu0.20.04.1
 devbox_yq_version: v4.27.5
 # renovate: datasource=repology depName=ubuntu_20_04/bind9
 devbox_dnsutils_version: 1:9.16.1-0ubuntu2.11
+# renovate: datasource=repology depName=ubuntu_20_04/pgcli
+devbox_pgcli_version: 2.2.0-4

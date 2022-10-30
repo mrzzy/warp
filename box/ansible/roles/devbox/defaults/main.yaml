@@ -6,9 +6,6 @@
 
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
-# postgresql tools
-# renovate: datasource=repology depName=ubuntu_20_04/pgcli
-devbox_pgcli_version: 2.2.0-4
 
 # hashicorp tools
 # renovate: datasource=github-releases depName=hashicorp/terraform versioning=hashicorp stripV
