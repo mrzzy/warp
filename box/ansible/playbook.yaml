@@ -17,8 +17,9 @@
     - nodejs
 
     - openssh
-    - tools
     - rclone
     - neovim
+    - docker
+    - tools
     - devbox
     - ttyd

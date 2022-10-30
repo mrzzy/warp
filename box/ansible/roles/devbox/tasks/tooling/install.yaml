@@ -16,7 +16,6 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "docker.io={{ devbox_docker_version }}"
     - "ansible={{ devbox_ansible_version }}"
     - "zsh={{ devbox_zsh_version }}"
     - "zsh-autosuggestions={{ devbox_zsh_autosuggest_version }} "
@@ -56,15 +55,6 @@
 
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
-
-- name: Install docker-compose
-  become: true
-  get_url:
-    url: "https://github.com/docker/compose/releases/download/\
-          {{ devbox_docker_compose_version }}/docker-compose-linux-\
-          {{ ansible_userspace_architecture }}"
-    dest: /usr/local/bin/docker-compose
-    mode: 0755
 
 - name: Install Kubernetes Tools
   import_tasks: install_k8s.yaml

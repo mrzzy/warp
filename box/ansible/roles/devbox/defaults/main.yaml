@@ -6,11 +6,6 @@
 
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
-# docker
-# renovate: datasource=repology depName=ubuntu_20_04/docker.io
-devbox_docker_version: 20.10.12-0ubuntu2~20.04.1
-# renovate: datasource=github-releases depName=docker/compose
-devbox_docker_compose_version: v2.11.1
 
 # zsh
 # renovate: datasource=repology depName=ubuntu_20_04/zsh
