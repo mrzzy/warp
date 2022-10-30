@@ -17,9 +17,6 @@
     state: present
   loop:
     - "ansible={{ devbox_ansible_version }}"
-    - "zsh={{ devbox_zsh_version }}"
-    - "zsh-autosuggestions={{ devbox_zsh_autosuggest_version }} "
-    - "zsh-syntax-highlighting={{ devbox_zsh_syntax_version }}"
     - "tmux={{ devbox_tmux_version }}"
     - "gawk={{ devbox_gawk_version }}"
 
@@ -46,12 +43,6 @@
   vars:
     fzf_version: "{{ devbox_fzf_version }}"
   import_tasks: install_fzf.yaml
-
-- name: Install Z Jump Tool
-  become: true
-  get_url:
-    url: https://raw.githubusercontent.com/agkozak/zsh-z/master/zsh-z.plugin.zsh
-    dest: "/usr/local/share/zsh/site-functions"
 
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
