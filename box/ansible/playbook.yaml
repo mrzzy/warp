@@ -22,10 +22,15 @@
     - zsh
     - tmux
     - neovim
+
     - fzf
     - rclone
-    - docker
     - tools
-    - devbox
-    - ttyd
+
     - postgres
+
+    - docker
+    - cloud
+    - devbox
+
+    - ttyd

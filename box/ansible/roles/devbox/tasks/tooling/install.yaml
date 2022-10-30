@@ -4,44 +4,5 @@
 # Install development tooling
 #
 
-- name: Register Ansible APT PPA
-  become: true
-  apt_repository:
-    repo: "ppa:ansible/ansible"
-    state: present
-
-- name: Install development tools with APT
-  become: true
-  apt:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - "ansible={{ devbox_ansible_version }}"
-
-- name: Install Development Tools with Pip
-  become: true
-  pip:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - "linode-cli=={{ devbox_linode_cli_version }}"
-
-- name: Install Bitwarden CLI with NPM
-  become: true
-  npm:
-    name: "@bitwarden/cli"
-    global: true
-    version: "{{ devbox_bw_version }} "
-    state: present
-
-- name: Install tools from HashiCorp's Repository with APT"
-  import_tasks: install_hashicorp.yaml
-
 - name: Install Kubernetes Tools
   import_tasks: install_k8s.yaml
-
-- name: Install infracost
-  vars:
-    infracost_binary: /usr/local/bin/infracost-linux-amd64
-  become: true
-  import_tasks: install_infracost.yaml

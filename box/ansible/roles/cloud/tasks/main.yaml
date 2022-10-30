@@ -1,0 +1,69 @@
+#
+# WARP
+# Cloud Ansible Role
+# Tasks
+#
+
+# HashiCorp Tools
+- name: "Download HashiCorp's package signing key"
+  get_url:
+    url: https://apt.releases.hashicorp.com/gpg
+    dest: /tmp/hashicorp_key
+
+- name: "Register HashiCorp's package signing key"
+  become: true
+  command: apt-key add /tmp/hashicorp_key
+  register: hashicorp_key
+  changed_when: "hashicorp_key.rc == 0"
+
+- name: "Add HashiCorp's APT package repository"
+  become: true
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    state: present
+
+- name: Register Ansible APT PPA
+  become: true
+  apt_repository:
+    repo: "ppa:ansible/ansible"
+    state: present
+
+- name: Install Cloud tools with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "terraform={{ devbox_hashicorp_terraform_version }}"
+    - "packer={{ devbox_hashicorp_packer_version }}"
+    - "terraform-ls={{ devbox_hashicorp_terraform_langserver_version }}"
+    - "ansible={{ devbox_ansible_version }}"
+
+- name: Install Cloud tools with Pip
+  become: true
+  pip:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "linode-cli=={{ devbox_linode_cli_version }}"
+
+# Install Infracost
+- name: Install Infracost
+  become: true
+  vars:
+    infracost_binary: /usr/local/bin/infracost-linux-amd64
+  block:
+    - name: Download Infracost binary
+      unarchive:
+        remote_src: true
+        src: "https://github.com/infracost/infracost/releases/download/\
+              {{ devbox_infracost_version }}/infracost-linux-amd64.tar.gz"
+        dest: /usr/local/bin
+        creates: "{{ infracost_binary }}"
+        mode: 0755
+
+    - name: Strip suffix from Infracost binary
+      command:
+        cmd: "mv {{ infracost_binary }} /usr/local/bin/infracost"
+        removes: "{{ infracost_binary }}"
+        creates: /usr/local/bin/infracost"
