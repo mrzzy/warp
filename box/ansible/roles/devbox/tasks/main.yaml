@@ -18,14 +18,6 @@
 - name: Install Development Tooling
   import_tasks: tooling/install.yaml
 
-# Setup User
-- name: Setup Devbox User
-  become: true
-  become_user: "{{ devbox_user }}"
-  block:
-    - name: Setup Tmux
-      import_tasks: setup_tmux.yaml
-
 # Optimizations
 - name: Optimize Storage Footprint & Performance
   import_tasks: optimize.yaml

@@ -17,8 +17,6 @@
     state: present
   loop:
     - "ansible={{ devbox_ansible_version }}"
-    - "tmux={{ devbox_tmux_version }}"
-    - "gawk={{ devbox_gawk_version }}"
 
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"

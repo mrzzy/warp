@@ -1,10 +1,21 @@
 #
 # WARP
-# Devbox Ansible Role Tasks
-# Setup Tmux
+# Tmux Ansible Role
+# Tasks
 #
 
+- name: Install Tmux & AWK with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "tmux={{ devbox_tmux_version }}"
+    - "gawk={{ devbox_tmux_gawk_version }}"
+
 - name: Install Tmux Plugins
+  become: true
+  become_user: "{{ devbox_user }}"
   vars:
     tpm_path: "{{ devbox_user_home }}/.local/share/tmux/tpm"
   block:

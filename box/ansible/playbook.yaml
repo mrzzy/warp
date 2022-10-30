@@ -19,6 +19,7 @@
     - openssh
     - rclone
     - zsh
+    - tmux
     - neovim
     - docker
     - tools

@@ -6,11 +6,6 @@
 
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
-# tmux
-# renovate: datasource=repology depName=ubuntu_20_04/tmux
-devbox_tmux_version: 3.0a-2ubuntu0.3
-# renovate: datasource=repology depName=ubuntu_20_04/gawk
-devbox_gawk_version: 1:5.0.1+dfsg-1
 
 # renovate: datasource=github-releases depName=junegunn/fzf
 devbox_fzf_version: 0.33.0
