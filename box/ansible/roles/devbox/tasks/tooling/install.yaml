@@ -37,11 +37,6 @@
     version: "{{ devbox_bw_version }} "
     state: present
 
-- name: Install FZF
-  vars:
-    fzf_version: "{{ devbox_fzf_version }}"
-  import_tasks: install_fzf.yaml
-
 - name: Install tools from HashiCorp's Repository with APT"
   import_tasks: install_hashicorp.yaml
 

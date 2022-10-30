@@ -1,12 +1,12 @@
 #
 # WARP
-# Devbox Ansible Role Tasks
-# Install FZF
+# FZF Ansible Role
+# Tasks
 #
 
 - name: Download FZF install script
   get_url:
-    url: "https://raw.githubusercontent.com/junegunn/fzf/{{ fzf_version }}/install"
+    url: "https://raw.githubusercontent.com/junegunn/fzf/{{ devbox_fzf_version }}/install"
     dest: /tmp/install_fzf.sh
     mode: 0755
 
@@ -21,7 +21,7 @@
 
     - name: Download FZF key-bindings script for ZSH
       get_url:
-        url: "https://raw.githubusercontent.com/junegunn/fzf/{{ fzf_version }}/shell/key-bindings.zsh"
+        url: "https://raw.githubusercontent.com/junegunn/fzf/{{ devbox_fzf_version }}/shell/key-bindings.zsh"
         dest: "{{ devbox_fzf_dir }}/key-bindings.zsh"
         mode: 0755
 

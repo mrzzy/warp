@@ -7,10 +7,6 @@
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
-# renovate: datasource=github-releases depName=junegunn/fzf
-devbox_fzf_version: 0.33.0
-devbox_fzf_dir: /usr/local/share/fzf
-
 # jvm languages & tools
 devbox_jvm_java_version: 11.0.15-tem
 # TODO(mrzzy): remove scala as it can installed by sbt

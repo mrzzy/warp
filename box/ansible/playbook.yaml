@@ -17,10 +17,11 @@
     - nodejs
 
     - openssh
-    - rclone
     - zsh
     - tmux
     - neovim
+    - fzf
+    - rclone
     - docker
     - tools
     - devbox
