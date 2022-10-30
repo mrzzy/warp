@@ -109,7 +109,7 @@ devbox_hashicorp_terraform_version: 1.3.3
 # renovate: datasource=github-releases depName=hashicorp/terraform-ls versioning=hashicorp stripV
 devbox_hashicorp_terraform_langserver_version: 0.29.3
 # renovate: datasource=github-releases depName=hashicorp/packer versioning=hashicorp stripV
-devbox_hashicorp_packer_version: 1.8.3-1
+devbox_hashicorp_packer_version: 1.8.4
 # renovate: datasource=pypi depName=linode-cli versioning=python
 devbox_linode_cli_version: 5.23.0
 # renovate: datasource=github-releases depName=infracost/infracost
