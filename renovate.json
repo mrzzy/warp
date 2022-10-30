@@ -2,7 +2,8 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "baseBranches": [
     "main",
-    "release/ubuntu-20.04"
+    "release/ubuntu-20.04",
+    "fix/renovate-detection"
   ],
   "extends": [
     "config:base",
