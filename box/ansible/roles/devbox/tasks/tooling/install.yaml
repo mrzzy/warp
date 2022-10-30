@@ -16,20 +16,13 @@
     name: "{{ item }}"
     state: present
   loop:
-    # language-agnostic tools
-    - "entr={{ devbox_entr_version }}"
-    - "ripgrep={{ devbox_ripgrep_version }}"
     - "docker.io={{ devbox_docker_version }}"
-    - "ranger={{ devbox_ranger_version }}"
     - "ansible={{ devbox_ansible_version }}"
     - "zsh={{ devbox_zsh_version }}"
     - "zsh-autosuggestions={{ devbox_zsh_autosuggest_version }} "
     - "zsh-syntax-highlighting={{ devbox_zsh_syntax_version }}"
     - "tmux={{ devbox_tmux_version }}"
     - "gawk={{ devbox_gawk_version }}"
-    - "universal-ctags={{ devbox_universal_ctags_version }}"
-    - "jq={{ devbox_jq_version }}"
-    - "bind9-dnsutils={{ devbox_dnsutils_version }}"
 
     # postgresql tools
     - "pgcli={{ devbox_pgcli_version }}"
@@ -40,7 +33,6 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "pre-commit=={{ devbox_pre_commit_version }}"
     - "linode-cli=={{ devbox_linode_cli_version }}"
 
 - name: Install Bitwarden CLI with NPM
