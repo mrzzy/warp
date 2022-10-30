@@ -1,0 +1,23 @@
+#
+# WARP
+# JVM Ansible Role
+# Tasks
+#
+
+# JVM Languages
+- name: Install JVM Languages & Tooling with SDKMan
+  become: true
+  import_role:
+    role: comcast.sdkman
+  vars:
+    sdkman_dir: /usr/local/lib/sdkman
+    sdkman_user: root
+    sdkman_group: root
+    sdkman_auto_answer: true
+    sdkman_install_packages:
+      - candidate: java
+        version: "{{ devbox_jvm_java_version }}"
+      - candidate: scala
+        version: "{{ devbox_jvm_scala_version }}"
+      - candidate: sbt
+        version: "{{ devbox_jvm_sbt_version }}"
