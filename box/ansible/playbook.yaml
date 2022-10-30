@@ -16,6 +16,7 @@
     - python
     - nodejs
     - jvm
+    - c_cpp
 
     - openssh
     - zsh

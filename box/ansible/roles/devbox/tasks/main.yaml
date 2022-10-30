@@ -10,10 +10,6 @@
     update-cache: true
 
 # Install
-# install programming languages
-- name: Install Programming Languages & Tooling
-  import_tasks: languages/install.yaml
-
 # install development tooling
 - name: Install Development Tooling
   import_tasks: tooling/install.yaml
