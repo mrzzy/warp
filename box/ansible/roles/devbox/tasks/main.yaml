@@ -9,11 +9,6 @@
   apt:
     update-cache: true
 
-# Install
-# install development tooling
-- name: Install Development Tooling
-  import_tasks: tooling/install.yaml
-
 # Optimizations
 - name: Optimize Storage Footprint & Performance
   import_tasks: optimize.yaml

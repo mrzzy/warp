@@ -31,6 +31,7 @@
 
     - docker
     - cloud
-    - devbox
+    - k8s
 
+    - devbox
     - ttyd

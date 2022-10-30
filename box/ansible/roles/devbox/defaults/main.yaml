@@ -6,13 +6,6 @@
 
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
-
-# kubernetes tools
-# renovate: datasource=github-releases depName=kubernetes/kubernetes
-devbox_kubectl_version: v1.25.1
-# renovate: datasource=github-releases depName=helm/helm stripV
-devbox_helm_version: 3.10.1
-
 # Optimizations
 # whether to optimize deployment for a small storage footprint
 devbox_minimize_storage: false

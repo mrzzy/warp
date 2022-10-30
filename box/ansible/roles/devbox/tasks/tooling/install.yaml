@@ -1,8 +1,0 @@
-#
-# WARP
-# Devbox Ansible Role Tasks
-# Install development tooling
-#
-
-- name: Install Kubernetes Tools
-  import_tasks: install_k8s.yaml
