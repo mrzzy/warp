@@ -22,7 +22,6 @@
     - "docker.io={{ devbox_docker_version }}"
     - "ranger={{ devbox_ranger_version }}"
     - "ansible={{ devbox_ansible_version }}"
-    - "neovim={{ devbox_nvim_version }}"
     - "zsh={{ devbox_zsh_version }}"
     - "zsh-autosuggestions={{ devbox_zsh_autosuggest_version }} "
     - "zsh-syntax-highlighting={{ devbox_zsh_syntax_version }}"
