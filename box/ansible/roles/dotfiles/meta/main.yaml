@@ -1,0 +1,8 @@
+#
+# WARP
+# Dotfiles Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: system
