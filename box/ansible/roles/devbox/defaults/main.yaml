@@ -11,7 +11,7 @@ devbox_dotfiles_rev: 68ca35463fbb008dd3a784fd5f56c147c6a1f884
 
 # system tools
 # needed for add-apt-repository
-# renovate: datasource=repology depName=ubuntu_20_04/software-properties-common
+# renovate: datasource=repology depName=ubuntu_20_04/software-properties
 devbox_software_properties_version: 0.99.9.8
 # load iptables rules on boot
 # renovate: datasource=repology depName=ubuntu_20_04/iptables-persistent
@@ -20,7 +20,7 @@ devbox_iptables_persistent_version: 1.0.14ubuntu1
 # renovate: datasource=repology depName=ubuntu_20_04/acl
 devbox_acl_version: 2.2.53-6
 # ssh server
-# renovate: datasource=repology depName=ubuntu_20_04/openssh-server
+# renovate: datasource=repology depName=ubuntu_20_04/openssh
 devbox_openssh_server_version: 1:8.2p1-4ubuntu0.5
 
 # Neovim text editor
@@ -34,7 +34,7 @@ devbox_nvim_pynvim_version: 0.4.3
 # Language-agnostic tools
 # renovate: datasource=repology depName=ubuntu_20_04/entr
 devbox_entr_version: 4.4-1
-# renovate: datasource=repology depName=ubuntu_20_04/ripgrep
+# renovate: datasource=repology depName=ubuntu_20_04/rust-ripgrep
 devbox_ripgrep_version: 11.0.2-1ubuntu0.1
 # renovate: datasource=repology depName=ubuntu_20_04/docker.io
 devbox_docker_version: 20.10.12-0ubuntu2~20.04.1
@@ -78,7 +78,7 @@ devbox_fzf_dir: /usr/local/share/fzf
 # python & tools
 # renovate: datasource=repology depName=ubuntu_20_04/python3.8
 devbox_python_version: 3.8.10-0ubuntu1~20.04.5
-# renovate: datasource=repology depName=ubuntu_20_04/python3-pip
+# renovate: datasource=repology depName=ubuntu_20_04/python-pip
 devbox_python_pip_version: 20.0.2-5ubuntu1.6
 # renovate: datasource=repology depName=ubuntu_20_04/python-wheel-common
 devbox_python_wheel_version: 0.34.2-1
