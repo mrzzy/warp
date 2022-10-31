@@ -10,27 +10,30 @@
     name: "neovim={{ devbox_nvim_version }}"
     state: present
 
-# Setup Neovim Editor with Plugins
-- name: Create Neovim directories
-  file:
-    path: "{{ item }}"
-    state: directory
-    mode: 0774
-  loop:
-    - "{{ devbox_user_home }}/.local/share/nvim/site/autoload/"
-
-- name: Install vim-plug plugin manager
-  get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ devbox_nvim_vim_plug_version }}/plug.vim
-    dest: "{{ devbox_user_home }}/.local/share/nvim/site/autoload/plug.vim"
-
 - name: Install Neovim Plugins
-  # direct plugins to be installed in devbox users's home dir
-  environment:
-    HOME: "{{ devbox_user_home }}"
-    XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
-    XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
-    XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
-  command:
-    cmd: nvim --headless +PlugInstall +qall
-    creates: "{{ devbox_user_home }}/.local/share/nvim/plugged"
+  become: true
+  become_user: "{{ devbox_user }}"
+  block:
+    - name: Create Neovim plugin Directory
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: 0774
+      loop:
+        - "{{ devbox_user_home }}/.local/share/nvim/site/autoload/"
+
+    - name: Install vim-plug plugin manager
+      get_url:
+        url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ devbox_nvim_vim_plug_version }}/plug.vim
+        dest: "{{ devbox_user_home }}/.local/share/nvim/site/autoload/plug.vim"
+
+    - name: Run vim-plug Install
+      # direct plugins to be installed in devbox users's home dir
+      environment:
+        HOME: "{{ devbox_user_home }}"
+        XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
+        XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
+        XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
+      command:
+        cmd: nvim --headless +PlugInstall +qall
+        creates: "{{ devbox_user_home }}/.local/share/nvim/plugged"
