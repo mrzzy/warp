@@ -7,7 +7,7 @@
 - name: Install OpenSSH server with APT
   become: true
   apt:
-    name: "openssh-sever={{ devbox_openssh_server_version }}"
+    name: "openssh-server={{ devbox_openssh_server_version }}"
     state: present
 
 - name: Increase process priority of SSH server
