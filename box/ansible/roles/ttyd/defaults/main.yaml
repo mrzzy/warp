@@ -3,7 +3,6 @@
 # TTYD Ansible Role default variables
 #
 
-
 # TTYD web terminal
 # renovate: datasource=github-tags depName=tsl0922/ttyd
 devbox_ttyd_version: 1.7.1

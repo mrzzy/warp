@@ -25,7 +25,6 @@
         scope: file
         file: "{{ devbox_user_home }}/.git/config"
         state: absent
-
     - name: Checkout dotfiles at specific revision
       git:
         repo: "{{ dotfiles_repo }}"
