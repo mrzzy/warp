@@ -1,0 +1,9 @@
+#
+# WARP
+# Dotfiles Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  # depends on 'system' role to install git
+  - role: system

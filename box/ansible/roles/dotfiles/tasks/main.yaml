@@ -1,0 +1,36 @@
+#
+# WARP
+# Devbox Ansible Role
+# Install dotfiles
+#
+
+- name: Install dotfiles to {{ devbox_user_home }}
+  become: true
+  become_user: "{{ devbox_user }}"
+  vars:
+    dotfiles_repo: https://github.com/mrzzy/dotfiles
+  block:
+    # bare clone of dotfiles is required as workaround to inject dotfiles into
+    # a home directory with existing files.
+    - name: Pull bare dotfiles repository
+      git:
+        repo: "{{ dotfiles_repo }}"
+        single_branch: true
+        version: main
+        dest: "{{ devbox_user_home }}/.git"
+        bare: true
+    - name: Unmark repo as bare to allow checkouts
+      community.general.git_config:
+        name: core.bare
+        scope: file
+        file: "{{ devbox_user_home }}/.git/config"
+        state: absent
+    - name: Checkout dotfiles at specific revision
+      git:
+        repo: "{{ dotfiles_repo }}"
+        dest: "{{ devbox_user_home }}"
+        version: "{{ devbox_dotfiles_rev }}"
+        # override existing dotfile with ours in case the skeleton user home dir
+        # has a templated an identical dotfile.
+        # WARNING: this overrides any local changes made to dotfiles
+        force: true

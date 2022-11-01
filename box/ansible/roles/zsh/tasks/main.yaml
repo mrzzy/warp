@@ -1,0 +1,20 @@
+#
+# WARP
+# ZSH Ansible Role
+# Tasks
+#
+- name: Install ZSH with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "zsh={{ devbox_zsh_version }}"
+    - "zsh-autosuggestions={{ devbox_zsh_autosuggest_version }} "
+    - "zsh-syntax-highlighting={{ devbox_zsh_syntax_version }}"
+
+- name: Install Z Jump Tool
+  become: true
+  get_url:
+    url: https://raw.githubusercontent.com/agkozak/zsh-z/master/zsh-z.plugin.zsh
+    dest: "/usr/local/share/zsh/site-functions"

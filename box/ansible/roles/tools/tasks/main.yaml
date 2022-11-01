@@ -1,0 +1,31 @@
+#
+# WARP
+# Tools Ansible Role
+# Tasks
+#
+
+- name: Install Development Tools with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "entr={{ devbox_entr_version }}"
+    - "ripgrep={{ devbox_ripgrep_version }}"
+    - "ranger={{ devbox_ranger_version }}"
+    - "universal-ctags={{ devbox_universal_ctags_version }}"
+    - "jq={{ devbox_jq_version }}"
+    - "bind9-dnsutils={{ devbox_dnsutils_version }}"
+
+- name: Install pre-commit with Pip
+  become: true
+  pip:
+    name: "pre-commit=={{ devbox_pre_commit_version }}"
+    state: present
+
+- name: Install YQ YAML Processor
+  become: true
+  get_url:
+    url: "https://github.com/mikefarah/yq/releases/download/{{ devbox_yq_version }}/yq_linux_amd64"
+    dest: /usr/local/bin/yq
+    mode: 0755

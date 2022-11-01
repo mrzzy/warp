@@ -1,0 +1,14 @@
+#
+# WARP
+# C/C++ Ansible Role
+# Tasks
+#
+
+- name: Install C/C++ Tooling with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "cmake={{ devbox_c_cmake_version }}"
+    - "clangd-12={{ devbox_c_clangd_version }}"

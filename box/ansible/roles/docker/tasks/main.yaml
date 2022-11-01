@@ -1,0 +1,20 @@
+#
+# WARP
+# Docker Ansible Role
+# Tasks
+#
+
+- name: Install development tools with APT
+  become: true
+  apt:
+    name: "docker.io={{ devbox_docker_version }}"
+    state: present
+
+- name: Install docker-compose
+  become: true
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/\
+          {{ devbox_docker_compose_version }}/docker-compose-linux-\
+          {{ ansible_userspace_architecture }}"
+    dest: /usr/local/bin/docker-compose
+    mode: 0755

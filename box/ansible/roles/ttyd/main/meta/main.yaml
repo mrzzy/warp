@@ -1,0 +1,8 @@
+#
+# WARP
+# TTYD Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: zsh

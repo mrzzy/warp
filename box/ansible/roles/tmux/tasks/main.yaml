@@ -1,0 +1,35 @@
+#
+# WARP
+# Tmux Ansible Role
+# Tasks
+#
+
+- name: Install Tmux & AWK with APT
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "tmux={{ devbox_tmux_version }}"
+    - "gawk={{ devbox_tmux_gawk_version }}"
+
+- name: Install Tmux Plugins
+  become: true
+  become_user: "{{ devbox_user }}"
+  vars:
+    tpm_path: "{{ devbox_user_home }}/.local/share/tmux/tpm"
+  block:
+    - name: Install Tmux Plugin Manager (TPM)
+      git:
+        repo: https://github.com/tmux-plugins/tpm
+        dest: "{{ tpm_path }}"
+        version: master
+        single_branch: true
+
+    - name: Run TPM install_plugins
+      environment:
+        # needed to point TPM to install plugins in the devbox users home dir not root
+        HOME: "{{ devbox_user_home }}"
+      command:
+        cmd: "{{ tpm_path }}/bin/install_plugins"
+        creates: "{{ tpm_path }}/plugins"

@@ -1,0 +1,11 @@
+#
+# WARP
+# Postgres Ansible Role
+# Tasks
+#
+
+- name: Install development tools with APT
+  become: true
+  apt:
+    name: "pgcli={{ devbox_pgcli_version }}"
+    state: present

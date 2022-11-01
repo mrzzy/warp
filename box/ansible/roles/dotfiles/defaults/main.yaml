@@ -1,0 +1,11 @@
+#
+# WARP
+# Dotfiles Ansible Role
+# Default variables
+#
+
+devbox_user: mrzzy
+devbox_user_home: /home/mrzzy
+
+# git revision of dotfiles to install
+devbox_dotfiles_rev: 68ca35463fbb008dd3a784fd5f56c147c6a1f884

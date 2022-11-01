@@ -1,0 +1,10 @@
+#
+# WARP
+# Neovim Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: user
+  - role: nodejs
+  - role: python
