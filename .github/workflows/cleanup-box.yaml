@@ -1,0 +1,35 @@
+#
+# WARP
+# CI Pipeline
+# Cleanup Box Image
+#
+
+name: Cleanup WARP Box Image
+on: delete
+jobs:
+  clean-box-gcp:
+    if: "github.event.ref_type == 'branch' && github.event.ref != 'refs/heads/main'"
+    name: Cleanup WARP Box Image on GCP on branch delete.
+    runs-on: ubuntu-22.04
+    steps:
+      - name: "Set up Cloud SDK"
+        uses: google-github-actions/setup-gcloud@v0.6
+
+      - name: Delete WARP Box Image built for branch
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcp_key.json"
+          KEY_BASE64: ${{ secrets.gcp_warp_ci_key_base64 }}
+        run: |
+          set -ex -o pipefail
+          # decode base64 & write key to disk
+          echo "$KEY_BASE64" | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
+
+          # delete WARP box image built for branch on GCP if it exists
+          IMAGE="warp-box-$(
+            printf '${{ github.event.ref }}' | sed -e 's|refs/heads/||' | tr '[:punct:]' '-'
+          )"
+          IMAGE_LIST=$(gcloud compute images list --project mrzzy-sandbox --filter="name~^${IMAGE}$)
+          if [ -n "$IMAGE_LIST" ]
+          then
+            gcloud compute images delete "$IMAGE"
+          fi

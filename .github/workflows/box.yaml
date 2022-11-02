@@ -27,8 +27,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Add Python bin directory to PATH
+      run: echo "PATH=${HOME}/Library/Python/3.11/bin:${PATH}" >> $GITHUB_ENV
+
     - name: Install Python Tooling
-      run: sudo pip3 install -r requirements.txt
+      run: pip3 install --user -r requirements.txt
 
     - name: Install Packer
       uses: hashicorp-contrib/setup-packer@v2
@@ -57,19 +60,14 @@ jobs:
       with:
         packer-version: ${{ env.PACKER_VERSION }}
 
-    - name: Configure image name based on branch
+    - name: Configure image name based on branch name
       run: |
-        case '${{ github.ref }}' in
-          refs/heads/main)
+        case '${{ github.ref_name }}' in
+          main)
             SUFFIX=""
           ;;
-          refs/heads/release/*)
-            # grep extracts token after '...release/' suffix
-            SUFFIX="-$(printf '${{ github.ref }}' | grep -o '[^/]*$')"
-          ;;
           *)
-            # assume its a development build
-            SUFFIX="-dev"
+            SUFFIX="-$(printf '${{ github.ref_name }}' | tr '[:punct:]' '-')"
           ;;
         esac
         echo "PKR_VAR_image_suffix=${SUFFIX}" >> $GITHUB_ENV
