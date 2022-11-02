@@ -19,6 +19,8 @@ jobs:
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcp_key.json"
           KEY_BASE64: ${{ secrets.gcp_warp_ci_key_base64 }}
+          # set gcp project for all gcloud commands
+          CLOUDSDK_CORE_PROJECT: mrzzy-sandbox
         run: |
           set -ex -o pipefail
           # configure gcloud to use gcp key
@@ -29,7 +31,7 @@ jobs:
           IMAGE="warp-box-$(
             printf '${{ github.event.ref }}' | sed -e 's|refs/heads/||' | tr '[:punct:]' '-'
           )"
-          IMAGE_LIST=$(gcloud compute images list --project mrzzy-sandbox --filter="name~^${IMAGE}$")
+          IMAGE_LIST=$(gcloud compute images list --filter="name~^${IMAGE}$")
           if [ -n "$IMAGE_LIST" ]
           then
             gcloud compute images delete "$IMAGE"
