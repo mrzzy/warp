@@ -9,8 +9,8 @@ source "vagrant" "ubuntu" {
   provider     = "virtualbox"
 
   # source box
-  source_path = "ubuntu/focal64"
-  box_version = "v20220215.1.0"
+  source_path = "ubuntu/jammy64"
+  box_version = "v20221101.1.0"
 
   # output box
   box_name   = "mrzzy/warp-box${var.image_suffix}"
