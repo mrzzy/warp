@@ -27,8 +27,8 @@ source "googlecompute" "ubuntu" {
   preemptible = true
 
   # compute engine image as build base
-  source_image_family = "ubuntu-minimal-2004-lts"
-  source_image        = "ubuntu-minimal-2004-focal-v20220419a"
+  source_image_family = "ubuntu-minimal-2204-lts"
+  source_image        = "ubuntu-minimal-2204-jammy-v20221101"
 
   # vm image name
   image_name = "warp-box${var.image_suffix}"
