@@ -4,8 +4,8 @@
 # Default Variables
 #
 
-# renovate: datasource=repology depName=ubuntu_22_04/python3.8
-devbox_python_version: 3.8.10-0ubuntu1~20.04.5
+# renovate: datasource=repology depName=ubuntu_22_04/python
+devbox_python_version: 3.10.4-0ubuntu2
 # renovate: datasource=repology depName=ubuntu_22_04/python-pip
 devbox_python_pip_version: 20.0.2-5ubuntu1.6
 # renovate: datasource=repology depName=ubuntu_22_04/python-wheel-common
