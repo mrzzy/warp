@@ -12,8 +12,8 @@ devbox_hashicorp_terraform_langserver_version: 0.29.3
 devbox_hashicorp_packer_version: 1.8.3-1
 # renovate: datasource=github-releases depName=hashicorp/vagrant versioning=hashicorp stripV
 devbox_hashicorp_vagrant_version: 2.3.2
-# renovate: datasource=repology depname=ubuntu_20_04/virtualbox
-devbox_hashicorp_virtualbox_version: 6.1.16-dfsg-6~ubuntu1.20.04.2
+# renovate: datasource=repology depname=ubuntu_22_04/virtualbox
+devbox_hashicorp_virtualbox_version: 6.1.32-dfsg-1build1
 # renovate: datasource=github-releases depName=infracost/infracost
 devbox_infracost_version: v0.10.13
 # renovate: datasource=pypi depName=ansible-base
