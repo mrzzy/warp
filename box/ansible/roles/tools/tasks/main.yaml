@@ -29,3 +29,11 @@
     url: "https://github.com/mikefarah/yq/releases/download/{{ devbox_yq_version }}/yq_linux_amd64"
     dest: /usr/local/bin/yq
     mode: 0755
+
+- name: Install Bitwarden CLI with NPM
+  become: true
+  npm:
+    name: "@bitwarden/cli"
+    global: true
+    version: "{{ devbox_bw_version }} "
+    state: present

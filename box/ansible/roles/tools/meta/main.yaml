@@ -1,0 +1,9 @@
+#
+# WARP
+# Tools Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: nodejs
+  - role: python
