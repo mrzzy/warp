@@ -19,5 +19,5 @@ devbox_ttyd_https_port: 7681
 devbox_ttyd_nice_level: -2
 
 # install iptables persistent needed to config iptables rules for TTYD
-# renovate: datasource=repology depName=ubuntu_20_04/iptables-persistent
+# renovate: datasource=repology depName=ubuntu_22_04/iptables-persistent
 devbox_iptables_persistent_version: 1.0.14ubuntu1

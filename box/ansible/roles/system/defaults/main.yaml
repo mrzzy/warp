@@ -5,11 +5,11 @@
 #
 
 # needed for add-apt-repository
-# renovate: datasource=repology depName=ubuntu_20_04/software-properties
+# renovate: datasource=repology depName=ubuntu_22_04/software-properties
 devbox_software_properties_version: 0.99.9.8
 # needed for ansible to become a unprivilleged user
-# renovate: datasource=repology depName=ubuntu_20_04/acl
+# renovate: datasource=repology depName=ubuntu_22_04/acl
 devbox_acl_version: 2.2.53-6
 # needed for ansible's git module
-# renovate: datasource=repology depName=ubuntu_20_04/git
+# renovate: datasource=repology depName=ubuntu_22_04/git
 devbox_git_version: "1:2.25.1-1ubuntu3.6"

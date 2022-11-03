@@ -4,9 +4,9 @@
 # Default Variables
 #
 
-# renovate: datasource=repology depName=ubuntu_20_04/zsh
+# renovate: datasource=repology depName=ubuntu_22_04/zsh
 devbox_zsh_version: 5.8-3ubuntu1.1
-# renovate: datasource=repology depName=ubuntu_20_04/zsh-autosuggestions
+# renovate: datasource=repology depName=ubuntu_22_04/zsh-autosuggestions
 devbox_zsh_autosuggest_version: 0.6.4-1
-# renovate: datasource=repology depName=ubuntu_20_04/zsh-syntax-highlighting
+# renovate: datasource=repology depName=ubuntu_22_04/zsh-syntax-highlighting
 devbox_zsh_syntax_version: 0.6.0-3
