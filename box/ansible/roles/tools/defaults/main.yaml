@@ -7,7 +7,7 @@
 # renovate: datasource=pypi depName=pre-commit
 devbox_pre_commit_version: 2.20.0
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
-devbox_bw_version: 2022.8.0
+devbox_bw_version: 2022.10.0
 # renovate: datasource=repology depName=ubuntu_20_04/entr
 devbox_entr_version: 4.4-1
 # renovate: datasource=repology depName=ubuntu_20_04/rust-ripgrep
