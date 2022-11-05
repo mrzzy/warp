@@ -9,16 +9,16 @@ devbox_pre_commit_version: 2.20.0
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
 devbox_bw_version: 2022.10.0
 # renovate: datasource=repology depName=ubuntu_22_04/entr
-devbox_entr_version: 4.4-1
+devbox_entr_version: 5.1-1
 # renovate: datasource=repology depName=ubuntu_22_04/rust-ripgrep
-devbox_ripgrep_version: 11.0.2-1ubuntu0.1
+devbox_ripgrep_version: 13.0.0-2ubuntu0.1
 # renovate: datasource=repology depName=ubuntu_22_04/ranger
-devbox_ranger_version: 1.9.3-1build1
+devbox_ranger_version: 1.9.3-3ubuntu1
 # renovate: datasource=repology depName=ubuntu_22_04/universal-ctags
-devbox_universal_ctags_version: 0+git20181215-2
+devbox_universal_ctags_version: 5.9.20210829.0-1
 # renovate: datasource=repology depName=ubuntu_22_04/jq
-devbox_jq_version: 1.6-1ubuntu0.20.04.1
+devbox_jq_version: 1.6-2.1ubuntu3
 # renovate: datasource=github-releases depName=mikefarah/yq
 devbox_yq_version: v4.29.2
 # renovate: datasource=repology depName=ubuntu_22_04/bind9
-devbox_dnsutils_version: 1:9.16.1-0ubuntu2.11
+devbox_dnsutils_version: 1:9.18.1-1ubuntu1.2
