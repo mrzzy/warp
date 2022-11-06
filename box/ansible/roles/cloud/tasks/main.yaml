@@ -22,12 +22,6 @@
     repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     state: present
 
-- name: Register Ansible APT PPA
-  become: true
-  apt_repository:
-    repo: "ppa:ansible/ansible"
-    state: present
-
 - name: Install Cloud tools with APT
   become: true
   apt:
@@ -39,7 +33,6 @@
     - "terraform-ls={{ devbox_hashicorp_terraform_langserver_version }}"
     - "vagrant={{ devbox_hashicorp_vagrant_version }}"
     - "virtualbox={{ devbox_hashicorp_virtualbox_version }}"
-    - "ansible={{ devbox_ansible_version }}"
 
 - name: Install Cloud tools with Pip
   become: true
@@ -48,6 +41,7 @@
     state: present
   loop:
     - "linode-cli=={{ devbox_linode_cli_version }}"
+    - "ansible-base=={{ devbox_ansible_version }}"
 
 # Install Infracost
 - name: Install Infracost

@@ -4,7 +4,7 @@
 # Default Variables
 #
 
-# renovate: datasource=repology depName=ubuntu_20_04/docker.io
-devbox_docker_version: 20.10.12-0ubuntu2~20.04.1
+# renovate: datasource=repology depName=ubuntu_22_04/docker.io
+devbox_docker_version: 20.10.12-0ubuntu4
 # renovate: datasource=github-releases depName=docker/compose
 devbox_docker_compose_version: v2.12.2
