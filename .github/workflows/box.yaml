@@ -12,6 +12,7 @@ on:
       - "box/**"
       - makefile
       - requirements.txt
+  create: {}
 env:
   PACKER_VERSION: 1.8.0
   # make ansible output human readable logs
