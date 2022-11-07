@@ -5,6 +5,7 @@
 #
 
 dependencies:
+  - role: system
   - role: user
   - role: nodejs
   - role: python
