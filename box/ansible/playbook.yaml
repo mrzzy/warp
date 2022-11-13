@@ -55,7 +55,7 @@
   roles:
     - role: alacritty
       when: "lookup('env', 'DISPLAY') != ''"
-    - role: flatpak
+    - role: flatpaks
       when: "lookup('env', 'DISPLAY') != ''"
 
   post_tasks:

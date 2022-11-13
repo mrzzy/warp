@@ -13,7 +13,7 @@
 
 - name: Add the flathub flatpak repository remote
   become: true
-  community.general.flatpak:
+  community.general.flatpak_remote:
     name: flathub
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -24,4 +24,6 @@
     remote: flathub
     name:
       - com.spotify.Client
+      - org.zotero.Zotero
+      - md.obsidian.Obsidian
     state: present
