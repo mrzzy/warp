@@ -6,3 +6,5 @@
 
 # renovate: datasource=github-releases depName=alacritty/alacritty
 devbox_alacritty_version: 0.11.0
+# renovate: datasource=github-releases depName=rajasegar/alacritty-themes
+devbox_alacritty_themes_version: 5.3.0

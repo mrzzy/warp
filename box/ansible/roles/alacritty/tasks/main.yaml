@@ -15,7 +15,6 @@
     - libxcb-xfixes0-dev
 
 - name: Install Alacritty terminal with Cargo
-  tags: [test]
   become: true
   environment:
     PATH: "{{ devbox_user_home }}/.cargo/bin:{{ ansible_env.PATH }}"
@@ -30,3 +29,10 @@
     link: /usr/bin/x-terminal-emulator
     path: /usr/local/bin/alacritty
     state: selected
+
+- name: Install Alacritty themes switcher with NPM
+  become: true
+  npm:
+    name: "alacritty-themes@{{ devbox_alacritty_themes_version }}"
+    global: true
+    state: present
