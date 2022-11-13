@@ -1,0 +1,11 @@
+#
+# WARP
+# Flatpak Ansible Role
+# Tasks
+#
+
+- name: Install Flatpak with APT
+  become: true
+  apt:
+    name: "flatpak={{ devbox_flatpak_version }}"
+    state: present
