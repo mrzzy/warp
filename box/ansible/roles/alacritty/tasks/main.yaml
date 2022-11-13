@@ -1,0 +1,32 @@
+#
+# WARP
+# Alacritty Ansible Role
+# Tasks
+#
+
+- name: Install Alacritty build dependencies
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - libfreetype6-dev
+    - libfontconfig1-dev
+    - libxcb-xfixes0-dev
+
+- name: Install Alacritty terminal with Cargo
+  tags: [test]
+  become: true
+  environment:
+    PATH: "{{ devbox_user_home }}/.cargo/bin:{{ ansible_env.PATH }}"
+  command:
+    cmd: "cargo install alacritty@{{ devbox_alacritty_version }} --root /usr/local"
+    creates: /usr/local/bin/alacritty
+
+- name: Register Alacritty as the default X Terminal emulator
+  become: true
+  community.general.alternatives:
+    name: x-terminal-emulator
+    link: /usr/bin/x-terminal-emulator
+    path: /usr/local/bin/alacritty
+    state: selected

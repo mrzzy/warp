@@ -1,0 +1,8 @@
+#
+# WARP
+# Alacritty Ansible Role
+# Default Variables
+#
+
+# renovate: datasource=github-releases depName=alacritty/alacritty
+devbox_alacritty_version: 0.11.0

@@ -1,3 +1,5 @@
 roles:
   - src: comcast.sdkman
     version: 1.7.0
+  - src: community.general
+    version: 6.0.0
