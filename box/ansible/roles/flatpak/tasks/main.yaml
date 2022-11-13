@@ -9,3 +9,19 @@
   apt:
     name: "flatpak={{ devbox_flatpak_version }}"
     state: present
+
+
+- name: Add the flathub flatpak repository remote
+  become: true
+  community.general.flatpak:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
+- name: Install Flatpak Apps from flathub
+  become: true
+  community.general.flatpak:
+    remote: flathub
+    name:
+      - com.spotify.Client
+    state: present

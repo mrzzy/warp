@@ -53,12 +53,9 @@
     devbox_user_home: /home/mrzzy
   # only provision graphical tools when we can detect a X display
   roles:
-    - role: flatpak
-      tags: [test]
-      when: "lookup('env', 'DISPLAY') != ''"
     - role: alacritty
       when: "lookup('env', 'DISPLAY') != ''"
-    - role: spotify
+    - role: flatpak
       when: "lookup('env', 'DISPLAY') != ''"
 
   post_tasks:
