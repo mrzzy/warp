@@ -6,7 +6,6 @@
 
 # HashiCorp Tools
 - name: "Register HashiCorp's package signing key"
-  tags: [test]
   become: true
   apt_key:
     url: https://apt.releases.hashicorp.com/gpg

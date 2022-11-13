@@ -55,6 +55,9 @@
   roles:
     - role: alacritty
       when: "lookup('env', 'DISPLAY') != ''"
+    - role: spotify
+      tags: [test]
+      when: "lookup('env', 'DISPLAY') != ''"
 
   post_tasks:
     - name: Optimize Storage Footprint & Performance
