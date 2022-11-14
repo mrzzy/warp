@@ -48,18 +48,18 @@
 - name: Provision graphical tools
   hosts: all
   vars:
+    devbox_install_graphical: "lookup('env', 'DISPLAY') != ''"
     # User
     devbox_user: mrzzy
     devbox_user_home: /home/mrzzy
   # only provision graphical tools when we can detect a X display
   roles:
     - role: alacritty
-      when: "lookup('env', 'DISPLAY') != ''"
+      when: "devbox_install_graphical"
     - role: flatpaks
-      when: "lookup('env', 'DISPLAY') != ''"
+      when: "devbox_install_graphical"
     - role: dconfs
-      when: "lookup('env', 'DISPLAY') != ''"
-
+      when: "devbox_install_graphical"
 
   post_tasks:
     - name: Optimize Storage Footprint & Performance
