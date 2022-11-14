@@ -14,13 +14,26 @@
     - libfontconfig1-dev
     - libxcb-xfixes0-dev
 
-- name: Install Alacritty terminal with Cargo
-  become: true
+- name: Build & Install Alacritty terminal
+  tags: [test]
+  vars:
+    cargo_bin: "{{ devbox_user_home }}/.cargo/bin"
   environment:
-    PATH: "{{ devbox_user_home }}/.cargo/bin:{{ ansible_env.PATH }}"
-  command:
-    cmd: "cargo install alacritty@{{ devbox_alacritty_version }} --root /usr/local"
-    creates: /usr/local/bin/alacritty
+    PATH: "{{ cargo_bin }}:{{ ansible_env.PATH }}"
+  block:
+    - name: Build Alacritty terminal with Cargo
+      become: true
+      become_user: "{{ devbox_user }}"
+      command:
+        cmd: "cargo install alacritty@{{ devbox_alacritty_version }}"
+        creates: "{{ cargo_bin }}/alacritty"
+
+    - name: Install Alacritty binary
+      become: true
+      copy:
+        src: "{{ cargo_bin }}/alacritty"
+        dest: /usr/local/bin/alacritty
+        mode: '0755'
 
 - name: Register Alacritty as the default X Terminal emulator
   become: true
