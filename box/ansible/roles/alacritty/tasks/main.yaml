@@ -15,7 +15,6 @@
     - libxcb-xfixes0-dev
 
 - name: Build & Install Alacritty terminal
-  tags: [test]
   vars:
     cargo_bin: "{{ devbox_user_home }}/.cargo/bin"
   environment:
@@ -31,6 +30,7 @@
     - name: Install Alacritty binary
       become: true
       copy:
+        remote_src: true
         src: "{{ cargo_bin }}/alacritty"
         dest: /usr/local/bin/alacritty
         mode: '0755'
