@@ -4,6 +4,11 @@
 # Tasks
 #
 
+- name: Register Neovim PPA
+  become: true
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+
 - name: Install Neovim with APT
   become: true
   apt:
