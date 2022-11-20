@@ -16,7 +16,7 @@
       git:
         repo: "{{ dotfiles_repo }}"
         single_branch: true
-        version: main
+        version: feat/nvim-lua
         dest: "{{ devbox_user_home }}/.git"
         bare: true
     - name: Unmark repo as bare to allow checkouts
