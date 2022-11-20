@@ -34,8 +34,3 @@
       command:
         cmd: nvim --headless +PackerSync +qall
         creates: "{{ devbox_user_home }}/.local/share/nvim/packer/start"
-
-    - name: Install coc.nvim extensions
-      command:
-        cmd: nvim --headless '+call Install_coc_extensions()' +qall
-        creates: "{[ devbox_user_home }}/.config/coc/extensions"
