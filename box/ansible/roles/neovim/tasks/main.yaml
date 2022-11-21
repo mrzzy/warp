@@ -32,5 +32,5 @@
         XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
         XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
       command:
-        cmd: nvim --headless +PackerSync +qall
+        cmd: nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
         creates: "{{ devbox_user_home }}/.local/share/nvim/packer/start"
