@@ -8,7 +8,5 @@ devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
 # Neovim text editor
-# renovate: datasource=repology depName=ubuntu_22_04/neovim
-devbox_nvim_version: 0.6.1-3
-# renovate: datasource=github-releases depName=junegunn/vim-plug
-devbox_nvim_vim_plug_version: 0.11.0
+devbox_nvim_version: 0.7.2-3~bpo22.04.1~ppa1
+devbox_nvim_packer_version: 6afb67460283f0e990d35d229fd38fdc04063e0a

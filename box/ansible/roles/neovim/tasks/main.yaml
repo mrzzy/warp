@@ -4,6 +4,11 @@
 # Tasks
 #
 
+- name: Register Neovim PPA
+  become: true
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+
 - name: Install Neovim with APT
   become: true
   apt:
@@ -14,31 +19,18 @@
   become: true
   become_user: "{{ devbox_user }}"
   block:
-    - name: Create Neovim plugin Directory
-      file:
-        path: "{{ item }}"
-        state: directory
-        mode: 0774
-      loop:
-        - "{{ devbox_user_home }}/.local/share/nvim/site/autoload/"
+    - name: Install packer.nvim plugin manager
+      git:
+        repo: https://github.com/wbthomason/packer.nvim
+        version: "{{ devbox_nvim_packer_version }}"
+        dest: "{{ devbox_user_home }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
-    - name: Install vim-plug plugin manager
-      get_url:
-        url: https://raw.githubusercontent.com/junegunn/vim-plug/{{ devbox_nvim_vim_plug_version }}/plug.vim
-        dest: "{{ devbox_user_home }}/.local/share/nvim/site/autoload/plug.vim"
-
-    - name: Run vim-plug Install
-      # direct plugins to be installed in devbox users's home dir
+    - name: Run packer.nvim PackInstall to install plugins
       environment:
         HOME: "{{ devbox_user_home }}"
         XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
         XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
         XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
       command:
-        cmd: nvim --headless +PlugInstall +qall
-        creates: "{{ devbox_user_home }}/.local/share/nvim/plugged"
-
-    - name: Install coc.nvim extensions
-      command:
-        cmd: nvim --headless '+call Install_coc_extensions()' +qall
-        creates: "{[ devbox_user_home }}/.config/coc/extensions"
+        cmd: nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+        creates: "{{ devbox_user_home }}/.local/share/nvim/packer/start"
