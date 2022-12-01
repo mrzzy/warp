@@ -1,0 +1,11 @@
+#
+# WARP
+# Golang Ansible Role
+# Tasks
+#
+
+- name: Install Golang with APT
+  become: true
+  apt:
+    name: "golang={{ devbox_golang_version }}"
+    state: present
