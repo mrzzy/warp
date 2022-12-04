@@ -47,6 +47,7 @@
     - docker
     - cloud
     - k8s
+    - shadowsocks
   post_tasks:
     - name: Optimize Storage Footprint & Performance
       import_tasks: tasks/optimize.yaml
