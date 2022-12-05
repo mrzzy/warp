@@ -12,7 +12,5 @@
     global: true
     state: present
   loop:
-    - name: next
-      version: "{{ devbox_nextjs_version }}"
     - name: typescript
       version: "{{ devbox_typescript_version }}"
