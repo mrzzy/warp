@@ -1,0 +1,18 @@
+#
+# WARP
+# Javascript Role
+# Tasks
+#
+
+- name: Install JavaScript tools with NPM
+  become: true
+  community.general.npm:
+    name: "{{ item.name }}"
+    version: "{{ item.version }}"
+    global: true
+    state: present
+  loop:
+    - name: next
+      version: "{{ devbox_nextjs_version }}"
+    - name: typescript
+      version: "{{ devbox_typescript_version }}"

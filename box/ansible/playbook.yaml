@@ -33,6 +33,7 @@
     - jvm
     - c_cpp
     - go
+    - js
 
     - zsh
     - tmux

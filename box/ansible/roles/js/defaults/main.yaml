@@ -1,0 +1,10 @@
+#
+# WARP
+# Javascript Role
+# Default Variables
+#
+
+# renovate: datasource=npm depName=next versioning=npm
+devbox_nextjs_version: 13.0.6
+# renovate: datasource=npm depName=typescript versioning=npm
+devbox_typescript_version: 4.9.3
