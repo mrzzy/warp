@@ -1,0 +1,8 @@
+#
+# WARP
+# Rust role
+# Default Variables
+#
+
+# renovate: datasource=github-releases depName=rust-lang/rust
+devbox_rust_version: 1.65.0

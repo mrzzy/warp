@@ -1,8 +1,8 @@
 #
 # WARP
-# JavaScript role
+# Rust role
 # Role Metadata
 #
 
 dependencies:
-  - role: nodejs
+  - role: user

@@ -1,0 +1,18 @@
+#
+# WARP
+# Rust role
+# Tasks
+#
+
+- name: Download rustup install script
+  ansible.builtin.get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/rustup-init.sh
+    mode: 0644
+
+- name: Install Rust toolchain with rustup
+  become: true
+  become_user: "{{ devbox_user }}"
+  ansible.builtin.script:
+    cmd: "/tmp/rustup-init.sh -y --no-modify-path --default-toolchain {{ devbox_rust_version }}"
+    creates: "{{ devbox_user_home }}/.cargo"

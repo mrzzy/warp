@@ -30,10 +30,11 @@
 
     - python
     - nodejs
+    - js
     - jvm
     - c_cpp
     - go
-    - js
+    - rust
 
     - zsh
     - tmux
