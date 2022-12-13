@@ -7,7 +7,7 @@
 # JVM Languages
 - name: Install JVM Languages & Tooling with SDKMan
   become: true
-  import_role:
+  ansible.builtin.import_role:
     role: comcast.sdkman
   vars:
     sdkman_dir: /usr/local/lib/sdkman
@@ -17,6 +17,8 @@
     sdkman_install_packages:
       - candidate: java
         version: "{{ devbox_jvm_java_version }}"
+      - candidate: maven
+        version: "{{ devbox_jvm_maven_version }}"
       - candidate: scala
         version: "{{ devbox_jvm_scala_version }}"
       - candidate: sbt
