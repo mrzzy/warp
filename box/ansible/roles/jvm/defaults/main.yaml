@@ -5,7 +5,7 @@
 #
 
 # jvm languages & tools
-devbox_jvm_java_version: 11.0.15-tem
+devbox_jvm_java_version: 17.0.5-tem
 # renovate: datasource=maven depName=org.apache.maven:maven-core versioning=maven
 devbox_jvm_maven_version: 3.8.6
 # renovate: datasource=maven depName=org.scala-lang:scala3-library versioning=maven
