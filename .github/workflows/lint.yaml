@@ -27,6 +27,12 @@ jobs:
         # renovate: datasource=github-releases depName=hashicorp/packer versioning=hashicorp
         packer-version: 1.8.0
 
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+        cache: "pip"
+
     - name: Install Python Tooling
       run: |
         set -ex -o pipefail
