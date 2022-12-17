@@ -33,7 +33,6 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ env.PYTHON_VERSION }}
-        cache: "pip"
 
     - name: Add Python bin directory to PATH
       run: echo "PATH=${HOME}/Library/Python/${{ env.PYTHON_VERSION }}/bin:${PATH}" >> $GITHUB_ENV
@@ -64,7 +63,6 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: ${{ env.PYTHON_VERSION }}
-        cache: "pip"
 
     - name: Install Python Tooling
       run: sudo pip3 install -r requirements.txt
