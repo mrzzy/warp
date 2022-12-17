@@ -4,8 +4,7 @@
 # Tasks
 #
 
-# JVM Languages
-- name: Install JVM Languages & Tooling with SDKMan
+- name: Install Java & Tooling with SDKMan
   become: true
   ansible.builtin.import_role:
     role: comcast.sdkman
@@ -19,7 +18,37 @@
         version: "{{ devbox_jvm_java_version }}"
       - candidate: maven
         version: "{{ devbox_jvm_maven_version }}"
-      - candidate: scala
-        version: "{{ devbox_jvm_scala_version }}"
-      - candidate: sbt
-        version: "{{ devbox_jvm_sbt_version }}"
+
+- name: Install Coursier
+  vars:
+    coursier: /usr/local/bin/cs
+  block:
+    - name: Download Coursier
+      ansible.builtin.get_url:
+        url: "https://github.com/coursier/coursier/releases/download/\
+              {{ devbox_jvm_coursier_version }}/cs-x86_64-pc-linux.gz"
+        dest: /tmp/coursier.gz
+        mode: 0744
+    - name: Uncompress Coursier
+      become: true
+      ansible.builtin.shell:
+        cmd: "gunzip -c /tmp/coursier.gz >{{ coursier }}"
+        creates: "{{ coursier }}"
+    - name: Make Coursier executable
+      become: true
+      ansible.builtin.file:
+        path: "{{ coursier }}"
+        mode: 0755
+
+- name: Install Scala & Tooling with Coursier
+  become: true
+  become_user: "{{ devbox_user }}"
+  vars:
+    coursier_bin: "{{ devbox_user_home }}/.local/share/coursier/bin"
+  ansible.builtin.command:
+    cmd: "cs install {{ item }}"
+    creates: "{{ coursier_bin }}/bin"
+  loop:
+    - "scala:{{ devbox_jvm_scala_version }}"
+    - "sbt:{{ devbox_jvm_sbt_version }}"
+    - "metals:{{ devbox_jvm_metals_version }}"
