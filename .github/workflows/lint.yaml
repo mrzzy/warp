@@ -8,7 +8,7 @@ name: Lint WARP Source Code
 on: push
 jobs:
   lint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -26,6 +26,12 @@ jobs:
       with:
         # renovate: datasource=github-releases depName=hashicorp/packer versioning=hashicorp
         packer-version: 1.8.0
+
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+        cache: "pip"
 
     - name: Install Python Tooling
       run: |

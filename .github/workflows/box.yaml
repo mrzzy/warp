@@ -14,6 +14,7 @@ on:
       - requirements.txt
   create: {}
 env:
+  PYTHON_VERSION: "3.11"
   PACKER_VERSION: 1.8.0
   # make ansible output human readable logs
   ANSIBLE_STDOUT_CALLBACK: debug
@@ -28,8 +29,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: "pip"
+
     - name: Add Python bin directory to PATH
-      run: echo "PATH=${HOME}/Library/Python/3.11/bin:${PATH}" >> $GITHUB_ENV
+      run: echo "PATH=${HOME}/Library/Python/${{ env.PYTHON_VERSION }}/bin:${PATH}" >> $GITHUB_ENV
 
     - name: Install Python Tooling
       run: pip3 install --user -r requirements.txt
@@ -45,13 +52,19 @@ jobs:
       run: make box
 
   build-box-gcp:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
         # required to fetch git branch info
         fetch-depth: "0"
+
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: "pip"
 
     - name: Install Python Tooling
       run: sudo pip3 install -r requirements.txt
