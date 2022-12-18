@@ -12,4 +12,4 @@
   loop:
     - "cmake={{ devbox_c_cmake_version }}"
     - "clangd={{ devbox_c_clangd_version }}"
-    - "bear-clang={{ devbox_c_bear_version }}"
+    - "bear={{ devbox_c_bear_version }}"
