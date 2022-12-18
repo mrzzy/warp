@@ -8,3 +8,5 @@
 # renovate: datasource=repology depName=ubuntu_22_04/cmake
 devbox_c_cmake_version: 3.22.1-1ubuntu1.22.04.1
 devbox_c_clangd_version: "1:14.0-55~exp2"
+# renovate: datasource=repology depName=ubuntu_22_04/bear
+devbox_c_bear_version: "3.0.18"

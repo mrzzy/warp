@@ -6,9 +6,10 @@
 
 - name: Install C/C++ Tooling with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop:
     - "cmake={{ devbox_c_cmake_version }}"
     - "clangd={{ devbox_c_clangd_version }}"
+    - "bear-clang={{ devbox_c_bear_version }}"
