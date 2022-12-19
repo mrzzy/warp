@@ -9,6 +9,6 @@
 devbox_c_cmake_version: 3.22.1-1ubuntu1.22.04.1
 devbox_c_clangd_version: "1:14.0-55~exp2"
 # renovate: datasource=repology depName=ubuntu_22_04/bear
-devbox_c_bear_version: "3.0.18"
+devbox_c_bear_version: "3.0.18-1"
 # renovate: datasource=repology depName=ubuntu_22_04/gdb
 devbox_c_gdb_version: "12.1-0ubuntu1~22.04"
