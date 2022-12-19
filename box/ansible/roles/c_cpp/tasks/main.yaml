@@ -13,3 +13,4 @@
     - "cmake={{ devbox_c_cmake_version }}"
     - "clangd={{ devbox_c_clangd_version }}"
     - "bear={{ devbox_c_bear_version }}"
+    - "gdb={{ devbox_c_gdb_version }}"
