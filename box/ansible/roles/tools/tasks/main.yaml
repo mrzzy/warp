@@ -6,7 +6,7 @@
 
 - name: Install Development Tools with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop:
@@ -20,20 +20,20 @@
 
 - name: Install pre-commit with Pip
   become: true
-  pip:
+  ansible.builtin.pip:
     name: "pre-commit=={{ devbox_pre_commit_version }}"
     state: present
 
 - name: Install YQ YAML Processor
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/mikefarah/yq/releases/download/{{ devbox_yq_version }}/yq_linux_amd64"
     dest: /usr/local/bin/yq
     mode: 0755
 
 - name: Install Bitwarden CLI with NPM
   become: true
-  npm:
+  community.general.npm:
     name: "@bitwarden/cli"
     global: true
     version: "{{ devbox_bw_version }} "
