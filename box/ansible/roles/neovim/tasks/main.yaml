@@ -6,31 +6,36 @@
 
 - name: Register Neovim PPA
   become: true
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: ppa:neovim-ppa/stable
 
 - name: Install Neovim with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "neovim={{ devbox_nvim_version }}"
     state: present
 
 - name: Install Neovim Plugins
   become: true
   become_user: "{{ devbox_user }}"
+  environment:
+    HOME: "{{ devbox_user_home }}"
+    XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
+    XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
+    XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
   block:
     - name: Install packer.nvim plugin manager
-      git:
+      ansible.builtin.git:
         repo: https://github.com/wbthomason/packer.nvim
         version: "{{ devbox_nvim_packer_version }}"
         dest: "{{ devbox_user_home }}/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
     - name: Run packer.nvim PackInstall to install plugins
-      environment:
-        HOME: "{{ devbox_user_home }}"
-        XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
-        XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
-        XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
-      command:
+      ansible.builtin.command:
         cmd: nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+        creates: "{{ devbox_user_home }}/.local/share/nvim/packer/start"
+
+    - name: Install Language Servers
+      ansible.builtin.command:
+        cmd: nvim --headless -c "lua require('autocomplete').install()" -c "quitall"
         creates: "{{ devbox_user_home }}/.local/share/nvim/packer/start"
