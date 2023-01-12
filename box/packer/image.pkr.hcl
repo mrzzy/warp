@@ -23,7 +23,7 @@ packer {
   # cloud providers
   required_plugins {
     googlecompute = {
-      version = ">=1.0.12, <1.1"
+      version = "< 1.2"
       source  = "github.com/hashicorp/googlecompute"
     }
   }
