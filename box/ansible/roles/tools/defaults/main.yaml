@@ -24,3 +24,7 @@ devbox_yq_version: v4.29.2
 devbox_dnsutils_version: 1:9.18.1-1ubuntu1.2
 # renovate: datasource=repology depName=ubuntu_22_04/git-filter-repo
 devbox_git_filter_repo_version: 2.34.0-1
+# renovate: datasource=repology depName=ubuntu_22_04/nnn
+devbox_nnn_version: 4.3-1
+# renovate: datasource=repology depName=ubuntu_22_04/htop
+devbox_htop_version: 3.0.5-7build2
