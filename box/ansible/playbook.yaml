@@ -14,7 +14,7 @@
   pre_tasks:
     - name: Update APT Cache
       become: true
-      apt:
+      ansible.builtin.apt:
         update-cache: true
   roles:
     - system
@@ -52,13 +52,15 @@
   vars_files:
     - vars.yaml
   roles:
+    - role: pop_desktop
+      when: devbox_install_graphical
     - role: alacritty
-      when: "devbox_install_graphical"
+      when: devbox_install_graphical
     - role: flatpaks
-      when: "devbox_install_graphical"
+      when: devbox_install_graphical
     - role: dconfs
-      when: "devbox_install_graphical"
+      when: devbox_install_graphical
 
   post_tasks:
     - name: Optimize Storage Footprint & Performance
-      import_tasks: tasks/optimize.yaml
+      ansible.builtin.import_tasks: tasks/optimize.yaml

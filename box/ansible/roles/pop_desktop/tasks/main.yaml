@@ -1,0 +1,25 @@
+#
+# WARP
+# PopOS Desktop Ansible Role
+# Role Tasks
+#
+
+- name: Register PopOS APT Repository
+  become: true
+  ansible.builtin.copy:
+    content: |
+      X-Repolib-Name: Pop_OS Release Sources
+      Enabled: yes
+      Types: deb deb-src
+      URIs: http://apt.pop-os.org/release
+      Suites: jammy
+      Components: main
+    dest: /etc/apt/sources.list.d/pop-os-release.sources
+    mode: 0644
+
+- name: Install pop-desktop with APT
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    name: pop-desktop
+    state: present

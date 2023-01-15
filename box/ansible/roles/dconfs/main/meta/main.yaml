@@ -6,3 +6,4 @@
 
 dependencies:
   - role: python
+  - role: pop_desktop
