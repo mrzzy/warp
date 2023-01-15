@@ -27,7 +27,7 @@
     - "packer={{ devbox_hashicorp_packer_version }}"
     - "terraform-ls={{ devbox_hashicorp_terraform_langserver_version }}"
     - "vagrant={{ devbox_hashicorp_vagrant_version }}"
-    - "virtualbox={{ devbox_hashicorp_virtualbox_version }}"
+    - "virtualbox={{ devbox_virtualbox_version }}"
 
 - name: Install Cloud tools with Pip
   become: true
