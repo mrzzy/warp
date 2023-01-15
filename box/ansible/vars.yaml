@@ -4,6 +4,9 @@
 # Variables
 #
 
+# configure ansible to use /tmp for temp files storage to avoid permission issues
+ansible_remote_tmp: /tmp
+
 # User settings
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy/
