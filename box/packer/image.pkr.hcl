@@ -51,7 +51,7 @@ build {
       "--extra-vars", local.ansible_vars
     ]
     galaxy_file   = "box/ansible/requirements.yaml"
-    playbook_file = "box/ansible/console.yaml"
+    playbook_file = var.ansible_playbook
 
     ansible_env_vars = [
       # config ansible to output human readable logs
