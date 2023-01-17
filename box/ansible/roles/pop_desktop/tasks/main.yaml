@@ -4,6 +4,12 @@
 # Role Tasks
 #
 
+- name: Add PopOS APT Repository signing Key
+  become: true
+  ansible.builtin.apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 63C46DF0140D738961429F4E204DD8AEC33A7AFF
+
 - name: Register PopOS APT Repository
   become: true
   ansible.builtin.copy:
@@ -11,7 +17,7 @@
       X-Repolib-Name: Pop_OS Release Sources
       Enabled: yes
       Types: deb deb-src
-      URIs: http://apt.pop-os.org/release
+      URIs: https://apt.pop-os.org/release
       Suites: jammy
       Components: main
     dest: /etc/apt/sources.list.d/pop-os-release.sources
