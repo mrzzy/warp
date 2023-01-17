@@ -1,10 +1,13 @@
 #
 # WARP
 # Box Ansible Playbook
-# Graphical Tools
+# GUI Enabled
+#
 #
 
-- name: Provision graphical tools
+# provision console tools
+- import_playbook: console.yaml
+- name: Provision Graphical tools
   hosts: all
   vars_files:
     - vars.yaml
