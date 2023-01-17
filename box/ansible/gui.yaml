@@ -1,0 +1,23 @@
+#
+# WARP
+# Box Ansible Playbook
+# Graphical Tools
+#
+
+- name: Provision graphical tools
+  hosts: all
+  vars_files:
+    - vars.yaml
+  pre_tasks:
+    - name: Update APT Cache
+      become: true
+      ansible.builtin.apt:
+        update-cache: true
+  roles:
+    - role: pop_desktop
+    - role: alacritty
+    - role: flatpaks
+    - role: dconfs
+  post_tasks:
+    - name: Optimize Storage Footprint & Performance
+      ansible.builtin.import_tasks: tasks/optimize.yaml

@@ -46,14 +46,17 @@ apply: $(ANSIBLE_DIR) ansible-deps
 		--inventory 127.0.0.1, \
 		--connection local \
 		--ask-become-pass \
-		$(ANSIBLE_DIR)/playbook.yaml
+		$(ANSIBLE_DIR)/console.yaml
 
-# build rules: WARP dev box VM
-box: build/package.box
+apply-gui: $(ANSIBLE_DIR) ansible-deps
+	$(PLAYBOOK) \
+		--inventory 127.0.0.1, \
+		--connection local \
+		--ask-become-pass \
+		$(ANSIBLE_DIR)/gui.yaml
 
 # development build: build box on virtualbox only.
-build/package.box: $(PACKER_DIR) packer-init ansible-deps
-	$(PACKER) build --only="vagrant.ubuntu" --force $<
+box: $(PACKER_DIR) packer-init ansible-deps
 
 box-gcp: $(PACKER_DIR) packer-init ansible-deps
 	$(PACKER) build --only="googlecompute.ubuntu" --force $<

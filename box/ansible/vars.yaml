@@ -11,10 +11,6 @@ ansible_remote_tmp: /tmp
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy/
 
-# Graphical Applications
-# Whether to provision graphical apps
-devbox_install_graphical: false
-
 # Optimizations
 # whether to optimize deployment for a small storage footprint
 devbox_minimize_storage: false
