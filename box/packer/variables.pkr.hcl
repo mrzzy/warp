@@ -32,5 +32,5 @@ variable "linode_token" {
 variable "ansible_playbook" {
   description = "Path to the Ansible playbook used to provision the WARP image."
   type        = string
-  default     = "box/ansible/requirements.yaml"
+  default     = "box/ansible/console.yaml"
 }
