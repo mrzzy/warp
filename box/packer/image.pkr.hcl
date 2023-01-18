@@ -50,7 +50,7 @@ build {
       "-vv",
       "--extra-vars", local.ansible_vars
     ]
-    galaxy_file   = "box/ansible/requirements.yaml"
+    galaxy_file   = "requirements.yaml"
     playbook_file = var.ansible_playbook
 
     ansible_env_vars = [
