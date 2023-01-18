@@ -1,0 +1,18 @@
+#
+# WARP
+# Box Ansible Playbook
+# Variables
+#
+
+# configure ansible to use /tmp for temp files storage to avoid permission issues
+ansible_remote_tmp: /tmp
+
+# User settings
+devbox_user: mrzzy
+devbox_user_home: /home/mrzzy/
+
+# Optimizations
+# whether to optimize deployment for a small storage footprint
+devbox_minimize_storage: false
+# disable auto unattended upgrades
+devbox_uninstall_unattended_upgrades: true

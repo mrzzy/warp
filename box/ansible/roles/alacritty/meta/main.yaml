@@ -1,0 +1,10 @@
+#
+# WARP
+# Ansible Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: python
+  - role: c_cpp
+  - role: rust

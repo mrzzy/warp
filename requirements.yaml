@@ -1,0 +1,11 @@
+#
+# WARP
+# Ansible Galaxy Requirement
+#
+
+roles:
+  - src: comcast.sdkman
+    version: 1.7.0
+collections:
+  - name: community.general
+    version: 6.0.0

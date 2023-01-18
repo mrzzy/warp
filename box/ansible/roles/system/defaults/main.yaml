@@ -12,4 +12,4 @@ devbox_software_properties_version: 0.99.22.4
 devbox_acl_version: 2.3.1-1
 # needed for ansible's git module
 # renovate: datasource=repology depName=ubuntu_22_04/git
-devbox_git_version: "1:2.34.1-1ubuntu1.5"
+devbox_git_version: "1:2.34.1-1ubuntu1.6"

@@ -1,0 +1,26 @@
+#
+# WARP
+# Box Ansible Playbook
+# GUI Enabled
+#
+#
+
+# provision console tools
+- import_playbook: console.yaml
+- name: Provision Graphical tools
+  hosts: all
+  vars_files:
+    - vars.yaml
+  pre_tasks:
+    - name: Update APT Cache
+      become: true
+      ansible.builtin.apt:
+        update-cache: true
+  roles:
+    - role: pop_desktop
+    - role: alacritty
+    - role: flatpaks
+    - role: dconfs
+  post_tasks:
+    - name: Optimize Storage Footprint & Performance
+      ansible.builtin.import_tasks: tasks/optimize.yaml

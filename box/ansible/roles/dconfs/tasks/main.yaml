@@ -1,0 +1,36 @@
+#
+# WARP
+# dconf settings Ansible Role
+# Tasks
+#
+
+# dconf ansible module requires psutil python library to run
+- name: Install psutil module via pip
+  become: true
+  pip:
+    name: "psutil=={{ devbox_psutil_version }}"
+    state: present
+
+- name: Configure GNOME desktop environment with Dconf
+  become: true
+  become_user: "{{ devbox_user }}"
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+      # map caps lock to escape key
+    - key: /org/gnome/desktop/input-sources/xkb-options
+      value: "['caps:escape']"
+      # disable desktop animations
+    - key: /org/gnome/desktop/interface/enable-animations
+      value: "false"
+      # show battery percentage in state bar
+    - key: /org/gnome/desktop/interface/show-battery-percentage
+      value: "true"
+      # create media key shortcuts
+    - key: /org/gnome/settings-daemon/plugins/media-keys/previous
+      value: "['<Ctrl><Alt>j']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/play
+      value: "['<Ctrl><Alt>k']"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/next
+      value: "['<Ctrl><Alt>l']"

@@ -5,16 +5,11 @@
 #
 
 # HashiCorp Tools
-- name: "Download HashiCorp's package signing key"
-  get_url:
-    url: https://apt.releases.hashicorp.com/gpg
-    dest: /tmp/hashicorp_key
-
 - name: "Register HashiCorp's package signing key"
   become: true
-  command: apt-key add /tmp/hashicorp_key
-  register: hashicorp_key
-  changed_when: "hashicorp_key.rc == 0"
+  apt_key:
+    url: https://apt.releases.hashicorp.com/gpg
+    state: present
 
 - name: "Add HashiCorp's APT package repository"
   become: true
@@ -32,7 +27,7 @@
     - "packer={{ devbox_hashicorp_packer_version }}"
     - "terraform-ls={{ devbox_hashicorp_terraform_langserver_version }}"
     - "vagrant={{ devbox_hashicorp_vagrant_version }}"
-    - "virtualbox={{ devbox_hashicorp_virtualbox_version }}"
+    - "virtualbox={{ devbox_virtualbox_version }}"
 
 - name: Install Cloud tools with Pip
   become: true

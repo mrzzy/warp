@@ -1,0 +1,8 @@
+#
+# WARP
+# dconf settings Ansible Role
+# Default Variables
+#
+
+# renovate: datasource=pypi depName=pynvim versioning=python
+devbox_psutil_version: 5.9.4

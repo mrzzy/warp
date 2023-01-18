@@ -22,6 +22,7 @@
       get_url:
         url: https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info
         dest: "{{ terminfo_path }}"
+        mode: 0644
     - name: Register alacritty's terminfo with database
       become: true
       command:
