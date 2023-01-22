@@ -37,6 +37,7 @@
     key_path: /etc/apt/keyrings/baltocdn.asc
   block:
     - name: "Download Balto's package signing key"
+      become: true
       ansible.builtin.get_url:
         url: https://baltocdn.com/helm/signing.asc
         dest: "{{ key_path }}"

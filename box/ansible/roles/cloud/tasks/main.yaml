@@ -7,7 +7,7 @@
 # HashiCorp Tools
 - name: Setup HashiCorp's APT package Repository
   vars:
-    key_path: /etc/apt/keyrings/hashicorp.gpg
+    key_path: /etc/apt/keyrings/hashicorp.asc
   block:
     - name: "Register HashiCorp's package signing key"
       become: true
