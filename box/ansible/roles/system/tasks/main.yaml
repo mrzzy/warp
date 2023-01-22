@@ -6,25 +6,26 @@
 
 - name: Install System utilities with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop:
     - "software-properties-common={{ devbox_software_properties_version }}"
     - "acl={{ devbox_acl_version }}"
     - "git={{ devbox_git_version }}"
+    - "gpg={{ devbox_gpg_version }}"
 
 - name: Register alacritty's terminfo with known Terminal Types
   vars:
     terminfo_path: /tmp/alacritty.info
   block:
     - name: Download alacritty's terminfo
-      get_url:
+      ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info
         dest: "{{ terminfo_path }}"
         mode: 0644
     - name: Register alacritty's terminfo with database
       become: true
-      command:
+      ansible.builtin.command:
         cmd: "tic -x {{ terminfo_path }}"
         creates: /etc/terminfo/a/alacritty

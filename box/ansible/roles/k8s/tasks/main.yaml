@@ -12,16 +12,18 @@
     mode: 0755
 
 - name: Install GKE Auth Plugin for Kubectl
+  vars:
+    key_path: /etc/apt/keyrings/cloud.google.gpg
   become: true
   block:
     - name: Add GCP APT Package Signing Key
-      ansible.builtin.apt_key:
+      ansible.builtin.get_url:
         url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-        keyring: /usr/share/keyrings/cloud.google.gpg
-        state: present
+        dest: "{{ key_path }}"
+        mode: 0644
     - name: Add GCP APT Package Repository
       ansible.builtin.apt_repository:
-        repo: "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] \
+        repo: "deb [signed-by={{ key_path }}] \
                https://packages.cloud.google.com/apt cloud-sdk main"
         filename: google-cloud-sdk
         state: present
@@ -31,22 +33,19 @@
         state: present
 
 - name: Install Helm form Third-Party Balto repository
+  vars:
+    key_path: /etc/apt/keyrings/baltocdn.asc
   block:
     - name: "Download Balto's package signing key"
       ansible.builtin.get_url:
         url: https://baltocdn.com/helm/signing.asc
-        dest: /tmp/baltocdn_key
-
-    - name: "Register Balto's package signing key"
-      become: true
-      ansible.builtin.command: apt-key add /tmp/baltocdn_key
-      register: hashicorp_key
-      changed_when: "hashicorp_key.rc == 0"
+        dest: "{{ key_path }}"
+        mode: 0644
 
     - name: "Add Balto's APT package repository"
       become: true
       ansible.builtin.apt_repository:
-        repo: "deb https://baltocdn.com/helm/stable/debian/ all main"
+        repo: "deb [signed-by={{ key_path }}] https://baltocdn.com/helm/stable/debian/ all main"
         state: present
 
     - name: "Install Helm from Balto's APT package repository"

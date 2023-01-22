@@ -5,21 +5,26 @@
 #
 
 # HashiCorp Tools
-- name: "Register HashiCorp's package signing key"
-  become: true
-  apt_key:
-    url: https://apt.releases.hashicorp.com/gpg
-    state: present
+- name: Setup HashiCorp's APT package Repository
+  vars:
+    key_path: /etc/apt/keyrings/hashicorp.gpg
+  block:
+    - name: "Register HashiCorp's package signing key"
+      become: true
+      ansible.builtin.get_url:
+        url: https://apt.releases.hashicorp.com/gpg
+        dest: "{{ key_path }}"
+        mode: 0644
 
-- name: "Add HashiCorp's APT package repository"
-  become: true
-  apt_repository:
-    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
-    state: present
+    - name: Add HashiCorp's APT package repository
+      become: true
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64 signed-by={{ key_path }}] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+        state: present
 
 - name: Install Cloud tools with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop:
@@ -31,7 +36,7 @@
 
 - name: Install Cloud tools with Pip
   become: true
-  pip:
+  ansible.builtin.pip:
     name: "{{ item }}"
     state: present
   loop:
@@ -46,7 +51,7 @@
     infracost_binary: /usr/local/bin/infracost-linux-amd64
   block:
     - name: Download Infracost binary
-      unarchive:
+      ansible.builtin.unarchive:
         remote_src: true
         src: "https://github.com/infracost/infracost/releases/download/\
               {{ devbox_infracost_version }}/infracost-linux-amd64.tar.gz"
@@ -55,7 +60,7 @@
         mode: 0755
 
     - name: Strip suffix from Infracost binary
-      command:
+      ansible.builtin.command:
         cmd: "mv {{ infracost_binary }} /usr/local/bin/infracost"
         removes: "{{ infracost_binary }}"
         creates: /usr/local/bin/infracost"
