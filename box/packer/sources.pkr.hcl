@@ -4,7 +4,7 @@
 #
 
 # vagrant source will auto package a new vagrant box after build.
-source "vagrant" "ubuntu" {
+source "vagrant" "ubuntu_vm" {
   communicator = "ssh"
   provider     = "virtualbox"
 
@@ -17,7 +17,7 @@ source "vagrant" "ubuntu" {
   output_dir = "build"
 }
 
-source "googlecompute" "ubuntu" {
+source "googlecompute" "ubuntu_gce" {
   communicator = "ssh"
   ssh_username = "packer"
 

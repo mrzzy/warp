@@ -41,13 +41,13 @@ locals {
 
 build {
   sources = [
-    "source.vagrant.ubuntu",
-    "source.googlecompute.ubuntu"
+    "source.vagrant.ubuntu_vm",
+    "source.googlecompute.ubuntu_gce"
   ]
 
   provisioner "ansible" {
     extra_arguments = [
-      "-vv",
+      "-vvv",
       "--extra-vars", local.ansible_vars
     ]
     galaxy_file   = "requirements.yaml"
@@ -63,5 +63,16 @@ build {
     ansible_ssh_extra_args = [
       "-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa"
     ]
+
+    # override user used to provision as ansible's become user escalation relies on it
+    override = {
+      ubuntu_vm = {
+        user = "vagrant"
+      }
+
+      ubuntu_gce = {
+        user = "packer"
+      }
+    }
   }
 }

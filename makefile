@@ -57,10 +57,10 @@ apply-gui: $(ANSIBLE_DIR) ansible-deps
 
 # development build: build box on virtualbox only.
 box: $(PACKER_DIR) packer-init ansible-deps
-	$(PACKER) build --only="vagrant.ubuntu" --force $<
+	$(PACKER) build --only="vagrant.ubuntu_vm" --force $<
 
 box-gcp: $(PACKER_DIR) packer-init ansible-deps
-	$(PACKER) build --only="googlecompute.ubuntu" --force $<
+	$(PACKER) build --only="googlecompute.ubuntu_gce" --force $<
 
 packer-init: $(PACKER_DIR)
 	$(PACKER) init $<
