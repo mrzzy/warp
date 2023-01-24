@@ -1,9 +1,8 @@
 #
 # WARP
-# Dconf settings Ansible Role
+# Flatpaks Ansible Role
 # Role Metadata
 #
 
 dependencies:
-  - role: python
   - role: pop_desktop
