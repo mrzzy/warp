@@ -5,5 +5,4 @@
 #
 
 dependencies:
-  - role: nodejs
-  - role: rust
+  - role: console

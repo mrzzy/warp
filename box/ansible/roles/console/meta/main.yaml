@@ -1,0 +1,31 @@
+#
+# WARP
+# Console Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: system
+  - role: user
+  - role: dotfiles
+  - role: openssh
+  - role: ttyd
+  - role: python
+  - role: nodejs
+  - role: js
+  - role: jvm
+  - role: c_cpp
+  - role: go
+  - role: rust
+  - role: zsh
+  - role: tmux
+  - role: neovim
+  - role: fzf
+  - role: rclone
+  - role: tools
+  - role: postgres
+  - role: sqlite
+  - role: docker
+  - role: cloud
+  - role: k8s
+  - role: shadowsocks

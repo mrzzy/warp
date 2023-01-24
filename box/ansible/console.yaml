@@ -14,36 +14,4 @@
       ansible.builtin.apt:
         update-cache: true
   roles:
-    - system
-    - user
-    - dotfiles
-
-    - openssh
-    - ttyd
-
-    - python
-    - nodejs
-    - js
-    - jvm
-    - c_cpp
-    - go
-    - rust
-
-    - zsh
-    - tmux
-    - neovim
-
-    - fzf
-    - rclone
-    - tools
-
-    - postgres
-    - sqlite
-
-    - docker
-    - cloud
-    - k8s
-    - shadowsocks
-  post_tasks:
-    - name: Optimize Storage Footprint & Performance
-      ansible.builtin.import_tasks: tasks/optimize.yaml
+    - console

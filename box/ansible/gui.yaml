@@ -5,8 +5,6 @@
 #
 #
 
-# provision console tools
-- import_playbook: console.yaml
 - name: Provision Graphical tools
   hosts: all
   vars_files:
@@ -17,10 +15,11 @@
       ansible.builtin.apt:
         update-cache: true
   roles:
-    - role: pop_desktop
-    - role: alacritty
-    - role: flatpaks
-    - role: dconfs
+    - console
+    - pop_desktop
+    - alacritty
+    - flatpaks
+    - dconfs
   post_tasks:
     - name: Optimize Storage Footprint & Performance
       ansible.builtin.import_tasks: tasks/optimize.yaml

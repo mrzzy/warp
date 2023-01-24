@@ -5,5 +5,5 @@
 #
 
 dependencies:
-  - role: python
+  - role: console
   - role: pop_desktop
