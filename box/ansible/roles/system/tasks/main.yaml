@@ -14,6 +14,7 @@
     - "acl={{ devbox_acl_version }}"
     - "git={{ devbox_git_version }}"
     - "gpg={{ devbox_gpg_version }}"
+    - "dirmngr={{ devbox_dirmngr_version }}"
 
 - name: Register alacritty's terminfo with known Terminal Types
   vars:
