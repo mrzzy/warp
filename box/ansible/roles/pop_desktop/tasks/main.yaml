@@ -23,9 +23,13 @@
     dest: /etc/apt/sources.list.d/pop-os-release.sources
     mode: 0644
 
-- name: Install pop-desktop with APT
+- name: Update APT Cache to pull PopOS package lists
   become: true
   ansible.builtin.apt:
     update_cache: true
+
+- name: Install pop-desktop with APT
+  become: true
+  ansible.builtin.apt:
     name: pop-desktop
     state: present
