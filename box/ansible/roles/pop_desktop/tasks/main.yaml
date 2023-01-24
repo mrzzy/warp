@@ -12,6 +12,7 @@
       become: true
       ansible.builtin.command:
         cmd: "gpg --no-default-keyring \
+          --homedir /tmp \
           --keyring {{ key_path }} \
           --keyserver keyserver.ubuntu.com \
           --recv-keys 63C46DF0140D738961429F4E204DD8AEC33A7AFF"
