@@ -5,6 +5,5 @@
 #
 
 dependencies:
-  - role: python
-  - role: c_cpp
+  - role: nodejs
   - role: rust

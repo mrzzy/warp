@@ -6,7 +6,7 @@
 
 - name: Install Alacritty build dependencies
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop:
@@ -23,13 +23,13 @@
     - name: Build Alacritty terminal with Cargo
       become: true
       become_user: "{{ devbox_user }}"
-      command:
+      ansible.builtin.command:
         cmd: "cargo install alacritty@{{ devbox_alacritty_version }}"
         creates: "{{ cargo_bin }}/alacritty"
 
     - name: Install Alacritty binary
       become: true
-      copy:
+      ansible.builtin.copy:
         remote_src: true
         src: "{{ cargo_bin }}/alacritty"
         dest: /usr/local/bin/alacritty
@@ -45,7 +45,7 @@
 
 - name: Install Alacritty themes switcher with NPM
   become: true
-  npm:
+  community.general.npm:
     name: "alacritty-themes@{{ devbox_alacritty_themes_version }}"
     global: true
     state: present

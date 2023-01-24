@@ -13,6 +13,9 @@
 - name: Install Rust toolchain with rustup
   become: true
   become_user: "{{ devbox_user }}"
+  environment:
+    # direct rust toolchain to be installed devbox_user home directory
+    HOME: "{{ devbox_user_home }}"
   ansible.builtin.command:
     cmd: "sh /tmp/rustup-init.sh -y --no-modify-path --default-toolchain {{ devbox_rust_version }}"
     creates: "{{ devbox_user_home }}/.cargo"
