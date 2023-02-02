@@ -47,7 +47,7 @@ build {
 
   provisioner "ansible" {
     extra_arguments = [
-      "-vvv",
+      "-vv",
       "--extra-vars", local.ansible_vars
     ]
     galaxy_file   = "requirements.yaml"
