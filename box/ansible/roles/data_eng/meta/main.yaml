@@ -1,0 +1,8 @@
+#
+# WARP
+# Data Engineering Tools Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: python
