@@ -4,12 +4,17 @@
 # Kubernetes Tools
 #
 
-- name: Install Kubectl
+- name: Install Kubernetes pre-built binary tools
   become: true
   ansible.builtin.get_url:
-    url: "https://dl.k8s.io/release/{{ devbox_kubectl_version }}/bin/linux/amd64/kubectl"
-    dest: /usr/local/bin/kubectl
+    url: "{{ item.url }}"
+    dest: "/usr/local/bin/{{ item.name }}"
     mode: 0755
+  loop:
+    - name: kubectl
+      url: "https://dl.k8s.io/release/{{ devbox_kubectl_version }}/bin/linux/amd64/kubectl"
+    - name: kind
+      url: "https://kind.sigs.k8s.io/dl/{{ devbox_kind_version }}/kind-linux-amd64"
 
 - name: Install GKE Auth Plugin for Kubectl
   vars:

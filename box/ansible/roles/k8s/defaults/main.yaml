@@ -1,6 +1,6 @@
 #
 # WARP
-# ? Ansible Role
+# K8s Ansible Role
 # Default Variables
 #
 
@@ -8,3 +8,5 @@
 devbox_kubectl_version: v1.25.3
 # renovate: datasource=github-releases depName=helm/helm stripV
 devbox_helm_version: 3.10.1
+# renovate: datasource=github-releases depName=kubernetes-sigs/kind
+devbox_kind_version: v0.17.0
