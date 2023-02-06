@@ -29,4 +29,3 @@ dependencies:
   - role: cloud
   - role: k8s
   - role: shadowsocks
-  - role: data_eng

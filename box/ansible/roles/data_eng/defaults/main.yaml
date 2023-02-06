@@ -1,8 +1,0 @@
-#
-# WARP
-# Data Engineering Tools Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=pypi depName=dbt-core
-devbox_dbt_version: 1.4.1
