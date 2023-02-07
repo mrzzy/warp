@@ -19,11 +19,14 @@
     - "git-filter-repo={{ devbox_git_filter_repo_version }}"
     - "htop={{ devbox_htop_version }}"
 
-- name: Install pre-commit with Pip
+- name: Install Development Tools with Pip
   become: true
   ansible.builtin.pip:
-    name: "pre-commit=={{ devbox_pre_commit_version }}"
+    name: "{{ item }}"
     state: present
+  loop:
+    - "pre-commit=={{ devbox_pre_commit_version }}"
+    - "codespell=={{ devbox_codespell_version }}"
 
 - name: Install YQ YAML Processor
   become: true
