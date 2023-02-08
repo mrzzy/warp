@@ -19,10 +19,15 @@ write_files:
   owner: root:ssl-cert
   content: "${ttyd_key_base64}"
   permissions: "0640"
-# store user's xdg cache within warp's persistent disk to persist across reboots
+# Store state within warp's persistent disk to persist across reboots
+# store user's xdg cache
 - path: /etc/zsh/zshenv
   append: true
   content: 'export XDG_CACHE_HOME="${mountpoint}/.cache"'
+# store tmux sessions
+- path: /home/mrzzy/.tmux.conf
+  append: true
+  content: "set -g @resurrect-dir '/home/mrzzy/disk/.tmux'"
 
 mounts:
   # fstab entry to mount warp disk
