@@ -27,8 +27,8 @@ source "googlecompute" "ubuntu_gce" {
   preemptible = true
 
   # compute engine image as build base
-  source_image_family = "ubuntu-minimal-2204-lts"
-  source_image        = "ubuntu-minimal-2204-jammy-v20221206"
+  source_image_family = "ubuntu-2204-lts"
+  source_image        = "ubuntu-2204-jammy-v20230114"
 
   # vm image name
   image_name = "warp-box${var.image_suffix}"
