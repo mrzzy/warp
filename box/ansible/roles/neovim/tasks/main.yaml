@@ -4,15 +4,10 @@
 # Tasks
 #
 
-- name: Register Neovim PPA
-  become: true
-  ansible.builtin.apt_repository:
-    repo: ppa:neovim-ppa/stable
-
-- name: Install Neovim with APT
+- name: Install Neovim with APT via .deb
   become: true
   ansible.builtin.apt:
-    name: "neovim={{ devbox_nvim_version }}"
+    deb: "https://github.com/neovim/neovim/releases/download/{{ devbox_nvim_version }}/nvim-linux64.deb"
     state: present
 
 - name: Install Neovim Plugins

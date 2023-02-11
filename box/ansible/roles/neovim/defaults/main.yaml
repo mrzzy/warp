@@ -8,5 +8,6 @@ devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
 # Neovim text editor
-devbox_nvim_version: 0.7.2-3~bpo22.04.1~ppa1
+# renovate: datasource=github-releases depName=neovim/neovim
+devbox_nvim_version: v0.8.3
 devbox_nvim_packer_version: 6afb67460283f0e990d35d229fd38fdc04063e0a
