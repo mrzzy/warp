@@ -42,3 +42,9 @@ runcmd:
 
   # ensure warp disk is writeable by making the mrzzy user owner
   - chown -R mrzzy:mrzzy ${mountpoint}
+
+  # symlink ~/notepad with repository stored on warp's disk
+  # remove empty ~/notepad directorobsidian vaultcreated by obsidian.nvim neovim plugin
+  # to prevent ln from creating the symlink as '~/notepad/notepad' instead of just '~/notepad'
+  - rm -rf ~/notepad
+  - ln -sf /home/mrzzy/disk/notepad ~/notepad
