@@ -4,5 +4,5 @@
 # Default Variables
 #
 
-# renovate: datasource=pypi depName=pynvim versioning=python
+# renovate: datasource=pypi depName=psutil versioning=python
 devbox_psutil_version: 5.9.4

@@ -15,11 +15,12 @@
     - "python3-venv={{ devbox_python_version }}"
     - "python3-pip={{ devbox_python_pip_version }}"
     - "python3-wheel={{ devbox_python_wheel_version }}"
-    # data science tools
-    - "jupyterlab={{ devbox_python_jupyterlab_version }}"
 
-- name: Install Neovim client for Python with Pip
+- name: Install Python Tooling with Pip
   become: true
   ansible.builtin.pip:
-    name: "pynvim=={{ devbox_python_pynvim_version }}"
+    name: "{{ item }}"
     state: present
+  loop:
+    - "jupyterlab=={{ devbox_python_jupyterlab_version }}"
+    - "pynvim=={{ devbox_python_pynvim_version }}"
