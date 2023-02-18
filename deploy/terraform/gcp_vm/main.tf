@@ -92,7 +92,8 @@ resource "google_compute_instance" "wrap_vm" {
       ttyd_cert_base64 = base64encode(var.web_tls_cert)
       ttyd_key_base64  = base64encode(var.web_tls_key)
     })
-    # VM retrieves authorized ssh keys from 'ssh-keys' metadata key.
-    ssh-keys = var.ssh_public_key
+    # VM retrieves authorized ssh keys from 'ssh-keys' metadata key only
+    block-project-ssh-keys = true
+    ssh-keys               = var.ssh_public_key
   }
 }
