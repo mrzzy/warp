@@ -4,36 +4,11 @@
 # Tasks
 #
 
-- name: Install Alacritty build dependencies
+- name: Install Alacritty with APT
   become: true
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "alacritty={{ devbox_alacritty_version }}"
     state: present
-  loop:
-    - libfreetype6-dev
-    - libfontconfig1-dev
-    - libxcb-xfixes0-dev
-
-- name: Build & Install Alacritty terminal
-  vars:
-    cargo_bin: "{{ devbox_user_home }}/.cargo/bin"
-  environment:
-    PATH: "{{ cargo_bin }}:{{ ansible_env.PATH }}"
-  block:
-    - name: Build Alacritty terminal with Cargo
-      become: true
-      become_user: "{{ devbox_user }}"
-      ansible.builtin.command:
-        cmd: "cargo install alacritty@{{ devbox_alacritty_version }}"
-        creates: "{{ cargo_bin }}/alacritty"
-
-    - name: Install Alacritty binary
-      become: true
-      ansible.builtin.copy:
-        remote_src: true
-        src: "{{ cargo_bin }}/alacritty"
-        dest: /usr/local/bin/alacritty
-        mode: '0755'
 
 - name: Register Alacritty as the default X Terminal emulator
   become: true
