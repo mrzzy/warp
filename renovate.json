@@ -26,7 +26,7 @@
         "renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?(?<stripV> stripV)?\\s+\\w+version: *(?<currentValue>\\S+)"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}loose{{/if}}",
-      "extractVersionTemplate": "^{{#if stripV}}[vV]{{else}}{{/if}}(?<version>{.*)$"
+      "extractVersionTemplate": "^{{#if stripV}}[vV]{{else}}{{/if}}(?<version>.*)$"
     }
   ]
 }
