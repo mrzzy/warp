@@ -15,7 +15,7 @@ devbox_jvm_coursier_version: v2.1.0-RC2
 # renovate: datasource=maven depName=org.scala-lang:scala3-library_3 versioning=maven
 devbox_jvm_scala_version: 3.1.3
 # renovate: datasource=maven depName=org.scala-sbt:sbt versioning=maven
-devbox_jvm_sbt_version: 1.7.3
+devbox_jvm_sbt_version: 1.8.2
 # renovate: datasource=maven depName=org.scalameta:metals_2.13 versioning=maven
 devbox_jvm_metals_version: 0.11.9
 
