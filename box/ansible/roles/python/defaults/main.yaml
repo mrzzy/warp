@@ -5,7 +5,7 @@
 #
 
 # renovate: datasource=repology depName=ubuntu_22_04/python3.10
-devbox_python_version: 3.10.6-1~22.04
+devbox_python_version: 3.10.6-1~22.04.2
 # renovate: datasource=repology depName=ubuntu_22_04/python-pip
 devbox_python_pip_version: 22.0.2+dfsg-1
 # renovate: datasource=repology depName=ubuntu_22_04/wheel
