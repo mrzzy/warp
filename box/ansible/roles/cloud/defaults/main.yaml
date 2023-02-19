@@ -15,7 +15,7 @@ devbox_hashicorp_vagrant_version: 2.3.2
 # renovate: datasource=repology depname=ubuntu_22_04/virtualbox
 devbox_virtualbox_version: 6.1.38-dfsg-3~ubuntu1.22.04.1
 # renovate: datasource=github-releases depName=infracost/infracost
-devbox_infracost_version: v0.10.13
+devbox_infracost_version: v0.10.17
 # renovate: datasource=pypi depName=ansible-base
 devbox_ansible_version: 2.10.17
 # renovate: datasource=pypi depName=ansible-lint
