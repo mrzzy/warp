@@ -47,4 +47,4 @@ runcmd:
   # remove empty ~/notepad dir created by obsidian.nvim neovim plugin
   # to prevent ln command from creating the symlink as '~/notepad/notepad' instead of just '~/notepad'
   - rm -rf ~/notepad
-  - ln -sf /home/mrzzy/disk/notepad ~/notepad
+  - ln -sf /home/mrzzy/disk/notepad /home/notepad
