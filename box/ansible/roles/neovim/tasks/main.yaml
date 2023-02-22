@@ -30,6 +30,8 @@
         cmd: nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
         creates: "{{ devbox_user_home }}/.local/share/nvim/packer/start"
 
+    # explicit task to install language servers needed as packer.nvim's 'run' hook
+    # may not have completed before the 'PackerComplete' event fires
     - name: Install Language Servers
       ansible.builtin.command:
         cmd: nvim --headless -c "lua require('autocomplete').install()" -c "quitall"
