@@ -5,4 +5,4 @@
 #
 
 # renovate: datasource=npm depName=typescript versioning=npm
-devbox_typescript_version: 4.9.3
+devbox_typescript_version: 4.9.5
