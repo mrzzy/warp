@@ -9,7 +9,7 @@ devbox_pre_commit_version: 2.20.0
 # renovate: datasource=pypi depName=codespell
 devbox_codespell_version: 2.2.2
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
-devbox_bw_version: 2022.11.0
+devbox_bw_version: 2023.2.0
 # renovate: datasource=repology depName=ubuntu_22_04/entr
 devbox_entr_version: 5.1-1
 # renovate: datasource=repology depName=ubuntu_22_04/rust-ripgrep
