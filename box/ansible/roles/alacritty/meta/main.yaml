@@ -5,5 +5,4 @@
 #
 
 dependencies:
-  - role: rust
   - role: pop_desktop
