@@ -11,7 +11,7 @@
     state: present
   loop:
     - "libssl-dev={{ devbox_openssl_version }}"
-    - "libgraphite2-3={{ devbox_openssl_version }}"
+    - "libgraphite2-3={{ devbox_libgraphite_version }}"
 
 - name: Build & Install Tectonic with Cargo
   become: true
