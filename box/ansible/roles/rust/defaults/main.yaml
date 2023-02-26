@@ -5,4 +5,4 @@
 #
 
 # renovate: datasource=github-releases depName=rust-lang/rust
-devbox_rust_version: 1.65.0
+devbox_rust_version: 1.67.1
