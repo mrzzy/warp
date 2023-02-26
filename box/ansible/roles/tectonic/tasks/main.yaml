@@ -1,0 +1,22 @@
+#
+# WARP
+# Tectonic Ansible Role
+# Tasks
+#
+
+- name: Install Tectonic build dependencies with APT
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "libssl-dev={{ devbox_openssl_version }}"
+    - "libgraphite2-3={{ devbox_openssl_version }}"
+
+- name: Build & Install Tectonic with Cargo
+  become: true
+  community.general.cargo:
+    name: "tectonic"
+    version: "{{ devbox_tectonic_version }}"
+    path: "{{ devbox_tectonic_binary | dirname }}"
+    state: present

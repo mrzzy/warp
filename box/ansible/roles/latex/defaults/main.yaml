@@ -1,8 +1,0 @@
-#
-# WARP
-# LaTeX Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=repology depName=ubuntu_22_04/texlive-bin
-devbox_texlive_version: 2021.20220204-1
