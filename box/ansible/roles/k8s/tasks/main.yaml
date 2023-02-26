@@ -22,8 +22,8 @@
   become: true
   block:
     - name: Add GCP APT Package Signing Key
-      ansible.builtin.get_url:
-        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      ansible.builtin.copy:
+        src: gcp_apt_key.gpg
         dest: "{{ key_path }}"
         mode: 0644
     - name: Add GCP APT Package Repository
