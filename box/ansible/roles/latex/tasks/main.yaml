@@ -1,0 +1,11 @@
+#
+# WARP
+# LaTeX Ansible Role
+# Tasks
+#
+
+- name: Install TeXlive with APT
+  become: true
+  ansible.builtin.apt:
+    name: "texlive-latex-recommended={{ devbox_texlive_version }}"
+    state: present
