@@ -13,7 +13,7 @@ devbox_sqlfluff_version: 1.4.5
 # renovate: datasource=pypi depName=shandy-sqlfmt
 devbox_sqlfmt_version: 0.17.0
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
-devbox_bw_version: 2022.11.0
+devbox_bw_version: 2023.2.0
 # renovate: datasource=repology depName=ubuntu_22_04/entr
 devbox_entr_version: 5.1-1
 # renovate: datasource=repology depName=ubuntu_22_04/rust-ripgrep
