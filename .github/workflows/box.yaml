@@ -12,6 +12,7 @@ on:
       - "box/**"
       - makefile
       - requirements.txt
+      - requirements.yaml
   create: {}
 env:
   PYTHON_VERSION: "3.11"
