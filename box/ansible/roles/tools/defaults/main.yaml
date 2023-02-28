@@ -4,16 +4,6 @@
 # Default Variables
 #
 
-# renovate: datasource=pypi depName=pre-commit
-devbox_pre_commit_version: 2.20.0
-# renovate: datasource=pypi depName=codespell
-devbox_codespell_version: 2.2.2
-# renovate: datasource=pypi depName=sqlfluff
-devbox_sqlfluff_version: 1.4.5
-# renovate: datasource=pypi depName=shandy-sqlfmt
-devbox_sqlfmt_version: 0.17.0
-# renovate: datasource=npm depName=@bitwarden/cli versioning=npm
-devbox_bw_version: 2023.2.0
 # renovate: datasource=repology depName=ubuntu_22_04/entr
 devbox_entr_version: 5.1-1
 # renovate: datasource=repology depName=ubuntu_22_04/rust-ripgrep
@@ -24,11 +14,26 @@ devbox_ranger_version: 1.9.3-3ubuntu1
 devbox_universal_ctags_version: 5.9.20210829.0-1
 # renovate: datasource=repology depName=ubuntu_22_04/jq
 devbox_jq_version: 1.6-2.1ubuntu3
-# renovate: datasource=github-releases depName=mikefarah/yq
-devbox_yq_version: v4.31.1
 # renovate: datasource=repology depName=ubuntu_22_04/bind9
 devbox_dnsutils_version: 1:9.18.1-1ubuntu1.3
 # renovate: datasource=repology depName=ubuntu_22_04/git-filter-repo
 devbox_git_filter_repo_version: 2.34.0-1
 # renovate: datasource=repology depName=ubuntu_22_04/htop
 devbox_htop_version: 3.0.5-7build2
+
+# renovate: datasource=pypi depName=pre-commit
+devbox_pre_commit_version: 2.20.0
+# renovate: datasource=pypi depName=codespell
+devbox_codespell_version: 2.2.2
+# renovate: datasource=pypi depName=sqlfluff
+devbox_sqlfluff_version: 1.4.5
+# renovate: datasource=pypi depName=shandy-sqlfmt
+devbox_sqlfmt_version: 0.17.0
+# renovate: datasource=pypi depName=mitmproxy
+devbox_mitmproxy_version: 9.0.1
+
+# renovate: datasource=github-releases depName=mikefarah/yq
+devbox_yq_version: v4.31.1
+
+# renovate: datasource=npm depName=@bitwarden/cli versioning=npm
+devbox_bw_version: 2023.2.0

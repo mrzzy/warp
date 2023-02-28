@@ -29,6 +29,7 @@
     - "codespell=={{ devbox_codespell_version }}"
     - "sqlfluff=={{ devbox_sqlfluff_version }}"
     - "shandy-sqlfmt=={{ devbox_sqlfmt_version }}"
+    - "mitmproxy=={{ devbox_mitmproxy_version }}"
 
 - name: Install YQ YAML Processor
   become: true
