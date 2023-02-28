@@ -4,19 +4,16 @@
 # Tasks
 #
 
-- name: Install Tectonic build dependencies with APT
+- name: Install libfuse App Image dependency
   become: true
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "libfuse2={{ devbox_libfuse_version }}"
     state: present
-  loop:
-    - "libssl-dev={{ devbox_openssl_version }}"
-    - "libgraphite2-3={{ devbox_libgraphite_version }}"
 
-- name: Build & Install Tectonic with Cargo
+- name: Install Tectonic App Image
   become: true
-  community.general.cargo:
-    name: "tectonic"
-    version: "{{ devbox_tectonic_version }}"
-    path: "{{ devbox_tectonic_binary | dirname }}"
-    state: present
+  ansible.builtin.get_url:
+    url: "https://github.com/tectonic-typesetting/tectonic/releases/download/\
+          tectonic%40{{ devbox_tectonic_version }}/tectonic-{{ devbox_tectonic_version }}-x86_64.AppImage"
+    dest: "{{ devbox_tectonic_binary }}"
+    mode: '0755'

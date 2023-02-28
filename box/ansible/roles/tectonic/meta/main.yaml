@@ -1,0 +1,8 @@
+#
+# WARP
+# Tectonic Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: rust
