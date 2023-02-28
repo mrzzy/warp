@@ -30,3 +30,4 @@ dependencies:
   - role: k8s
   - role: shadowsocks
   - role: tectonic
+  - role: github
