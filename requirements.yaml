@@ -8,4 +8,4 @@ roles:
     version: 1.7.0
 collections:
   - name: community.general
-    version: 6.3.0
+    version: 6.4.0
