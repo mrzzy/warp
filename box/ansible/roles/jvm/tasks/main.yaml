@@ -30,7 +30,7 @@
         url: "https://github.com/coursier/coursier/releases/download/\
               {{ devbox_jvm_coursier_version }}/cs-x86_64-pc-linux.gz"
         dest: /tmp/coursier.gz
-        mode: 0744
+        mode: "0744"
     - name: Uncompress Coursier
       become: true
       ansible.builtin.shell:
@@ -40,7 +40,7 @@
       become: true
       ansible.builtin.file:
         path: "{{ coursier }}"
-        mode: 0755
+        mode: "0755"
 
 - name: Install Scala & Tooling with Coursier
   become: true
