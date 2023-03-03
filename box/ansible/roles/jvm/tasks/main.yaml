@@ -18,6 +18,8 @@
         version: "{{ devbox_jvm_java_version }}"
       - candidate: maven
         version: "{{ devbox_jvm_maven_version }}"
+      - candidate: gradle
+        version: "{{ devbox_jvm_gradle_version }}"
       - candidate: spark
         version: "{{ devbox_jvm_spark_version }}"
 
