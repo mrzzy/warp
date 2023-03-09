@@ -9,7 +9,7 @@ devbox_hashicorp_terraform_version: 1.3.9
 # renovate: datasource=github-releases depName=hashicorp/terraform-ls versioning=hashicorp stripV
 devbox_hashicorp_terraform_langserver_version: 0.29.3
 # renovate: datasource=github-releases depName=hashicorp/packer versioning=hashicorp stripV
-devbox_hashicorp_packer_version: 1.8.3-1
+devbox_hashicorp_packer_version: 1.8.6
 # renovate: datasource=github-releases depName=hashicorp/vagrant versioning=hashicorp stripV
 devbox_hashicorp_vagrant_version: 2.3.4
 # renovate: datasource=repology depname=ubuntu_22_04/virtualbox
