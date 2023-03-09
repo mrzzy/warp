@@ -24,7 +24,7 @@ devbox_htop_version: 3.0.5-7build2
 # renovate: datasource=pypi depName=pre-commit
 devbox_pre_commit_version: 3.1.1
 # renovate: datasource=pypi depName=codespell
-devbox_codespell_version: 2.2.2
+devbox_codespell_version: 2.2.4
 # renovate: datasource=pypi depName=sqlfluff
 devbox_sqlfluff_version: 2.0.0a5
 # renovate: datasource=pypi depName=shandy-sqlfmt
