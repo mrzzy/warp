@@ -31,3 +31,4 @@ dependencies:
   - role: shadowsocks
   - role: tectonic
   - role: github
+  - role: mysql

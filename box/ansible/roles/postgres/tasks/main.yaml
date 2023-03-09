@@ -4,8 +4,8 @@
 # Tasks
 #
 
-- name: Install development tools with APT
+- name: Install Postgres CLI with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "pgcli={{ devbox_pgcli_version }}"
     state: present

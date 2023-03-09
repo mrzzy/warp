@@ -1,0 +1,8 @@
+#
+# WARP
+# MySQL Ansible Role
+# Default Variables
+#
+
+# renovate: datasource=repology depName=ubuntu_22_04/mysql-client
+devbox_mysql_client_version: 8.0.32-0ubuntu0.22.04.2
