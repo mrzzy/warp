@@ -51,7 +51,12 @@ jobs:
       env:
         PACKER_GITHUB_API_TOKEN: ${{ github.token }}
         PKR_VAR_ansible_playbook: "box/ansible/gui.yaml"
-      run: make box
+      uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 60
+        max_attempts: 3
+        retry_wait_seconds: 30
+        command: make box
 
   build-box-gcp:
     runs-on: ubuntu-22.04
@@ -93,7 +98,12 @@ jobs:
         KEY_BASE64: ${{ secrets.gcp_packer_key_base64 }}
         PKR_VAR_web_term_password: ${{ secrets.BOX_WEB_TERM_PASSWORD }}
         PACKER_GITHUB_API_TOKEN: ${{ github.token }}
-      run: |
-        # decode base64 & write key to disk
-        echo "$KEY_BASE64" | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
-        make box-gcp
+      uses: nick-fields/retry@v2
+      with:
+        timeout_minutes: 60
+        max_attempts: 2
+        retry_wait_seconds: 30
+        command: |
+          # decode base64 & write key to disk
+          echo "$KEY_BASE64" | base64 -d >$GOOGLE_APPLICATION_CREDENTIALS
+          make box-gcp
