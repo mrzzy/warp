@@ -19,16 +19,6 @@ variable "web_term_password" {
   default     = ""
 }
 
-variable "linode_token" {
-  description = <<-EOF
-    Access token used to authenticate with Linode Cloud. If left unspecified,
-    disables the Linode Packer Builder.
-  EOF
-  type        = string
-  sensitive   = true
-  default     = ""
-}
-
 variable "ansible_playbook" {
   description = "Path to the Ansible playbook used to provision the WARP image."
   type        = string
