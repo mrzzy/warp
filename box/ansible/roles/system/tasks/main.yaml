@@ -10,10 +10,16 @@
     name: "{{ item }}"
     state: present
   loop:
+    # needed for add-apt-repository
     - "software-properties-common={{ devbox_software_properties_version }}"
+    # needed for ansible to become a unprivilleged user
     - "acl={{ devbox_acl_version }}"
+    # needed for ansible's git module
     - "git={{ devbox_git_version }}"
+    # needed to authenticate packages from third-party repositories
     - "gpg={{ devbox_gpg_version }}"
+    # openssl source code is common compile dependency
+    - "libssl-dev={{ devbox_openssl_version }}"
 
 - name: Register alacritty's terminfo with known Terminal Types
   vars:
@@ -23,7 +29,7 @@
       ansible.builtin.get_url:
         url: https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info
         dest: "{{ terminfo_path }}"
-        mode: 0644
+        mode: "0644"
     - name: Register alacritty's terminfo with database
       become: true
       ansible.builtin.command:
