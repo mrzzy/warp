@@ -5,7 +5,8 @@
   ],
   "extends": [
     "config:base",
-    ":dependencyDashboard"
+    ":dependencyDashboard",
+    ":automergeMinor"
   ],
   "reviewers": [
     "mrzzy"
