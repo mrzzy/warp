@@ -35,3 +35,8 @@ jobs:
           body: "Update revision of WARP VM Terraform module to \
                  ${{ github.repository}}@${{ github.sha }}"
           delete-branch: true
+
+      - name: Automerge Pull Request on WARP
+        env:
+          GH_TOKEN: "{{ secrets.GH_PUSH_TOKEN }}"
+        run: gh pr merge --squash --auto
