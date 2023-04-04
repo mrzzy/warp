@@ -22,7 +22,7 @@ devbox_git_filter_repo_version: 2.34.0-1
 devbox_htop_version: 3.0.5-7build2
 
 # renovate: datasource=pypi depName=pre-commit
-devbox_pre_commit_version: 3.2.1
+devbox_pre_commit_version: 3.2.2
 # renovate: datasource=pypi depName=codespell
 devbox_codespell_version: 2.2.4
 # renovate: datasource=pypi depName=sqlfluff
