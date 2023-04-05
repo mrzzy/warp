@@ -24,7 +24,7 @@ jobs:
             '/source.*=.*github.com\/mrzzy\/warp/s/ref=[^"]*/ref=${{ github.sha }}/' \
             terraform/gcp.tf
       - name: Create Pull Request on Nimbus
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           token: "${{ secrets.GH_PUSH_TOKEN }}"
           # Commit
