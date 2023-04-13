@@ -4,8 +4,6 @@
 # Default Variables
 #
 
-# renovate: datasource=repology depName=ubuntu_22_04/fuse
-devbox_libfuse_version: 2.9.9-5ubuntu3
 # renovate: datasource=github-releases depName=tectonic-typesetting/tectonic
 devbox_tectonic_version: 0.12.0
 devbox_tectonic_binary: /usr/local/bin/tectonic

@@ -20,6 +20,8 @@
     - "gpg={{ devbox_gpg_version }}"
     # openssl source code is common compile dependency
     - "libssl-dev={{ devbox_openssl_version }}"
+    # needed to run app images
+    - "libfuse2={{ devbox_libfuse_version }}"
 
 - name: Register alacritty's terminfo with known Terminal Types
   vars:

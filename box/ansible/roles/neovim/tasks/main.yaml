@@ -4,11 +4,12 @@
 # Tasks
 #
 
-- name: Install Neovim with APT via .deb
+- name: Install Neovim App image
   become: true
-  ansible.builtin.apt:
-    deb: "https://github.com/neovim/neovim/releases/download/{{ devbox_nvim_version }}/nvim-linux64.deb"
-    state: present
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/download/{{ devbox_nvim_version }}/nvim.appimage"
+    dest: /usr/local/bin/nvim
+    mode: '0755'
 
 - name: Install Neovim Plugins
   become: true
