@@ -4,12 +4,6 @@
 # Tasks
 #
 
-- name: Install libfuse App Image dependency
-  become: true
-  ansible.builtin.apt:
-    name: "libfuse2={{ devbox_libfuse_version }}"
-    state: present
-
 - name: Install Tectonic App Image
   become: true
   ansible.builtin.get_url:
