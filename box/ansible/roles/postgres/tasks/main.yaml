@@ -4,8 +4,11 @@
 # Tasks
 #
 
-- name: Install Postgres CLI with APT
+- name: Install Postgres Tools with APT
   become: true
   ansible.builtin.apt:
-    name: "pgcli={{ devbox_pgcli_version }}"
+    name: "{{ item }}"
     state: present
+  loop:
+    - "pgcli={{ devbox_pgcli_version }}"
+    - "postgresql-client-14={{ devbox_postgresql_version }}"
