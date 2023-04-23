@@ -1,8 +1,0 @@
-#
-# WARP
-# Javascript Role
-# Default Variables
-#
-
-# renovate: datasource=npm depName=typescript versioning=npm
-devbox_typescript_version: 5.0.4

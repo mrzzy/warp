@@ -1,8 +1,0 @@
-#
-# WARP
-# JavaScript role
-# Role Metadata
-#
-
-dependencies:
-  - role: nodejs
