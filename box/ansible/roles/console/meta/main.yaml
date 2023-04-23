@@ -31,3 +31,4 @@ dependencies:
   - role: tectonic
   - role: github
   - role: mysql
+  - role: aws
