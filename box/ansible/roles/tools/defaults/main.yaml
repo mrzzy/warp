@@ -36,4 +36,4 @@ devbox_mitmproxy_version: 9.0.1
 devbox_yq_version: v4.33.3
 
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
-devbox_bw_version: 2023.3.0
+devbox_bw_version: 2023.4.0
