@@ -55,4 +55,3 @@
   loop:
     - "scala:{{ devbox_jvm_scala_version }}"
     - "sbt:{{ devbox_jvm_sbt_version }}"
-    - "metals:{{ devbox_jvm_metals_version }}"
