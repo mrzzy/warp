@@ -28,9 +28,9 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "terraform={{ devbox_hashicorp_terraform_version }}"
-    - "packer={{ devbox_hashicorp_packer_version }}"
-    - "terraform-ls={{ devbox_hashicorp_terraform_langserver_version }}"
+    - "terraform={{ devbox_hashicorp_terraform_version }}-1"
+    - "packer={{ devbox_hashicorp_packer_version }}-1"
+    - "terraform-ls={{ devbox_hashicorp_terraform_langserver_version }}-1"
     - "vagrant={{ devbox_hashicorp_vagrant_version }}"
     - "virtualbox={{ devbox_virtualbox_version }}"
 
