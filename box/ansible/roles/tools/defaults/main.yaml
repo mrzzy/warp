@@ -28,7 +28,7 @@ devbox_codespell_version: 2.2.4
 # renovate: datasource=pypi depName=sqlfluff
 devbox_sqlfluff_version: 2.1.0
 # renovate: datasource=pypi depName=shandy-sqlfmt
-devbox_sqlfmt_version: 0.18.0
+devbox_sqlfmt_version: 0.18.1
 # renovate: datasource=pypi depName=mitmproxy
 devbox_mitmproxy_version: 9.0.1
 
