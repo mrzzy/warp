@@ -18,7 +18,7 @@ jobs:
       - name: Delete WARP Box Image built for branch
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "/tmp/gcp_key.json"
-          KEY_BASE64: ${{ secrets.gcp_warp_ci_key_base64 }}
+          KEY_BASE64: ${{ secrets.GCP_WARP_CI_KEY_BASE64 }}
           # set gcp project for all gcloud commands
           CLOUDSDK_CORE_PROJECT: mrzzy-sandbox
         run: |
