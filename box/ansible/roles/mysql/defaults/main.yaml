@@ -5,4 +5,4 @@
 #
 
 # renovate: datasource=repology depName=ubuntu_22_04/mysql-8.0
-devbox_mysql_client_version: 8.0.33-0ubuntu0.22.04.1
+devbox_mysql_client_version: 8.0.33-0ubuntu0.22.04.2
