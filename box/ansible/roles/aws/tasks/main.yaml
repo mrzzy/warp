@@ -5,7 +5,6 @@
 #
 
 - name: Setup AWS CLI
-  tags: [test]
   vars:
     awscli_dist: /tmp/aws
   block:

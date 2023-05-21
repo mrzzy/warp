@@ -32,3 +32,4 @@ dependencies:
   - role: github
   - role: mysql
   - role: aws
+  - role: gcp

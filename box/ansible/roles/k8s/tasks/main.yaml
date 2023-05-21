@@ -16,27 +16,6 @@
     - name: kind
       url: "https://kind.sigs.k8s.io/dl/{{ devbox_kind_version }}/kind-linux-amd64"
 
-- name: Install GKE Auth Plugin for Kubectl
-  vars:
-    key_path: /etc/apt/keyrings/cloud.google.gpg
-  become: true
-  block:
-    - name: Add GCP APT Package Signing Key
-      ansible.builtin.copy:
-        src: gcp_apt_key.gpg
-        dest: "{{ key_path }}"
-        mode: 0644
-    - name: Add GCP APT Package Repository
-      ansible.builtin.apt_repository:
-        repo: "deb [signed-by={{ key_path }}] \
-               https://packages.cloud.google.com/apt cloud-sdk main"
-        filename: google-cloud-sdk
-        state: present
-    - name: Install GKE Auth Plugin
-      ansible.builtin.apt:
-        name: "google-cloud-sdk-gke-gcloud-auth-plugin"
-        state: present
-
 - name: Install Helm form Third-Party Balto repository
   vars:
     key_path: /etc/apt/keyrings/baltocdn.asc
