@@ -1,0 +1,8 @@
+#
+# WARP
+# Virtualbox Ansible Role
+# Default Variables
+#
+
+# renovate: datasource=repology depname=ubuntu_22_04/virtualbox
+devbox_virtualbox_version: 6.1.38-dfsg-3~ubuntu1.22.04.1

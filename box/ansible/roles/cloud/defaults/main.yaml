@@ -4,8 +4,6 @@
 # Default Variables
 #
 
-# renovate: datasource=repology depname=ubuntu_22_04/virtualbox
-devbox_virtualbox_version: 6.1.38-dfsg-3~ubuntu1.22.04.1
 # renovate: datasource=github-releases depName=infracost/infracost
 devbox_infracost_version: v0.10.22
 # renovate: datasource=pypi depName=ansible-base
