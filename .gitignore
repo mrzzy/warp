@@ -10,6 +10,9 @@ venv/
 /tags
 /tags.*
 
+
+## Vim
 # vim-projectionist
 /.projections.json
-
+# vim Session
+/Session.vim
