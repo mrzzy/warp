@@ -4,14 +4,6 @@
 # Default Variables
 #
 
-# renovate: datasource=github-releases depName=hashicorp/terraform versioning=hashicorp stripV
-devbox_hashicorp_terraform_version: 1.4.6
-# renovate: datasource=github-releases depName=hashicorp/terraform-ls versioning=hashicorp stripV
-devbox_hashicorp_terraform_langserver_version: 0.31.2
-# renovate: datasource=github-releases depName=hashicorp/packer versioning=hashicorp stripV
-devbox_hashicorp_packer_version: 1.8.7
-# renovate: datasource=github-releases depName=hashicorp/vagrant versioning=hashicorp stripV
-devbox_hashicorp_vagrant_version: 2.3.4
 # renovate: datasource=repology depname=ubuntu_22_04/virtualbox
 devbox_virtualbox_version: 6.1.38-dfsg-3~ubuntu1.22.04.1
 # renovate: datasource=github-releases depName=infracost/infracost

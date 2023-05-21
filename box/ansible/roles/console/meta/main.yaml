@@ -25,7 +25,7 @@ dependencies:
   - role: postgres
   - role: sqlite
   - role: docker
-  - role: cloud
+  - role: ansible
   - role: k8s
   - role: shadowsocks
   - role: tectonic
@@ -33,3 +33,6 @@ dependencies:
   - role: mysql
   - role: aws
   - role: gcp
+  - role: hashicorp
+  - role: virtualbox
+  - role: infracost
