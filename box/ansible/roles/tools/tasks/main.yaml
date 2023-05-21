@@ -18,6 +18,9 @@
     - "bind9-dnsutils={{ devbox_dnsutils_version }}"
     - "git-filter-repo={{ devbox_git_filter_repo_version }}"
     - "htop={{ devbox_htop_version }}"
+    - "fd-find={{ devbox_fd_version }}"
+    - "bat={{ devbox_bat_version }}"
+    - "chafa={{ devbox_chafa_version }}"
 
 - name: Install Development Tools with Pip
   become: true
@@ -45,3 +48,10 @@
     global: true
     version: "{{ devbox_bw_version }} "
     state: present
+
+- name: Install Delta via ith APT
+  become: true
+  vars:
+    version: "{{ devbox_delta_version }}"
+  ansible.builtin.apt:
+    deb: "https://github.com/dandavison/delta/releases/download/{{ version }}/git-delta_{{ version }}_amd64.deb"
