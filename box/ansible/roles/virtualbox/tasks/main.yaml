@@ -1,0 +1,13 @@
+#
+# WARP
+# Virtualbox Ansible Role
+# Tasks
+#
+
+- name: Install Cloud tools with APT
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "virtualbox={{ devbox_virtualbox_version }}"
