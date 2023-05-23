@@ -15,7 +15,7 @@ devbox_jvm_gradle_version: 8.0.1
 # renovate: datasource=github-releases depName=coursier/coursier versioning=maven
 devbox_jvm_coursier_version: v2.1.4
 # renovate: datasource=maven depName=org.scala-lang:scala3-library_3 versioning=maven
-devbox_jvm_scala_version: 3.2.2
+devbox_jvm_scala_version: 3.3.0
 # renovate: datasource=maven depName=org.scala-sbt:sbt versioning=maven
 devbox_jvm_sbt_version: 1.8.3
 
