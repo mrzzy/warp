@@ -37,3 +37,9 @@
       ansible.builtin.command:
         cmd: "tic -x {{ terminfo_path }}"
         creates: /etc/terminfo/a/alacritty
+
+- name: Lower Virtual Memory Swappiness
+  ansible.posix.sysctl:
+    name: vm.swappiness
+    val: 1
+    sysctl_file: /etc/sysctl.conf
