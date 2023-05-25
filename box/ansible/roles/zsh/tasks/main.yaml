@@ -9,9 +9,9 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "zsh={{ devbox_zsh_version }}"
-    - "zsh-autosuggestions={{ devbox_zsh_autosuggest_version }} "
-    - "zsh-syntax-highlighting={{ devbox_zsh_syntax_version }}"
+    - "zsh={{ devbox_version }}"
+    - "zsh-autosuggestions={{ devbox_autosuggest_version }} "
+    - "zsh-syntax-highlighting={{ devbox_syntax_version }}"
 
 - name: Install Z Jump Tool
   become: true
