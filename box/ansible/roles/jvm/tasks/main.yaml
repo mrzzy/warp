@@ -15,13 +15,13 @@
     sdkman_auto_answer: true
     sdkman_install_packages:
       - candidate: java
-        version: "{{ devbox_jvm_java_version }}"
+        version: "{{ devbox_java_version }}"
       - candidate: maven
-        version: "{{ devbox_jvm_maven_version }}"
+        version: "{{ devbox_maven_version }}"
       - candidate: gradle
-        version: "{{ devbox_jvm_gradle_version }}"
+        version: "{{ devbox_gradle_version }}"
       - candidate: spark
-        version: "{{ devbox_jvm_spark_version }}"
+        version: "{{ devbox_spark_version }}"
 
 - name: Install Coursier
   vars:
@@ -30,7 +30,7 @@
     - name: Download Coursier
       ansible.builtin.get_url:
         url: "https://github.com/coursier/coursier/releases/download/\
-              {{ devbox_jvm_coursier_version }}/cs-x86_64-pc-linux.gz"
+              {{ devbox_coursier_version }}/cs-x86_64-pc-linux.gz"
         dest: /tmp/coursier.gz
         mode: "0744"
     - name: Uncompress Coursier
@@ -53,5 +53,5 @@
     cmd: "cs install {{ item }}"
     creates: "{{ coursier_bin }}/bin"
   loop:
-    - "scala:{{ devbox_jvm_scala_version }}"
-    - "sbt:{{ devbox_jvm_sbt_version }}"
+    - "scala:{{ devbox_scala_version }}"
+    - "sbt:{{ devbox_sbt_version }}"
