@@ -24,6 +24,7 @@
     - "libfuse2={{ devbox_libfuse_version }}"
 
 - name: Register alacritty's terminfo with known Terminal Types
+  become: true
   vars:
     terminfo_path: /tmp/alacritty.info
   block:
@@ -39,6 +40,7 @@
         creates: /etc/terminfo/a/alacritty
 
 - name: Lower Virtual Memory Swappiness
+  become: true
   ansible.posix.sysctl:
     name: vm.swappiness
     val: 1
