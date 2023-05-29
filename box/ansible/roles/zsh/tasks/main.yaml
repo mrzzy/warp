@@ -5,7 +5,7 @@
 #
 - name: Install ZSH with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop:
@@ -15,6 +15,12 @@
 
 - name: Install Z Jump Tool
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/agkozak/zsh-z/master/zsh-z.plugin.zsh
     dest: "/usr/local/share/zsh/site-functions"
+    mode: "0644"
+
+- name: Install Atuin shell history tool
+  become: true
+  ansible.builtin.apt:
+    deb: https://github.com/ellie/atuin/releases/download/v{{ devbox_atuin_version }}/atuin_{{ devbox_atuin_version }}_amd64.deb

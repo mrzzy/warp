@@ -10,3 +10,5 @@ devbox_zsh_version: 5.8.1-1
 devbox_zsh_autosuggest_version: 0.7.0-1
 # renovate: datasource=repology depName=ubuntu_22_04/zsh-syntax-highlighting
 devbox_zsh_syntax_version: 0.7.1-2
+# renovate: datasource=github-releases depName=ellie/atuin stripV
+devbox_atuin_version: 15.0.0
