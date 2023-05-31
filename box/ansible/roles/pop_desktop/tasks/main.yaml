@@ -30,7 +30,7 @@
           Components: main
           Signed-By: {{ key_path }}
         dest: /etc/apt/sources.list.d/pop-os-release.sources
-        mode: 0644
+        mode: "0644"
 
 - name: Install pop-desktop with APT
   become: true

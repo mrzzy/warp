@@ -9,7 +9,7 @@
   ansible.builtin.get_url:
     url: "https://github.com/tsl0922/ttyd/releases/download/{{ devbox_ttyd_version }}/ttyd.x86_64"
     dest: "{{ devbox_ttyd_path }}"
-    mode: 0755
+    mode: "0755"
 
 - name: Install iptables-persistent with APT
   become: true
@@ -44,7 +44,7 @@
           /usr/bin/zsh
       Restart=always
     dest: /etc/systemd/system/ttyd-https.service
-    mode: 0644
+    mode: "0644"
 
 - name: Write TTYD over HTTP systemd service
   become: true
@@ -68,7 +68,7 @@
           /usr/bin/zsh
       Restart=always
     dest: /etc/systemd/system/ttyd-http.service
-    mode: 0644
+    mode: "0644"
 
 - name: Enable TTYD
   become: true
@@ -94,4 +94,4 @@
           -A PREROUTING -i {{ interface }} -p tcp -m tcp --dport 443 -j REDIRECT --to-ports {{ devbox_ttyd_https_port }}
           COMMIT
         dest: /etc/iptables/rules.v4
-        mode: 0644
+        mode: "0644"

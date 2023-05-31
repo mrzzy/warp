@@ -12,7 +12,7 @@
       ansible.builtin.get_url:
         url: https://deb.nodesource.com/setup_16.x
         dest: /tmp/register_nodejs_repo.sh
-        mode: 744
+        mode: "744"
 
     - name: Register NodeJS Package Repository
       become: true

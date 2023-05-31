@@ -17,7 +17,7 @@
               {{ devbox_infracost_version }}/infracost-linux-amd64.tar.gz"
         dest: /usr/local/bin
         creates: "{{ infracost_binary }}"
-        mode: 0755
+        mode: "0755"
 
     - name: Strip suffix from Infracost binary
       ansible.builtin.command:

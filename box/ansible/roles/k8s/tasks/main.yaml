@@ -9,7 +9,7 @@
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "/usr/local/bin/{{ item.name }}"
-    mode: 0755
+    mode: "0755"
   loop:
     - name: kubectl
       url: "https://dl.k8s.io/release/{{ devbox_kubectl_version }}/bin/linux/amd64/kubectl"
@@ -25,7 +25,7 @@
       ansible.builtin.get_url:
         url: https://baltocdn.com/helm/signing.asc
         dest: "{{ key_path }}"
-        mode: 0644
+        mode: "0644"
 
     - name: "Add Balto's APT package repository"
       become: true

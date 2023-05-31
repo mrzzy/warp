@@ -17,4 +17,4 @@
           {{ devbox_docker_compose_version }}/docker-compose-linux-\
           {{ ansible_userspace_architecture }}"
     dest: /usr/local/bin/docker-compose
-    mode: 0755
+    mode: "0755"

@@ -14,7 +14,7 @@
       ansible.builtin.get_url:
         url: https://apt.releases.hashicorp.com/gpg
         dest: "{{ key_path }}"
-        mode: 0644
+        mode: "0644"
 
     - name: Add HashiCorp's APT package repository
       become: true
