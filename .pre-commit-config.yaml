@@ -28,7 +28,7 @@ repos:
 
 # lint ansible playbooks
 - repo: https://github.com/ansible-community/ansible-lint.git
-  rev: v5.4.0
+  rev: v6.16.2
   hooks:
   - id: ansible-lint
     args: [
