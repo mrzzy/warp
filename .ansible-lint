@@ -1,0 +1,8 @@
+#
+# WARP
+# Ansible Lint
+# Config
+#
+
+skip_list:
+ -  var-naming[no-role-prefix]
