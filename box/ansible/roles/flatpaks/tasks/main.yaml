@@ -6,7 +6,7 @@
 
 - name: Install Flatpak with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "flatpak={{ devbox_flatpak_version }}"
     state: present
 

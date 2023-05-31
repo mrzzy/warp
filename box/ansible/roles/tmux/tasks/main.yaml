@@ -6,7 +6,7 @@
 
 - name: Install Tmux & AWK with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop:
@@ -20,7 +20,7 @@
     tpm_path: "{{ devbox_user_home }}/.local/share/tmux/tpm"
   block:
     - name: Install Tmux Plugin Manager (TPM)
-      git:
+      ansible.builtin.git:
         repo: https://github.com/tmux-plugins/tpm
         dest: "{{ tpm_path }}"
         version: master
@@ -30,6 +30,6 @@
       environment:
         # needed to point TPM to install plugins in the devbox users home dir not root
         HOME: "{{ devbox_user_home }}"
-      command:
+      ansible.builtin.command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"

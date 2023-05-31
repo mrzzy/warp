@@ -7,7 +7,7 @@
 # minimize storage footprint
 - name: Clear APT cache of package files & lists
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: absent
   loop:
@@ -18,7 +18,7 @@
 # disable auto upgrades: upgrades hog the cpu at runtime
 - name: Disable Auto Upgrades by removing Unattended-upgrades
   become: true
-  apt:
+  ansible.builtin.apt:
     name: unattended-upgrades
     state: absent
   when: devbox_uninstall_unattended_upgrades

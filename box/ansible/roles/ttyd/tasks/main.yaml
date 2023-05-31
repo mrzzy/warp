@@ -6,20 +6,20 @@
 
 - name: Download pre-built TTYD Binary
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/tsl0922/ttyd/releases/download/{{ devbox_ttyd_version }}/ttyd.x86_64"
     dest: "{{ devbox_ttyd_path }}"
     mode: 0755
 
 - name: Install iptables-persistent with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "iptables-persistent={{ devbox_iptables_persistent_version }}"
     state: present
 
 - name: Write TTYD over HTTPS systemd service
   become: true
-  copy:
+  ansible.builtin.copy:
     content: |
       [Unit]
       Description=TTYD enables shell access a web terminal over HTTPS
@@ -48,7 +48,7 @@
 
 - name: Write TTYD over HTTP systemd service
   become: true
-  copy:
+  ansible.builtin.copy:
     content: |
       [Unit]
       Description=TTYD enables shell access a web terminal over HTTP
@@ -76,7 +76,7 @@
   when: devbox_ttyd_password != ""
   block:
     - name: Activate TTYD systemd services
-      systemd:
+      ansible.builtin.systemd:
         name: "{{ item }}"
         enabled: true
       loop:
@@ -86,7 +86,7 @@
     - name: Write IPV4 TTYD iptables rules to be loaded by iptables-persistent
       vars:
         interface: "{{ ansible_default_ipv4.interface }}"
-      copy:
+      ansible.builtin.copy:
         content: |
           *nat
           # forward incoming traffic via the default ipv4 interface to TTYD

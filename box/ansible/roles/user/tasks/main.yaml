@@ -6,7 +6,7 @@
 
 - name: Create groups
   become: true
-  group:
+  ansible.builtin.group:
     name: "{{ item }}"
     state: present
   loop:
@@ -16,7 +16,7 @@
 
 - name: Create devbox user
   become: true
-  user:
+  ansible.builtin.user:
     name: "{{ devbox_user }}"
     shell: /bin/zsh
     groups:
@@ -29,14 +29,14 @@
 
 - name: Allow password-less sudo to users in sudo group
   become: true
-  copy:
+  ansible.builtin.copy:
     content: "%sudo ALL=(ALL:ALL) NOPASSWD:ALL"
     dest: /etc/sudoers.d/sudo_nopasswd
     mode: 0440
 
 - name: Allow ssl-cert group members to access TLS private keys
   become: true
-  file:
+  ansible.builtin.file:
     path: /etc/ssl/private/
     group: ssl-cert
-    mode: 0710
+    mode: "0710"

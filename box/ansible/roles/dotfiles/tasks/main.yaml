@@ -13,7 +13,7 @@
     # bare clone of dotfiles is required as workaround to inject dotfiles into
     # a home directory with existing files.
     - name: Pull bare dotfiles repository
-      git:
+      ansible.builtin.git:
         repo: "{{ dotfiles_repo }}"
         single_branch: true
         version: main
@@ -26,7 +26,7 @@
         file: "{{ devbox_user_home }}/.git/config"
         state: absent
     - name: Checkout dotfiles at specific revision
-      git:
+      ansible.builtin.git:
         repo: "{{ dotfiles_repo }}"
         dest: "{{ devbox_user_home }}"
         version: "{{ devbox_dotfiles_rev }}"

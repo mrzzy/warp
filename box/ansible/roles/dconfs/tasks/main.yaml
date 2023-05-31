@@ -7,14 +7,14 @@
 # dconf ansible module requires psutil python library to run
 - name: Install psutil module via pip
   become: true
-  pip:
+  ansible.builtin.pip:
     name: "psutil=={{ devbox_psutil_version }}"
     state: present
 
 - name: Configure GNOME desktop environment with Dconf
   become: true
   become_user: "{{ devbox_user }}"
-  dconf:
+  community.general.dconf:
     key: "{{ item.key }}"
     value: "{{ item.value }}"
   loop:

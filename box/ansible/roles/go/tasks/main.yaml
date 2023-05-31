@@ -6,6 +6,6 @@
 
 - name: Install Golang with APT
   become: true
-  apt:
+  ansible.builtin.apt:
     name: "golang={{ devbox_golang_version }}"
     state: present
