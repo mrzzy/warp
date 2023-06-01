@@ -11,7 +11,7 @@ devbox_maven_version: 3.9.2
 # renovate: datasource=github-releases depName=gradle/gradle versioning=gradle
 devbox_gradle_version: 8.1.1
 # renovate: datasource=github-releases depName=microsoft/java-debug versioning=maven
-devbox_java_debug_version: 0.45.0
+devbox_java_debug_version: 0.46.0
 
 # scala & tools
 # renovate: datasource=github-releases depName=coursier/coursier versioning=maven
