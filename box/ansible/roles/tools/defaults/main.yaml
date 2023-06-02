@@ -20,9 +20,9 @@ devbox_dnsutils_version: 1:9.18.12-0ubuntu0.22.04.1
 devbox_git_filter_repo_version: 2.34.0-1
 # renovate: datasource=repology depName=ubuntu_22_04/htop
 devbox_htop_version: 3.0.5-7build2
-# renovate: datasource=repology depName=ubuntu_22_04/fd-find
+# renovate: datasource=repology depName=ubuntu_22_04/rust-fd-find
 devbox_fd_version: 8.3.1-1ubuntu0.1
-# renovate: datasource=repology depName=ubuntu_22_04/bat
+# renovate: datasource=repology depName=ubuntu_22_04/rust-bat
 devbox_bat_version: 0.19.0-1ubuntu0.1
 # renovate: datasource=repology depName=ubuntu_22_04/chafa
 devbox_chafa_version: 1.8.0-1
