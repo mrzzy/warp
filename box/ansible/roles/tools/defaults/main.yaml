@@ -27,7 +27,7 @@ devbox_bat_version: 0.19.0-1ubuntu0.1
 # renovate: datasource=repology depName=ubuntu_22_04/chafa
 devbox_chafa_version: 1.8.0-1
 # renovate: datasource=github-releases depName=dandavison/delta
-devbox_delta_version: 0.16.4
+devbox_delta_version: 0.16.5
 
 # renovate: datasource=pypi depName=pre-commit
 devbox_pre_commit_version: 3.3.2
