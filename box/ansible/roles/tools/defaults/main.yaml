@@ -45,3 +45,5 @@ devbox_yq_version: v4.34.1
 
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
 devbox_bw_version: 2023.5.0
+# renovate: datasource=npm depName=tree-sitter-cli versioning=npm
+devbox_tree_sitter_cli_version: 0.20.8

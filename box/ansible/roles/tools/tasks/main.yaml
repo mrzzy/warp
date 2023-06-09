@@ -41,13 +41,18 @@
     dest: /usr/local/bin/yq
     mode: "0755"
 
-- name: Install Bitwarden CLI with NPM
+- name: Install Development Tools with NPM
   become: true
   community.general.npm:
-    name: "@bitwarden/cli"
+    name: "{{ item.name }}"
     global: true
-    version: "{{ devbox_bw_version }} "
+    version: "{{ item.version }} "
     state: present
+  loop:
+    - name: "@bitwarden/cli"
+      version: "{{ devbox_bw_version }}"
+    - name: "tree-sitter-cli"
+      version: "{{ devbox_tree_sitter_cli_version }}"
 
 - name: Install Delta via ith APT
   become: true
