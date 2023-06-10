@@ -50,7 +50,6 @@ jobs:
     - name: Build WARP Box (with GUI) with Packer + Vagrant
       env:
         PACKER_GITHUB_API_TOKEN: ${{ github.token }}
-        PKR_VAR_ansible_playbook: "box/ansible/gui.yaml"
       uses: nick-fields/retry@v2
       with:
         timeout_minutes: 60
