@@ -4,13 +4,7 @@
 # Tasks
 #
 
-- name: Install Flatpak with APT
-  become: true
-  ansible.builtin.apt:
-    name: "flatpak={{ devbox_flatpak_version }}"
-    state: present
-
-
+# flatpak its itself installed by pop_desktop role
 - name: Add the flathub flatpak repository remote
   become: true
   community.general.flatpak_remote:

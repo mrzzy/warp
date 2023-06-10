@@ -1,8 +1,0 @@
-#
-# WARP
-# Flatpak Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=repology depName=ubuntu_22_04/flatpak
-devbox_flatpak_version: 1.12.7-1
