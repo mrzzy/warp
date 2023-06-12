@@ -20,4 +20,5 @@
       - com.spotify.Client
       - org.zotero.Zotero
       - md.obsidian.Obsidian
+      - com.ticktick.TickTick
     state: present
