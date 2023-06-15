@@ -58,12 +58,6 @@ build {
       "ANSIBLE_LOAD_CALLBACK_PLUGINS=debug",
     ]
 
-    # workaround: https://github.com/hashicorp/packer-plugin-ansible/issues/69
-    # ansible unable to ssh into gcp builder vm by enabling vulnerable rsa-sha1 ssh algorithm
-    ansible_ssh_extra_args = [
-      "-oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedKeyTypes=+ssh-rsa"
-    ]
-
     # override user used to provision as ansible's become user escalation relies on it
     override = {
       ubuntu_vm = {
