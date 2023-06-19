@@ -30,7 +30,7 @@ devbox_chafa_version: 1.8.0-1
 devbox_delta_version: 0.16.5
 
 # renovate: datasource=pypi depName=pre-commit
-devbox_pre_commit_version: 3.3.2
+devbox_pre_commit_version: 3.3.3
 # renovate: datasource=pypi depName=codespell
 devbox_codespell_version: 2.2.5
 # renovate: datasource=pypi depName=sqlfluff
