@@ -5,5 +5,5 @@
 #
 
 # renovate: datasource=github-releases depName=junegunn/fzf
-devbox_fzf_version: 0.41.1
+devbox_fzf_version: 0.42.0
 devbox_fzf_dir: /usr/local/share/fzf
