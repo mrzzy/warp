@@ -8,4 +8,4 @@ devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
 
 # git revision of dotfiles to install
-devbox_dotfiles_rev: 6868408c3758e29c1e129085d350c31ec6ecb14b
+devbox_dotfiles_rev: 08ab4949ddd0aa6c8345dc5388e31ecc47278167
