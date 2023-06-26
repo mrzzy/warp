@@ -7,7 +7,7 @@
 # java & tools
 devbox_java_version: 17.0.5-tem
 # renovate: datasource=maven depName=org.apache.maven:maven-core versioning=maven
-devbox_maven_version: 3.9.2
+devbox_maven_version: 3.9.3
 # renovate: datasource=github-releases depName=gradle/gradle versioning=gradle
 devbox_gradle_version: 8.1.1
 # renovate: datasource=github-releases depName=microsoft/java-debug versioning=maven
