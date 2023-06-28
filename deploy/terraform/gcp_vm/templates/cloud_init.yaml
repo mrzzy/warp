@@ -37,7 +37,7 @@ runcmd:
   # create & mount btrfs subvolume to persist docker storage in warp's persistent disk
   - systemctl stop docker
   - btrfs subvolume create ${mountpoint}/docker
-  - mount -t btrfs -o subvol=docker ${warp_disk_device} /var/lib/docker/volumes
+  - mount -t btrfs -o subvol=docker ${warp_disk_device} /var/lib/docker/
   - systemctl start docker
 
   # ensure warp disk is writeable by making the mrzzy user owner
