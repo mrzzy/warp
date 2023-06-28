@@ -36,7 +36,7 @@ jobs:
                  ${{ github.repository}}@${{ github.sha }}"
           delete-branch: true
 
-      - name: Automerge Pull Request on WARP
+      - name: Automerge Pull Request on Nimbus
         env:
-          GH_TOKEN: "{{ secrets.GH_PUSH_TOKEN }}"
+          GH_TOKEN: "${{ secrets.GH_PUSH_TOKEN }}"
         run: gh pr merge --squash --auto
