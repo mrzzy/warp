@@ -39,4 +39,4 @@ jobs:
       - name: Automerge Pull Request on Nimbus
         env:
           GH_TOKEN: "${{ secrets.GH_PUSH_TOKEN }}"
-        run: gh pr merge --squash --auto
+        run: gh pr merge --squash --auto ${PULL_REQUEST_NUMBER}
