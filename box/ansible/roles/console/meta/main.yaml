@@ -36,3 +36,4 @@ dependencies:
   - role: hashicorp
   - role: virtualbox
   - role: infracost
+  - role: naiveproxy
