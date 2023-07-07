@@ -4,6 +4,11 @@
 # Input Variables
 #
 
+variable "gcp_project" {
+  type        = string
+  description = "GCP Project ID to source WARP image, deploy WARP VM resources in"
+}
+
 variable "region_zone" {
   type        = string
   description = "GCP region & zone to deploy WARP VM to."

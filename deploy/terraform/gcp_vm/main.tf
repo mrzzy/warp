@@ -13,7 +13,8 @@ terraform {
 }
 
 provider "google" {
-  zone = var.region_zone
+  project = var.gcp_project
+  zone    = var.region_zone
 }
 
 locals {
