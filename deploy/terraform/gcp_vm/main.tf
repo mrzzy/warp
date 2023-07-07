@@ -12,6 +12,10 @@ terraform {
   }
 }
 
+provider "google" {
+  zone = var.region_zone
+}
+
 locals {
   warp_disk_id = "warp-disk"
 }

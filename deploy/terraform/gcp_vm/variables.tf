@@ -4,6 +4,12 @@
 # Input Variables
 #
 
+variable "region_zone" {
+  type        = string
+  description = "GCP region & zone to deploy WARP VM to."
+  default     = "asia-southeast1-c" # Jurong West, Singapore
+}
+
 variable "enabled" {
   type        = bool
   description = "Whether to deploy the WARP development VM instance."
