@@ -21,6 +21,7 @@
     - "fd-find={{ devbox_fd_version }}"
     - "bat={{ devbox_bat_version }}"
     - "chafa={{ devbox_chafa_version }}"
+    - "proxychains4={{ devbox_proxychains_ng_version }}"
 
 - name: Install Development Tools with Pip
   become: true
