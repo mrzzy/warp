@@ -39,9 +39,16 @@
         cmd: "tic -x {{ terminfo_path }}"
         creates: /etc/terminfo/a/alacritty
 
-- name: Lower Virtual Memory Swappiness
+- name: Modify kernel parameters with sysctl
   become: true
   ansible.posix.sysctl:
-    name: vm.swappiness
-    val: 1
+    name: "{{ item.name }}"
+    val: "{{ item.value }}"
     sysctl_file: /etc/sysctl.conf
+  loop:
+    # avoid using swap unless absolutely necessary
+    - name: vm.swappiness
+      value: 1
+    # increase max number of files a user can watch with inotify
+    - name: fs.inotify.max_user_instances
+      value: 256
