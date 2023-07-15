@@ -16,25 +16,20 @@
     - name: kind
       url: "https://kind.sigs.k8s.io/dl/{{ devbox_kind_version }}/kind-linux-amd64"
 
-- name: Install Helm form Third-Party Balto repository
-  vars:
-    key_path: /etc/apt/keyrings/baltocdn.asc
+- name: Install Helm binary
   block:
-    - name: "Download Balto's package signing key"
+    - name: Download Helm binary
+      ansible.builtin.unarchive:
+        remote_src: true
+        src: https://get.helm.sh/helm-{{ devbox_helm_version }}-linux-amd64.tar.gz
+        dest: /tmp
+        include: [linux-amd64/helm]
+    - name: Move Helm binary into PATH
       become: true
-      ansible.builtin.get_url:
-        url: https://baltocdn.com/helm/signing.asc
-        dest: "{{ key_path }}"
-        mode: "0644"
-
-    - name: "Add Balto's APT package repository"
-      become: true
-      ansible.builtin.apt_repository:
-        repo: "deb [signed-by={{ key_path }}] https://baltocdn.com/helm/stable/debian/ all main"
-        state: present
-
-    - name: "Install Helm from Balto's APT package repository"
-      become: true
-      ansible.builtin.apt:
-        name: "helm={{ devbox_helm_version }}-1"
-        state: present
+      vars:
+        helm_src: /tmp/linux-amd64/helm
+        helm_dest: /usr/local/bin/helm
+      ansible.builtin.command:
+        cmd: "mv {{ helm_src }}  {{ helm_dest }}"
+        removes: "{{ helm_src }}"
+        creates: "{{ helm_dest }}"
