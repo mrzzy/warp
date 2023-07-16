@@ -8,6 +8,7 @@
   hosts: all
   vars_files:
     - vars.yaml
+    - secrets.yaml
   pre_tasks:
     - name: Update APT Cache
       become: true

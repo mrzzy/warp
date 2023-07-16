@@ -30,15 +30,24 @@
     - disk.yaml
     - remote.yaml
 
+- name: Template & Install Rclone config
+  become: true
+  ansible.builtin.template:
+    src: "templates/rclone-backblaze.conf"
+    dest: "{{ devbox_borgbackup_rclone_config }}"
+    mode: "0700"
+
 - name: Install Systemd Services
   vars:
     systemd_dir: /etc/systemd/system
   block:
     - name: Template & Install rclone-backup-mount service
       become: true
+      vars:
+        service: rclone-backup-mount.service
       ansible.builtin.template:
-        src: "templates/rclone-backup-mount.service.j2"
-        dest: "{{ systemd_dir }}"
+        src: "templates/{{ service }}.j2"
+        dest: "{{ systemd_dir }}/{{ service }}"
         mode: "0744"
     - name: Install borgmatic-remote-backup service & timer
       become: true

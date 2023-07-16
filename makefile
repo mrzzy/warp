@@ -55,6 +55,14 @@ apply-gui: $(ANSIBLE_DIR) ansible-deps
 		--ask-become-pass \
 		$(ANSIBLE_DIR)/gui.yaml
 
+apply-laptop: $(ANSIBLE_DIR) ansible-deps
+	$(PLAYBOOK) \
+		--inventory 127.0.0.1, \
+		--connection local \
+		--ask-become-pass \
+		$(ANSIBLE_DIR)/laptop.yaml
+
+
 # development build: build box on virtualbox only.
 box: $(PACKER_DIR) packer-init ansible-deps
 	$(PACKER) build -var ansible_playbook=box/ansible/gui.yaml \

@@ -18,3 +18,10 @@
     dest: /sbin/mount.rclone
     state: link
     mode: '0755'
+
+- name: Create rclone config directory in /etc
+  become: true
+  ansible.builtin.file:
+    state: directory
+    path: "/etc/rclone"
+    mode: "0700"

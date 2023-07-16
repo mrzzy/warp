@@ -16,3 +16,7 @@ venv/
 /.projections.json
 # vim Session
 /Session.vim
+
+## Ansible
+# sercrets
+box/ansible/secrets.yaml

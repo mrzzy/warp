@@ -16,7 +16,7 @@ Restart=on-failure
 RestartSec=10
 RestartSteps=5
 RestartMaxDelaySec=300
-Environment=RCLONE_CONFIG=/etc/rclone.conf
+Environment=RCLONE_CONFIG={{ devbox_borgbackup_rclone_config }}
 ExecStart=/usr/bin/rclone mount b2:mrzzy-co-volt-backup "{{ devbox_borgbackup_remote_mountpoint }}" \
 # This is for allowing users other than the user running rclone access to the mount
 --allow-other \
