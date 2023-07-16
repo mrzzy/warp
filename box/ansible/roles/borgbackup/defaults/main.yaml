@@ -1,0 +1,15 @@
+#
+# WARP
+# Borgbackup Ansible Role
+# Default Variables
+#
+
+# backup mountpoint for disk backup
+devbox_borgbackup_disk_mountpoint: /media/mrzzy/Backup/volt
+# backup mountpoint for remote backup
+devbox_borgbackup_remote_mountpoint: /mnt/backup
+
+# renovate: datasource=repology depName=ubuntu_22_04/borgbackup
+devbox_borgbackup_borg_version: 1.2.0-1
+# renovate: datasource=repology depName=ubuntu_22_04/borgmatic
+devbox_borgbackup_borgmatic_version: 1.5.20-1

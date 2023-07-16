@@ -1,0 +1,60 @@
+#
+# WARP
+# Borgbackup Ansible Role
+# Tasks
+#
+
+- name: Install Borgbackup tools with APT
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "borgbackup={{ devbox_borgbackup_borg_version }} "
+    - "borgmatic={{ devbox_borgbackup_borgmatic_version }}"
+
+- name: Create Backup Mountpoint
+  become: true
+  ansible.builtin.file:
+    state: directory
+    path: "{{ devbox_borgbackup_remote_mountpoint }}"
+    mode: "0755"
+
+- name: Template & Install Borgmatic config files
+  become: true
+  ansible.builtin.template:
+    src: "templates/borgmatic_{{ item }}.j2"
+    dest: "/etc/borgmatic/{{ item }}"
+    mode: "0700"
+  loop:
+    - disk.yaml
+    - remote.yaml
+
+- name: Install Systemd Services
+  vars:
+    systemd_dir: /etc/systemd/system
+  block:
+    - name: Template & Install rclone-backup-mount service
+      become: true
+      ansible.builtin.template:
+        src: "templates/rclone-backup-mount.service.j2"
+        dest: "{{ systemd_dir }}"
+        mode: "0744"
+    - name: Install borgmatic-remote-backup service & timer
+      become: true
+      ansible.builtin.copy:
+        src: "{{ item }}"
+        dest: "{{ systemd_dir }}"
+        mode: "0744"
+      loop:
+        - files/borgmatic-remote-backup.service
+        - files/borgmatic-remote-backup.timer
+    - name: Reload and enable Systemd services
+      become: true
+      ansible.builtin.systemd:
+        daemon_reload: true
+        name: "{{ item }}"
+        enabled: true
+      loop:
+        - borgmatic-remote-backup.timer
+        - rclone-backup-mount.service

@@ -1,0 +1,8 @@
+#
+# WARP
+# BorgBackup Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: rclone

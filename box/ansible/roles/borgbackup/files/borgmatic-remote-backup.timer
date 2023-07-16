@@ -1,0 +1,15 @@
+#
+# Systemd Service
+# Borgmatic Backup
+# Remote: Backblaze bucket
+#
+
+[Unit]
+Description=Run borgmatic-remote-backup service daily
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target
