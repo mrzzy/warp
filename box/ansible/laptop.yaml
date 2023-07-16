@@ -1,8 +1,7 @@
 #
 # WARP
 # Box Ansible Playbook
-# GUI Enabled
-#
+# Laptop
 #
 
 - name: Provision Graphical tools
@@ -15,7 +14,9 @@
       ansible.builtin.apt:
         update-cache: true
   roles:
+    - console
     - gui
+    - borgbackup
   post_tasks:
     - name: Optimize Storage Footprint & Performance
       ansible.builtin.import_tasks: tasks/optimize.yaml

@@ -1,0 +1,11 @@
+#
+# WARP
+# GUI Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: pop_desktop
+  - role: alacritty
+  - role: flatpaks
+  - role: dconfs
