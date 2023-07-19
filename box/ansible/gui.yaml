@@ -15,6 +15,7 @@
       ansible.builtin.apt:
         update-cache: true
   roles:
+    - console
     - gui
   post_tasks:
     - name: Optimize Storage Footprint & Performance

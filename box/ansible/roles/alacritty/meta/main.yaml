@@ -6,3 +6,4 @@
 
 dependencies:
   - role: pop_desktop
+  - role: nodejs
