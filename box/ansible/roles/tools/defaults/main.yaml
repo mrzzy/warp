@@ -49,3 +49,5 @@ devbox_yq_version: v4.34.2
 devbox_bw_version: 2023.7.0
 # renovate: datasource=npm depName=tree-sitter-cli versioning=npm
 devbox_tree_sitter_cli_version: 0.20.8
+# renovate: datasource=npm depName=prettier versioning=npm
+devbox_prettier_version: 3.0.0

@@ -54,6 +54,8 @@
       version: "{{ devbox_bw_version }}"
     - name: "tree-sitter-cli"
       version: "{{ devbox_tree_sitter_cli_version }}"
+    - name: "prettier"
+      version: "{{ devbox_prettier_version }}"
 
 - name: Install Delta via ith APT
   become: true
