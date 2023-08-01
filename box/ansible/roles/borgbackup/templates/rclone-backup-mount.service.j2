@@ -14,13 +14,13 @@ Type=notify
 # restart with backoff on failure
 Restart=on-failure
 RestartSec=10
-RestartSteps=5
-RestartMaxDelaySec=300
 Environment=RCLONE_CONFIG={{ devbox_borgbackup_rclone_config }}
 ExecStart=/usr/bin/rclone mount b2:mrzzy-co-volt-backup "{{ devbox_borgbackup_remote_mountpoint }}" \
 # This is for allowing users other than the user running rclone access to the mount
 --allow-other \
 --log-file /var/log/rclone-backup-mount.log \
+--cache-dir /tmp/rclone/ \
+--vfs-cache-max-size 2G \
 --vfs-cache-mode full \
 # Speed up the reading: Use fast (less accurate) fingerprints for change detection
 --vfs-fast-fingerprint
