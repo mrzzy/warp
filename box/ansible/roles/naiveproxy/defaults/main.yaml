@@ -4,5 +4,5 @@
 # Default Variables
 #
 
-# renovate: datasource=github-releases depName=/klzgrad/naiveproxy
+# renovate: datasource=github-releases depName=klzgrad/naiveproxy
 devbox_naiveproxy_version: v114.0.5735.91-4test
