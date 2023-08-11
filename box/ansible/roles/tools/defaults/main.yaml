@@ -43,7 +43,7 @@ devbox_sqlfmt_version: 0.19.2
 devbox_mitmproxy_version: 9.0.1
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-devbox_yq_version: v4.34.2
+devbox_yq_version: v4.35.1
 
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
 devbox_bw_version: 2023.7.0
