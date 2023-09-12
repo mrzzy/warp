@@ -15,7 +15,7 @@ devbox_java_debug_version: 0.49.0
 
 # scala & tools
 # renovate: datasource=github-releases depName=coursier/coursier versioning=maven
-devbox_coursier_version: v2.1.5
+devbox_coursier_version: v2.1.6
 # renovate: datasource=maven depName=org.scala-lang:scala3-library_3 versioning=maven
 devbox_scala_version: 3.3.0
 # renovate: datasource=maven depName=org.scala-sbt:sbt versioning=maven
