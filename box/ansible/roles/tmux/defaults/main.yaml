@@ -10,4 +10,4 @@ devbox_user_home: /home/mrzzy
 # renovate: datasource=repology depName=ubuntu_22_04/tmux
 devbox_tmux_version: 3.2a-4ubuntu0.2
 # renovate: datasource=repology depName=ubuntu_22_04/gawk
-devbox_tmux_gawk_version: 1:5.1.0-1build3
+devbox_tmux_gawk_version: 1:5.1.0-1ubuntu0.1
