@@ -39,7 +39,7 @@ clean: clean-box
 
 # apply the ansible devbox playbook to the local machine
 ansible-deps:
-	$(GALAXY) install -r requirements.yaml
+	$(GALAXY) install --force -r requirements.yaml
 
 apply: $(ANSIBLE_DIR) ansible-deps
 	$(PLAYBOOK) \
