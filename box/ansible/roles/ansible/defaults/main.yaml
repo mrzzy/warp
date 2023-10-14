@@ -7,4 +7,4 @@
 # renovate: datasource=pypi depName=ansible-base
 devbox_ansible_version: 2.10.17
 # renovate: datasource=pypi depName=ansible-lint
-devbox_ansible_lint_version: 6.20.2
+devbox_ansible_lint_version: 6.20.3
