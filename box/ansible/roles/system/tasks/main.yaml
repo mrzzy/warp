@@ -49,6 +49,8 @@
     # avoid using swap unless absolutely necessary
     - name: vm.swappiness
       value: 1
-    # increase max number of files a user can watch with inotify
+    # increase max number of programs & files a user can launch that watch for changes to
     - name: fs.inotify.max_user_instances
       value: 256
+    - name: fs.inotify.max_user_watches
+      value: 13170
