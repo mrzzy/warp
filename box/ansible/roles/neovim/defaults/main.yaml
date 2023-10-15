@@ -10,4 +10,6 @@ devbox_user_home: /home/mrzzy
 # Neovim text editor
 # renovate: datasource=github-releases depName=neovim/neovim
 devbox_nvim_version: v0.9.4
-devbox_nvim_packer_version: 6afb67460283f0e990d35d229fd38fdc04063e0a
+
+# renovate: datasource=github-releases depName=folke/lazy.nvim
+devbox_nvim_lazy_version: v10.13.4

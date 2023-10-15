@@ -19,6 +19,16 @@
     XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
     XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
     XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
-  ansible.builtin.command:
-    cmd: nvim --headless "+Lazy! sync" +qa
-    creates: "{{ devbox_user_home }}.local/share/nvim/lazy"
+  block:
+    - name: Install lazy.nvim plugin manager
+      ansible.builtin.git:
+        repo: https://github.com/folke/lazy.nvim
+        version: "{{ devbox_nvim_lazy_version }}"
+        single_branch: true
+        dest: "{{ devbox_user_home }}/.local/share/nvim/site/pack/lazy/start/lazy"
+        # silence 'will clobber existing tag' error for 'stable' tag that is constantly updated
+        force: true
+    - name: Install Neovim App image
+      ansible.builtin.command:
+        cmd: nvim --headless "+Lazy! sync" +qa
+        creates: "{{ devbox_user_home }}.local/share/nvim/lazy"
