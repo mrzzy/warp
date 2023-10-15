@@ -9,7 +9,7 @@ packer {
   # development tools
   required_plugins {
     vagrant = {
-      version = ">=1.0.1, <1.1"
+      version = "< 1.2"
       source  = "github.com/hashicorp/vagrant"
     }
   }
