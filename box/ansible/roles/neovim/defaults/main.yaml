@@ -12,4 +12,4 @@ devbox_user_home: /home/mrzzy
 devbox_nvim_version: v0.9.4
 
 # renovate: datasource=github-releases depName=folke/lazy.nvim
-devbox_nvim_lazy_version: v10.14.5
+devbox_nvim_lazy_version: v10.14.6
