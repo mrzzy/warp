@@ -1,0 +1,12 @@
+#
+# WARP
+# Verilog Ansible Role
+# Tasks
+#
+
+
+- name: Install Icarus Verilog with APT
+  become: true
+  ansible.builtin.apt:
+    name: "iverilog={{ devbox_verilog_iverilog_version }}"
+    state: present

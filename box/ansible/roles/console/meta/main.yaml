@@ -37,3 +37,4 @@ dependencies:
   - role: virtualbox
   - role: infracost
   - role: naiveproxy
+  - role: verilog
