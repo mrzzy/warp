@@ -28,7 +28,7 @@ jobs:
     # needed by virtualbox vm to run within github actions runner.
     # it also comes with vagrant & virtualbox preinstalled
     # https://github.com/jonashackt/vagrant-github-actions
-    runs-on: macos-12
+    runs-on: macos-11
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
