@@ -4,5 +4,5 @@
 # Default Variables
 #
 
-# renovate: datasource=repology depName=ubuntu_22_04/iverlog
+# renovate: datasource=repology depName=ubuntu_22_04/iverilog
 devbox_verilog_iverilog_version: 11.0-1.1
