@@ -7,7 +7,7 @@
 - name: Install Java & Tooling with SDKMan
   become: true
   ansible.builtin.import_role:
-    role: comcast.sdkman
+    role: Comcast.sdkman
   vars:
     sdkman_dir: /usr/local/lib/sdkman
     sdkman_user: root
