@@ -4,7 +4,7 @@
 #
 
 roles:
-  - src: comcast.sdkman
+  - src: Comcast.sdkman
     version: 1.7.0
 collections:
   - name: community.general
