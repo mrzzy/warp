@@ -20,8 +20,6 @@
         version: "{{ devbox_maven_version }}"
       - candidate: gradle
         version: "{{ devbox_gradle_version }}"
-      - candidate: spark
-        version: "{{ devbox_spark_version }}"
 
 - name: Install Coursier
   vars:
