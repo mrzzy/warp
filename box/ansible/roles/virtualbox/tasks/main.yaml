@@ -4,10 +4,8 @@
 # Tasks
 #
 
-- name: Install Cloud tools with APT
+- name: Install Virtualbox with APT
   become: true
   ansible.builtin.apt:
-    name: "{{ item }}"
+    name: "virtualbox={{ devbox_virtualbox_version }}"
     state: present
-  loop:
-    - "virtualbox={{ devbox_virtualbox_version }}"
