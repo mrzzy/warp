@@ -51,9 +51,9 @@
       value: 1
     # increase max number of programs & files a user can launch that watch for changes to
     - name: fs.inotify.max_user_instances
-      value: 256
+      value: 8192
     - name: fs.inotify.max_user_watches
-      value: 13170
+      value: 1048576
 
 # pin settings installed by pop os breaks ansible apt module's package resolution
 - name: Remove Pop OS APT pin settings (if present)
