@@ -1,0 +1,8 @@
+#
+# WARP
+# NodeJS Ansible Role
+# Default Variables
+#
+
+# renovate: datasource=npm depName=yarn versioning=npm
+devbox_yarn_version: 1.22.19
