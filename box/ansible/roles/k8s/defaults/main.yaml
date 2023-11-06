@@ -5,7 +5,7 @@
 #
 
 # renovate: datasource=github-releases depName=kubernetes/kubernetes
-devbox_kubectl_version: v1.28.2
+devbox_kubectl_version: v1.28.3
 # renovate: datasource=github-releases depName=helm/helm
 devbox_helm_version: v3.13.1
 # renovate: datasource=github-releases depName=kubernetes-sigs/kind
