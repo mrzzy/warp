@@ -19,3 +19,11 @@
   ansible.builtin.command:
     cmd: "sh /tmp/rustup-init.sh -y --no-modify-path --default-toolchain {{ devbox_rust_version }}"
     creates: "{{ devbox_user_home }}/.cargo"
+
+- name: Install Rust tools with Cargo
+  become: true
+  become_user: "{{ devbox_user }}"
+  community.general.cargo:
+    name: obsidian-export
+    state: present
+    version: "{{ devbox_obsidian_export_version }}"
