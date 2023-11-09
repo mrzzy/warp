@@ -37,3 +37,13 @@
       value: "['<Ctrl><Alt>k']"
     - key: /org/gnome/settings-daemon/plugins/media-keys/next
       value: "['<Ctrl><Alt>l']"
+      # custom shortcuts
+    - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
+      value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+      # map favourites key to TickTick
+    - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
+      value: "'TickTick'"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command
+      value: "'flatpak run com.ticktick.TickTick'"
+    - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
+      value: "'Favourites'"
