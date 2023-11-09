@@ -24,9 +24,12 @@
       # disable desktop animations
     - key: /org/gnome/desktop/interface/enable-animations
       value: "false"
-      # show battery percentage in state bar
+      # show battery percentage on top bar
     - key: /org/gnome/desktop/interface/show-battery-percentage
       value: "true"
+      # disable applications button on top bar
+    - key: /org/gnome/shell/extensions/pop-cosmic/show-applications-button
+      value: false
       # create media key shortcuts
     - key: /org/gnome/settings-daemon/plugins/media-keys/previous
       value: "['<Ctrl><Alt>j']"
