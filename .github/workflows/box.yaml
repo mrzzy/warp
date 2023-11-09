@@ -22,43 +22,6 @@ env:
   # box image build timeout in minutes
   BUILD_TIMEOUT: 90
 jobs:
-  build-box-vagrant:
-    # macos runner is used as it supports nested virtualization,
-    #
-    # needed by virtualbox vm to run within github actions runner.
-    # it also comes with vagrant & virtualbox preinstalled
-    # https://github.com/jonashackt/vagrant-github-actions
-    runs-on: macos-12
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Install Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Add Python bin directory to PATH
-      run: echo "PATH=${HOME}/Library/Python/${{ env.PYTHON_VERSION }}/bin:${PATH}" >> $GITHUB_ENV
-
-    - name: Install Python Tooling
-      run: pip3 install --user -r requirements.txt
-
-    - name: Install Packer
-      uses: hashicorp-contrib/setup-packer@v2
-      with:
-        packer-version: ${{ env.PACKER_VERSION }}
-
-    - name: Build WARP Box (with GUI) with Packer + Vagrant
-      env:
-        PACKER_GITHUB_API_TOKEN: ${{ github.token }}
-      uses: nick-fields/retry@v2
-      with:
-        timeout_minutes: ${{ env.BUILD_TIMEOUT }}
-        max_attempts: 3
-        retry_wait_seconds: 30
-        command: make box
-
   build-box-gcp:
     runs-on: ubuntu-22.04
     steps:
