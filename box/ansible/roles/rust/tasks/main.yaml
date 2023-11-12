@@ -23,6 +23,8 @@
 - name: Install Rust tools with Cargo
   become: true
   become_user: "{{ devbox_user }}"
+  environment:
+    PATH: "{{ devbox_user_home }}/.cargo/bin:{{ ansible_env.PATH }}"
   community.general.cargo:
     name: obsidian-export
     state: present
