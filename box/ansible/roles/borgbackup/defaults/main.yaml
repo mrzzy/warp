@@ -4,17 +4,22 @@
 # Default Variables
 #
 
-# backup mountpoint for disk backup
-devbox_borgbackup_disk_mountpoint: /media/mrzzy/Backup/volt
-# backup mountpoint for remote backup
-devbox_borgbackup_remote_mountpoint: /mnt/backup
-# rclone configuration file install path
-# backblaze b2 remote credentials should be provided with ansible variables:
-# - b2_account_id
-# - b2_access_key
-devbox_borgbackup_rclone_config: /etc/rclone/backblaze.conf
-
 # renovate: datasource=repology depName=ubuntu_22_04/borgbackup
 devbox_borgbackup_borg_version: 1.2.0-1
-# renovate: datasource=repology depName=ubuntu_22_04/borgmatic
+# renovate: datasource=pip depName=ubuntu_22_04/borgmatic
 devbox_borgbackup_borgmatic_version: 1.5.20-1
+
+# Physical Backup
+# backup path for disk backup
+devbox_borgbackup_disk_path:
+
+# Remote backup to Backblaze B2 bucket
+# Name of Backblaze B2 bucket to back up to
+devbox_borgbackup_remote_bucket:
+# B2 credentials used to access bucket storage for remote backup
+devbox_borgbackup_b2_account_id:
+devbox_borgbackup_b2_access_key:
+# backup mountpoint for remote backup
+devbox_borgbackup_remote_mountpoint: /mnt/borgbackup/remote
+# rclone configuration file install path
+devbox_borgbackup_rclone_config: /etc/rclone/backblaze.conf

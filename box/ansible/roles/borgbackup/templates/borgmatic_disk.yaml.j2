@@ -26,7 +26,7 @@ location:
     # is used, then add local repository paths in the systemd
     # service file to the ReadWritePaths list.
     repositories:
-        - "{{ devbox_borgbackup_disk_mountpoint }}"
+        - "{{ devbox_borgbackup_disk_path }}"
 
     # Stay in same file system (do not cross mount points).
     # Defaults to false. But when a database hook is used, the

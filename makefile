@@ -39,7 +39,7 @@ clean: clean-box
 
 # apply the ansible devbox playbook to the local machine
 ansible-deps:
-	$(GALAXY) install --force -r requirements.yaml
+	$(GALAXY) install -r requirements.yaml
 
 apply: $(ANSIBLE_DIR) ansible-deps
 	$(PLAYBOOK) \
@@ -53,15 +53,15 @@ apply-gui: $(ANSIBLE_DIR) ansible-deps
 		--inventory 127.0.0.1, \
 		--connection local \
 		--ask-become-pass \
-		$(ANSIBLE_DIR)/gui.yaml
+		$(ANSIBLE_DIR)/gui.Yaml
 
+# applying on laptop requires an inventory file due to required variables for borgbackup role
 apply-laptop: $(ANSIBLE_DIR) ansible-deps
 	$(PLAYBOOK) \
-		--inventory 127.0.0.1, \
+		--inventory inventory.yaml \
 		--connection local \
 		--ask-become-pass \
 		$(ANSIBLE_DIR)/laptop.yaml
-
 
 # development build: build box on virtualbox only.
 box: $(PACKER_DIR) packer-init ansible-deps

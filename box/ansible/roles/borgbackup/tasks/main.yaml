@@ -13,12 +13,15 @@
     - "borgbackup={{ devbox_borgbackup_borg_version }} "
     - "borgmatic={{ devbox_borgbackup_borgmatic_version }}"
 
-- name: Create Backup Mountpoint
+- name: Create Directories
   become: true
   ansible.builtin.file:
     state: directory
-    path: "{{ devbox_borgbackup_remote_mountpoint }}"
+    path: "{{ item }}"
     mode: "0755"
+  loop:
+    - "{{ devbox_borgbackup_remote_mountpoint }}"
+    - "/etc/borgmatic"
 
 - name: Template & Install Borgmatic config files
   become: true
@@ -67,3 +70,20 @@
       loop:
         - borgmatic-remote-backup.timer
         - rclone-backup-mount.service
+
+- name: Mount rclone-backup-mount
+  become: true
+  ansible.builtin.systemd:
+    name: rclone-backup-mount
+    state: started
+
+- name: Create Borg Repositories
+  become: true
+  ansible.builtin.command:
+    cmd: "borgmatic init --encryption repokey --config /etc/borgmatic/{{ item.config }}"
+    creates: "{{ item.path }}/README"
+  loop:
+    - path: "{{ devbox_borgbackup_disk_path | mandatory }}"
+      config: disk.yaml
+    - path: "{{ devbox_borgbackup_remote_mountpoint | mandatory }}"
+      config: remote.yaml

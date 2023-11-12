@@ -18,5 +18,5 @@ venv/
 /Session.vim
 
 ## Ansible
-# sercrets
-box/ansible/secrets.yaml
+# inventory
+inventory.yaml

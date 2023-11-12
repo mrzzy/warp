@@ -15,7 +15,9 @@ Type=notify
 Restart=on-failure
 RestartSec=10
 Environment=RCLONE_CONFIG={{ devbox_borgbackup_rclone_config }}
-ExecStart=/usr/bin/rclone mount b2:mrzzy-co-volt-backup "{{ devbox_borgbackup_remote_mountpoint }}" \
+ExecStart=/usr/bin/rclone mount \
+b2:{{ devbox_borgbackup_remote_bucket | mandatory }} \
+"{{ devbox_borgbackup_remote_mountpoint }}" \
 # This is for allowing users other than the user running rclone access to the mount
 --allow-other \
 --log-file /var/log/rclone-backup-mount.log \
