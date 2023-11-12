@@ -26,10 +26,10 @@ devbox_fd_version: 8.3.1-1ubuntu0.1
 devbox_bat_version: 0.19.0-1ubuntu0.1
 # renovate: datasource=repology depName=ubuntu_22_04/chafa
 devbox_chafa_version: 1.8.0-1
-# renovate: datasource=github-releases depName=dandavison/delta
-devbox_delta_version: 0.16.5
 # renovate: datasource=repology depName=ubuntu_22_04/proxychains-ng
 devbox_proxychains_ng_version: 4.16-1
+# renovate: datasource=repology depName=ubuntu_22_04/mitmproxy
+devbox_mitmproxy_version: 6.0.2-1
 
 # renovate: datasource=pypi depName=pre-commit
 devbox_pre_commit_version: 3.5.0
@@ -39,11 +39,11 @@ devbox_codespell_version: 2.2.6
 devbox_sqlfluff_version: 2.3.5
 # renovate: datasource=pypi depName=shandy-sqlfmt
 devbox_sqlfmt_version: 0.21.0
-# renovate: datasource=pypi depName=mitmproxy
-devbox_mitmproxy_version: 9.0.1
 
 # renovate: datasource=github-releases depName=mikefarah/yq
 devbox_yq_version: v4.35.2
+# renovate: datasource=github-releases depName=dandavison/delta
+devbox_delta_version: 0.16.5
 
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
 devbox_bw_version: 2023.10.0
