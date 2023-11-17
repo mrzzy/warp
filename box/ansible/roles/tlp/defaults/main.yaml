@@ -1,0 +1,8 @@
+#
+# WARP
+# TLP power management
+# Default Variables
+#
+
+# renovate: datasource=repology depName=ubuntu_22_04/tlp
+devbox_tlp_version: 1.6.1-2~jammy1

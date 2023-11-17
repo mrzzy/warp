@@ -17,6 +17,8 @@
     - console
     - gui
     - borgbackup
+    - tlp
+    - btsuspend
   post_tasks:
     - name: Optimize Storage Footprint & Performance
       ansible.builtin.import_tasks: tasks/optimize.yaml

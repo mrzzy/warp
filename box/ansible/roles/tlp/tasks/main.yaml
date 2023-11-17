@@ -1,0 +1,11 @@
+#
+# WARP
+# TLP power management
+# Tasks
+#
+
+- name: Install TLP with APT
+  become: true
+  ansible.builtin.apt:
+    name: "tlp={{ devbox_tlp_version }}"
+    state: present

@@ -1,0 +1,23 @@
+#
+# WARP
+# Bluetooth off on Suspend
+# Tasks
+#
+
+- name: Install Bluetooth Suspend Systemd Service
+  vars:
+    service: bluetooth-suspend
+    systemd_dir: /etc/systemd/system
+  block:
+    - name: Install service
+      become: true
+      ansible.builtin.copy:
+        src: "files/{{ service }}.service"
+        dest: "{{ systemd_dir }}"
+        mode: "0744"
+    - name: Enable bluetooth-suspend service
+      become: true
+      ansible.builtin.systemd:
+        daemon_reload: true
+        name: "{{ service }}"
+        enabled: true

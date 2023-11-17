@@ -1,0 +1,26 @@
+#
+# WARP
+# Bluetooth off on Suspend
+# Service
+# 
+
+[Unit]
+Description=Turn Bluetooth off on sleep/suspend targets to prevent unintentional wakeups.
+Before=sleep.target
+Before=suspend.target
+Before=hybrid-sleep.target
+Before=suspend-then-hibernate.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=/usr/bin/rfkill block bluetooth
+ExecStop=/usr/bin/rfkill unblock bluetooth
+
+[Install]
+WantedBy=sleep.target
+WantedBy=suspend.target
+WantedBy=hybrid-sleep.target
+WantedBy=suspend-then-hibernate.target
