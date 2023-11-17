@@ -5,4 +5,4 @@
 #
 
 # renovate: datasource=npm depName=yarn versioning=npm
-devbox_yarn_version: 1.22.19
+devbox_yarn_version: 1.22.21
