@@ -8,4 +8,4 @@ dependencies:
   - role: pop_desktop
   - role: alacritty
   - role: flatpaks
-  - role: dconfs
+  - role: gnome

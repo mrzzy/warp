@@ -6,6 +6,8 @@
 roles:
   - src: Comcast.sdkman
     version: 1.7.0
+  - src: https://github.com/PeterMosmans/ansible-role-customize-gnome
+    version: 0.2.11
 collections:
   - name: community.general
     version: 7.4.0
