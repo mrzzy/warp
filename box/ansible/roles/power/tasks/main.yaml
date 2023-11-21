@@ -22,8 +22,26 @@
       [Sleep]
       AllowHibernation=yes
       AllowSuspendThenHibernate=yes
-      # Hibernate after sleeping for 15 minutes.
+      # Hibernate after sleeping for delay sec
       # Avoid high sleep time power drain due to S0 modern standby.
       HibernateDelaySec=15min
     dest: /etc/systemd/sleep.conf.d/99-suspend-then-hibernate.conf
     mode: "0744"
+
+- name: Install Bluetooth Suspend Systemd Service
+  vars:
+    service: bluetooth-suspend
+    systemd_dir: /etc/systemd/system
+  block:
+    - name: Install service
+      become: true
+      ansible.builtin.copy:
+        src: "files/{{ service }}.service"
+        dest: "{{ systemd_dir }}"
+        mode: "0744"
+    - name: Enable bluetooth-suspend service
+      become: true
+      ansible.builtin.systemd:
+        daemon_reload: true
+        name: "{{ service }}"
+        enabled: true
