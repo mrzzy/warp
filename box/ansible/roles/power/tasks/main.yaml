@@ -1,0 +1,49 @@
+#
+# WARP
+# Power management
+# Tasks
+#
+
+- name: Install TLP with APT
+  become: true
+  ansible.builtin.apt:
+    name: "tlp={{ devbox_tlp_version }}"
+    state: present
+
+- name: Install Systemd sleep config
+  become: true
+  ansible.builtin.copy:
+    content: |
+      #
+      # WARP
+      # Systemd Sleep
+      #
+
+      [Sleep]
+      AllowHibernate=yes
+      AllowSuspendThenHibernate=yes
+      # Hibernate after sleeping for 15 minutes.
+      # Avoid high sleep time power drain due to S0 modern standby.
+      HibernateDelaySec=15min
+    dest: /etc/systemd/sleep.conf.d/99-suspend-then-hibernate.conf
+    mode: "0744"
+
+- name: Install Systemd Logind power controls config
+  become: true
+  ansible.builtin.copy:
+    content: |
+      #
+      # WARP
+      # Systemd logind
+      # Power Controls
+      #
+
+      [Login]
+      # suspend key hibernates
+      HandleSuspendKey=hibernate
+      # lid switch on laptops uses suspend then hibernate turns
+      HandleLidSwitch=suspend-then-hibernate
+      # power key performs shutdown
+      HandlePowerKey=poweroff
+    dest: /etc/systemd/logind.conf.d/99-power-key.conf
+    mode: "0744"
