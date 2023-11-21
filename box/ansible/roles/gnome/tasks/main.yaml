@@ -43,10 +43,10 @@
     gnome_extensions:
       # Hibernate Status Button
       - id: 755
-        enabled: true
+        enable: true
       # Another Window Session Manager
       - id: 4709
-        enabled: true
+        enable: true
     # JetBrains Mono font
     gnome_packages:
       - fonts-jetbrains-mono
