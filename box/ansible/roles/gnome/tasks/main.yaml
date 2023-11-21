@@ -21,6 +21,7 @@
     mode: "0744"
 
 - name: Configure GNOME desktop environment
+  tags: test
   become: true
   ansible.builtin.import_role:
     name: ansible-role-customize-gnome
@@ -48,14 +49,14 @@
         value: "['<Ctrl><Alt>l']"
         # custom shortcuts
       - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
-        value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+        value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/favorites/']"
         # map favourites key to TickTick
-      - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name
+      - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ticktick/name
         value: "'TickTick'"
-      - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command
+      - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/favorites/command
         value: "'flatpak run com.ticktick.TickTick'"
-      - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
-        value: "'Favourites'"
+      - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/favorites/binding
+        value: "'Favorites'"
         # power controls
       - key: /org/gnome/settings-daemon/plugins/power/power-button-action
         value: "'interactive'"
