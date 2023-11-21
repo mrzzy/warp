@@ -20,7 +20,7 @@
       #
 
       [Sleep]
-      AllowHibernate=yes
+      AllowHibernation=yes
       AllowSuspendThenHibernate=yes
       # Hibernate after sleeping for 15 minutes.
       # Avoid high sleep time power drain due to S0 modern standby.
