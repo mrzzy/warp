@@ -41,7 +41,7 @@ devbox_sqlfluff_version: 2.3.5
 devbox_sqlfmt_version: 0.21.0
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-devbox_yq_version: v4.35.2
+devbox_yq_version: v4.40.2
 # renovate: datasource=github-releases depName=dandavison/delta
 devbox_delta_version: 0.16.5
 
