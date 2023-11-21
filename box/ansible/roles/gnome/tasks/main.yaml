@@ -4,6 +4,23 @@
 # Tasks
 #
 
+- name: Enable Hibernate in Shutdown Menu for Hibernate Status button
+  become: true
+  tags: test
+  ansible.builtin.copy:
+    content: |
+      [Re-enable hibernate by default in upower]
+      Identity=unix-user:*
+      Action=org.freedesktop.upower.hibernate
+      ResultActive=yes
+
+      [Re-enable hibernate by default in logind]
+      Identity=unix-user:*
+      Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit
+      ResultActive=yes
+    dest: /etc/polkit-1/localauthority/50-local.d/com.ubuntu.hibernate.pkla
+    mode: "0744"
+
 - name: Configure GNOME desktop environment
   become: true
   ansible.builtin.import_role:
