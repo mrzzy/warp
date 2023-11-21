@@ -6,7 +6,6 @@
 
 - name: Enable Hibernate in Shutdown Menu for Hibernate Status button
   become: true
-  tags: test
   ansible.builtin.copy:
     content: |
       [Re-enable hibernate by default in upower]
@@ -57,6 +56,9 @@
         value: "'flatpak run com.ticktick.TickTick'"
       - key: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding
         value: "'Favourites'"
+        # power controls
+      - key: /org/gnome/settings-daemon/plugins/power/power-button-action
+        value: "'interactive'"
     gnome_extensions:
       # Hibernate Status Button
       - id: 755

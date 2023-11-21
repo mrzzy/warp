@@ -27,23 +27,3 @@
       HibernateDelaySec=15min
     dest: /etc/systemd/sleep.conf.d/99-suspend-then-hibernate.conf
     mode: "0744"
-
-- name: Install Systemd Logind power controls config
-  become: true
-  ansible.builtin.copy:
-    content: |
-      #
-      # WARP
-      # Systemd logind
-      # Power Controls
-      #
-
-      [Login]
-      # suspend key hibernates
-      HandleSuspendKey=hibernate
-      # lid switch on laptops uses suspend then hibernate turns
-      HandleLidSwitch=suspend-then-hibernate
-      # power key performs shutdown
-      HandlePowerKey=poweroff
-    dest: /etc/systemd/logind.conf.d/99-power-key.conf
-    mode: "0744"
