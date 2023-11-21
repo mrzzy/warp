@@ -4,5 +4,8 @@
 # Default Variables
 #
 
+# duration to wait after suspending to Hibernate
+devbox_systemd_suspend_hibernate_delay: 15min
+
 # renovate: datasource=repology depName=ubuntu_22_04/tlp
 devbox_tlp_version: 1.6.1-2~jammy1
