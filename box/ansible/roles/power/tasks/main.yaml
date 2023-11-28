@@ -10,6 +10,13 @@
     name: "tlp={{ devbox_tlp_version }}"
     state: present
 
+- name: Install TLP config
+  become: true
+  ansible.builtin.copy:
+    src: tlp-thinkpad-amd.conf
+    dest: /etc/tlp.d/99-thinkpad-amd.conf
+    mode: "0744"
+
 - name: Install Systemd sleep config
   become: true
   ansible.builtin.copy:
