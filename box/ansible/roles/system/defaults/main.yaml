@@ -5,7 +5,7 @@
 #
 
 # renovate: datasource=repology depName=ubuntu_22_04/software-properties
-devbox_software_properties_version: 0.99.22.7
+devbox_software_properties_version: 0.99.22.8
 # renovate: datasource=repology depName=ubuntu_22_04/acl
 devbox_acl_version: 2.3.1-1
 # renovate: datasource=repology depName=ubuntu_22_04/git
