@@ -21,7 +21,6 @@
     mode: "0744"
 
 - name: Configure GNOME desktop environment
-  tags: test
   become: true
   ansible.builtin.import_role:
     name: ansible-role-customize-gnome
