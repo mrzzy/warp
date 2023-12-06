@@ -73,3 +73,9 @@
       - schema: org.gnome.desktop.interface
         key: monospace-font-name
         value: "'JetBrains Mono 16'"
+
+- name: Install gnome-tweaks with APT
+  become: true
+  ansible.builtin.apt:
+    name: "gnome-tweaks={{ devbox_gnome_tweaks_version }}"
+    state: present

@@ -4,5 +4,5 @@
 # Default Variables
 #
 
-# renovate: datasource=pypi depName=psutil versioning=python
-devbox_psutil_version: 5.9.4
+# renovate: datasource=repology depName=ubuntu_22_04/gnome-tweaks
+devbox_gnome_tweaks_version: 42~beta-1ubuntu2
