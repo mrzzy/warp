@@ -2,19 +2,31 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/google" {
-  version     = "4.84.0"
+  version     = "5.10.0"
   constraints = ">= 4.22.0"
   hashes = [
-    "h1:/JoTJdmrba01bXAXhJox4D7HIppGAE8IcdmwrC1+NeI=",
-    "h1:1UxlwVhklQbnsyuCelue0dkQZUHA2cMjgYvl8lWRE8Q=",
-    "h1:3qXFXgT2RAseuYW20OUqBLMeSuKt5tbpNI15GU5J7KE=",
-    "h1:FtmujB+frf40ztU300FEd/cnah5o/ZVItCTYk+Qj1Wo=",
-    "h1:PhC05RRIJi2iPLf9ny2JsYxVlhdC4LvXsuPfg4U/Pbg=",
-    "h1:W9PU6CJQSb0p6pL+OonuWrCW2HJITiIykQkrwCAgYnw=",
-    "h1:c4ksHVh0kRBFDvP3peYx99oZgh/afzOGxPJwdApcKBU=",
-    "h1:fybaK74buTd4Ys2CUZm6jw7NXtSqtcLoW2jeNB4Ff2E=",
-    "h1:h55lVbwYeHIfdysoWDXaDQ5y9LSXc2vEfRKmpM4wzlA=",
-    "h1:xUcvXNL047wjwjSqmOLjP1k1hAjiFPCdYc235503v2k=",
-    "h1:yF3EvGbN+7hGQKhPbZijmFk24UDTw9yldkQ1isUM+B4=",
+    "h1:1tj1R7xEFNyGJry9l087LIf5TvOKe+ZfTUKp2TvfcV0=",
+    "h1:3kD/GqYmZkA97ebToXu6qhhrwo+GQNmqq9xv30Qkhmw=",
+    "h1:6V2w+RF99tb4rx4PzCWsa++u3unbLuHB+flsiUwk74I=",
+    "h1:AbAHg5Ea3an1neWZxSvCUzkkDGxBKzQ0LHd11TnsXho=",
+    "h1:LqJ2fg1xadR/WDwn0btOJmFKlWIDTwrfT/m73gSCeM8=",
+    "h1:MOiyIqDEaG17MGP4OXa5DWJC2Bc9QZlDxUK2T/81sDA=",
+    "h1:RjCyDxeovmRVBJdGyClsXOLmGTKk9Rjp+nrVjr4kTTU=",
+    "h1:gpdvcSLBegll6d946Ecfil++Dq9/8goJVSouVy8yImA=",
+    "h1:iy1UN4r0Pw6sAsOu4equ1jjqdaLrKVPT8WfLYpxI/do=",
+    "h1:upxt/hLnX1r+yyYTF1zA0Lx3xoTHTtkYF3VjWBr1W4s=",
+    "h1:vra1v2wYc7HsDht8pAf1KF4aCwCQA4hot5ykxWSQp8E=",
+    "zh:0f6a1feb5b3a128be6ef5fe0400ed800310a67e799c18aec7442161bb6d3ba36",
+    "zh:13d591ba78e424c94ce5caaf176ab6b087b0e3af08a7b6bcd963673698cdefda",
+    "zh:3bef54a2b24b06eef99f3df02e0fe4ac97f018c89f83e0faeb4ade921962565b",
+    "zh:3f3755b8f5b9db1611d42a02c21f03c54577e4aad3cf93323792f131c671c050",
+    "zh:61516eec734714ac48b565bee93cc2532160d1b4bd0320753799b829083b7060",
+    "zh:9160848ad0b9becb522a0744dcb89474849906aa2436ed945c658fe201a724b0",
+    "zh:aa5e79b01949cfedd874bf52958f90cf8f7d202600126c872127a9a156a3c17b",
+    "zh:cef73a67031008b7d7ef3edfbcd5e1a9b04c0f2580d815401248025b741bc8e4",
+    "zh:d2ad21ff9e9d2ad04146591c1b5784075e6df73e2bd243efd8d227d764b80b6e",
+    "zh:f569b65999264a9416862bca5cd2a6177d94ccb0424f3a4ef424428912b9cb3c",
+    "zh:f58b145081d20bce52e14bee0de73f5c018bc39b8c4736e23e1329df32f8bd45",
+    "zh:fb82f6b5d1f992243ab8fe417659cdf9831202cf1e16fe7593d3967888b035cc",
   ]
 }
