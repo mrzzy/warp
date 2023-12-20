@@ -4,5 +4,6 @@
 # Default Variables
 #
 
+devbox_nodejs_node_major_version: 16
 # renovate: datasource=npm depName=yarn versioning=npm
 devbox_yarn_version: 1.22.21
