@@ -38,7 +38,7 @@ devbox_codespell_version: 2.2.6
 # renovate: datasource=pypi depName=sqlfluff
 devbox_sqlfluff_version: 3.0.0a4
 # renovate: datasource=pypi depName=shandy-sqlfmt
-devbox_sqlfmt_version: 0.21.0
+devbox_sqlfmt_version: 0.21.1
 
 # renovate: datasource=github-releases depName=mikefarah/yq
 devbox_yq_version: v4.40.5
