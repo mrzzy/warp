@@ -5,4 +5,4 @@
 #
 
 # renovate: datasource=github-releases depName=klzgrad/naiveproxy
-devbox_naiveproxy_version: v119.0.6045.66-1
+devbox_naiveproxy_version: v120.0.6099.43-1
