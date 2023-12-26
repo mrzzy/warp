@@ -21,4 +21,5 @@
       - org.zotero.Zotero
       - md.obsidian.Obsidian
       - com.ticktick.TickTick
+      - com.calibre_ebook.calibre
     state: present
