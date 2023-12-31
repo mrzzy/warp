@@ -38,3 +38,4 @@ dependencies:
   - role: infracost
   - role: naiveproxy
   - role: verilog
+  - role: duckdb
