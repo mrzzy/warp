@@ -6,6 +6,7 @@
 
 devbox_user: mrzzy
 devbox_user_home: /home/mrzzy
+devbox_tmux_tpm_path: "{{ devbox_user_home }}/.local/share/tmux/tpm"
 
 # renovate: datasource=repology depName=ubuntu_22_04/tmux
 devbox_tmux_version: 3.2a-4ubuntu0.2

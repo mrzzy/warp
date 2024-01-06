@@ -17,7 +17,7 @@
   become: true
   become_user: "{{ devbox_user }}"
   vars:
-    tpm_path: "{{ devbox_user_home }}/.local/share/tmux/tpm"
+    tpm_path: "{{ devbox_tmux_tpm_path }}"
   block:
     - name: Install Tmux Plugin Manager (TPM)
       ansible.builtin.git:
@@ -33,3 +33,32 @@
       ansible.builtin.command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"
+
+- name: Install Tmux Systemd service
+  tags: [test]
+  become: true
+  become_user: "{{ devbox_user }}"
+  vars:
+    systemd_dir: "{{ devbox_user_home }}/.config/systemd/user"
+  block:
+    - name: Create user Systemd Units directory
+      ansible.builtin.file:
+        dest: "{{ systemd_dir }}"
+        state: directory
+        mode: "0750"
+    - name: Template Tmux Systemd service
+      ansible.builtin.template:
+        src: templates/tmux.service.j2
+        dest: "{{ systemd_dir }}/tmux.service"
+        mode: "0744"
+
+- name: Start & Enable Tmux Systemd Service
+  tags: [test]
+  become: true
+  become_user: "{{ devbox_user }}"
+  ansible.builtin.systemd:
+    scope: user
+    name: tmux
+    state: started
+    enabled: true
+    daemon_reload: true

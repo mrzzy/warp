@@ -1,0 +1,17 @@
+[Unit]
+Description=Tmux server with hook to save session.
+Documentation=man:tmux(1)
+
+[Service]
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/tmux new-session -d
+
+ExecStop={{ devbox_tmux_tpm_path }}/plugins/tmux-resurrect/scripts/save.sh
+ExecStop=/usr/bin/tmux kill-server
+KillMode=control-group
+
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
