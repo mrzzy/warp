@@ -35,7 +35,6 @@
         creates: "{{ tpm_path }}/plugins"
 
 - name: Install Tmux Systemd service
-  tags: [test]
   become: true
   become_user: "{{ devbox_user }}"
   vars:
@@ -53,7 +52,6 @@
         mode: "0744"
 
 - name: Start & Enable Tmux Systemd Service
-  tags: [test]
   become: true
   become_user: "{{ devbox_user }}"
   ansible.builtin.systemd:

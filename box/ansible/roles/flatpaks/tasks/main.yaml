@@ -30,3 +30,24 @@
       # Postman - REST API tester
       - flathub com.getpostman.Postman
     state: present
+
+# https://github.com/postmanlabs/postman-app-support/issues/12330
+- name: Fix Postman Flatpak crashing on startup
+  tags: test
+  become: true
+  become_user: "{{ devbox_user }}"
+  vars:
+    postman_dir: "{{ devbox_user_home }}/.var/app/com.getpostman.Postman/config/Postman/proxy"
+  block:
+    - name: Create Postman directory
+      ansible.builtin.file:
+        dest: "{{ postman_dir }}"
+        state: directory
+        mode: "0750"
+    - name: Generate Postman certificates
+      ansible.builtin.command:
+        chdir: "{{ postman_dir }}"
+        cmd: >-
+          openssl req -subj '/C=US/CN=Postman Proxy'
+          -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -keyout postman-proxy-ca.key -out postman-proxy-ca.crt
+        creates: "postman-proxy-ca.*"
