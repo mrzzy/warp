@@ -17,9 +17,16 @@
   community.general.flatpak:
     remote: flathub
     name:
+      # Spotify - music
       - com.spotify.Client
+      # Zotero - reference management
       - org.zotero.Zotero
+      # Obsidian - knowledge management
       - md.obsidian.Obsidian
+      # Ticktick - todolist
       - com.ticktick.TickTick
+      # Calibre - E books
       - com.calibre_ebook.calibre
+      # Postman - REST API tester
+      - flathub com.getpostman.Postman
     state: present
