@@ -5,4 +5,4 @@
 #
 
 # renovate: datasource=repology depName=ubuntu_22_04/sqlite3
-devbox_sqlite_version: 3.37.2-2ubuntu0.1
+devbox_sqlite_version: 3.37.2-2ubuntu0.3
