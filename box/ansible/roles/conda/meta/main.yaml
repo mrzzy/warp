@@ -1,0 +1,8 @@
+#
+# WARP
+# Miniconda Ansible Role
+# Role Metadata
+#
+
+dependencies:
+  - role: python

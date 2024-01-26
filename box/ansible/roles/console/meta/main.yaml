@@ -39,3 +39,4 @@ dependencies:
   - role: naiveproxy
   - role: verilog
   - role: duckdb
+  - role: conda

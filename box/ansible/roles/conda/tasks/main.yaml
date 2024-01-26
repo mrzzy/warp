@@ -1,0 +1,32 @@
+#
+# WARP
+# Miniconda Ansible Role
+# Tasks
+#
+
+- name: Create Miniconda directory
+  become: true
+  become_user: "{{ devbox_user }}"
+  ansible.builtin.file:
+    dest: "{{ devbox_conda_prefix }}"
+    state: directory
+    mode: "0750"
+
+- name: Download Miniconda install script
+  become: true
+  become_user: "{{ devbox_user }}"
+  ansible.builtin.get_url:
+    # conda install depends on Python 3.10
+    url: "https://repo.anaconda.com/miniconda/Miniconda3-py310_{{ devbox_conda_version }}-1-{{ ansible_system }}-{{ ansible_userspace_architecture }}.sh"
+    dest: /tmp/miniconda_install.sh
+    mode: "0750"
+
+- name: Install Miniconda
+  become: true
+  become_user: "{{ devbox_user }}"
+  ansible.builtin.command:
+    # -b batch install
+    # -u update existing
+    # -p install prefix
+    cmd: "bash /tmp/miniconda_install.sh -b -u -p {{ devbox_conda_prefix }}"
+    creates: "{{ devbox_conda_prefix }}/bin/conda"
