@@ -48,3 +48,11 @@
       repo: https://github.com/asdf-community/asdf-hashicorp.git
     - name: packer
       repo: https://github.com/asdf-community/asdf-hashicorp.git
+
+    # kubernetes
+    - name: kubectl
+      repo: https://github.com/asdf-community/asdf-kubectl.git
+    - name: helm
+      repo: https://github.com/Antiarchitect/asdf-helm.git
+    - name: kind
+      repo: https://github.com/johnlayton/asdf-kind.git
