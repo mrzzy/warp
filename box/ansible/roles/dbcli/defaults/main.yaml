@@ -1,0 +1,8 @@
+#
+# WARP
+# DBCLI Ansible Role
+# Default Variables
+#
+
+# renovate: datasource=pip depName=pgcli
+devbox_pgcli_version: 4.0.1

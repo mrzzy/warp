@@ -20,7 +20,7 @@ dependencies:
   - role: fzf
   - role: rclone
   - role: tools
-  - role: postgres
+  - role: dbcli
   - role: sqlite
   - role: docker
   - role: ansible

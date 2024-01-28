@@ -30,6 +30,8 @@
       repo: https://github.com/asdf-community/asdf-golang.github
     - name: infracost
       repo: https://github.com/dex4er/asdf-infracost.git
+    - name: postgres
+      repo: https://github.com/smashedtoatoms/asdf-postgres.git
 
     # jvm
     - name: java

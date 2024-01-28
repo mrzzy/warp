@@ -1,8 +1,8 @@
 #
 # WARP
-# ASDF role
+# DBCLI role
 # Role Metadata
 #
 
 dependencies:
-  - role: system
+  - role: python

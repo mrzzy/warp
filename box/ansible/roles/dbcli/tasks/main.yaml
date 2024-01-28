@@ -1,0 +1,13 @@
+#
+# WARP
+# DBCLI Ansible Role
+# Tasks
+#
+
+- name: Install DBCLI tools with Pip
+  become: true
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "pgcli=={{ devbox_pgcli_version }}"
