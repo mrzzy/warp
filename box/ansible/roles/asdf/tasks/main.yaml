@@ -30,6 +30,17 @@
       repo: https://github.com/asdf-community/asdf-golang.github
     - name: infracost
       repo: https://github.com/dex4er/asdf-infracost.git
+
+    # jvm
+    - name: java
+      repo: https://github.com/halcyon/asdf-java.git
+    - name: maven
+      repo: https://github.com/halcyon/asdf-maven
+    - name: gradle
+      repo: https://github.com/rfrancis/asdf-gradle.git
+    - name: sbt
+      repo: https://github.com/bram2000/asdf-sbt.git
+
     # hashicorp
     - name: terraform
       repo: https://github.com/asdf-community/asdf-hashicorp.git

@@ -12,7 +12,6 @@ dependencies:
   - role: ttyd
   - role: python
   - role: nodejs
-  - role: jvm
   - role: c_cpp
   - role: rust
   - role: zsh
