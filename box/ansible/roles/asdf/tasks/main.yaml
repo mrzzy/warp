@@ -24,3 +24,5 @@
       repo: https://github.com/asdf-vm/asdf-nodejs.git
     - name: python
       repo: https://github.com/danhper/asdf-python.git
+    - name: cmake
+      repo: https://github.com/asdf-community/asdf-cmake.git
