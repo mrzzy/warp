@@ -1,0 +1,8 @@
+#
+# WARP
+# Vagrant Ansible Role
+# Default Variables
+#
+
+# renovate: datasource=github-releases depName=hashicorp/vagrant versioning=hashicorp stripV
+devbox_hashicorp_vagrant_version: 2.3.4

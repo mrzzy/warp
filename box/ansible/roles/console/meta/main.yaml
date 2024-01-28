@@ -32,7 +32,7 @@ dependencies:
   - role: mysql
   - role: aws
   - role: gcp
-  - role: hashicorp
+  - role: vagrant
   - role: virtualbox
   - role: infracost
   - role: naiveproxy

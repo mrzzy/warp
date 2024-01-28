@@ -1,10 +1,9 @@
 #
 # WARP
-# HHashiCorp Ansible Role
+# Vagrant Ansible Role
 # Tasks
 #
 
-# HashiCorp Tools
 - name: Setup HashiCorp's APT package Repository
   vars:
     key_path: /etc/apt/keyrings/hashicorp.asc
@@ -28,7 +27,4 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "terraform={{ devbox_hashicorp_terraform_version }}-1"
-    - "packer={{ devbox_hashicorp_packer_version }}-1"
-    - "terraform-ls={{ devbox_hashicorp_terraform_langserver_version }}-1"
     - "vagrant={{ devbox_hashicorp_vagrant_version }}"

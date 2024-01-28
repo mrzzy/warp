@@ -28,3 +28,10 @@
       repo: https://github.com/asdf-community/asdf-cmake.git
     - name: golang
       repo: https://github.com/asdf-community/asdf-golang.github
+    # hashicorp
+    - name: terraform
+      repo: https://github.com/asdf-community/asdf-hashicorp.git
+    - name: terraform-ls
+      repo: https://github.com/asdf-community/asdf-hashicorp.git
+    - name: packer
+      repo: https://github.com/asdf-community/asdf-hashicorp.git
