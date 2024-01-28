@@ -1,0 +1,9 @@
+#
+# WARP
+# ASDF role
+# Role Metadata
+#
+
+dependencies:
+  # needed for git
+  - role: system

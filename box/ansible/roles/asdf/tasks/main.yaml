@@ -1,0 +1,14 @@
+#
+# WARP
+# ASDF role
+# Tasks
+#
+
+- name: Install ASDF via Git
+  become: true
+  become_user: "{{ devbox_user }}"
+  ansible.builtin.git:
+    repo: "https://github.com/asdf-vm/asdf"
+    single_branch: true
+    version: "{{ devbox_asdf_version }}"
+    dest: "{{ devbox_user_home }}/.asdf"
