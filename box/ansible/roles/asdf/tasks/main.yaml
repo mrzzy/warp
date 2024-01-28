@@ -11,4 +11,16 @@
     repo: "https://github.com/asdf-vm/asdf"
     single_branch: true
     version: "{{ devbox_asdf_version }}"
-    dest: "{{ devbox_user_home }}/.asdf"
+    dest: "{{ devbox_asdf_path }}"
+
+- name: Install ASDF Plugins
+  become: true
+  become_user: "{{ devbox_user }}"
+  ansible.builtin.command:
+    cmd: "asdf plugin add {{ item.name }} {{ item.value }}"
+    creates: "{{ devbox_asdf_path }}/{{ item.name }}"
+  loop:
+    - name: nodejs
+      repo: https://github.com/asdf-vm/asdf-nodejs.git
+    - name: python
+      repo: https://github.com/danhper/asdf-python.git

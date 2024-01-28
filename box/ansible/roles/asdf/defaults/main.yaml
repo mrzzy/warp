@@ -6,3 +6,5 @@
 
 # renovate: datasource=github-releases depName=asdf-vm/asdf
 devbox_asdf_version: v0.14.0
+# asdf install path
+devbox_asdf_path: /home/mrzzy/.asdf
