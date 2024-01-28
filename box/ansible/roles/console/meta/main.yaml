@@ -14,7 +14,6 @@ dependencies:
   - role: nodejs
   - role: jvm
   - role: c_cpp
-  - role: go
   - role: rust
   - role: zsh
   - role: tmux
