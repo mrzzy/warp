@@ -34,7 +34,6 @@ dependencies:
   - role: gcp
   - role: vagrant
   - role: virtualbox
-  - role: infracost
   - role: naiveproxy
   - role: verilog
   - role: duckdb

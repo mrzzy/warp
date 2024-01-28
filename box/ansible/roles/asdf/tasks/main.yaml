@@ -28,6 +28,8 @@
       repo: https://github.com/asdf-community/asdf-cmake.git
     - name: golang
       repo: https://github.com/asdf-community/asdf-golang.github
+    - name: infracost
+      repo: https://github.com/dex4er/asdf-infracost.git
     # hashicorp
     - name: terraform
       repo: https://github.com/asdf-community/asdf-hashicorp.git
