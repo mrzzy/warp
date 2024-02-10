@@ -32,7 +32,7 @@ devbox_proxychains_ng_version: 4.16-1
 devbox_mitmproxy_version: 6.0.2-1
 
 # renovate: datasource=pypi depName=pre-commit
-devbox_pre_commit_version: 3.6.0
+devbox_pre_commit_version: 3.6.1
 # renovate: datasource=pypi depName=codespell
 devbox_codespell_version: 2.2.6
 # renovate: datasource=pypi depName=sqlfluff
