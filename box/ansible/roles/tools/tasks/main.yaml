@@ -23,6 +23,7 @@
     - "chafa={{ devbox_chafa_version }}"
     - "proxychains4={{ devbox_proxychains_ng_version }}"
     - "mitmproxy={{ devbox_mitmproxy_version }}"
+    - "direnv={{ devbox_direnv_version }}"
 
 - name: Install Development Tools with Pip
   become: true
