@@ -13,6 +13,6 @@ devbox_git_version: "1:2.34.1-1ubuntu1.10"
 # renovate: datasource=repology depName=ubuntu_22_04/gpg
 devbox_gpg_version: "2.2.27-3ubuntu2.1"
 # renovate: datasource=repology depName=ubuntu_22_04/openssl
-devbox_openssl_version: 3.0.2-0ubuntu1.14
+devbox_openssl_version: 3.0.2-0ubuntu1.15
 # renovate: datasource=repology depName=ubuntu_22_04/fuse
 devbox_libfuse_version: 2.9.9-5ubuntu3
