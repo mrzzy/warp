@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Clone Nimbus repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: mrzzy/nimbus
       - name: Update revision of WARP Terraform Modules
