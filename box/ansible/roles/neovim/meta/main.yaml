@@ -9,3 +9,4 @@ dependencies:
   - role: user
   - role: python
   - role: tools
+  - role: rust
