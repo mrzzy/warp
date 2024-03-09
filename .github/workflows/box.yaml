@@ -40,7 +40,7 @@ jobs:
       run: sudo pip3 install -r requirements.txt
 
     - name: Install Packer
-      uses: hashicorp-contrib/setup-packer@v2
+      uses: hashicorp-contrib/setup-packer@v3
       with:
         packer-version: ${{ env.PACKER_VERSION }}
 
