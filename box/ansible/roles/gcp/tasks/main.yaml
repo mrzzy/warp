@@ -17,7 +17,7 @@
         mode: "0644"
     - name: Dearmor GCP APT Package Signing Key
       ansible.builtin.command:
-        cmd: "gpg --dearmor {{ tmp_path }} -o {{ key_path }}"
+        cmd: "gpg -o {{ key_path }} --dearmor {{ tmp_path }}"
         creates: "{{ key_path }}"
     - name: Add GCP APT Package Repository
       ansible.builtin.apt_repository:
