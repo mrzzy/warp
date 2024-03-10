@@ -33,7 +33,6 @@
 
 # https://github.com/postmanlabs/postman-app-support/issues/12330
 - name: Fix Postman Flatpak crashing on startup
-  tags: test
   become: true
   become_user: "{{ devbox_user }}"
   vars:

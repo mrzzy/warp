@@ -6,14 +6,19 @@
 
 - name: Setup GCP APT package repository
   vars:
+    tmp_path: /tmp/cloud.google.asc
     key_path: /etc/apt/keyrings/cloud.google.gpg
   become: true
   block:
-    - name: Add GCP APT Package Signing Key
-      ansible.builtin.copy:
-        src: gcp_apt_key.gpg
-        dest: "{{ key_path }}"
+    - name: Download GCP APT Package Signing Key
+      ansible.builtin.get_url:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        dest: "{{ tmp_path }}"
         mode: "0644"
+    - name: Dearmor GCP APT Package Signing Key
+      ansible.builtin.command:
+        cmd: "gpg --dearmor {{ tmp_path }} -o {{ key_path }}"
+        creates: "{{ key_path }}"
     - name: Add GCP APT Package Repository
       ansible.builtin.apt_repository:
         repo: "deb [signed-by={{ key_path }}] \
