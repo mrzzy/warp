@@ -28,7 +28,7 @@
       # Calibre - E books
       - com.calibre_ebook.calibre
       # Postman - REST API tester
-      - flathub com.getpostman.Postman
+      - com.getpostman.Postman
     state: present
 
 # https://github.com/postmanlabs/postman-app-support/issues/12330
