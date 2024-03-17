@@ -23,3 +23,6 @@ devbox_borgbackup_b2_access_key:
 devbox_borgbackup_remote_mountpoint: /mnt/borgbackup/remote
 # rclone configuration file install path
 devbox_borgbackup_rclone_config: /etc/rclone/backblaze.conf
+
+# whether to create borg repositories at specified paths
+devbox_borgbackup_create_repo: false

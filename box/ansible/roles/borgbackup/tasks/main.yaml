@@ -79,6 +79,7 @@
 
 - name: Create Borg Repositories
   become: true
+  when: "devbox_borgbackup_create_repo"
   ansible.builtin.command:
     cmd: "borgmatic init --encryption repokey --config /etc/borgmatic/{{ item.config }}"
     creates: "{{ item.path }}/README"
