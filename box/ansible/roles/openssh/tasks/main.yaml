@@ -9,11 +9,3 @@
   ansible.builtin.apt:
     name: "openssh-server={{ devbox_openssh_server_version }}"
     state: present
-
-- name: Increase process priority of SSH server
-  become: true
-  ansible.builtin.lineinfile:
-    path: /etc/systemd/system/sshd.service
-    regex: '^Nice='
-    insertafter: '\[Service\]'
-    line: 'Nice={{ devbox_priority_nice_level }}'

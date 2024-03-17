@@ -6,5 +6,3 @@
 
 # renovate: datasource=repology depName=ubuntu_22_04/openssh
 devbox_openssh_server_version: 1:8.9p1-3ubuntu0.6
-# niceness level of high priority processes (ie. ssh)
-devbox_priority_nice_level: -2

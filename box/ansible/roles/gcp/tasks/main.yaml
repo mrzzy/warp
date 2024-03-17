@@ -10,7 +10,7 @@
     key_path: /etc/apt/keyrings/cloud.google.gpg
   become: true
   block:
-    - name: Download GCP APT Package Signing Key
+    - name: Register GCP APT Package Signing Key
       ansible.builtin.get_url:
         url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
         dest: "{{ tmp_path }}"
