@@ -24,3 +24,26 @@
     name: "alacritty-themes@{{ devbox_alacritty_themes_version }}"
     global: true
     state: present
+
+- name: Install JetBrains Mono Font for Alacritty
+  tags: test
+  vars:
+    jetbrains_dir: /usr/share/fonts/truetype/jetbrains
+  block:
+    - name: Create directory for JetBrains Mono Font
+      become: true
+      ansible.builtin.file:
+        dest: "{{ jetbrains_dir }}"
+        state: directory
+        mode: "0755"
+
+    - name: Install JetBrains Mono Font
+      become: true
+      ansible.builtin.unarchive:
+        remote_src: true
+        src: https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+        dest: "{{ jetbrains_dir }}"
+        creates: "{{ jetbrains_dir }}/fonts"
+
+    - name: Rebuild Fonts cache # noqa no-changed-when
+      ansible.builtin.command: fc-cache -v -f
