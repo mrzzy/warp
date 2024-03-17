@@ -36,6 +36,7 @@
     mode: "0744"
 
 - name: Redirect Systemd suspend to suspend-then-hibernate
+  become: true
   ansible.builtin.file:
     src: /usr/lib/systemd/system/systemd-suspend-then-hibernate.service
     dest: /etc/systemd/system/systemd-suspend.service
