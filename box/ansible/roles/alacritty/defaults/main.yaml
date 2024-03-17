@@ -4,6 +4,6 @@
 # Default Variables
 #
 
-devbox_alacritty_version: 0.12.2~1692714442~22.04~ca111af
+devbox_alacritty_version: 0.12.2~1703085360~22.04~365df06
 # renovate: datasource=github-releases depName=rajasegar/alacritty-themes
 devbox_alacritty_themes_version: v5.3.1
