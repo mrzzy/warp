@@ -26,7 +26,6 @@
     state: present
 
 - name: Install JetBrains Mono Font for Alacritty
-  tags: test
   vars:
     jetbrains_dir: /usr/share/fonts/truetype/jetbrains
   block:

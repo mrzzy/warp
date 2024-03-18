@@ -39,6 +39,13 @@
     name: pop-desktop
     state: present
 
+- name: Disable Autostart of Pop Shop
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/xdg/autostart/io.elementary.appcenter-daemon.desktop
+    regexp: '^X-GNOME-AutoRestart='
+    line: X-GNOME-AutoRestart=false
+
 # restore apt lists for future apt commands
 - name: Update APT Cache
   become: true
