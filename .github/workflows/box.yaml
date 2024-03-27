@@ -62,7 +62,7 @@ jobs:
         KEY_BASE64: ${{ secrets.GCP_PACKER_KEY_BASE64 }}
         PKR_VAR_web_term_password: ${{ secrets.BOX_WEB_TERM_PASSWORD }}
         PACKER_GITHUB_API_TOKEN: ${{ github.token }}
-      uses: nick-fields/retry@v2
+      uses: nick-fields/retry@v3
       with:
         timeout_minutes: ${{ env.BUILD_TIMEOUT }}
         max_attempts: 2
