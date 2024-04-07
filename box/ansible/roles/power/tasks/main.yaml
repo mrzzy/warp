@@ -16,29 +16,3 @@
     src: tlp-thinkpad-amd.conf
     dest: /etc/tlp.d/99-thinkpad-amd.conf
     mode: "0744"
-
-- name: Install Systemd sleep config
-  become: true
-  ansible.builtin.copy:
-    content: |
-      #
-      # WARP
-      # Systemd Sleep
-      #
-
-      [Sleep]
-      AllowHibernation=yes
-      AllowSuspendThenHibernate=yes
-      # Hibernate after sleeping for delay sec
-      # Avoid high sleep time power drain due to S0 modern standby.
-      HibernateDelaySec={{ devbox_systemd_suspend_hibernate_delay }}
-    dest: /etc/systemd/sleep.conf.d/99-suspend-then-hibernate.conf
-    mode: "0744"
-
-- name: Redirect Systemd suspend to suspend-then-hibernate
-  become: true
-  ansible.builtin.file:
-    src: /usr/lib/systemd/system/systemd-suspend-then-hibernate.service
-    dest: /etc/systemd/system/systemd-suspend.service
-    state: link
-    mode: "0744"
