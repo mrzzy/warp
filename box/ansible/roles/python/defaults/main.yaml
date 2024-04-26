@@ -13,4 +13,4 @@ devbox_python_wheel_version: 0.37.1-2ubuntu0.22.04.1
 # renovate: datasource=pypi depName=pynvim versioning=python
 devbox_python_pynvim_version: 0.4.3
 # renovate: datasource=pypi depName=jupyterlab versioning=python
-devbox_python_jupyterlab_version: 3.6.1
+devbox_python_jupyterlab_version: 3.6.7
