@@ -7,5 +7,8 @@
 - name: Install MySQL CLI with APT
   become: true
   ansible.builtin.apt:
-    name: "mysql-client={{ devbox_mysql_client_version }}"
+    name: "{{ item }}"
     state: present
+  loop:
+    - "mysql-client={{ devbox_mysql_client_version }}"
+    - "mycli={{ devbox_mycli_version }}"
