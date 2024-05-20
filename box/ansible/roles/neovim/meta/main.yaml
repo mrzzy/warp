@@ -10,3 +10,4 @@ dependencies:
   - role: python
   - role: tools
   - role: rust
+  - role: go
