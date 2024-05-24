@@ -9,7 +9,7 @@ devbox_user_home: /home/mrzzy
 
 # Neovim text editor
 # renovate: datasource=github-releases depName=neovim/neovim
-devbox_nvim_version: v0.9.5
+devbox_nvim_version: v0.10.0
 
 # renovate: datasource=github-releases depName=folke/lazy.nvim
 devbox_nvim_lazy_version: v10.20.5
