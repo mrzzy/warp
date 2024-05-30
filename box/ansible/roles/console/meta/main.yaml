@@ -40,3 +40,4 @@ dependencies:
   - role: verilog
   - role: duckdb
   - role: conda
+  - role: azure
