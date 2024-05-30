@@ -4,14 +4,13 @@
 # Tasks
 #
 
-- name: Install Tmux & AWK with APT
+- name: Install Tmux with APT
   become: true
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
   loop:
     - "tmux={{ devbox_tmux_version }}"
-    - "gawk={{ devbox_tmux_gawk_version }}"
 
 - name: Install Tmux Plugins
   become: true
@@ -33,6 +32,13 @@
       ansible.builtin.command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"
+
+    - name: Install tmux-fingers binary
+      become: true
+      ansible.builtin.get_url:
+        url: "https://github.com/Morantron/tmux-fingers/releases/download/2.1.5/tmux-fingers-2.1.5-linux-{{ ansible_architecture }}"
+        dest: "{{ devbox_tmux_tpm_path }}/plugins/tmux-fingers/bin/tmux-fingers"
+        mode: "0755"
 
 - name: Install Tmux Systemd service
   become: true
