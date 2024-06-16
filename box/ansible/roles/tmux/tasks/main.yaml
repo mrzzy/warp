@@ -17,6 +17,7 @@
   become_user: "{{ devbox_user }}"
   vars:
     tpm_path: "{{ devbox_tmux_tpm_path }}"
+    tmux_fingers_path: "{{ devbox_tmux_tpm_path }}/plugins/tmux-fingers/bin/"
   block:
     - name: Install Tmux Plugin Manager (TPM)
       ansible.builtin.git:
@@ -33,8 +34,13 @@
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"
 
+    - name: Create tmux-fingers directory
+      ansible.builtin.file:
+        state: directory
+        path: "{{ tmux_fingers_path }}"
+        mode: "0755"
+
     - name: Install tmux-fingers binary
-      become: true
       ansible.builtin.get_url:
         url: "https://github.com/Morantron/tmux-fingers/releases/download/2.1.5/tmux-fingers-2.1.5-linux-{{ ansible_architecture }}"
         dest: "{{ devbox_tmux_tpm_path }}/plugins/tmux-fingers/bin/tmux-fingers"
