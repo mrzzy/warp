@@ -15,7 +15,7 @@ devbox_universal_ctags_version: 5.9.20210829.0-1
 # renovate: datasource=repology depName=ubuntu_22_04/jq
 devbox_jq_version: 1.6-2.1ubuntu3
 # renovate: datasource=repology depName=ubuntu_22_04/bind9
-devbox_dnsutils_version: 1:9.18.18-0ubuntu0.22.04.1
+devbox_dnsutils_version: 1:9.18.18-0ubuntu0.22.04.2
 # renovate: datasource=repology depName=ubuntu_22_04/git-filter-repo
 devbox_git_filter_repo_version: 2.34.0-1
 # renovate: datasource=repology depName=ubuntu_22_04/htop
