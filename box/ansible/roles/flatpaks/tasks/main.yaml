@@ -29,6 +29,8 @@
       - com.calibre_ebook.calibre
       # Postman - REST API tester
       - com.getpostman.Postman
+      # Chromium - web browser
+      - org.chromium.Chromium
     state: present
 
 # https://github.com/postmanlabs/postman-app-support/issues/12330
