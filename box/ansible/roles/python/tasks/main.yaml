@@ -11,8 +11,8 @@
     state: present
   loop:
     # python & tools
-    - "python3={{ devbox_python_version }}"
-    - "python3-venv={{ devbox_python_version }}"
+    - "python3.10={{ devbox_python_version }}"
+    - "python3.10-venv={{ devbox_python_version }}"
     - "python3-pip={{ devbox_python_pip_version }}"
     - "python3-wheel={{ devbox_python_wheel_version }}"
 
