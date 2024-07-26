@@ -5,5 +5,6 @@
 #
 
 # Golang
-# renovate: datasource=repology depName=ubuntu_22_04/golang
-devbox_golang_version: 2:1.18~0ubuntu2
+devbox_golang_install_path: /usr/local/go
+# renovate: datasource=golang-version depName=go
+devbox_golang_version: 1.22.5

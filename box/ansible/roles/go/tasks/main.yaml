@@ -4,8 +4,9 @@
 # Tasks
 #
 
-- name: Install Golang with APT
-  become: true
-  ansible.builtin.apt:
-    name: "golang={{ devbox_golang_version }}"
-    state: present
+- name: Download Golang from go.dev
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: "https://go.dev/dl/go{{ devbox_golang_version }}.{{ ansible_system | lower }}-{{ ansible_architecture | replace('x86_', 'amd') }}.tar.gz"
+    dest: "{{ devbox_golang_install_path | dirname }}"
+    creates: "{{ devbox_golang_install_path }}"
