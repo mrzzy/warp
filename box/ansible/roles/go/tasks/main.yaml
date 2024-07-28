@@ -5,6 +5,7 @@
 #
 
 - name: Download Golang from go.dev
+  become: true
   ansible.builtin.unarchive:
     remote_src: true
     src: "https://go.dev/dl/go{{ devbox_golang_version }}.{{ ansible_system | lower }}-{{ ansible_architecture | replace('x86_', 'amd') }}.tar.gz"
