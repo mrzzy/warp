@@ -7,4 +7,4 @@
 # renovate: datasource=repology depName=ubuntu_22_04/docker.io-app
 devbox_docker_version: 20.10.21-0ubuntu1~22.04.3
 # renovate: datasource=github-releases depName=docker/compose
-devbox_docker_compose_version: v2.27.1
+devbox_docker_compose_version: v2.29.1
