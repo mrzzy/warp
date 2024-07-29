@@ -11,3 +11,12 @@
     src: "https://go.dev/dl/go{{ devbox_golang_version }}.{{ ansible_system | lower }}-{{ ansible_architecture | replace('x86_', 'amd') }}.tar.gz"
     dest: "{{ devbox_golang_install_path | dirname }}"
     creates: "{{ devbox_golang_install_path }}"
+
+- name: Add Golang Binaries to PATH
+  become: true
+  ansible.builtin.lineinfile:
+    state: present
+    path: /etc/environment.d/10-golang-path.conf
+    create: true
+    line: 'PATH="/usr/local/go/bin:$PATH"'
+    mode: "0644"
