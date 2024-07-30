@@ -15,6 +15,7 @@ dependencies:
   - role: jvm
   - role: c_cpp
   - role: go
+    tags: test
   - role: rust
   - role: zsh
   - role: tmux

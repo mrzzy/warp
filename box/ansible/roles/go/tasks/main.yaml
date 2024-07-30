@@ -12,11 +12,10 @@
     dest: "{{ devbox_golang_install_path | dirname }}"
     creates: "{{ devbox_golang_install_path }}"
 
-- name: Add Golang Binaries to PATH
+- name: Make Golang binaries executable
   become: true
-  ansible.builtin.lineinfile:
-    state: present
-    path: /etc/environment.d/10-golang-path.conf
-    create: true
-    line: 'PATH="/usr/local/go/bin:$PATH"'
-    mode: "0644"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ devbox_golang_install_path }}/bin"
+    mode: a+rx
+    recurse: true
