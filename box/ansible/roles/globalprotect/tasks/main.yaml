@@ -1,0 +1,22 @@
+#
+# WARP
+# GlobalProtect VPN
+# Tasks
+#
+
+- name: Add GlobalProtect VPN PPA
+  become: true
+  ansible.builtin.apt_repository:
+    repo: ppa:yuezk/globalprotect-openconnect
+    state: present
+
+- name: Install GlobalProtect VPN & Dependencies APT
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "gir1.2-gtk-3.0={{ devbox_gir_gtk_version }}"
+    - "gir1.2-webkit2-4.0={{ devbox_gir_webkit_version }}"
+    - "globalprotect-openconnect={{ devbox_globalprotect_version }}-ppa1~ubuntu22.04"

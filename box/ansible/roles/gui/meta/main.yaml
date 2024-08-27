@@ -9,3 +9,4 @@ dependencies:
   - role: alacritty
   - role: flatpaks
   - role: gnome
+  - role: globalprotect
