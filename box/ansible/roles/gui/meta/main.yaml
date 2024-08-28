@@ -10,3 +10,4 @@ dependencies:
   - role: flatpaks
   - role: gnome
   - role: globalprotect
+  - role: remmina

@@ -1,0 +1,8 @@
+#
+# WARP
+# Remmina Remote Desktop Viewer
+# Default Variables
+#
+
+# renovate: datasource=repology depName=ubuntu_22_04/remmina
+devbox_remmina_version: 1.4.25+dfsg-1ubuntu0.1
