@@ -43,7 +43,7 @@ devbox_sqlfmt_version: 0.21.3
 # renovate: datasource=github-releases depName=mikefarah/yq
 devbox_yq_version: v4.44.3
 # renovate: datasource=github-releases depName=dandavison/delta
-devbox_delta_version: 0.17.0
+devbox_delta_version: 0.18.1
 
 # renovate: datasource=npm depName=@bitwarden/cli versioning=npm
 devbox_bw_version: 2023.12.1
