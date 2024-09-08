@@ -1,0 +1,11 @@
+#
+# WARP
+# Anki
+# Tasks
+#
+
+- name: Install Anki with APT
+  become: true
+  ansible.builtin.apt:
+    name: "anki={{ devbox_anki_version }}"
+    state: present

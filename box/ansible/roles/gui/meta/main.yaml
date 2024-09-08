@@ -11,3 +11,4 @@ dependencies:
   - role: gnome
   - role: globalprotect
   - role: remmina
+  - role: anki
