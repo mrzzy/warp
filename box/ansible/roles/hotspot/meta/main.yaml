@@ -1,0 +1,8 @@
+#
+# WARP
+# Hotspot Role
+# Role Metadata
+#
+
+dependencies:
+  - role: system

@@ -12,4 +12,4 @@ dependencies:
   - role: globalprotect
   - role: remmina
   - role: anki
-  - role: intel_vtune
+  - role: hotspot

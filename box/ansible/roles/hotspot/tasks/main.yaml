@@ -1,0 +1,11 @@
+#
+# WARP
+# Hotspot Role
+# Tasks
+#
+
+- name: Install Hotspot with Apt
+  become: true
+  ansible.builtin.apt:
+    name: "hotspot={{ devbox_hotspot_version }}"
+    state: present
