@@ -22,6 +22,8 @@
     - "libssl-dev={{ devbox_openssl_version }}"
     # needed to run app images
     - "libfuse2={{ devbox_libfuse_version }}"
+    # linux tools (eg. perf)a
+    - "linux-tools-generic"
 
 - name: Register alacritty's terminfo with known Terminal Types
   become: true
