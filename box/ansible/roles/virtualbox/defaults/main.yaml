@@ -5,4 +5,4 @@
 #
 
 # renovate: datasource=repology depname=ubuntu_22_04/virtualbox
-devbox_virtualbox_version: 6.1.50-dfsg-1~ubuntu1.22.04.1
+devbox_virtualbox_version: 6.1.50-dfsg-1~ubuntu1.22.04.3
