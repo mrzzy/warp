@@ -23,4 +23,4 @@ devbox_sbt_version: 1.10.1
 
 # spark
 # renovate: datasource=maven depName=org.apache.spark:spark-core_2.13 versioning=maven
-devbox_spark_version: 3.5.2
+devbox_spark_version: 3.5.3
