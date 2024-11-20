@@ -11,6 +11,6 @@ devbox_python_pip_version: 22.0.2+dfsg-1ubuntu0.5
 # renovate: datasource=repology depName=ubuntu_22_04/wheel
 devbox_python_wheel_version: 0.37.1-2ubuntu0.22.04.1
 # renovate: datasource=pypi depName=pynvim versioning=python
-devbox_python_pynvim_version: 0.5.1
+devbox_python_pynvim_version: 0.5.2
 # renovate: datasource=pypi depName=jupyterlab versioning=python
 devbox_python_jupyterlab_version: 3.6.8
