@@ -42,8 +42,10 @@ jobs:
     - name: Install Ansible Roles dependencies from Ansible Galaxy
       run: make ansible-deps
 
-    - name: Flag Secrets
-      uses: DariuszPorowski/github-action-gitleaks@v2
+    - uses: gitleaks/gitleaks-action@v2
+      env:
+        # need by gitleaks to access github api (eg. pr comments)
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Lint code
       env:
