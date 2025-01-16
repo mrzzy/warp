@@ -4,16 +4,19 @@
     "main"
   ],
   "extends": [
-    "config:base",
+    "config:recommended",
     ":dependencyDashboard",
     ":automergeMinor"
   ],
   "reviewers": [
     "mrzzy"
   ],
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": ["^.*\\.pkr\\.hcl$"],
+      "customType": "regex",
+      "fileMatch": [
+        "^.*\\.pkr\\.hcl$"
+      ],
       "matchStrings": [
         "version *= *\"(?<currentValue>.*)\"\\s+source *= *\"github\\.com\\/(?<owner>.+)\\/(?<repo>.+)\""
       ],
@@ -22,7 +25,10 @@
       "versioningTemplate": "hashicorp"
     },
     {
-      "fileMatch": ["roles\\/.*\\/defaults\\/.*\\.yaml$"],
+      "customType": "regex",
+      "fileMatch": [
+        "roles\\/.*\\/defaults\\/.*\\.yaml$"
+      ],
       "matchStrings": [
         "renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?(?<stripV> stripV)?\\s+\\w+version: *(?<currentValue>\\S+)"
       ],
