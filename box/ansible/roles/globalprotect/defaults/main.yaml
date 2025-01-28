@@ -5,6 +5,6 @@
 #
 
 # renovate: datasource=github-releases depName=yuezk/GlobalProtect-openconnect stripV
-devbox_globalprotect_version: 2.4.1
+devbox_globalprotect_version: 2.4.3
 devbox_gir_gtk_version: 3.24.33-1ubuntu2.2
 devbox_gir_webkit_version: 2.44.2-0ubuntu0.22.04.1
