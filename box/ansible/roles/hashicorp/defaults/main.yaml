@@ -7,7 +7,7 @@
 # renovate: datasource=github-releases depName=hashicorp/terraform versioning=hashicorp stripV
 devbox_hashicorp_terraform_version: 1.10.5
 # renovate: datasource=github-releases depName=hashicorp/terraform-ls versioning=hashicorp stripV
-devbox_hashicorp_terraform_langserver_version: 0.36.3
+devbox_hashicorp_terraform_langserver_version: 0.36.4
 # renovate: datasource=github-releases depName=hashicorp/packer versioning=hashicorp stripV
 devbox_hashicorp_packer_version: 1.11.2
 # renovate: datasource=github-releases depName=hashicorp/vagrant versioning=hashicorp stripV
