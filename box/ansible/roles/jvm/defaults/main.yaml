@@ -19,7 +19,7 @@ devbox_coursier_version: v2.1.24
 # renovate: datasource=maven depName=org.scala-lang:scala3-library_3 versioning=maven
 devbox_scala_version: 3.6.4
 # renovate: datasource=maven depName=org.scala-sbt:sbt versioning=maven
-devbox_sbt_version: 1.10.7
+devbox_sbt_version: 1.10.10
 
 # spark
 # renovate: datasource=maven depName=org.apache.spark:spark-core_2.13 versioning=maven
