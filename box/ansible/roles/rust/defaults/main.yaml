@@ -5,7 +5,7 @@
 #
 
 # renovate: datasource=github-releases depName=rust-lang/rust
-devbox_rust_version: 1.85.0
+devbox_rust_version: 1.85.1
 
 # renovate: datasource=cargo depName=obsidian-export
 devbox_obsidian_export_version: 22.11.0
