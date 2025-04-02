@@ -7,4 +7,4 @@
 # Golang
 devbox_golang_install_path: /usr/local/go
 # renovate: datasource=golang-version depName=go
-devbox_golang_version: 1.24.1
+devbox_golang_version: 1.24.2
