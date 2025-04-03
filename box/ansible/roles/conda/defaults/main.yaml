@@ -6,6 +6,6 @@
 
 
 # renovate: datasource=github-releases depName=conda/conda
-devbox_conda_version: 23.11.0
+devbox_conda_version: 25.3.1
 # miniconda installation prefix
 devbox_conda_prefix: /home/mrzzy/.conda
