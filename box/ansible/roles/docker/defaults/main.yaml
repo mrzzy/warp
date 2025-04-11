@@ -4,4 +4,4 @@
 # Default Variables
 #
 
-devbox_docker_version: 5:28.0.4-1~ubuntu.22.04~jammy
+devbox_docker_version: "5:28.0.4-1~ubuntu.22.04~jammy"
