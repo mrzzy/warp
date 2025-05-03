@@ -15,8 +15,17 @@
       ansible.builtin.apt:
         update-cache: true
   roles:
-    - console
-    - gui
-  post_tasks:
-    - name: Optimize Storage Footprint & Performance
-      ansible.builtin.import_tasks: tasks/optimize.yaml
+    - system
+    - user
+    - docker
+    - pop_desktop
+    - alacritty
+    - flatpaks
+    - gnome
+    - globalprotect
+    - remmina
+    - anki
+    - hotspot
+    - borgbackup
+    - virtualbox
+    - power

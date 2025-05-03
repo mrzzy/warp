@@ -4,17 +4,7 @@
 # Tasks
 #
 
-- name: Install Tmux with APT
-  become: true
-  ansible.builtin.apt:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - "tmux={{ devbox_tmux_version }}"
-
 - name: Install Tmux Plugins
-  become: true
-  become_user: "{{ devbox_user }}"
   vars:
     tpm_path: "{{ devbox_tmux_tpm_path }}"
     tmux_fingers_path: "{{ devbox_tmux_tpm_path }}/plugins/tmux-fingers/bin/"
@@ -28,8 +18,7 @@
 
     - name: Run TPM install_plugins
       environment:
-        # needed to point TPM to install plugins in the devbox users home dir not root
-        HOME: "{{ devbox_user_home }}"
+        PATH: "{{ devbox_path }}"
       ansible.builtin.command:
         cmd: "{{ tpm_path }}/bin/install_plugins"
         creates: "{{ tpm_path }}/plugins"
@@ -45,20 +34,3 @@
         url: "https://github.com/Morantron/tmux-fingers/releases/download/2.1.5/tmux-fingers-2.1.5-linux-{{ ansible_architecture }}"
         dest: "{{ devbox_tmux_tpm_path }}/plugins/tmux-fingers/bin/tmux-fingers"
         mode: "0755"
-
-- name: Install Tmux Systemd service
-  become: true
-  vars:
-    systemd_dir: "/etc/systemd/system"
-  ansible.builtin.template:
-    src: templates/tmux.service.j2
-    dest: "{{ systemd_dir }}/tmux@.service"
-    mode: "0744"
-
-- name: Start & Enable Tmux Systemd Service
-  become: true
-  ansible.builtin.systemd:
-    name: "tmux@{{ devbox_user }}"
-    state: started
-    enabled: true
-    daemon_reload: true

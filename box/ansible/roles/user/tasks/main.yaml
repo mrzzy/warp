@@ -18,7 +18,7 @@
   become: true
   ansible.builtin.user:
     name: "{{ devbox_user }}"
-    shell: /bin/zsh
+    shell: "{{ devbox_shell }}"
     groups:
       # sudo group for passwordless sudo
       - sudo

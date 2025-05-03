@@ -3,24 +3,54 @@
 # ZSH Ansible Role
 # Tasks
 #
-- name: Install ZSH with APT
-  become: true
-  ansible.builtin.apt:
-    name: "{{ item }}"
-    state: present
-  loop:
-    - "zsh={{ devbox_version }}"
-    - "zsh-autosuggestions={{ devbox_autosuggest_version }} "
-    - "zsh-syntax-highlighting={{ devbox_syntax_version }}"
+
+- name: Download zsh-bin install script
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/romkatv/zsh-bin/refs/tags/{{ devbox_zsh_version }}/install"
+    dest: "{{ devbox_zsh_install_sh }}"
+    mode: "0750"
+
+- name: Install ZSH
+  ansible.builtin.command:
+    cmd: "{{ devbox_zsh_install_sh }} -d {{ devbox_zsh_install_dir }} -e no"
+    creates: "{{ devbox_shell }} "
+
+- name: Create ZSH site-functions directory
+  ansible.builtin.file:
+    dest: "{{ devbox_zsh_install_dir }}/share/zsh/site-functions"
+    state: directory
+    mode: "0755"
 
 - name: Install Z Jump Tool
-  become: true
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/agkozak/zsh-z/master/zsh-z.plugin.zsh
-    dest: "/usr/local/share/zsh/site-functions"
+    dest: "{{ devbox_zsh_install_dir }}/share/zsh/site-functions/zsh-z.plugin.zsh"
     mode: "0644"
 
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: "{{ devbox_zsh_install_dir }}/share/zsh-autosuggestions"
+    version: "{{ devbox_autosuggest_version }}"
+    depth: 1
+
+- name: Install zsh-syntax-highlighting
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting"
+    dest: "{{ devbox_zsh_install_dir }}/share/zsh-syntax-highlighting"
+    version: "{{ devbox_syntax_version }}"
+    depth: 1
+
+- name: Download Atuin Install Script
+  ansible.builtin.get_url:
+    url: "https://github.com/atuinsh/atuin/releases/download/{{ devbox_atuin_version }}/atuin-installer.sh"
+    dest: "{{ devbox_atuin_install_sh }}"
+    mode: "0750"
+
 - name: Install Atuin shell history tool
-  become: true
-  ansible.builtin.apt:
-    deb: https://github.com/ellie/atuin/releases/download/v{{ devbox_atuin_version }}/atuin_{{ devbox_atuin_version }}_amd64.deb
+  environment:
+    ATUIN_NO_MODIFY_PATH: "1"
+    ATUIN_DISABLE_UPDATE: "1"
+  ansible.builtin.command:
+    cmd: "{{ devbox_atuin_install_sh }}"
+    creates: "{{ devbox_user_home }}/.atuin/bin"

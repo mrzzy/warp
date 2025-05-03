@@ -26,11 +26,3 @@
     # there is no need to peg the version of nodejs installed here.
     name: "nodejs"
     state: present
-
-- name: Install Yarn with NPM
-  become: true
-  community.general.npm:
-    state: present
-    name: yarn
-    version: "{{ devbox_yarn_version }}"
-    global: true

@@ -1,8 +1,0 @@
-#
-# WARP
-# Shadowsocks Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=github-tags depName=shadowsocks/shadowsocks-rust
-devbox_shadowsocks_version: v1.23.0

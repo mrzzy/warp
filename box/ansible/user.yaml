@@ -1,0 +1,16 @@
+#
+# WARP
+# Devbox User Playbook
+# Tasks
+#
+- name: Provision Devbox with User Permissions
+  hosts: all
+  vars_files:
+    - vars.yaml
+  roles:
+    - dotfiles
+    - asdf
+    - zsh
+    - tmux
+    - neovim
+    - ttyd

@@ -1,8 +1,0 @@
-#
-# WARP
-# OpenSSH Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=repology depName=ubuntu_22_04/openssh
-devbox_openssh_server_version: 1:8.9p1-3ubuntu0.11

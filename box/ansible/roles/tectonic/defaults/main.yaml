@@ -1,9 +1,0 @@
-#
-# WARP
-# Tectonic Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=github-releases depName=tectonic-typesetting/tectonic
-devbox_tectonic_version: 0.12.0
-devbox_tectonic_binary: /usr/local/bin/tectonic

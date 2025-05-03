@@ -1,0 +1,44 @@
+#
+# WARP
+# ASDF Version Manager Role
+# Default Variables
+#
+
+# renovate: datasource=github-releases depName=asdf-vm/asdf
+devbox_asdf_version: v0.16.7
+
+devbox_asdf_plugins:
+  - name: jq
+    version: 1.7.1
+  - name: ripgrep
+    # renovate: datasource=github-releases depName=BurntSushi/ripgrep
+    version: 14.1.1
+  - name: fd
+    # renovate: datasource=github-releases depName=sharkdp/fd stripV
+    version: 10.2.0
+  - name: bat
+    # renovate: datasource=github-releases depName=sharkdp/bat stripV
+    version: 0.25.0
+  - name: fzf
+    # renovate: datasource=github-releases depName=sharkdp/bat stripV
+    version: 0.61.3
+  - name: direnv
+    # renovate: datasource=github-releases depName=direnv/direnv stripV
+    version: 2.36.0
+  - name: github-cli
+    # renovate: datasource=github-releases depName=cli/cli stripV
+    version: 2.72.0
+  - name: neovim
+    version: 0.11.1
+  - name: tmux
+    # renovate: datasource=github-releases depName=tmux/tmux
+    version: 3.5a
+  # neovim plugin dependencies
+  - name: nodejs
+    version: 22.15.0
+  - name: coursier
+    version: 2.1.24
+  - name: golang
+    version: 1.24.2
+  - name: rust
+    version: 1.86.0

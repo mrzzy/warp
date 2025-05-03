@@ -1,8 +1,0 @@
-#
-# WARP
-# Azure Ansible Role
-# Role Metadata
-#
-
-dependencies:
-  - role: system

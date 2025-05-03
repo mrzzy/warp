@@ -1,8 +1,0 @@
-#
-# WARP
-# Rust role
-# Role Metadata
-#
-
-dependencies:
-  - role: user

@@ -6,18 +6,4 @@
 # TTYD web terminal
 # renovate: datasource=github-tags depName=tsl0922/ttyd
 devbox_ttyd_version: 1.7.7
-devbox_ttyd_path: /usr/local/bin/ttyd
-# ttyd expects tls certificate & private key at paths
-devbox_ttyd_tls_cert: /etc/ssl/certs/ttyd.pem
-devbox_ttyd_tls_private_key: /etc/ssl/private/ttyd.key
-# password for the ttyd web terminal. If unset disables TTYD web terminal.
-devbox_ttyd_password: ""
-# ports to instruct ttyd listen for connections
-devbox_ttyd_http_port: 7682
-devbox_ttyd_https_port: 7681
-# configure TTYD process priority by setting niceness level
-devbox_ttyd_nice_level: -2
-
-# install iptables persistent needed to config iptables rules for TTYD
-# renovate: datasource=repology depName=ubuntu_22_04/iptables-persistent
-devbox_iptables_persistent_version: 1.0.16
+devbox_ttyd_path: "{{ devbox_user_home }}/.local/bin/ttyd"

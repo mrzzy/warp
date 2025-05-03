@@ -1,8 +1,0 @@
-#
-# WARP
-# Azure Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=github-releases depName=Azure/azure-cli versioning=semver-coerced
-devbox_azure_cli_version: 2.61.0-1~jammy

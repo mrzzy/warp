@@ -1,7 +1,0 @@
-#
-# WARP
-# Docker Ansible Role
-# Default Variables
-#
-
-devbox_docker_version: "5:28.0.4-1~ubuntu.22.04~jammy"

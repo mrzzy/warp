@@ -1,8 +1,0 @@
-#
-# WARP
-# DuckDB Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=github-releases depName=duckdb/duckdb
-devbox_duckdb_version: v0.10.3

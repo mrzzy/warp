@@ -1,8 +1,0 @@
-#
-# WARP
-# GitHub Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=github-releases depName=cli/cli stripV
-devbox_github_cli_version: 2.69.0

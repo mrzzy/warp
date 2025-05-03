@@ -4,30 +4,6 @@
 # Tasks
 #
 
-
-- name: Setup Docker APT package repository
-  vars:
-    tmp_path: /tmp/docker.asc
-    key_path: /etc/apt/keyrings/docker.gpg
-  become: true
-  block:
-    - name: Register Docker APT Package Signing Key
-      ansible.builtin.get_url:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        dest: "{{ tmp_path }}"
-        mode: "0644"
-    - name: Dearmor Docker APT Package Signing Key
-      ansible.builtin.command:
-        cmd: "gpg -o {{ key_path }} --dearmor {{ tmp_path }}"
-        creates: "{{ key_path }}"
-    - name: Add Docker APT Package Repository
-      ansible.builtin.apt_repository:
-        update_cache: true
-        repo: "deb [signed-by={{ key_path }}] https://download.docker.com/linux/ubuntu \
-               {{ ansible_lsb['codename'] }} stable"
-        filename: docker
-        state: present
-
 - name: Install docker with APT
   become: true
   ansible.builtin.apt:

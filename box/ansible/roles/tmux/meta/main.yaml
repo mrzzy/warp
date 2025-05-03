@@ -1,8 +1,0 @@
-#
-# WARP
-# Tmux Ansible Role
-# Role Metadata
-#
-
-dependencies:
-  - role: user

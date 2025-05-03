@@ -1,0 +1,17 @@
+#
+# WARP
+# System Playbook
+# Tasks
+#
+- name: Provision System with Root Permissions
+  hosts: all
+  vars_files:
+    - vars.yaml
+  pre_tasks:
+    - name: Update APT Cache
+      become: true
+      ansible.builtin.apt:
+        update-cache: true
+  roles:
+    - system
+    - user

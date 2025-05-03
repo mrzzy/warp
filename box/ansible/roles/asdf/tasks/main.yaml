@@ -1,0 +1,35 @@
+#
+# WARP
+# ASDF Version Manager Role
+# Tasks
+#
+
+- name: Ensure ASDF paths exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
+  loop:
+    - "{{ devbox_asdf_data_path }}"
+    - "{{ devbox_asdf_install_path }}"
+
+- name: Install ASDF
+  ansible.builtin.unarchive:
+    remote_src: true
+    src: "https://github.com/asdf-vm/asdf/releases/download/{{ devbox_asdf_version }}/asdf-{{ devbox_asdf_version }}-linux-amd64.tar.gz"
+    dest: "{{ devbox_asdf_install_path }}"
+
+- name: Install ASDF Plugins
+  ansible.builtin.command:
+    cmd: "{{ devbox_asdf_install_path }}/asdf plugin add {{ item.name }}"
+    creates: "{{ devbox_asdf_data_path }}/plugins/{{ item.name }}"
+  loop: "{{ devbox_asdf_plugins }}"
+
+- name: Install ASDF Tools
+  ansible.builtin.shell:
+    cmd: |
+      export PATH="{{ devbox_asdf_install_path }}:$PATH"
+      asdf install {{ item.name }} {{ item.version }}
+      asdf set --home {{ item.name }} {{ item.version }}
+    creates: "{{ devbox_asdf_data_path }}/installs/{{ item.name }}/{{ item.version }}"
+  loop: "{{ devbox_asdf_plugins }}"

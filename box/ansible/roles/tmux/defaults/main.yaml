@@ -4,11 +4,5 @@
 # Default Variables
 #
 
-devbox_user: mrzzy
-devbox_user_home: /home/mrzzy
-devbox_tmux_tpm_path: "{{ devbox_user_home }}/.local/share/tmux/tpm"
-
-# renovate: datasource=repology depName=ubuntu_22_04/tmux
-devbox_tmux_version: 3.2a-4ubuntu0.2
-# renovate: datasource=repology depName=ubuntu_22_04/gawk
-devbox_tmux_gawk_version: 1:5.1.0-1ubuntu0.1
+devbox_tmux_install_path: "{{ devbox_user_home }}/.local"
+devbox_tmux_tpm_path: "{{ devbox_tmux_install_path }}/share/tmux/tpm"

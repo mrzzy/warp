@@ -4,26 +4,110 @@
 # Tasks
 #
 
-- name: Install System utilities with APT
+- name: Install Development Tools with APT
   become: true
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
+    install_recommends: false
   loop:
-    # needed for add-apt-repository
-    - "software-properties-common={{ devbox_software_properties_version }}"
+    # needed for ansible's apt_repository module
+    - "software-properties-common"
     # needed for ansible to become a unprivilleged user
-    - "acl={{ devbox_acl_version }}"
+    - "acl"
     # needed for ansible's git module
-    - "git={{ devbox_git_version }}"
+    - "git"
     # needed to authenticate packages from third-party repositories
-    - "gpg={{ devbox_gpg_version }}"
-    # openssl source code is common compile dependency
-    - "libssl-dev={{ devbox_openssl_version }}"
+    - "gpg"
     # needed to run app images
-    - "libfuse2={{ devbox_libfuse_version }}"
-    # linux tools (eg. perf)a
+    - "libfuse2"
+    # linux tools (eg. perf)
     - "linux-tools-generic"
+    # needed for asdf version manager to fetch packages
+    - "curl"
+    # ssh server & client
+    - "openssh-server"
+    # needed by tmux-fingers plugin
+    - "gawk"
+    # needed by neovim mason plugin
+    - unzip
+    - python3-venv
+    # various development tools
+    # build tools & libraries
+    - build-essential
+    - autoconf
+    - automake
+    - libevent-dev
+    - libncurses-dev
+    - pkg-config
+    # needed to build python
+    - libbz2-dev
+    - libffi-dev
+    - libreadline-dev
+    - libssl-dev
+    - zlib1g-dev
+    - libncurses-dev
+    - libsqlite3-dev
+    - libgdbm-dev
+    - liblzma-dev
+    - uuid-dev
+    - python3-pip
+    # directory watcher
+    - "entr"
+    # directory navigator
+    - "ranger"
+    # code indexer
+    - "universal-ctags"
+    # git filter tool
+    - "git-filter-repo"
+    # top tool
+    - "htop"
+    # ssh fuse mount
+    - "sshfs"
+    # clangd compile_commands.json generator
+    - "bear"
+    # c/c++ debugger
+    - "gdb"
+
+# disable auto upgrades: upgrades hog the cpu at runtime
+- name: Disable Auto Upgrades by removing Unattended-upgrades
+  become: true
+  ansible.builtin.apt:
+    name: unattended-upgrades
+    state: absent
+
+- name: Install Docker Client Tools
+  vars:
+    tmp_path: /tmp/docker.asc
+    key_path: /etc/apt/keyrings/docker.gpg
+  become: true
+  block:
+    - name: Register Docker APT Package Signing Key
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: "{{ tmp_path }}"
+        mode: "0644"
+    - name: Dearmor Docker APT Package Signing Key
+      ansible.builtin.command:
+        cmd: "gpg -o {{ key_path }} --dearmor {{ tmp_path }}"
+        creates: "{{ key_path }}"
+    - name: Add Docker APT Package Repository
+      ansible.builtin.apt_repository:
+        update_cache: true
+        repo:
+          "deb [signed-by={{ key_path }}] https://download.docker.com/linux/ubuntu \
+          {{ ansible_lsb['codename'] }} stable"
+        filename: docker
+        state: present
+    - name: Install Docker Client Tools
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+        install_recommends: false
+      loop:
+        - "docker-buildx-plugin"
+        - "docker-ce-cli"
+        - "docker-compose-plugin"
 
 - name: Register alacritty's terminfo with known Terminal Types
   become: true
@@ -46,7 +130,6 @@
   ansible.posix.sysctl:
     name: "{{ item.name }}"
     val: "{{ item.value }}"
-    sysctl_file: /etc/sysctl.conf
   loop:
     # avoid using swap unless absolutely necessary
     - name: vm.swappiness

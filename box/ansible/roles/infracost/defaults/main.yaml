@@ -1,8 +1,0 @@
-#
-# WARP
-# Infracost Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=github-releases depName=infracost/infracost
-devbox_infracost_version: v0.10.41

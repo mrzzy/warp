@@ -4,11 +4,14 @@
 # Default Variables
 #
 
-# renovate: datasource=repology depName=ubuntu_22_04/zsh
-devbox_version: 5.8.1-1
-# renovate: datasource=repology depName=ubuntu_22_04/zsh-autosuggestions
-devbox_autosuggest_version: 0.7.0-1
-# renovate: datasource=repology depName=ubuntu_22_04/zsh-syntax-highlighting
-devbox_syntax_version: 0.7.1-2
-# renovate: datasource=github-releases depName=ellie/atuin stripV
-devbox_atuin_version: 18.4.0
+# renovate: datasource=github-releases depName=romkatv/zsh-bin
+devbox_zsh_version: v6.1.1
+devbox_zsh_install_sh: "{{ ansible_remote_tmp }}/zsh_install.sh"
+devbox_zsh_install_dir: "{{ devbox_user_home }}/.local"
+# renovate: datasource=github-tags depName=zsh-users/zsh-autosuggestions
+devbox_autosuggest_version: v0.7.1
+# renovate: datasource=github-tags depName=zsh-users/zsh-syntax-highlighting
+devbox_syntax_version: 0.8.0
+# renovate: datasource=github-releases depName=ellie/atuin
+devbox_atuin_version: v18.5.0
+devbox_atuin_install_sh: "{{ ansible_remote_tmp }}/atuin_install.sh"

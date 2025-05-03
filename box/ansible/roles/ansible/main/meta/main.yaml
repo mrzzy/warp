@@ -1,8 +1,0 @@
-#
-# WARP
-# Ansible Ansible Role
-# Role Metadata
-#
-
-dependencies:
-  - role: python

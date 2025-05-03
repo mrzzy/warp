@@ -4,22 +4,12 @@
 # Tasks
 #
 
-- name: Install Neovim App image
-  become: true
-  ansible.builtin.get_url:
-    url: "https://github.com/neovim/neovim/releases/download/{{ devbox_nvim_version }}/nvim.appimage"
-    dest: /usr/local/bin/nvim
-    mode: "0755"
-
 - name: Install Neovim Plugins
-  become: true
-  become_user: "{{ devbox_user }}"
   environment:
-    HOME: "{{ devbox_user_home }}"
     XDG_CONFIG_HOME: "{{ devbox_user_home }}/.config"
     XDG_DATA_HOME: "{{ devbox_user_home }}/.local/share"
     XDG_STATE_HOME: "{{ devbox_user_home }}/.local/state"
-    PATH: "/usr/local/go/bin/:{{ devbox_user_home }}/.cargo/bin:{{ ansible_env.PATH }}"
+    PATH: "{{ devbox_path }}"
   block:
     - name: Install lazy.nvim plugin manager
       ansible.builtin.git:
@@ -29,6 +19,15 @@
         dest: "{{ devbox_user_home }}/.local/share/nvim/site/pack/lazy/start/lazy"
         # silence 'will clobber existing tag' error for 'stable' tag that is constantly updated
         force: true
+
+      # needed for neovim linter
+    - name: Install codespell
+      ansible.builtin.pip:
+        name: codespell
+        version: "{{ devbox_codespell_version }}"
+        # python >=3.11 necessary for pip install
+        extra_args: --user --break-system-packages
+
     - name: Install Neovim Plugins
       ansible.builtin.command:
         cmd: nvim --headless "+Lazy! sync" +qa
