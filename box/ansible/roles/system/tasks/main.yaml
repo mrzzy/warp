@@ -12,27 +12,37 @@
     install_recommends: false
   loop:
     # needed for ansible's apt_repository module
-    - "software-properties-common"
+    - software-properties-common
     # needed for ansible to become a unprivilleged user
-    - "acl"
+    - acl
     # needed for ansible's git module
-    - "git"
+    - git
     # needed to authenticate packages from third-party repositories
-    - "gpg"
+    - gnupg
     # needed to run app images
-    - "libfuse2"
+    - libfuse2
     # linux tools (eg. perf)
-    - "linux-tools-generic"
+    - linux-tools-generic
     # needed for asdf version manager to fetch packages
-    - "curl"
+    - curl
     # ssh server & client
-    - "openssh-server"
+    - openssh-server
     # needed by tmux-fingers plugin
-    - "gawk"
+    - gawk
     # needed by neovim mason plugin
-    - unzip
     - python3-venv
     # various development tools
+    - less
+    - file
+    # networking tools
+    - dnsutils
+    - netcat-openbsd
+    - iputils-ping
+    # file compression
+    - zip
+    - unzip
+    - rar
+    - unrar
     # build tools & libraries
     - build-essential
     - autoconf
@@ -53,21 +63,21 @@
     - uuid-dev
     - python3-pip
     # directory watcher
-    - "entr"
+    - entr
     # directory navigator
-    - "ranger"
+    - ranger
     # code indexer
-    - "universal-ctags"
+    - universal-ctags
     # git filter tool
-    - "git-filter-repo"
+    - git-filter-repo
     # top tool
-    - "htop"
+    - htop
     # ssh fuse mount
-    - "sshfs"
+    - sshfs
     # clangd compile_commands.json generator
-    - "bear"
+    - bear
     # c/c++ debugger
-    - "gdb"
+    - gdb
 
 # disable auto upgrades: upgrades hog the cpu at runtime
 - name: Disable Auto Upgrades by removing Unattended-upgrades

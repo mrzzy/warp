@@ -1,8 +1,0 @@
-#
-# WARP
-# Anki
-# Default Variables
-#
-
-# renovate: datasource=repology depName=ubuntu_22_04/anki
-devbox_anki_version: 2.1.15+dfsg-3ubuntu0.1

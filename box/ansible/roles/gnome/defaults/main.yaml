@@ -1,8 +1,0 @@
-#
-# WARP
-# GNOME settings Ansible Role
-# Default Variables
-#
-
-# renovate: datasource=repology depName=ubuntu_22_04/gnome-tweaks
-devbox_gnome_tweaks_version: 42~beta-1ubuntu2

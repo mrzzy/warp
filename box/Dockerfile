@@ -26,7 +26,7 @@ USER root
 COPY ansible/system.yaml ansible/vars.yaml /tmp/ansible/
 COPY ansible/roles/system /tmp/ansible/roles/system
 COPY ansible/roles/user /tmp/ansible/roles/user
-ENV ANSIBLE_STDOUT_PLUGIN=yaml ANSIBLE_HOME=/home/${USER}/.ansible
+ENV ANSIBLE_STDOUT_CALLBACK=yaml ANSIBLE_HOME=/home/${USER}/.ansible
 RUN ansible-playbook -v /tmp/ansible/system.yaml \
     -e "devbox_user=${USER}" \
     --connection=local \
@@ -36,25 +36,39 @@ RUN ansible-playbook -v /tmp/ansible/system.yaml \
 
 # deploy user playbook
 USER ${USER}
+ENV USER=${USER}
+ENV HOME=/home/${USER}
+WORKDIR ${HOME}
 COPY ansible /tmp/ansible
 RUN ansible-playbook -v /tmp/ansible/user.yaml \
     -e "devbox_user=${USER}" \
     --connection=local \
     --inventory localhost, && \
-    rm -rf /home/${USER}/.cache /home/${USER}/.npm/_cacache \
-        /home/${USER}/.asdf/installs/rust/*/toolchains/*/share/doc
+    rm -rf ${HOME}/.cache ${HOME}/.npm/_cacache \
+        ${HOME}/.asdf/installs/rust/*/toolchains/*/share/doc && \
+    # many applications persist their data in .config (XDG_CONFIG_DIR) & ~/.local/share (XDG_DATA_DIR)
+    # shift .config and ~/.local/share allow volumes to be mounted at those folders
+    # and copy them back using the entrypoint.sh script
+    mkdir -p ${HOME}/.deploy && \
+        mv ${HOME}/.config ${HOME}/.deploy/.config && \
+        mv ${HOME}/.local/share ${HOME}/.deploy/share
+# replace moved directories
+RUN mkdir -p ${HOME}/.config ${HOME}/.local/share
 
 # copy ssh key
-RUN mkdir -p /home/${USER}/.ssh
-COPY id_ed25519.pub /home/${USER}/.ssh/authorized_keys
-USER root
-RUN chown -R ${USER}:${USER} /home/${USER}/.ssh && \
-    chmod 700 /home/${USER}/.ssh && \
-    chmod 600 /home/${USER}/.ssh/authorized_keys
+RUN mkdir -p ${HOME}/.ssh
+COPY --chown=${USER}:${USER} id_ed25519.pub ${HOME}/.ssh/authorized_keys
+RUN chmod 700 ${HOME}/.ssh && \
+    chmod 600 ${HOME}/.ssh/authorized_keys
 
-# supervisord
 # create directory expected by sshd
+USER root
 RUN mkdir -p /run/sshd
 COPY supervisord.conf /etc/supervisord.conf
-RUN sed -e "s/{USER}/${USER}/g" -i /etc/supervisord.conf
-CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]
+
+# run services with supervisord
+EXPOSE 22
+EXPOSE 7681
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

@@ -26,7 +26,7 @@
         name: codespell
         version: "{{ devbox_codespell_version }}"
         # python >=3.11 necessary for pip install
-        extra_args: --user --break-system-packages
+        extra_args: --user --break-system-packages --no-cache-dir
 
     - name: Install Neovim Plugins
       ansible.builtin.command:

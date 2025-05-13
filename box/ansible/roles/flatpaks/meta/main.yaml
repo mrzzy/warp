@@ -1,8 +1,0 @@
-#
-# WARP
-# Flatpaks Ansible Role
-# Role Metadata
-#
-
-dependencies:
-  - role: pop_desktop

@@ -1,0 +1,12 @@
+#
+# WARP
+# Devbox Ansible Playbook
+# Pop Repository Playbook
+#
+
+- name: Register Pop OS Repository
+  hosts: all
+  vars_files:
+    - vars.yaml
+  roles:
+    - pop_repo

@@ -1,9 +1,0 @@
-#
-# WARP
-# Alacritty Ansible Role
-# Default Variables
-#
-
-devbox_alacritty_version: 0.12.2~1703085360~22.04~365df06
-# renovate: datasource=github-releases depName=rajasegar/alacritty-themes
-devbox_alacritty_themes_version: v5.3.1

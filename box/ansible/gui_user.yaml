@@ -1,0 +1,12 @@
+#
+# WARP
+# Devbox Ansible Playbook
+# GUI User Playbook
+#
+
+- name: Provision Graphical tools with User Permissions
+  hosts: all
+  vars_files:
+    - vars.yaml
+  roles:
+    - alacritty_themes

@@ -1,8 +1,0 @@
-#
-# WARP
-# Dconf settings Ansible Role
-# Role Metadata
-#
-
-dependencies:
-  - role: pop_desktop

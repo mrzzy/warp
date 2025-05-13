@@ -1,8 +1,0 @@
-#
-# WARP
-# PopOS Desktop Ansible Role
-# Role Metadata
-#
-
-dependencies:
-  - role: system

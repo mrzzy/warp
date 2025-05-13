@@ -20,3 +20,6 @@ venv/
 ## Ansible
 # inventory
 inventory.yaml
+
+## Python
+.venv/

@@ -39,12 +39,16 @@ apply: $(ANSIBLE_DIR) ansible-deps
 		--inventory 127.0.0.1, \
 		--connection local \
 		--ask-become-pass \
-		$(ANSIBLE_DIR)/console.yaml
+		$(ANSIBLE_DIR)/system.yaml
+	$(PLAYBOOK) \
+		--inventory 127.0.0.1, \
+		--connection local \
+		--ask-become-pass \
+		$(ANSIBLE_DIR)/user.yaml
 
-# applying gui requires an inventory file due to required variables for borgbackup role
 apply-gui: $(ANSIBLE_DIR) ansible-deps
 	$(PLAYBOOK) \
 		--inventory 127.0.0.1, \
 		--connection local \
 		--ask-become-pass \
-		$(ANSIBLE_DIR)/gui.yaml
+		$(ANSIBLE_DIR)/gui_system.yaml

@@ -3,29 +3,13 @@
 # GNOME settings Ansible Role
 # Tasks
 #
-
-- name: Enable Hibernate in Shutdown Menu for Hibernate Status button
-  become: true
-  ansible.builtin.copy:
-    content: |
-      [Re-enable hibernate by default in upower]
-      Identity=unix-user:*
-      Action=org.freedesktop.upower.hibernate
-      ResultActive=yes
-
-      [Re-enable hibernate by default in logind]
-      Identity=unix-user:*
-      Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit
-      ResultActive=yes
-    dest: /etc/polkit-1/localauthority/50-local.d/com.ubuntu.hibernate.pkla
-    mode: "0744"
-
+#
 - name: Configure GNOME desktop environment
-  become: true
   ansible.builtin.import_role:
     name: ansible-role-customize-gnome
   vars:
     gnome_user: "{{ devbox_user }}"
+    customize_gnome__skip_restart_gnome_shell: true
     gnome_dconf:
       # map caps lock to escape key
       - key: /org/gnome/desktop/input-sources/xkb-options
@@ -73,9 +57,3 @@
       - schema: org.gnome.desktop.interface
         key: monospace-font-name
         value: "'JetBrains Mono 16'"
-
-- name: Install gnome-tweaks with APT
-  become: true
-  ansible.builtin.apt:
-    name: "gnome-tweaks={{ devbox_gnome_tweaks_version }}"
-    state: present
