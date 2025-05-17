@@ -26,8 +26,8 @@ pre-commit==3.8.0
 pycparser==2.22
 PyYAML==6.0.2
 referencing==0.36.2
-resolvelib==1.1.0
-rpds-py==0.25.0
+resolvelib==1.0.1
+rpds-py==0.24.0
 ruamel.yaml==0.18.10
 ruamel.yaml.clib==0.2.12
 subprocess-tee==0.4.2
