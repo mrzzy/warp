@@ -18,15 +18,17 @@ WARP facilitates full recreation of my development environment (Dev Env) in diff
 ### Container
 
 ### CLI Container
-Run the WARP container:
+Run the WARP container & obtain a shell:
 
 ```sh
-docker-compose up warp
+docker-compose up warp -d
+docker-compose exec warp sudo -u ubuntu /home/ubuntu/.local/bin/zsh
 ```
 
-Dev Env is now accessible via web browser at [http://localhost:7681](http://localhost:7681).
+Alternatively, the Dev Env is also accessible via web browser at [http://localhost:7681](http://localhost:7681).
 
 ### GUI Container
+Run the WARP GUI container:
 ```sh
 docker-compose up warp_gui
 ```
