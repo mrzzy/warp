@@ -23,3 +23,6 @@ inventory.yaml
 
 ## Python
 .venv/
+
+## Direnv
+/.envrc
