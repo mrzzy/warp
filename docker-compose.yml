@@ -14,13 +14,13 @@ services:
     # allow access to host docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /Users/mrzzy/Documents:/home/ubuntu/Documents
+      - "${HOME}/Documents:/home/ubuntu/Documents"
       - "xdg_config:/home/ubuntu/.config"
       - "xdg_data:/home/ubuntu/.local/share"
 
   warp_gui:
     image: ghcr.io/mrzzy/warp-gui
-    build: 
+    build:
       context: box
       dockerfile: Dockerfile.gui
     ports:
@@ -42,7 +42,7 @@ services:
     - "xdg_data:/home/ubuntu/.local/share"
     - "firefox_data:/home/ubuntu/.mozilla"
     - "zotero_data:/home/ubuntu/Zotero"
-  
+
     # Uncomment the below line to disable network isolation for WebRTC connectivity, display `:20` and `:21` should not be used in the host, may show an error if disallowed by the cluster
 #    network_mode: 'host'
     environment:
