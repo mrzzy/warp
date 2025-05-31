@@ -70,5 +70,9 @@ COPY supervisord.conf /etc/supervisord.conf
 EXPOSE 22
 EXPOSE 7681
 COPY entrypoint.sh /entrypoint.sh
+
+# override TERM to display 256 colors
+ENV TERM=xterm-256color
+
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
