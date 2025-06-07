@@ -5,7 +5,7 @@
 #
 
 # renovate: datasource=github-releases depName=asdf-vm/asdf
-devbox_asdf_version: v0.17.0
+devbox_asdf_version: v0.18.0
 
 devbox_asdf_plugins:
   - name: jq
