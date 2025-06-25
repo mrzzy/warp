@@ -16,7 +16,7 @@
 - name: Install ASDF
   ansible.builtin.unarchive:
     remote_src: true
-    src: "https://github.com/asdf-vm/asdf/releases/download/{{ devbox_asdf_version }}/asdf-{{ devbox_asdf_version }}-linux-amd64.tar.gz"
+    src: "https://github.com/asdf-vm/asdf/releases/download/{{ devbox_asdf_version }}/asdf-{{ devbox_asdf_version }}-linux-{{ dpkg_architecture }}.tar.gz"
     dest: "{{ devbox_asdf_install_path }}"
 
 - name: Install ASDF Plugins

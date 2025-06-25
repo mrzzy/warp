@@ -12,6 +12,9 @@
       become: true
       ansible.builtin.apt:
         update-cache: true
+    - name: Get dpkg architecture
+      command: dpkg --print-architecture
+      register: dpkg_architecture
   roles:
     - system
     - user
