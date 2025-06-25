@@ -1,9 +1,0 @@
-#
-# WARP
-# PopOS Desktop Ansible Role
-# Default Variables
-#
-
-devbox_ticktick_version: 6.0.30
-# renovate: datasource=github-releases depName=obsidianmd/obsidian-releases stripV
-devbox_obsidian_version: 1.8.10

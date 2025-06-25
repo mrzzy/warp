@@ -54,26 +54,3 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Gather Docker image meta for GUI image
-        id: meta_gui
-        uses: docker/metadata-action@v5
-        with:
-          images: |
-            ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE }}-gui
-          tags: |
-            type=raw,value=latest
-            type=ref,event=branch
-            type=ref,event=tag
-            type=ref,event=pr
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}
-
-      - name: Build and push GUI Docker image
-        uses: docker/build-push-action@v6
-        with:
-          context: box
-          file: box/Dockerfile.gui
-          push: true
-          tags: ${{ steps.meta_gui.outputs.tags }}
-          labels: ${{ steps.meta_gui.outputs.labels }}

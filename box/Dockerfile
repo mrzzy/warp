@@ -45,15 +45,7 @@ RUN ansible-playbook -v /tmp/ansible/user.yaml \
     --connection=local \
     --inventory localhost, && \
     rm -rf ${HOME}/.cache ${HOME}/.npm/_cacache \
-        ${HOME}/.asdf/installs/rust/*/toolchains/*/share/doc && \
-    # many applications persist their data in .config (XDG_CONFIG_DIR) & ~/.local/share (XDG_DATA_DIR)
-    # shift .config and ~/.local/share allow volumes to be mounted at those folders
-    # and copy them back using the entrypoint.sh script
-    mkdir -p ${HOME}/.deploy && \
-        mv ${HOME}/.config ${HOME}/.deploy/.config && \
-        mv ${HOME}/.local/share ${HOME}/.deploy/share
-# replace moved directories
-RUN mkdir -p ${HOME}/.config ${HOME}/.local/share
+        ${HOME}/.asdf/installs/rust/*/toolchains/*/share/doc
 
 # copy ssh key
 RUN mkdir -p ${HOME}/.ssh
@@ -69,10 +61,6 @@ COPY supervisord.conf /etc/supervisord.conf
 # run services with supervisord
 EXPOSE 22
 EXPOSE 7681
-COPY entrypoint.sh /entrypoint.sh
-
 # override TERM to display 256 colors
 ENV TERM=xterm-256color
-
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

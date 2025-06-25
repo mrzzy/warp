@@ -45,10 +45,3 @@ apply: $(ANSIBLE_DIR) ansible-deps
 		--connection local \
 		--ask-become-pass \
 		$(ANSIBLE_DIR)/user.yaml
-
-apply-gui: $(ANSIBLE_DIR) ansible-deps
-	$(PLAYBOOK) \
-		--inventory 127.0.0.1, \
-		--connection local \
-		--ask-become-pass \
-		$(ANSIBLE_DIR)/gui_system.yaml
