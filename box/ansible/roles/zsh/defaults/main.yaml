@@ -12,6 +12,3 @@ devbox_zsh_install_dir: "{{ devbox_user_home }}/.local"
 devbox_autosuggest_version: v0.7.1
 # renovate: datasource=github-tags depName=zsh-users/zsh-syntax-highlighting
 devbox_syntax_version: 0.8.0
-# renovate: datasource=github-releases depName=ellie/atuin
-devbox_atuin_version: v18.6.1
-devbox_atuin_install_sh: "{{ ansible_remote_tmp }}/atuin_install.sh"

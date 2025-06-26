@@ -40,17 +40,3 @@
     dest: "{{ devbox_zsh_install_dir }}/share/zsh-syntax-highlighting"
     version: "{{ devbox_syntax_version }}"
     depth: 1
-
-- name: Download Atuin Install Script
-  ansible.builtin.get_url:
-    url: "https://github.com/atuinsh/atuin/releases/download/{{ devbox_atuin_version }}/atuin-installer.sh"
-    dest: "{{ devbox_atuin_install_sh }}"
-    mode: "0750"
-
-- name: Install Atuin shell history tool
-  environment:
-    ATUIN_NO_MODIFY_PATH: "1"
-    ATUIN_DISABLE_UPDATE: "1"
-  ansible.builtin.command:
-    cmd: "{{ devbox_atuin_install_sh }}"
-    creates: "{{ devbox_user_home }}/.atuin/bin"
