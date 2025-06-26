@@ -19,6 +19,9 @@ devbox_asdf_plugins:
   - name: bat
     # renovate: datasource=github-releases depName=sharkdp/bat stripV
     version: 0.25.0
+  - name: delta
+    # renovate: datasource=github-releases depName=dandavison/delta
+    version: 0.18.2
   - name: fzf
     # renovate: datasource=github-releases depName=sharkdp/bat stripV
     version: 0.61.3
@@ -42,3 +45,6 @@ devbox_asdf_plugins:
     version: 1.24.2
   - name: rust
     version: 1.86.0
+  # tmux-fingers dependencies
+  - name: crystal
+    version: 1.16.3

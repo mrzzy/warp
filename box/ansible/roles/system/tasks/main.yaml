@@ -41,8 +41,6 @@
     # file compression
     - zip
     - unzip
-    - rar
-    - unrar
     # build tools & libraries
     - build-essential
     - autoconf
@@ -74,6 +72,8 @@
     - htop
     # ssh fuse mount
     - sshfs
+    # clang c/c++ lsp
+    - clangd
     # clangd compile_commands.json generator
     - bear
     # c/c++ debugger

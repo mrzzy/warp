@@ -29,7 +29,9 @@
         path: "{{ tmux_fingers_path }}"
         mode: "0755"
 
-    - name: Install tmux-fingers binary
+    # tmux-fingers binary is only available for x86_64 architecture
+    - name: Install tmux-fingers binary on x86_64
+      when: ansible_architecture == "x86_64"
       ansible.builtin.get_url:
         url: "https://github.com/Morantron/tmux-fingers/releases/download/2.1.5/tmux-fingers-2.1.5-linux-{{ ansible_architecture }}"
         dest: "{{ devbox_tmux_tpm_path }}/plugins/tmux-fingers/bin/tmux-fingers"
