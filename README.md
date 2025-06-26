@@ -9,8 +9,9 @@ Reproducible development environment.
 WARP facilitates full recreation of my development environment (Dev Env) in different environments:
 
 - **Playbooks** A set of Ansible Playbooks used to provision the Dev Env on a new computer / upgrade an existing computer.
-- **Container** portable Docker Container development environment:
-    - `ghcr.io/mrzzy/warp`: CLI based tooling only based on [TTYD](https://github.com/tsl0922/ttyd)
+- **Container** portable container development environment `ghcr.io/mrzzy/warp`: 
+    - CLI based tooling based on [TTYD](https://github.com/tsl0922/ttyd). 
+    - Available for `linux/arm64` and `linux/amd64` platforms.
 
 ## Usage
 
