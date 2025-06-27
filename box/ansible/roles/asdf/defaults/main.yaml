@@ -19,9 +19,6 @@ devbox_asdf_plugins:
   - name: bat
     # renovate: datasource=github-releases depName=sharkdp/bat stripV
     version: 0.25.0
-  - name: delta
-    # renovate: datasource=github-releases depName=dandavison/delta
-    version: 0.18.2
   - name: fzf
     # renovate: datasource=github-releases depName=sharkdp/bat stripV
     version: 0.61.3

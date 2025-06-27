@@ -66,6 +66,8 @@
     - ranger
     # code indexer
     - universal-ctags
+    # git diff tool
+    - git-delta
     # git filter tool
     - git-filter-repo
     # top tool
