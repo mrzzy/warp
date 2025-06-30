@@ -8,9 +8,8 @@ services:
   warp:
     image: ghcr.io/mrzzy/warp
     build: box
-    ports:
-      - 2222:22
-      - 7681:7681
+    # allow access to services running within the container
+    network_mode: host
     # allow access to host docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
