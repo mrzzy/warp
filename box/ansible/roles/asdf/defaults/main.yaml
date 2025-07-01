@@ -42,6 +42,7 @@ devbox_asdf_plugins:
     version: 1.24.2
   - name: rust
     version: 1.86.0
-  # tmux-fingers dependencies
-  - name: crystal
-    version: 1.16.3
+  # tmux plugin dependencies
+  # tmux-cpu-mem-info
+  - name: cmake
+    version: 4.0.3
