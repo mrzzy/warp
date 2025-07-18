@@ -9,7 +9,7 @@ cffi==1.17.1
 cfgv==3.4.0
 click==8.2.1
 cryptography==44.0.3
-distlib==0.3.9
+distlib==0.4.0
 filelock==3.18.0
 identify==2.6.12
 importlib_metadata==8.7.0
