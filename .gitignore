@@ -26,3 +26,5 @@ inventory.yaml
 
 ## Direnv
 /.envrc
+## dotenv
+/.env
