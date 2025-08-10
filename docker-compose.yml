@@ -6,7 +6,7 @@
 
 services:
   warp:
-    image: ghcr.io/mrzzy/warp
+    image: ghcr.io/mrzzy/warp:latest
     build: box
     # allow access to services running within the container
     network_mode: host
@@ -14,3 +14,16 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - "${HOME}/Documents:/home/ubuntu/Documents"
+  sourcebot:
+    image: ghcr.io/sourcebot-dev/sourcebot:latest
+    ports:
+      - 7682:3000
+    volumes:
+      - "${HOME}/.config/sourcebot/config.json:/config.json"
+      - "sourcebot:/data"
+    environment:
+        SOURCEBOT_TELEMETRY_DISABLED: true
+        CONFIG_PATH: /config.json
+        GITHUB_TOKEN: ${GITHUB_TOKEN}
+volumes:
+   sourcebot:
