@@ -46,3 +46,5 @@ devbox_asdf_plugins:
   # tmux-cpu-mem-info
   - name: cmake
     version: 4.0.3
+  - name: python
+    version: 3.11.13
