@@ -80,6 +80,8 @@
     - bear
     # c/c++ debugger
     - gdb
+    # sqlite3 client
+    - sqlite3
 
 # disable auto upgrades: upgrades hog the cpu at runtime
 - name: Disable Auto Upgrades by removing Unattended-upgrades
