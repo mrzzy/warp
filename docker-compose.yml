@@ -6,10 +6,19 @@
 
 services:
   warp:
-    image: ghcr.io/mrzzy/warp:latest
+    image: ghcr.io/mrzzy/warp:latest-arm64
     build: box
     # allow access to services running within the container
     network_mode: host
+    platform: linux/arm64
+    # allow access to host docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - "${HOME}/Documents:/home/ubuntu/Documents"
+  warp_amd64:
+    image: ghcr.io/mrzzy/warp:latest
+    build: box
+    platform: linux/amd64
     # allow access to host docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
