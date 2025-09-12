@@ -38,5 +38,5 @@
       export PATH="{{ devbox_asdf_install_path }}:$PATH"
       asdf install {{ item[0].name }} {{ item[1] }}
       asdf set --home {{ item[0].name }} {{ item[1] }}
-    creates: "{{ devbox_asdf_data_path }}/installs/{{ item.name }}/{{ item.version }}"
+    creates: "{{ devbox_asdf_data_path }}/installs/{{ item[0].name }}/{{ item[1] }}"
   loop: "{{ devbox_asdf_plugins | subelements('versions') }}"
