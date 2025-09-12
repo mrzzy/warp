@@ -47,4 +47,6 @@ devbox_asdf_plugins:
   - name: cmake
     versions: [4.0.3]
   - name: python
-    versions: [3.11.13]
+    versions:
+      - 3.10.15
+      - 3.11.13
