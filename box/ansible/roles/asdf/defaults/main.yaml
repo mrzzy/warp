@@ -9,42 +9,42 @@ devbox_asdf_version: v0.18.0
 
 devbox_asdf_plugins:
   - name: jq
-    version: 1.7.1
+    versions: [1.7.1]
   - name: ripgrep
     # renovate: datasource=github-releases depName=BurntSushi/ripgrep
-    version: 14.1.1
+    versions: [14.1.1]
   - name: fd
     # renovate: datasource=github-releases depName=sharkdp/fd stripV
-    version: 10.2.0
+    versions: [10.2.0]
   - name: bat
     # renovate: datasource=github-releases depName=sharkdp/bat stripV
-    version: 0.25.0
+    versions: [0.25.0]
   - name: fzf
     # renovate: datasource=github-releases depName=sharkdp/bat stripV
-    version: 0.61.3
+    versions: [0.61.3]
   - name: direnv
     # renovate: datasource=github-releases depName=direnv/direnv stripV
-    version: 2.36.0
+    versions: [2.36.0]
   - name: github-cli
     # renovate: datasource=github-releases depName=cli/cli stripV
-    version: 2.72.0
+    versions: [2.72.0]
   - name: neovim
-    version: 0.11.1
+    versions: [0.11.1]
   - name: tmux
     # renovate: datasource=github-releases depName=tmux/tmux
-    version: 3.5a
+    versions: [3.5a]
   # neovim plugin dependencies
   - name: nodejs
-    version: 22.15.0
+    versions: [22.15.0]
   - name: coursier
-    version: 2.1.24
+    versions: [2.1.24]
   - name: golang
-    version: 1.24.2
+    versions: [1.24.2]
   - name: rust
-    version: 1.86.0
+    versions: [1.86.0]
   # tmux plugin dependencies
   # tmux-cpu-mem-info
   - name: cmake
-    version: 4.0.3
+    versions: [4.0.3]
   - name: python
-    version: 3.11.13
+    versions: [3.11.13]
