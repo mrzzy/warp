@@ -27,6 +27,8 @@
     - curl
     # ssh server & client
     - openssh-server
+    # yacc needed to build tmux
+    - byacc
     # needed by tmux-fingers plugin
     - gawk
     # needed by neovim mason plugin
@@ -54,7 +56,6 @@
     - libreadline-dev
     - libssl-dev
     - zlib1g-dev
-    - libncurses-dev
     - libsqlite3-dev
     - libgdbm-dev
     - liblzma-dev
