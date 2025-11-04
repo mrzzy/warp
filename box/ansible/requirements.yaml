@@ -10,6 +10,6 @@ roles:
     version: 0.2.12
 collections:
   - name: community.general
-    version: 10.7.4
+    version: 10.7.6
   - name: ansible.posix
     version: 2.1.0
