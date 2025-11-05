@@ -29,7 +29,7 @@ referencing==0.36.2
 resolvelib==1.0.1
 rpds-py==0.27.1
 ruamel.yaml==0.18.16
-ruamel.yaml.clib==0.2.12
+ruamel.yaml.clib==0.2.14
 subprocess-tee==0.4.2
 typing_extensions==4.15.0
 virtualenv==20.34.0
