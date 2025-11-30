@@ -39,7 +39,7 @@ devbox_asdf_plugins:
   - name: coursier
     versions: [2.1.24]
   - name: golang
-    versions: [1.24.2]
+    versions: [1.25.4]
   - name: rust
     versions: [1.86.0]
   # tmux plugin dependencies
