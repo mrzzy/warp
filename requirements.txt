@@ -27,7 +27,7 @@ pycparser==2.23
 PyYAML==6.0.3
 referencing==0.37.0
 resolvelib==1.0.1
-rpds-py==0.29.0
+rpds-py==0.30.0
 ruamel.yaml==0.18.16
 ruamel.yaml.clib==0.2.15
 subprocess-tee==0.4.2
