@@ -8,7 +8,7 @@
 ansible_remote_tmp: /tmp
 
 # User settings
-devbox_user: mrzzy
+devbox_user: ubuntu
 devbox_user_home: "/home/{{ devbox_user }}"
 
 # Paths
