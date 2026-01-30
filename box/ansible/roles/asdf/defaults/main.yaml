@@ -48,3 +48,9 @@ devbox_asdf_plugins:
     versions: [4.0.3]
   - name: python
     versions: [3.11.13]
+  # opencode ai coding agent
+  - name: opencode
+    # TODO(mrzzy): revert URL once https://github.com/bitfrost/asdf-opencode/pull/13 merged
+    git_url: https://github.com/mrzzy/asdf-opencode
+    # renovate: datasource=github-releases depName=Aanomalyco/opencode stripV
+    versions: [1.1.43]

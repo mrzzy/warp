@@ -22,13 +22,14 @@
   ansible.builtin.unarchive:
     remote_src: true
     src: "https://github.com/asdf-vm/asdf/releases/download/\
-          {{ devbox_asdf_version }}/\
-          asdf-{{ devbox_asdf_version }}-linux-{{ dpkg_architecture.stdout | trim }}.tar.gz"
+      {{ devbox_asdf_version }}/\
+      asdf-{{ devbox_asdf_version }}-linux-{{ dpkg_architecture.stdout | trim }}.tar.gz"
     dest: "{{ devbox_asdf_install_path }}"
 
 - name: Install ASDF Plugins
   ansible.builtin.command:
-    cmd: "{{ devbox_asdf_install_path }}/asdf plugin add {{ item.name }}"
+    # use plugin git repo url from asdf's internal plugin index if unspecified
+    cmd: "{{ devbox_asdf_install_path }}/asdf plugin add {{ item.name }} {{ item.git_url | default('') }}"
     creates: "{{ devbox_asdf_data_path }}/plugins/{{ item.name }}"
   loop: "{{ devbox_asdf_plugins }}"
 
