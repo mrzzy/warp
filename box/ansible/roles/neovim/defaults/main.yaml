@@ -11,6 +11,6 @@ devbox_user_home: /home/mrzzy
 # renovate: datasource=github-releases depName=neovim/neovim
 devbox_nvim_version: v0.11.5
 # renovate: datasource=github-releases depName=folke/lazy.nvim
-devbox_nvim_lazy_version: v10.24.3
+devbox_nvim_lazy_version: v11.17.5
 # renovate: datasource=pip depName=codespell
 devbox_codespell_version: 2.4.1
