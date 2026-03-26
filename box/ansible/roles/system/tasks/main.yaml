@@ -86,6 +86,8 @@
     - sqlite3
     # graph visualisation
     - graphviz
+    # csv,tsv,json,yaml data tool
+    - miller
 
 # disable auto upgrades: upgrades hog the cpu at runtime
 - name: Disable Auto Upgrades by removing Unattended-upgrades
