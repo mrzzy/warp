@@ -35,4 +35,4 @@ typing_extensions==4.15.0
 virtualenv==20.36.1
 wcmatch==10.1
 yamllint==1.37.1
-zipp==3.23.0
+zipp==3.23.1
