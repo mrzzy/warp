@@ -53,3 +53,5 @@ devbox_asdf_plugins:
     git_url: https://github.com/bitfrost/asdf-opencode
     # renovate: datasource=github-releases depName=Aanomalyco/opencode stripV
     versions: [1.1.43]
+
+devbox_asdf_plugin_java_version: master

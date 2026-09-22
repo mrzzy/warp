@@ -33,6 +33,13 @@
     creates: "{{ devbox_asdf_data_path }}/plugins/{{ item.name }}"
   loop: "{{ devbox_asdf_plugins }}"
 
+- name: Clone asdf-java plugin
+  ansible.builtin.git:
+    repo: https://github.com/halcyon/asdf-java.git
+    dest: "{{ devbox_asdf_data_path }}/plugins/java"
+    depth: 1
+    version: "{{ devbox_asdf_plugin_java_version }}"
+
 - name: Install ASDF Tools
   ansible.builtin.shell:
     cmd: |
