@@ -51,7 +51,7 @@ devbox_asdf_plugins:
   # opencode ai coding agent
   - name: opencode
     git_url: https://github.com/bitfrost/asdf-opencode
-    # renovate: datasource=github-releases depName=Aanomalyco/opencode stripV
+    # renovate: datasource=github-releases depName=aanomalyco/opencode stripV
     versions: [2.2.7]
 
 devbox_asdf_plugin_java_version: master
