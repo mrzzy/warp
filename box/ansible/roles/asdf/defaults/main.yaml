@@ -20,7 +20,7 @@ devbox_asdf_plugins:
     # renovate: datasource=github-releases depName=sharkdp/bat stripV
     versions: [0.25.0]
   - name: fzf
-    # renovate: datasource=github-releases depName=sharkdp/bat stripV
+    # renovate: datasource=github-releases depName=junegunn/fzf stripV
     versions: [0.61.3]
   - name: direnv
     # renovate: datasource=github-releases depName=direnv/direnv stripV
