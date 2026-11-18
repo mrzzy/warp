@@ -13,4 +13,4 @@ devbox_nvim_version: v0.12.5
 # renovate: datasource=github-releases depName=folke/lazy.nvim
 devbox_nvim_lazy_version: v10.24.3
 # renovate: datasource=pypi depName=codespell
-devbox_codespell_version: 2.4.1
+devbox_codespell_version: 2.4.3
