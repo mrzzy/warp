@@ -27,7 +27,7 @@ devbox_asdf_plugins:
     versions: [2.36.0]
   - name: github-cli
     # renovate: datasource=github-releases depName=cli/cli stripV
-    versions: [2.72.0]
+    versions: [2.105.0]
   - name: neovim
     versions: [0.11.1]
   - name: tmux
