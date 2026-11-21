@@ -24,7 +24,7 @@ devbox_asdf_plugins:
     versions: [0.61.3]
   - name: direnv
     # renovate: datasource=github-releases depName=direnv/direnv stripV
-    versions: [2.36.0]
+    versions: [2.38.2]
   - name: github-cli
     # renovate: datasource=github-releases depName=cli/cli stripV
     versions: [2.105.0]
