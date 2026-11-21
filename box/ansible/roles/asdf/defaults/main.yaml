@@ -21,7 +21,7 @@ devbox_asdf_plugins:
     versions: [0.25.0]
   - name: fzf
     # renovate: datasource=github-releases depName=junegunn/fzf stripV
-    versions: [0.61.3]
+    versions: [0.75.0]
   - name: direnv
     # renovate: datasource=github-releases depName=direnv/direnv stripV
     versions: [2.38.2]
