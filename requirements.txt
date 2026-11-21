@@ -17,7 +17,7 @@ Jinja2==3.1.6
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
 MarkupSafe==3.0.4
-mypy_extensions==1.1.0
+mypy_extensions==1.2.0
 nodeenv==1.10.0
 packaging==25.0
 pathspec==0.12.1
