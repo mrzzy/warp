@@ -34,5 +34,5 @@ subprocess-tee==0.4.2
 typing_extensions==4.16.0
 virtualenv==20.39.1
 wcmatch==10.1
-yamllint==1.37.1
+yamllint==1.38.0
 zipp==3.23.1
